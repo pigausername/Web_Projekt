@@ -1,4 +1,0 @@
-<?php
-"Was diese";
-?>
-

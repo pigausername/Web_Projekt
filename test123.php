@@ -2,6 +2,7 @@
 heufhsei;
 sefsef;
 efsf;
+$a = "Webprojekt nervt."
 
 ?>
 /**

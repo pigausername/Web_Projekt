@@ -1,0 +1,61 @@
+<?php
+
+session_start();
+
+$pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de;dbname=u-rk067',
+    'rk067',
+    'joB9Wahx5J',array('charset'=>'utf8'));
+
+$statement = $pdo->prepare("INSERT INTO `*bla*` (`username`, `password`, `email`, `fist_name`,`last_name`) VALUES ('$username', '$password', '$firstname', '$lastname')");
+
+if (isset($_POST['register_btn'])) {
+$username = $_POST['username'];
+$password = $_POST['password'];
+$repeatpassword = $_POST['repeatpassword'];
+$email = $_POST['email'];
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+
+if ($_POST['password'] == $_POST['repeatpassword']) {
+$password = md5($password);
+$statement->execute();
+header("location: login.php");
+}
+else {
+echo "Please confirm your password.";
+}
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>"Name" | Registierung</title>
+</head>
+<body>
+    <h1>Registrieren Sie sich.</h1>
+    <form action="register.php" method="post">
+        <label> <b>Username</b></label>
+        <input type="text" name="username" placeholder="Username" required>
+        <br>
+        <label> <b>Password</b></label>
+        <input type="password" name="password" placeholder="Password" required>
+        <br>
+        <label> <b>Please repeat your password</b></label>
+        <input type="password" name="repeatpassword" placeholder="Repeat your password" required>
+        <br>
+        <label> <b>E-Mail</b></label>
+        <input type="text" name="email" placeholder="E-mail" required>
+        <br>
+        <label> <b>First name</b></label>
+        <input type="text" name="firstname" placeholder="First name" required>
+        <br>
+        <label> <b>Last name</b></label>
+        <input type="text" name="lastname" placeholder="Last name" required>
+        <br>
+        <button type="submit" class="registerbtn">Register</button>
+        <br>
+        <p>Already have an account? <a href="login.html">Sign in</a>.</p>
+    </form>
+</body>
+</html>

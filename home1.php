@@ -2,11 +2,11 @@
 session_start();
 require_once "userdata.php";
 
-if(isset($_SESSION["angemeldet"]))
+if(!isset($_SESSION["angemeldet"]))
 {
     echo"angemeldet.";
-}
 
+}
 else
 {
     echo"nicht angemeldet.";
@@ -50,6 +50,7 @@ if (isset($_POST['post'])) {
     $headline = $_POST['headline'];
     $file = $_POST['file'];
     $content = $_POST['content'];
+
 
     $sql = "INSERT INTO posts (`headline`, `file`, `content`) VALUES ('$headline', '$file', '$content')";
     header("Location: home1.php");

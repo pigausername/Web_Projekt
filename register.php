@@ -19,7 +19,7 @@ if (isset($_POST['register'])) {
         $sql = "INSERT INTO userdata (`password`, `email`, `username`, `firstname`, `lastname`)
                 VALUES ('$password', '$email', '$username', '$firstname', '$lastname')";
         $pdo->exec($sql);
-        echo "New record created successfully";
+        header("Location: profile_edit.php");
     } if ($_POST['password'] != $_POST['repeatpassword']){
           echo "Bestätigen Sie Ihr Passwort.";
     }
@@ -54,7 +54,7 @@ if (isset($_POST['register'])) {
     <br>
     <button type="submit" name="register" class="btn">Register</button>
     <br>
-    <p>Already have an account? <a href="login.html">Sign in</a>.</p>
+    <p>Already have an account? <a href="index.html">Sign in</a>.</p>
 </form>
 </body>
 </html>

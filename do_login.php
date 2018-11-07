@@ -8,7 +8,6 @@ if (isset($_POST["login"])) {
     $name = $_POST["name"];
     $passwort = $_POST["passwort"];
 
-
     $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
 
     $pdo=new PDO($dsn, $dbuser, $dbpass, $options);
@@ -21,7 +20,7 @@ if (isset($_POST["login"])) {
     $_SESSION["angemeldet"]=$user["id"];
 
     if ($user !== false) {
-        header("location: startseite.php");
+        header("location: home.php");
     } else {
         echo "E-Mail oder Passwort war ungültig";
     }

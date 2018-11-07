@@ -1,0 +1,32 @@
+#kopfleiste {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0;
+    background-color: purple;
+    width: 100%;
+    height: 200px;
+    border: solid;
+    border-color: black;
+    margin: 0px;
+}
+#menu {
+    background-color: black;
+    flaot: left;
+    width: 100%;
+    height: 200px;
+    margin: 0px;
+}
+#inhalt {
+    background-color: darkgray;
+    width: 100%;
+    padding: 10px;
+    min-height: 800px;
+    overflow: hidden; /*Dasmit das Layout mit float funktionierr */
+}
+#body {
+    margin: 0px;
+    padding: 0px;
+}
+

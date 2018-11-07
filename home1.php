@@ -1,6 +1,17 @@
 <?php
 session_start();
 require_once "userdata.php";
+
+if(!isset($_SESSION["angemeldet"]))
+{
+    echo"angemeldet.";
+
+}
+else
+{
+    echo"nicht angemeldet.";
+}
+
 ?>
 <!doctype html>
 <html lang="de">
@@ -27,16 +38,6 @@ require_once "userdata.php";
 
 <?php
 
-if(isset($_SESSION["angemeldet"]))
-{
-    echo"angemeldet.";
-
-}
-else
-{
-    echo"nicht angemeldet.";
-}
-
 // hole Content aus Datenbank
 
 echo"<br>";
@@ -61,11 +62,3 @@ if($statement->execute()) {
 </body>
 
 </html>
-
-
-/**
-* Created by PhpStorm.
-* User: rene
-* Date: 07.11.2018
-* Time: 09:21
-*/

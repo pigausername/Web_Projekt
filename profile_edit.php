@@ -1,12 +1,34 @@
 <?php
 session_start();
 
-include_once "userdata.php";
+require_once "userdata.php";
+if(!isset($_SESSION["angemeldet"]))
+{
+    echo"nicht angemeldet.";
+    die();
+}
 
-$pdo=new PDO($dsn, $dbuser, $dbpass);
 
-$sql = "UPDATE users SET password='$password', email='$email', username='$username', firstname='$firstname', lastname='$lastname'
-WHERE userid=2";
+$userid=$_GET["userid"];
+
+if (isset($_POST['save'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $repeatpassword = $_POST['repeatpassword'];
+    $email = $_POST['email'];
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+
+    if ($_POST['password'] == $_POST['repeatpassword']) {
+        $password = md5($password);
+        $sql = "UPDATE users SET password='$password', email='$email', username='$username', firstname='$firstname', lastname='$lastname'
+              WHERE userid=:userid";
+        $pdo->exec($sql);
+        header("Location: index.html");
+    }
+    }   if ($_POST['password'] != $_POST['repeatpassword']){
+        echo "Bestätigen Sie Ihr Passwort.";
+}
 ?>
 
 <!DOCTYPE html>

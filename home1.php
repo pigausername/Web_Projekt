@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once "userdata.php";
 ?>
 <!doctype html>
 <html lang="de">
@@ -13,6 +14,7 @@ session_start();
 <h1>RAM</h1>
 <a href="logout.php">Logout</a><br>
 <a href="profil.php">Profil</a><br>
+<a href="profile_edit.php">Edit profile</a><br>
 
 <!-- Post schreiben -->
 
@@ -35,16 +37,11 @@ else
     echo"nicht angemeldet.";
 }
 
-include_once "userdata.php";
-
-
 // hole Content aus Datenbank
 
 echo"<br>";
 $content= $_POST["content"];
 echo $content;
-
-$pdo=new PDO($dsn, $dbuser, $dbpass);
 
 $statement = $pdo->prepare("SELECT * FROM posts");
 if($statement->execute()) {

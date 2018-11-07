@@ -1,9 +1,10 @@
 <?php
 session_start();
 
+
 require_once "userdata.php";
 
-if (isset($_POST["login"])) {
+if (!isset($_POST["login"])) {
 
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -39,7 +40,7 @@ Login:
 <form action="index.php" method="post">
     Email: <input type="text" name="email" placeholder="Email"/>
     <br>
-Passwort: <input type="text" name="password" placeholder="Password"/>
+Passwort: <input type="password" name="password" placeholder="Password"/>
     <br>
     <input type="submit" name="login" value="Anmeldung">
 </form>

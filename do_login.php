@@ -20,10 +20,8 @@ if (isset($_POST["login"])) {
     $_SESSION["angemeldet"]=$user["id"];
 
     if ($user !== false) {
-        header("location: home.php");
+        header("location: home1.php");
     } else {
         echo "E-Mail oder Passwort war ungültig";
     }
 }
-
-echo $email, $password;

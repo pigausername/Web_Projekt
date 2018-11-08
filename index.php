@@ -7,7 +7,6 @@ if (isset($_POST["email"]) AND isset($_POST["password"])) {
 
     $email = $_POST["email"];
     $password = $_POST["password"];
-    echo "bla";
 
 $statement = $pdo->prepare("SELECT * FROM userdata WHERE email=:email 
                                     AND password=:password");
@@ -39,7 +38,7 @@ Login:
 <form action="index.php" method="post">
     Email: <input type="text" name="email" placeholder="Email"/>
     <br>
-Passwort: <input type="text" name="password" placeholder="Password"/>
+Passwort: <input type="password" name="password" placeholder="Password"/>
     <br>
     <input type="submit" name="login" value="Anmeldung">
 </form>

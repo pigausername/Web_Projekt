@@ -5,7 +5,7 @@ require_once "userdata.php";
 if(!isset($_SESSION["angemeldet"]))
 {
     echo"nicht angemeldet.";
-    die();
+
 }
 
 
@@ -22,9 +22,10 @@ if (isset($_POST['save'])) {
     if ($_POST['password'] == $_POST['repeatpassword']) {
         $password = md5($password);
         $sql = "UPDATE users SET password='$password', email='$email', username='$username', firstname='$firstname', lastname='$lastname'
-              WHERE userid=:userid";
+              WHERE userid=:$userid";
         $pdo->exec($sql);
-        header("Location: index.html");
+        //header("Location: index.html");
+        echo "bla.";
     }
     }   if ($_POST['password'] != $_POST['repeatpassword']){
         echo "Bestätigen Sie Ihr Passwort.";
@@ -40,25 +41,39 @@ if (isset($_POST['save'])) {
 <body>
 <h1>Here you can edit your profile.</h1>
 <form action="profile_edit.php" method="post">
-    <label> <b>Username</b></label>
-    <input type="text" name="username" placeholder="Username" required>
-    <br>
-    <label> <b>Password</b></label>
-    <input type="password" name="password" placeholder="Password" required>
-    <br>
-    <label> <b>Please repeat your new password</b></label>
-    <input type="password" name="repeatpassword" placeholder="Repeat your password" required>
-    <br>
-    <label> <b>E-Mail</b></label>
-    <input type="text" name="email" placeholder="E-mail" required>
-    <br>
-    <label> <b>First name</b></label>
-    <input type="text" name="firstname" placeholder="First name" required>
-    <br>
-    <label> <b>Last name</b></label>
-    <input type="text" name="lastname" placeholder="Last name" required>
-    <br>
-    <button type="submit" name="save" class="btn">Save changes</button>
+    <table>
+        <tr>
+            <td>Username:</td>
+            <td><input type="text" name="username" placeholder="Username" required></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" name="password" placeholder="Password" required></td>
+        </tr>
+        <tr>
+            <td>Please repeat your new password:</td>
+            <td><input type="password" name="repeatpassword" placeholder="Repeat your password" required></td>
+        </tr>
+        <tr>
+            <td>E-Mail:</td>
+            <td><input type="text" name="email" placeholder="E-mail" required></td>
+        </tr>
+        <tr>
+            <td>First name:</td>
+            <td><input type="text" name="firstname" placeholder="First name" required></td>
+        </tr>
+        <tr>
+            <td>Last name:</td>
+            <td><input type="text" name="lastname" placeholder="Last name" required></td>
+        </tr>
+        <tr>
+            <td>Profile picture:</td>
+            <td><input type="file" name="pic"</td>
+        </tr>
+        <tr>
+            <td><button type="submit" name="save" class="btn">Save changes</button></td>
+        </tr>
+    </table>
 </form>
 </body>
 </html>

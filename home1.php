@@ -1,16 +1,14 @@
 <?php
 session_start();
+
 require_once "userdata.php";
 
 if(!isset($_SESSION["angemeldet"]))
 {
-    echo"angemeldet.";
-
-}
-else
-{
     echo"nicht angemeldet.";
+    ;
 }
+
 
 ?>
 <!doctype html>
@@ -30,10 +28,19 @@ else
 <!-- Post schreiben -->
 
 <form action="do_post.php" method="post">
-    <textarea name="headline" placeholder="Titel" rows="2" cols="30"></textarea><br>
-    <input type="file" name="pic" accept="file_extension|audio/*|video/*|image/*|media_type"><br>
-    <textarea name="content" placeholder="Type your text here" rows="10" cols="30"></textarea>
-    <input type="submit">
+    <table>
+    <tr>
+        <td><textarea name="headline" placeholder="Titel" rows="2" cols="30"></textarea></td>
+    </tr>
+    <tr>
+        <td><input type="file" name="pic" accept="file_extension|audio/*|video/*|image/*|media_type"></td>
+    <tr>
+        <td><textarea name="content" placeholder="Type your text here" rows="10" cols="30"></textarea></td>
+    </tr>
+    <tr>
+        <td><input type="submit"></td>
+    </tr>
+    </table>
 </form>
 
 <?php

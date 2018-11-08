@@ -43,6 +43,8 @@ Login:
     <br>
     Passwort: <input type="password" name="password" placeholder="Password"/>
     <br>
+    <label><input type="checkbox" name="angemeldet_bleiben" value="1"> Angemeldet bleiben</label>
+    <br>
     <input type="submit" name="login" value="Anmeldung">
 </form>
 

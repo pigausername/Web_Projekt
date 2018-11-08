@@ -19,13 +19,11 @@ if(!isset($_SESSION["angemeldet"]))
     </title>
 </head>
 <body>
-<h1>RAM</h1>
-<a href="logout.php">Logout</a><br>
-<a href="profile.php">Profil</a><br>
-<a href="profile_edit.php">Edit profile</a><br>
+
 
 <!-- Post schreiben -->
 
+<h2>Beitrag schreiben</h2>
 <form action="home1.php" method="post">
     <table>
     <tr>
@@ -37,13 +35,13 @@ if(!isset($_SESSION["angemeldet"]))
         <td><textarea name="content" placeholder="Type your text here" rows="10" cols="30"></textarea></td>
     </tr>
     <tr>
-        <td><input type="submit"></td>
+        <td><input type="submit" name="post"></td>
     </tr>
     </table>
 
 
 
-<!-- füge Daten in die Datenbank -->
+<!-- schicke einen Post in die Datenbank -->
 
 <?php
 if (isset($_POST['post'])) {
@@ -60,6 +58,8 @@ if (isset($_POST['post'])) {
 ?>
 
 
+
+<h2>Feed</h2>
 <!-- hole Content aus Datenbank -->
 <?php
 echo"<br>";
@@ -68,7 +68,7 @@ $file= $_POST ["file"];
 $content= $_POST["content"];
 
 
-$statement = $pdo->prepare("SELECT * FROM posts");
+$statement = $pdo->prepare("SELECT * FROM posts ORDER BY date DESC");
 if($statement->execute()) {
     while($row=$statement->fetch()) {
         ?>

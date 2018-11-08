@@ -8,15 +8,15 @@ if(!isset($_SESSION["angemeldet"]))
     echo"nicht angemeldet.";
     ;
 }
-
-
 ?>
+
+
 <!doctype html>
 <html lang="de">
 <head>
     <meta charset="utf-8">
     <title>
-        Mein Blog
+        RAM
     </title>
 </head>
 <body>
@@ -25,9 +25,12 @@ if(!isset($_SESSION["angemeldet"]))
 <a href="profil.php">Profil</a><br>
 <a href="profile_edit.php">Edit profile</a><br>
 
+
+
+
 <!-- Post schreiben -->
 
-<form action="do_post.php" method="post">
+<form action="home1.php" method="post">
     <table>
     <tr>
         <td><textarea name="headline" placeholder="Titel" rows="2" cols="30"></textarea></td>
@@ -41,21 +44,52 @@ if(!isset($_SESSION["angemeldet"]))
         <td><input type="submit"></td>
     </tr>
     </table>
-</form>
+
+
+
+<!-- füge Daten in die Datenbank -->
 
 <?php
+if (isset($_POST['post'])) {
+    $headline = $_POST['headline'];
+    $file = $_POST['file'];
+    $content = $_POST['content'];
 
-// hole Content aus Datenbank
 
+    $sql = "INSERT INTO posts (`headline`, `file`, `content`) VALUES ('$headline', '$file', '$content')";
+    header("Location: home1.php");
+    $pdo->exec($sql);
+    }
+
+?>
+
+
+
+
+<!-- hole Content aus Datenbank -->
+<?php
 echo"<br>";
+$headline= $_POST ["headline"];
+$file= $_POST ["file"];
 $content= $_POST["content"];
-echo $content;
+
 
 $statement = $pdo->prepare("SELECT * FROM posts");
 if($statement->execute()) {
     while($row=$statement->fetch()) {
-        echo $row['id']." ".$row['content'];
-        echo "<br>";
+        ?>
+    <table>
+        <tr>
+            <td><?php echo $row['headline'] ?></td>
+        </tr>
+        <tr>
+            <td><?php echo $row['file'] ?></td>
+        <tr>
+            <td><?php echo $row['content']?></td>
+        </tr>
+        <br>
+    </table>
+    <?php
     }
 } else {
     echo "Datenbank-Fehler:";

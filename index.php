@@ -20,6 +20,7 @@ if($statement->execute(array(':email' => $email, ':password' => $password))) {
             echo "No authorization.";
         }
     }
+    
 else {
         echo "There is an error in the database.";
         die();

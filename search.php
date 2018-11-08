@@ -6,37 +6,37 @@ include_once ("header.php");
 <h1>Search by Username</h1>
 <form action="search.php" method="post">
     Username:  <input type="text" name="username" size="20">
-    <input type="submit" value="Search" name="Search">
+    <input type="submit" value="search" name="Search">
 </form>
 
 <?php
-    if (isset($_POST['username']))
-    {
+    if (isset($_POST['search'])) {
         $username = $_POST['username'];
+        $email = $_POST['email'];
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
 
-        $sql = "SELECT * FROM userdata WHERE username='username';";
+        $statement = $pdo->prepare("SELECT * FROM userdata WHERE username='$username'");
+        echo "blabla";
+        if ($statement->execute()) {
+            while ($row = $statement->fetch()) {
+                ?>
 
-        $result = $conn->query($sql);
+                <h3>Your results:</h3>
 
-        if ($result->num_rows > 0) {
-            ?>
-
-            <h3>Your results:</h3>
-
-            <?php
-            while($row = $result->fetch_assoc()) {
+                <?php
                 echo '<table>';
-                echo '<tr><td>ID:</td><td>'.$row["id"].'</td></tr>';
-                echo '<tr><td>Username:</td><td>'.$row["username"].'</td></tr>';
-                echo '<tr><td>Profile picture:</td><td><img src="'.$row["avatar"].'" width="100px" /></td></tr>';
-                echo '<tr><td>E-Mail:</td><td>'.$row["email"].'</td></tr>';
-                echo '<tr><td>Firstname:</td><td>'.$row["firstname"].'</td></tr>';
-                echo '<tr><td>Lastname:</td><td>'.$row["lastname"].'</td></tr>';
+                echo '<tr><td>ID:</td><td>' . $row["id"] . '</td></tr>';
+                echo '<tr><td>Username:</td><td>' . $row['username'] . '</td></tr>';
+                //echo '<tr><td>Profile picture:</td><td><img src="'.$row["avatar"].'" width="100px" /></td></tr>';
+                echo '<tr><td>E-Mail:</td><td>' . $row['email'] . '</td></tr>';
+                echo '<tr><td>Firstname:</td><td>' . $row['firstname'] . '</td></tr>';
+                echo '<tr><td>Lastname:</td><td>' . $row['lastname'] . '</td></tr>';
                 echo '</table>';
                 echo '<hr />';
+                echo "bla";
             }
-        }
-        else {
+        } else {
             echo "0 results";
         }
     }

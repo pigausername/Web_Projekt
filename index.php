@@ -20,7 +20,8 @@ if($statement->execute(array(':email' => $email, ':password' => $password))) {
             echo "No authorization.";
         }
     }
-    
+
+
 else {
         echo "There is an error in the database.";
         die();
@@ -40,7 +41,7 @@ Login:
 <form action="index.php" method="post">
     Email: <input type="text" name="email" placeholder="Email"/>
     <br>
-Passwort: <input type="password" name="password" placeholder="Password"/>
+    Passwort: <input type="password" name="password" placeholder="Password"/>
     <br>
     <input type="submit" name="login" value="Anmeldung">
 </form>

@@ -3,37 +3,66 @@ session_start();
 require_once "userdata.php";
 include_once "header.php";
 
-$statement=$pdo->prepare ("SELECT * FROM userdata");
+$statement="SELECT 'username', 'email', 'firstname', 'lastname' * FROM userdata";
+$pdo = exec($statement);
 
-if($statement->execute()) {
-    while ($row = $statement->fetch()) {
-        echo $row['id'] . " " . $row['content'];
-        echo "<br>";
-    }
-};
 ?>
-
 <html>
+<h1><?php echo "bla" //$_SESSION['username'];?></h1>
 <head>
 </head>
 <form action="profile.php" method="GET">
     <table>
-        <tr><td>Username:</td></tr>
-        <tr><td>E-mail:</td></tr>
-        <tr><td>First name:</td></tr>
-        <tr><td>Last name:</td></tr>
+        <tr>
+            <td>Profile picture:</td>
+            <td><input type="file" name="pic"</td>
+        </tr>
+        <tr>
+            <td>Username:</td>
+            <td><?php echo "bla" //$_SESSION['username'];?> </td>
+        </tr>
+        <tr>
+            <td>E-Mail:</td>
+            <td><?php echo "bla" //$_SESSION['email'];?></td>
+        </tr>
+        <tr>
+            <td>First name:</td>
+            <td><?php echo "bla" //$_SESSION['firstname'];?></td>
+        </tr>
+        <tr>
+            <td>Last name:</td>
+            <td><?php echo "bla" //$_SESSION['lastname'];?></td>
+        </tr>
+    </table>
+
+<?php
+    $headline= $_POST ["headline"];
+    $file= $_POST ["file"];
+    $content= $_POST["content"];
+
+
+    $statement = $pdo->prepare("SELECT * FROM posts");
+    if($statement->execute()) {
+while ($row = $statement->fetch()) {
+?>
+    <table>
+        <tr>
+            <td><?php echo $row['headline'] ?></td>
+        </tr>
+        <tr>
+            <td><?php echo $row['file'] ?></td>
+        <tr>
+            <td><?php echo $row['content'] ?></td>
+        </tr>
+        <br>
     </table>
 
 
 </form>
 </html>
 <?php
+}
+}
 include_once "footer.php";
 ?>
-
-Profilbild
-Alle meine post
-Eigene Daten
-Galerie
-Möglichkeit zu liken und zu folgen
 

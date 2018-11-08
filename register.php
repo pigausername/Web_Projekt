@@ -6,6 +6,7 @@ require_once "userdata.php";
 include_once "header.php";
 
 
+
 if (isset($_POST['register'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];

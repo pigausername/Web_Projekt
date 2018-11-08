@@ -32,11 +32,17 @@ if (isset($_POST['login'])) {
 Login:
 
 <form action="index.php" method="post">
-    Email: <input type="text" name="email" placeholder="Email"/>
-    <br>
-    Passwort: <input type="password" name="password" placeholder="Password"/>
-    <br>
-    <input type="submit" name="login" value="Anmeldung">
+    <table>
+        <tr>
+            <td>Email: </td> <td><input type="text" name="email" placeholder="Email"/></td>
+        </tr>
+        <tr>
+            <td>Passwort: </td> <td><input type="password" name="password" placeholder="Password"/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="login" value="Anmeldung"></td>
+        </tr>
+    </table>
 </form>
 
 <a href="register.php">Register</a><br>

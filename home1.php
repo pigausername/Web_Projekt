@@ -2,6 +2,7 @@
 session_start();
 
 require_once "userdata.php";
+include_once "header.php";
 
 if(!isset($_SESSION["angemeldet"]))
 {
@@ -9,8 +10,6 @@ if(!isset($_SESSION["angemeldet"]))
     ;
 }
 ?>
-
-
 <!doctype html>
 <html lang="de">
 <head>
@@ -22,11 +21,8 @@ if(!isset($_SESSION["angemeldet"]))
 <body>
 <h1>RAM</h1>
 <a href="logout.php">Logout</a><br>
-<a href="profil.php">Profil</a><br>
+<a href="profile.php">Profil</a><br>
 <a href="profile_edit.php">Edit profile</a><br>
-
-
-
 
 <!-- Post schreiben -->
 
@@ -64,8 +60,6 @@ if (isset($_POST['post'])) {
 ?>
 
 
-
-
 <!-- hole Content aus Datenbank -->
 <?php
 echo"<br>";
@@ -97,7 +91,7 @@ if($statement->execute()) {
     echo $statement->queryString;
     die();
 }
-
+include_once "footer.php";
 ?>
 
 </body>

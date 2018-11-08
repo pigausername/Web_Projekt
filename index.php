@@ -2,6 +2,7 @@
 session_start();
 
 require_once "userdata.php";
+include_once "header.php";
 
 if (isset($_POST["email"]) AND isset($_POST["password"])) {
 
@@ -47,5 +48,8 @@ Passwort: <input type="password" name="password" placeholder="Password"/>
 
 </body>
 </html>
+<?php
+include_once "footer.php";
+?>
 
 

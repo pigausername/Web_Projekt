@@ -2,7 +2,8 @@
 
 session_start();
 
-include_once "userdata.php";
+require_once "userdata.php";
+include_once "header.php";
 
 
 if (isset($_POST['register'])) {
@@ -66,3 +67,6 @@ if (isset($_POST['register'])) {
 </form>
 </body>
 </html>
+<?php
+include_once "footer.php";
+?>

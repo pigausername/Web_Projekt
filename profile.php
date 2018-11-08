@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "userdata.php";
+include_once "header.php";
 
 $statement=$pdo->prepare ("SELECT * FROM userdata");
 
@@ -15,7 +16,7 @@ if($statement->execute()) {
 <html>
 <head>
 </head>
-<form action="profil.php" method="GET">
+<form action="profile.php" method="GET">
     <table>
         <tr><td>Username:</td></tr>
         <tr><td>E-mail:</td></tr>
@@ -26,15 +27,9 @@ if($statement->execute()) {
 
 </form>
 </html>
-
-
-
-/**
- * Created by PhpStorm.
- * User: anni
- * Date: 07.11.18
- * Time: 11:42
- */
+<?php
+include_once "footer.php";
+?>
 
 Profilbild
 Alle meine post

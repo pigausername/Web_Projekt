@@ -2,6 +2,7 @@
 session_start();
 
 require_once "userdata.php";
+include_once "header.php";
 if(!isset($_SESSION["angemeldet"]))
 {
     echo"nicht angemeldet.";
@@ -44,7 +45,8 @@ if (isset($_POST['save'])) {
     <table>
         <tr>
             <td>Username:</td>
-            <td><input type="text" name="username" placeholder="Username" required></td>
+            <td><input type="text" name="username" placeholder="Username" required
+            value="<?php echo "bla" //$_SESSION['username'];?>"> </td>
         </tr>
         <tr>
             <td>Password:</td>
@@ -56,15 +58,18 @@ if (isset($_POST['save'])) {
         </tr>
         <tr>
             <td>E-Mail:</td>
-            <td><input type="text" name="email" placeholder="E-mail" required></td>
+            <td><input type="text" name="email" placeholder="E-mail" required
+            value="<?php echo "bla" //$_SESSION['email'];?>"></td>
         </tr>
         <tr>
             <td>First name:</td>
-            <td><input type="text" name="firstname" placeholder="First name" required></td>
+            <td><input type="text" name="firstname" placeholder="First name" required
+            value="<?php echo "bla" //$_SESSION['firstname'];?>"></td>
         </tr>
         <tr>
             <td>Last name:</td>
-            <td><input type="text" name="lastname" placeholder="Last name" required></td>
+            <td><input type="text" name="lastname" placeholder="Last name" required
+            value="<?php echo "bla" //$_SESSION['lastname'];?>"></td>
         </tr>
         <tr>
             <td>Profile picture:</td>
@@ -77,3 +82,6 @@ if (isset($_POST['save'])) {
 </form>
 </body>
 </html>
+<?php
+include_once "footer.php";
+?>

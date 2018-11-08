@@ -1,14 +1,8 @@
 <?php
 session_start();
 
-require_once "userdata.php";
 include_once "header.php";
 
-if(!isset($_SESSION["angemeldet"]))
-{
-    echo"nicht angemeldet.";
-    ;
-}
 ?>
 <!doctype html>
 <html lang="de">

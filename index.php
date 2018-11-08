@@ -1,33 +1,26 @@
 <?php
 session_start();
 
-require_once "userdata.php";
 include_once "header.php";
 
-if (isset($_POST["email"]) AND isset($_POST["password"])) {
-
+if (isset($_POST['login'])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-$statement = $pdo->prepare("SELECT * FROM userdata WHERE email=:email 
-                                    AND password=:password");
-
-if($statement->execute(array(':email' => $email, ':password' => $password))) {
-        if ($user = $statement->fetch()) {
-            $_SESSION["angemeldet"] = $user["id"];
+    $statement = $pdo->prepare("SELECT * FROM userdata WHERE email=:email AND password=:password");
+    if($statement->execute (array(':email' => $email, ':password' => $password))) {
+        if ($row = $statement->fetch()) {
+            //echo "angemeldet";
+            $_SESSION["angemeldet"] = $row["id"];
             header("Location: home1.php");
         } else {
             echo "No authorization.";
         }
     }
-
-
-else {
-        echo "There is an error in the database.";
-        die();
+    else {
+        echo "blabla";
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,8 +36,6 @@ Login:
     <br>
     Passwort: <input type="password" name="password" placeholder="Password"/>
     <br>
-    <label><input type="checkbox" name="angemeldet_bleiben" value="1"> Angemeldet bleiben</label>
-    <br>
     <input type="submit" name="login" value="Anmeldung">
 </form>
 
@@ -53,6 +44,7 @@ Login:
 </body>
 </html>
 <?php
+
 include_once "footer.php";
 ?>
 

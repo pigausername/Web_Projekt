@@ -16,11 +16,11 @@ if (isset($_POST['register'])) {
     $lastname = $_POST['lastname'];
 
     if ($_POST['password'] == $_POST['repeatpassword']) {
-        $password = md5($password);
+        //$password = md5($password);
         $sql = "INSERT INTO userdata (`password`, `email`, `username`, `firstname`, `lastname`)
                 VALUES ('$password', '$email', '$username', '$firstname', '$lastname')";
         $pdo->exec($sql);
-        header("Location: profile_edit.php");
+        header("Location: index.php");
     } if ($_POST['password'] != $_POST['repeatpassword']){
           echo "Bestätigen Sie Ihr Passwort.";
     }

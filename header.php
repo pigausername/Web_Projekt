@@ -1,4 +1,11 @@
 <?php
+session_start();
+require_once "userdata.php";
+
+if (!isset($_SESSION["angemeldet"]))
+{
+   echo "nicht angemeldet.";
+}
 ?>
 <ul>
     <li><a href="home1.php">Home</a></li>

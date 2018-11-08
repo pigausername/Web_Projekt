@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "userdata.php";
+
 include_once "header.php";
 
 $statement="SELECT 'username', 'email', 'firstname', 'lastname' * FROM userdata";

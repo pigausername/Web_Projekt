@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include_once "header.php";
+require_once "userdata.php";
 
 if (isset($_POST['login'])) {
     $email = $_POST["email"];
@@ -10,7 +10,6 @@ if (isset($_POST['login'])) {
     $statement = $pdo->prepare("SELECT * FROM userdata WHERE email=:email AND password=:password");
     if($statement->execute (array(':email' => $email, ':password' => $password))) {
         if ($row = $statement->fetch()) {
-            //echo "angemeldet";
             $_SESSION["angemeldet"] = $row["userid"];
             header("Location: home1.php");
         } else {

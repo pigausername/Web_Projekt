@@ -2,16 +2,17 @@
 session_start();
 require_once "userdata.php";
 
-if (!isset($_SESSION["angemeldet"]))
-{
-   echo "nicht angemeldet";
-   //header("Location:index.php");
-}
-else {
-    ?>
+if (isset($_SESSION["angemeldet"]))
+{    ?>
     <ul>
         <li><a href="home1.php">Home</a></li>
-        <li><a href="profile.php">Profile</a></li>
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Profile</a>
+            <div class="dropdown-content">
+                <a href="profile.php">My Profile</a>
+                <a href="profile_edit.php">Edit my Profile</a>
+            </div>
+        </li>
         <!--
         Suchleiste<li><a href="profil.php">Profile</a></li>
         Messages<li><a href="messages.php">Messages</a></li>
@@ -29,4 +30,8 @@ else {
     </ul>
     <?php
 }
+else
+{
+   header("Location: index.php");}
+
 ?>

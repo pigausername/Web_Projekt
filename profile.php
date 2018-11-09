@@ -1,16 +1,22 @@
 <?php
-session_start();
-
 include_once "header.php";
 
-$statement="SELECT 'username', 'email', 'firstname', 'lastname' * FROM userdata";
-$pdo = exec($statement);
+$userid = $_POST["userid"];
+$username = $_POST["username"];
+$email = $_POST["email"];
+$firstname = $_POST["firstname"];
+$lastname = $_POST["lastname"];
+
+$statement = $pdo->prepare("SELECT 'username', 'email', 'firstname', 'lastname' * FROM userdata");
+    if($statement->execute()) //(array(':username' => $username, ':email' => $email, ':firstname' => $firstname, ':lastname' => $lastname))) {
+        {
+            while ($row = $statement->fetch()) {
+//$_SESSION["angemeldet"] = $row["userid"];
+            echo "blabla";
 
 ?>
 <html>
 <h1><?php echo "bla" //$_SESSION['username'];?></h1>
-<head>
-</head>
 <form action="profile.php" method="GET">
     <table>
         <tr>
@@ -19,42 +25,44 @@ $pdo = exec($statement);
         </tr>
         <tr>
             <td>Username:</td>
-            <td><?php echo "bla" //$_SESSION['username'];?> </td>
+            <td><?php echo $row['username'] ?> </td>
         </tr>
         <tr>
             <td>E-Mail:</td>
-            <td><?php echo "bla" //$_SESSION['email'];?></td>
+            <td><?php echo $row['email'] ?></td>
         </tr>
         <tr>
             <td>First name:</td>
-            <td><?php echo "bla" //$_SESSION['firstname'];?></td>
+            <td><?php echo $row['firstname'] ?></td>
         </tr>
         <tr>
             <td>Last name:</td>
-            <td><?php echo "bla" //$_SESSION['lastname'];?></td>
+            <td><?php echo $row['lastname'] ?></td>
         </tr>
     </table>
 
-<?php
+    <?php
+    }
+    }
     $headline= $_POST ["headline"];
     $file= $_POST ["file"];
     $content= $_POST["content"];
     $userid= $_POST["userid"];
 
 
-    $statement = $pdo->prepare("SELECT * FROM posts WHERE userid=:userid");
-    if($statement->execute()) {
-while ($row = $statement->fetch()) {
-?>
-    <table>
-        <tr>
-            <td><?php echo $row['headline'] ?></td>
-        </tr>
-        <tr>
-            <td><?php echo $row['file'] ?></td>
-        <tr>
-            <td><?php echo $row['content'] ?></td>
-        </tr>
+    $sql = $pdo->prepare("SELECT * FROM posts WHERE userid=:userid");
+    if($sql->execute()) {
+        while ($row = $sql->fetch()) {
+        ?>
+        <table>
+            <tr>
+                <td><?php echo $row['headline'] ?></td>
+            </tr>
+            <tr>
+                <td><?php echo $row['file'] ?></td>
+            <tr>
+                <td><?php echo $row['content'] ?></td>
+            </tr>
         <br>
     </table>
 

@@ -38,11 +38,13 @@ include_once "header.php";
 <!-- schicke einen Post in die Datenbank -->
 
 <?php
+
+echo $row["userid"];
+
 if (isset($_POST['post'])) {
     $headline = $_POST['headline'];
     $file = $_POST['file'];
     $content = $_POST['content'];
-
 
     $sql = "INSERT INTO posts (`headline`, `file`, `content`) VALUES ('$headline', '$file', '$content')";
     header("Location: home1.php");

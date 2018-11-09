@@ -23,13 +23,13 @@ if (isset($_POST['save'])) {
     if ($_POST['password'] == $_POST['repeatpassword']) {
         $password = md5($password);
         $sql = "UPDATE users SET password='$password', email='$email', username='$username', firstname='$firstname', lastname='$lastname'
-              WHERE userid=:$userid";
+              WHERE userid=:userid";
         $pdo->exec($sql);
         //header("Location: index.html");
         echo "bla.";
-    }
-    }   if ($_POST['password'] != $_POST['repeatpassword']){
+    } else {
         echo "Bestätigen Sie Ihr Passwort.";
+    }
 }
 ?>
 

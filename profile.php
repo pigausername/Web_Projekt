@@ -39,9 +39,10 @@ $pdo = exec($statement);
     $headline= $_POST ["headline"];
     $file= $_POST ["file"];
     $content= $_POST["content"];
+    $userid= $_POST["userid"];
 
 
-    $statement = $pdo->prepare("SELECT * FROM posts");
+    $statement = $pdo->prepare("SELECT * FROM posts WHERE userid=:userid");
     if($statement->execute()) {
 while ($row = $statement->fetch()) {
 ?>

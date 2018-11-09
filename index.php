@@ -11,7 +11,7 @@ if (isset($_POST['login'])) {
     if($statement->execute (array(':email' => $email, ':password' => $password))) {
         if ($row = $statement->fetch()) {
             //echo "angemeldet";
-            $_SESSION["angemeldet"] = $row["id"];
+            $_SESSION["angemeldet"] = $row["userid"];
             header("Location: home1.php");
         } else {
             echo "No authorization.";

@@ -1,12 +1,11 @@
 <?php
 session_start();
-require_once("userdata.php");
 include_once ("header.php");
 ?>
 <h1>Search by Username</h1>
 <form action="search.php" method="post">
-    Username:  <input type="text" name="username" size="20">
-    <input type="submit" value="search" name="Search">
+    Username:  <input type="text" name="searching" placeholder="">
+    <button type="submit" name="search">Search</button>
 </form>
 
 <?php
@@ -16,9 +15,8 @@ include_once ("header.php");
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
 
-        $statement = $pdo->prepare("SELECT * FROM userdata WHERE username='$username'");
-        echo "blabla";
-        if ($statement->execute()) {
+        $statement = $pdo->prepare("SELECT * FROM userdata WHERE username=:username");
+        if ($pdo->exec($statement)) {
             while ($row = $statement->fetch()) {
                 ?>
 

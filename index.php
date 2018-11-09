@@ -25,9 +25,27 @@ if (isset($_POST['login'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+        }
+    </style>
+
 </head>
+
 <body>
+
+
 Login:
 
 <form action="index.php" method="post">
@@ -46,11 +64,11 @@ Login:
 
 <a href="register.php">Register</a><br>
 
-</body>
-</html>
-<?php
 
+
+<?php
 include_once "footer.php";
 ?>
 
-
+</body>
+</html>

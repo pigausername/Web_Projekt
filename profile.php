@@ -47,7 +47,7 @@ $statement = $pdo->prepare("SELECT 'username', 'email', 'firstname', 'lastname' 
     $headline= $_POST ["headline"];
     $file= $_POST ["file"];
     $content= $_POST["content"];
-    $userid= $_POST["userid"];
+    $userid = $_SESSION["angemeldet"];
 
 
     $sql = $pdo->prepare("SELECT * FROM posts WHERE userid=:userid");
@@ -63,8 +63,7 @@ $statement = $pdo->prepare("SELECT 'username', 'email', 'firstname', 'lastname' 
             <tr>
                 <td><?php echo $row['content'] ?></td>
             </tr>
-        <br>
-    </table>
+        </table>
 
 
 </form>

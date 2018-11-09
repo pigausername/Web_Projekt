@@ -1,5 +1,4 @@
 <?php
-session_start();
 include_once ("header.php");
 ?>
 <h1>Search by Username</h1>
@@ -9,14 +8,14 @@ include_once ("header.php");
 </form>
 
 <?php
-    if (isset($_POST['search'])) {
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
+    if (isset($_POST['searching'])) {
 
-        $statement = $pdo->prepare("SELECT * FROM userdata WHERE username=:username");
-        if ($pdo->exec($statement)) {
+        $username = $_POST['searching'];
+
+        $statement = $pdo->prepare("SELECT * FROM userdata WHERE username=$username");
+
+        if ($statement->execute()) {
+            echo "blabla";
             while ($row = $statement->fetch()) {
                 ?>
 
@@ -24,7 +23,7 @@ include_once ("header.php");
 
                 <?php
                 echo '<table>';
-                echo '<tr><td>ID:</td><td>' . $row["id"] . '</td></tr>';
+                //echo '<tr><td>ID:</td><td>' . $row["id"] . '</td></tr>';
                 echo '<tr><td>Username:</td><td>' . $row['username'] . '</td></tr>';
                 //echo '<tr><td>Profile picture:</td><td><img src="'.$row["avatar"].'" width="100px" /></td></tr>';
                 echo '<tr><td>E-Mail:</td><td>' . $row['email'] . '</td></tr>';

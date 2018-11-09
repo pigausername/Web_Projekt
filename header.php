@@ -11,6 +11,7 @@ if (isset($_SESSION["angemeldet"]))
             <div class="dropdown-content">
                 <a href="profile.php">My Profile</a>
                 <a href="profile_edit.php">Edit my Profile</a>
+                <a href="search.php">Search</a>
             </div>
         </li>
         <!--

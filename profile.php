@@ -1,18 +1,20 @@
 <?php
 include_once "header.php";
 
-$userid = $_POST["userid"];
 $username = $_POST["username"];
 $email = $_POST["email"];
 $firstname = $_POST["firstname"];
 $lastname = $_POST["lastname"];
+$userid = $_SESSION["angemeldet"];
 
-$statement = $pdo->prepare("SELECT 'username', 'email', 'firstname', 'lastname' * FROM userdata");
-    if($statement->execute()) //(array(':username' => $username, ':email' => $email, ':firstname' => $firstname, ':lastname' => $lastname))) {
-        {
-            while ($row = $statement->fetch()) {
-//$_SESSION["angemeldet"] = $row["userid"];
-            echo "blabla";
+//Daten des jeweiligen Nutzers anzeigen -> UNVOLLSTÄNDIG
+
+$statement = $pdo->prepare("SELECT 'username', 'email', 'firstname', 'lastname' * FROM userdata WHERE userid= $userid");
+    if($statement->execute( (array(':username' => $username, ':email' => $email, ':firstname' => $firstname, ':lastname' => $lastname)))) {
+        echo "bla";
+{
+while ($row = $statement->fetch()) {
+echo "blabla";
 
 ?>
 <html>
@@ -40,20 +42,24 @@ $statement = $pdo->prepare("SELECT 'username', 'email', 'firstname', 'lastname' 
             <td><?php echo $row['lastname'] ?></td>
         </tr>
     </table>
-
+</form>
     <?php
     }
     }
+    }
+    //Posts des jeweiligen Nutzers anzeigen
+
+
     $headline= $_POST ["headline"];
     $file= $_POST ["file"];
     $content= $_POST["content"];
-    $userid = $_SESSION["angemeldet"];
 
 
-    $sql = $pdo->prepare("SELECT * FROM posts WHERE userid=:userid");
+    $sql = $pdo->prepare("SELECT * FROM posts WHERE userid= $userid ORDER BY date DESC");
     if($sql->execute()) {
         while ($row = $sql->fetch()) {
         ?>
+<form>
         <table>
             <tr>
                 <td><?php echo $row['headline'] ?></td>

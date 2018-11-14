@@ -4,6 +4,10 @@ require_once "userdata.php";
 
 if (isset($_SESSION["angemeldet"]))
 {    ?>
+    <head>
+        <script src="jquery-migrate-1.4.1.min.js"></script>
+    </head>
+
     <ul>
         <li><a href="home1.php">Home</a></li>
         <li class="dropdown">

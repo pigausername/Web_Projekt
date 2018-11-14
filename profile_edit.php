@@ -2,10 +2,11 @@
 
 include_once "header.php";
 
-
 $userid = $_SESSION["angemeldet"];
 
-$statement = $pdo->prepare("SELECT `username`, `email`, `firstname`, `lastname` FROM userdata WHERE userid= $userid");
+//Bestehende Daten des Nutzers anzeigen
+
+$statement = $pdo->prepare("SELECT `username`, `email`, `firstname`, `lastname` FROM userdata WHERE userid=$userid");
 if($statement->execute()) {
     while ($row = $statement->fetch()) {
         ?>
@@ -65,20 +66,23 @@ if($statement->execute()) {
     }
 }
 
-if (isset($_POST['save'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $repeatpassword = $_POST['repeatpassword'];
-    $email = $_POST['email'];
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
+//Daten in der Datenbank ändern --> UNVOLLSTÄNDIG
 
-    if ($_POST['password'] == $_POST['repeatpassword']) {
-        $sql = $pdo->prepare ("UPDATE users SET password='$password', email='$email', username='$username', firstname='$firstname', lastname='$lastname'
-              WHERE userid= $userid");
-        $sql->execute();
-        //header("Location: index.html");
-        echo "bla.";
+if (isset($_POST['save'])) {
+    $newusername = $_POST['username'];
+    $newpassword = $_POST['password'];
+    $newrepeatpassword = $_POST['repeatpassword'];
+    $newemail = $_POST['email'];
+    $newfirstname = $_POST['firstname'];
+    $newlastname = $_POST['lastname'];
+
+    if ($newpassword == $newrepeatpassword) {
+        $UserUpdate = $pdo->prepare ("UPDATE users 
+                                      SET password='$newpassword', email='$newemail',username='$newusername', firstname='$newfirstname', lastname='$newlastname'
+                                      WHERE userid='$userid'");
+        if ($UserUpdate->execute()) {
+            echo "bla.";
+        }
     } else {
         echo "Bestätigen Sie Ihr Passwort.";
     }

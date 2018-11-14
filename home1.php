@@ -133,7 +133,6 @@ if($statement->execute()) {
         <tr>
             <td><?php echo $row['content']?></td>
         </tr>
-        <br>
     </table>
     <?php
     }

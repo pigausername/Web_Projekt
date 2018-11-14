@@ -24,6 +24,8 @@ if (isset($_POST['login'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="jquery-migrate-1.4.1.min.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
@@ -57,7 +59,7 @@ Login:
             <td>Passwort: </td> <td><input type="password" name="password" placeholder="Password"/></td>
         </tr>
         <tr>
-            <td><input type="submit" name="login" value="Anmeldung"></td>
+            <td><input type="submit" name="login" value="Log In"></td>
         </tr>
     </table>
 </form>

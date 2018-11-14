@@ -1,6 +1,5 @@
 <?php
 
-
 include_once "header.php";
 
 ?>
@@ -68,9 +67,6 @@ include_once "header.php";
 </nav>
 
 
-
-
-
 <!-- Post schreiben -->
 
 <h2>Beitrag schreiben</h2>
@@ -88,8 +84,6 @@ include_once "header.php";
         <td><input type="submit" name="post"></td>
     </tr>
     </table>
-
-
 
 <!-- schicke einen Post in die Datenbank -->
 
@@ -114,7 +108,7 @@ if (isset($_POST['post'])) {
 <h2>Feed</h2>
 <!-- hole Content aus Datenbank -->
 <?php
-echo"<br>";
+
 $headline= $_POST ["headline"];
 $file= $_POST ["file"];
 $content= $_POST["content"];
@@ -126,15 +120,26 @@ if($statement->execute()) {
         ?>
     <table>
         <tr>
-            <td><?php echo $row['headline'] ?></td>
+        <?php
+        $editor_id = $row['userid'];
+        $display_editor = $pdo->prepare("SELECT * FROM userdata WHERE userid= $editor_id");
+        if($display_editor->execute()) {
+            while ($row2 = $display_editor->fetch()) {
+                ?>
+                <td><?php echo $row['headline']." by " ?><a href="profile.php?userid=<?php $row['userid'] ?>"><?php echo " ".$row2['username'] ?></td>
+
         </tr>
+
         <tr>
             <td><?php echo $row['file'] ?></td>
         <tr>
             <td><?php echo $row['content']?></td>
         </tr>
-    </table>
+        <br>
+        </table>
     <?php
+                }
+            }
     }
 } else {
     echo "Datenbank-Fehler:";

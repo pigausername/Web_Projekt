@@ -3,7 +3,9 @@ session_start();
 require_once "userdata.php";
 
 if (isset($_SESSION["angemeldet"]))
-{    ?>
+{
+    ?>
+    <html>
     <head>
         <script src="jquery-migrate-1.4.1.min.js"></script>
     </head>
@@ -13,9 +15,14 @@ if (isset($_SESSION["angemeldet"]))
         <li class="dropdown">
             <a href="javascript:void(0)" class="dropbtn">Profile</a>
             <div class="dropdown-content">
-                <a href="profile.php">My Profile</a>
+                <?php
+                $userid = $_SESSION["angemeldet"];
+                echo
+                '<a href="profile.php?userid='.$userid.' "> My Profile </a>'
+                ?>
                 <a href="profile_edit.php">Edit my Profile</a>
                 <a href="search.php">Search</a>
+
             </div>
         </li>
         <!--
@@ -33,7 +40,8 @@ if (isset($_SESSION["angemeldet"]))
         </li>
         <li><a href="logout.php">Log Out</a></li>
     </ul>
-    <?php
+    </html>
+<?php
 }
 else
 {

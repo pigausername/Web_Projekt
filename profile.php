@@ -1,10 +1,7 @@
 <?php
 include_once "header.php";
 
-
 $profile_id = $_GET['userid'];
-
-echo $profile_id;
 
 //Daten des jeweiligen Nutzers anzeigen -> UNVOLLSTÄNDIG
 
@@ -24,10 +21,7 @@ $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id"
             echo '</table>';
             echo '<hr />';
         }
-    } else {
-        echo "No user found";
     }
-
 
 //Posts des jeweiligen Nutzers anzeigen
 
@@ -49,6 +43,13 @@ $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id"
                 <td><?php echo $row['file'] ?></td>
             <tr>
                 <td><?php echo $row['content'] ?></td>
+            </tr>
+            <tr>
+                <?php
+                $post_id= $row['post_id'];
+                echo
+                '<td><a href="post_edit.php?post_id='.$post_id.' "> Edit </a></td>'
+                ?>
             </tr>
         </table>
 

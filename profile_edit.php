@@ -69,6 +69,7 @@ if($statement->execute()) {
 //Daten in der Datenbank ändern --> UNVOLLSTÄNDIG
 
 if (isset($_POST['save'])) {
+
     $newusername = $_POST['username'];
     $newpassword = $_POST['password'];
     $newrepeatpassword = $_POST['repeatpassword'];
@@ -77,14 +78,18 @@ if (isset($_POST['save'])) {
     $newlastname = $_POST['lastname'];
 
     if ($newpassword == $newrepeatpassword) {
-        $UserUpdate = $pdo->prepare ("UPDATE users 
+        $UserUpdate = $pdo->prepare("UPDATE userdata
                                       SET password='$newpassword', email='$newemail',username='$newusername', firstname='$newfirstname', lastname='$newlastname'
-                                      WHERE userid='$userid'");
+                                      WHERE userid=$userid");
+
         if ($UserUpdate->execute()) {
-            echo "bla.";
+            echo "You just successfully updated your profile!";
+            echo "<br>";
+            echo "Head back to your profile ".'<a href="profile.php?userid='.$userid.'"> here</a>'. ".";
         }
-    } else {
-        echo "Bestätigen Sie Ihr Passwort.";
+        else {
+            echo "Bestätigen Sie Ihr Passwort.";
+        }
     }
 }
 include_once "footer.php";

@@ -33,12 +33,13 @@ if (isset($_POST['login'])) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <style>
-        /* Set black background color, white text and some padding */
+        /* Set black background color, white text and some padding
         footer {
             background-color: #555;
             color: white;
             padding: 15px;
         }
+        */
     </style>
 
 </head>

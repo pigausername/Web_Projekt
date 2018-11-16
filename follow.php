@@ -20,7 +20,8 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
         if (isset($_POST['follow'])) {
             $follow = $pdo->prepare("INSERT INTO followers (`userid`, `followerid`) VALUES ('$profile_id', '$followerid') ");
             if ($follow->execute()) {
-                echo "blabla";
+                echo "followed";
+                header("location:profile.php?userid=$profile_id");
             }
         }
     }
@@ -30,8 +31,14 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
         <form action="profile.php?userid=<?php echo $profile_id; ?>" method="post">
             <input type="submit" name="unfollow" value="Unfollow">
         </form>
-
         <?php
+        if (isset($_POST['unfollow'])) {
+            $unfollow = $pdo->prepare("DELETE FROM followers WHERE userid='$profile_id' AND followerid='$followerid'");
+            if ($unfollow->execute()) {
+                echo "unfollowed";
+                header("location:profile.php?userid=$profile_id");
+            }
+        }
         }
 }
 ?>

@@ -35,6 +35,7 @@ include_once "header.php";
                 <span class="icon-bar"></span>
             </button>
 
+
             <a class="navbar-brand" href="#">Logo</a>
 
         </div>
@@ -70,39 +71,23 @@ include_once "header.php";
 <!-- Post schreiben -->
 
 <h2>Beitrag schreiben</h2>
-<form action="home1.php" method="post">
+<form action="uploads.php" method="post" enctype="multipart/form-data">
     <table>
     <tr>
         <td><textarea name="headline" placeholder="Titel" rows="2" cols="30"></textarea></td>
     </tr>
     <tr>
-        <td><input type="file" name="pic" accept="file_extension|audio/*|video/*|image/*|media_type"></td>
-    <tr>
         <td><textarea name="content" placeholder="Type your text here" rows="10" cols="30"></textarea></td>
     </tr>
     <tr>
-        <td><input type="submit" name="post"></td>
+        <td><input type="file" name="file" id="file">
+    </tr>
+    <tr>
+        <td><button type="submit" value="post" name="post">Post</button></td>
     </tr>
     </table>
 
-<!-- schicke einen Post in die Datenbank -->
-
-<?php
-
-
-if (isset($_POST['post'])) {
-    $headline = $_POST['headline'];
-    $file = $_POST['file'];
-    $content = $_POST['content'];
-    $userid = $_SESSION["angemeldet"];
-
-    $sql = "INSERT INTO posts (`headline`, `file`, `content`,`userid`) VALUES ('$headline', '$file', '$content', '$userid')";
-    header("Location: home1.php");
-    $pdo->exec($sql);
-    }
-
-?>
-
+</form>
 
 
 <h2>Feed</h2>
@@ -137,6 +122,11 @@ if($statement->execute()) {
         </tr>
         <br>
         </table>
+        <tr>
+            <td><?php echo $row['date']?></td>
+        </tr>
+        <br>
+    </table>
     <?php
                 }
             }

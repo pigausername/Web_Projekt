@@ -20,6 +20,7 @@ if (isset($_POST['login'])) {
         echo "blabla";
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

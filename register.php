@@ -1,11 +1,6 @@
 <?php
-
 session_start();
-
-require_once "userdata.php";
-include_once "header.php";
-
-
+include_once "userdata.php";
 
 if (isset($_POST['register'])) {
     $username = $_POST['username'];
@@ -29,6 +24,7 @@ if (isset($_POST['register'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="jquery-migrate-1.4.1.min.js"></script>
     <meta charset="UTF-8">
     <title>"Name" | Registrierung</title>
 </head>

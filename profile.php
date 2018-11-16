@@ -1,76 +1,65 @@
 <?php
 include_once "header.php";
 
-$userid = $_POST["userid"];
-$username = $_POST["username"];
-$email = $_POST["email"];
-$firstname = $_POST["firstname"];
-$lastname = $_POST["lastname"];
+include_once "follow.php";
 
-$statement = $pdo->prepare("SELECT 'username', 'email', 'firstname', 'lastname' * FROM userdata");
-    if($statement->execute()) //(array(':username' => $username, ':email' => $email, ':firstname' => $firstname, ':lastname' => $lastname))) {
-        {
-            while ($row = $statement->fetch()) {
-//$_SESSION["angemeldet"] = $row["userid"];
-            echo "blabla";
+$profile_id = $_GET['userid'];
 
-?>
-<html>
-<h1><?php echo "bla" //$_SESSION['username'];?></h1>
-<form action="profile.php" method="GET">
-    <table>
-        <tr>
-            <td>Profile picture:</td>
-            <td><input type="file" name="pic"</td>
-        </tr>
-        <tr>
-            <td>Username:</td>
-            <td><?php echo $row['username'] ?> </td>
-        </tr>
-        <tr>
-            <td>E-Mail:</td>
-            <td><?php echo $row['email'] ?></td>
-        </tr>
-        <tr>
-            <td>First name:</td>
-            <td><?php echo $row['firstname'] ?></td>
-        </tr>
-        <tr>
-            <td>Last name:</td>
-            <td><?php echo $row['lastname'] ?></td>
-        </tr>
-    </table>
 
-    <?php
+//Daten des jeweiligen Nutzers anzeigen
+
+$display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id");
+    if($display_user->execute()) {
+        while ($row2 = $display_user->fetch()) {
+            ?>
+            <h3><?php $row2['username'] ?></h3>
+            <?php
+            echo '<table>';
+            echo '<tr><td>Username:</td><td>' . $row2['username'] . '</td></tr>';
+            //echo '<tr><td>Profile picture:</td><td><img src="'.$row["avatar"].'" width="100px" /></td></tr>';
+            echo '<tr><td>E-Mail:</td><td>' . $row2['email'] . '</td></tr>';
+            echo '<tr><td>Firstname:</td><td>' . $row2['firstname'] . '</td></tr>';
+            echo '<tr><td>Lastname:</td><td>' . $row2['lastname'] . '</td></tr>';
+            echo '</table>';
+            echo '<hr />';
+
+        }
+    } else {
+        echo "No user found";
     }
-    }
+
+
+//Posts des jeweiligen Nutzers anzeigen
+
     $headline= $_POST ["headline"];
     $file= $_POST ["file"];
     $content= $_POST["content"];
-    $userid = $_SESSION["angemeldet"];
 
 
-    $sql = $pdo->prepare("SELECT * FROM posts WHERE userid=:userid");
+    $sql = $pdo->prepare("SELECT * FROM posts WHERE userid= $profile_id ORDER BY date DESC");
     if($sql->execute()) {
         while ($row = $sql->fetch()) {
-        ?>
-        <table>
-            <tr>
-                <td><?php echo $row['headline'] ?></td>
-            </tr>
-            <tr>
-                <td><?php echo $row['file'] ?></td>
-            <tr>
-                <td><?php echo $row['content'] ?></td>
-            </tr>
-        </table>
-
-
-</form>
-</html>
-<?php
-}
-}
+            ?>
+            <form>
+                <table>
+                    <tr>
+                        <td><?php echo $row['headline'] ?></td>
+                    </tr>
+                    <tr>
+                        <td><?php echo $row['file'] ?></td>
+                    <tr>
+                        <td><?php echo $row['content'] ?></td>
+                    </tr>
+                    <tr>
+                        <?php
+                        $post_id = $row['post_id'];
+                        echo
+                            '<td><a href="post_edit.php?post_id=' . $post_id . ' "> Edit </a></td>'
+                        ?>
+                    </tr>
+                </table>
+            </form>
+            <?php
+        }}
 include_once "footer.php";
 ?>
-

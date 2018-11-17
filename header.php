@@ -8,79 +8,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="navbar-top-fixed.css" rel="stylesheet">
+
 </head>
 
-<style>
-
-    ul {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: scroll;
-        background-color: #333;
-    }
-
-    li {
-        float: left;
-    }
-
-    li.right {
-        float: right;
-    }
-
-    li a, .dropbtn {
-        display: inline-block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
-
-
-
-    li.dropdown {
-        display: inline-block;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: grey;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-    }
-
-    dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        text-align: left;
-    }
-
-
-    .dropdown-content a:hover {
-        background-color: grey
-    }
-
-
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-
-
-    li a:hover, .dropdown:hover .dropbtn {
-        background-color: #555555;
-        display: inline;
-    }
-
-
-
-</style>
+<body>
 
 <?php
 session_start();
@@ -91,6 +26,40 @@ if (isset($_SESSION["angemeldet"]))
     ?>
 
 
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+        <a class="navbar-brand" href="home1.php">RAM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample09">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="home1.php">Feed <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.php">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="profile_edit.php">Edit my Profile</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown09">
+                        <a class="dropdown-item" href="profile_edit.php">Edit my Profil</a>
+
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-md-0">
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            </form>
+        </div>
+    </nav>
+
+<!--
     <ul>
         <li><a class="active" href="home1.php">Feed</a></li>
         <li class="dropdown">
@@ -104,7 +73,7 @@ if (isset($_SESSION["angemeldet"]))
         Suchleiste<li><a href="profil.php">Profile</a></li>
         Messages<li><a href="messages.php">Messages</a></li>
         Notifications<li><a href="notifications.php">Notifications</a></li>
-        -->
+
         <li><a href="#">Settings</a></li>
         <li class="dropdown">
             <a href="javascript:void(0)" class="dropbtn">More</a>
@@ -116,7 +85,7 @@ if (isset($_SESSION["angemeldet"]))
         <li class="right"><a href="logout.php">Log Out</a></li>
     </ul>
 
-
+-->
     <?php
 }
 else
@@ -124,3 +93,12 @@ else
    header("Location: index.php");}
 
 ?>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

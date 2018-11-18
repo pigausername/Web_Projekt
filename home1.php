@@ -15,15 +15,6 @@ include_once "header.php";
 
 </head>
 
-<style>
-
-    footer {
-        background-color: #555;
-        color: white;
-        padding: 15px;
-    }
-
-</style>
 <body>
 
 

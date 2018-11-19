@@ -42,18 +42,15 @@ if (isset($_SESSION["angemeldet"]))
                 <li class="nav-item active">
                     <a class="nav-link" href="home1.php">Feed <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="profile.php">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="profile_edit.php">Edit my Profile</a>
-                </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <a class="nav-link dropdown-toggle" href="profile.php" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown09">
                         <a class="dropdown-item" href="profile_edit.php">Edit my Profil</a>
 
                     </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.php">Messages</a>
+                </li>
                 </li>
             </ul>
             <form class="form-inline my-2 my-md-0">

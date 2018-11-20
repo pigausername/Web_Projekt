@@ -1,8 +1,6 @@
 
 <?php
-session_start();
-
-include_once "userdata.php";
+include_once "header.php";
 
 // variablen festgelegt die für die Verarbeitung gebraucht werden
 if (isset($_POST['post'])) {
@@ -20,6 +18,7 @@ if (isset($_POST['post'])) {
     $fileExt = explode('.', $fileName);
     $fileActualExt = strtolower(end($fileExt));
 
+    // Definiere welche Dateiformate erlaubt sind
     $allowed = array('jpg', 'jpeg', 'png', 'pdf');
 
     if (in_array($fileActualExt, $allowed)) {
@@ -29,9 +28,11 @@ if (isset($_POST['post'])) {
                 $fileDestination = 'pictures/'.$fileNameNew;
                 move_uploaded_file($fileTmpName, $fileDestination);
 
-                $upload = $pdo ->prepare ("INSERT INTO posts (`headline`,`content`,`userid`) VALUES ('$headline', '$content', '$userid')");
+                // vorbereiten und schreiben in die Datenbank
+                $upload = $pdo ->prepare ("INSERT INTO posts (`headline`,`content`,`filename`,`userid`) VALUES ('$headline', '$content', '$fileNameNew', '$userid')");
                 $upload->execute();
 
+                // wenn upload erfolgreich, schicke zurück zu home1.php
                 header("location: home1.php");
             } else {
                 echo "Your file is to big!";

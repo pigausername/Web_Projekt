@@ -97,6 +97,7 @@ include_once "header.php";
 $headline= $_POST ["headline"];
 $file= $_POST ["file"];
 $content= $_POST["content"];
+$picture= $_POST['filename'];
 
 
 $statement = $pdo->prepare("SELECT * FROM posts ORDER BY date DESC");

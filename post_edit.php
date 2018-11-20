@@ -27,8 +27,6 @@ if ($display_oldpost->execute()){
             <td><textarea name="headline" placeholder="" rows="2" cols="30" > <?php echo $row['headline'] ?> </textarea></td>
         </tr>
         <tr>
-            <td><input type="file" name="pic" accept="file_extension|audio/*|video/*|image/*|media_type"></td>
-        <tr>
             <td><textarea name="content" placeholder="" rows="10" cols="30"> <?php echo $row['content'] ?> </textarea> </td>
         </tr>
         <tr>
@@ -46,9 +44,12 @@ if ($display_oldpost->execute()){
     $newcontent = $_POST['content'];
     $post_id = $_GET["post_id"];
 
-    $PostUpdate = $pdo->prepare("UPDATE posts SET headline='$newheadline', content='$newcontent'
-                                      WHERE post_id=$post_id");
+
+    $PostUpdate = $pdo->prepare("UPDATE posts 
+                                          SET headline='$newheadline', content='$newcontent'
+                                          WHERE post_id='$post_id'");
         if ($PostUpdate->execute()) {
+
             echo "You just successfully updated your post!";
             echo "<br>";
             echo "Head back to your profile ".'<a href="profile.php?userid='.$userid.'"> here</a>'. ".";

@@ -13,9 +13,6 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
     $row=$checkfollow->fetch();
 
 
-
-
-
     if ($checkfollow){
         // Folgen schon gegenseitig --> unfollow
 
@@ -25,14 +22,8 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
         </form>
 
         <?php
-       // if (isset($_POST['unfollow'])){
-
 
         }
-
-
-
-
 
     else { //Folgen sich noch nicht --< Follow
         ?>
@@ -43,7 +34,7 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
         if (isset($_POST['follow'])) {
             $follow = $pdo->prepare("INSERT INTO followers (`userid`, `followerid` VALUES '$profile_id', '$followerid' ");
             if ($follow->execute()) {
-                echo "blablabla";
+                //echo "blablabla";
             }
         }
     }

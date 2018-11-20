@@ -3,7 +3,7 @@ include_once "header.php";
 
 $profile_id = $_GET['userid'];
 
-//Daten des jeweiligen Nutzers anzeigen -> UNVOLLSTÄNDIG
+//Daten des jeweiligen Nutzers anzeigen-> UNVOLLSTÄNDIG
 
 $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id");
     if($display_user->execute()) {

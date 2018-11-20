@@ -2,6 +2,8 @@
 session_start();
 require_once "userdata.php";
 
+
+
 if (isset($_SESSION["angemeldet"]))
 {
     ?>

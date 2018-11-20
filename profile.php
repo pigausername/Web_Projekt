@@ -1,16 +1,19 @@
 <?php
 include_once "header.php";
 
+include_once "follow.php";
+
 $profile_id = $_GET['userid'];
 
-//Daten des jeweiligen Nutzers anzeigen-> UNVOLLSTÄNDIG
+
+
+//Daten des jeweiligen Nutzers anzeigen
 
 $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id");
     if($display_user->execute()) {
         while ($row2 = $display_user->fetch()) {
             ?>
             <h3><?php $row2['username'] ?></h3>
-
             <?php
             echo '<table>';
             echo '<tr><td>Username:</td><td>' . $row2['username'] . '</td></tr>';
@@ -20,8 +23,12 @@ $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id"
             echo '<tr><td>Lastname:</td><td>' . $row2['lastname'] . '</td></tr>';
             echo '</table>';
             echo '<hr />';
+
         }
+    } else {
+        echo "No user found";
     }
+
 
 //Posts des jeweiligen Nutzers anzeigen
 
@@ -33,31 +40,27 @@ $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id"
     $sql = $pdo->prepare("SELECT * FROM posts WHERE userid= $profile_id ORDER BY date DESC");
     if($sql->execute()) {
         while ($row = $sql->fetch()) {
-        ?>
-<form>
-        <table>
-            <tr>
-                <td><?php echo $row['headline'] ?></td>
-            </tr>
-            <tr>
-                <td><?php echo $row['file'] ?></td>
-            <tr>
-                <td><?php echo $row['content'] ?></td>
-            </tr>
-            <tr>
-                <?php
-                $post_id= $row['post_id'];
-                echo
-                '<td><a href="post_edit.php?post_id='.$post_id.' "> Edit </a></td>'
-                ?>
-            </tr>
-        </table>
-
-
-</form>
-<?php
-}
-}
+            ?>
+            <form>
+                <table>
+                    <tr>
+                        <td><?php echo $row['headline'] ?></td>
+                    </tr>
+                    <tr>
+                        <td><?php echo $row['file'] ?></td>
+                    <tr>
+                        <td><?php echo $row['content'] ?></td>
+                    </tr>
+                    <tr>
+                        <?php
+                        $post_id = $row['post_id'];
+                        echo
+                            '<td><a href="post_edit.php?post_id=' . $post_id . ' "> Edit </a></td>'
+                        ?>
+                    </tr>
+                </table>
+            </form>
+            <?php
+        }}
 include_once "footer.php";
 ?>
-

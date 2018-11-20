@@ -18,6 +18,7 @@ include_once ("header.php");
     </table>
 </form>
 
+
 <?php
     if (isset($_POST['search'])) {
 

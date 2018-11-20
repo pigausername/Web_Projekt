@@ -47,7 +47,7 @@ $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id"
                         <td><?php echo $row['headline'] ?></td>
                     </tr>
                     <tr>
-                        <td><?php echo $row['file'] ?></td>
+                        <td><img src="pictures/<?php echo $row['filename'] ?>">;</td>
                     <tr>
                         <td><?php echo $row['content'] ?></td>
                     </tr>

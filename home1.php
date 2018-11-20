@@ -97,38 +97,51 @@ include_once "header.php";
 $headline= $_POST ["headline"];
 $file= $_POST ["file"];
 $content= $_POST["content"];
-$picture= $_POST['filename'];
+$filename= $_POST['filename'];
+$myid= $_SESSION["angemeldet"];
 
 
-$statement = $pdo->prepare("SELECT * FROM posts ORDER BY date DESC");
-if($statement->execute()) {
-    while($row=$statement->fetch()) {
+
+$display_follower = $pdo->prepare("SELECT * FROM followers WHERE followerid= $myid");
+if ($display_follower->execute()) {
+    while ($row3 = $display_follower->fetch()) {
+        $feedid= $row3['userid'];
+    }
+
+
+$get_feed = $pdo->prepare("SELECT * FROM posts WHERE userid= $feedid OR userid= $myid ORDER BY date DESC");
+if($get_feed->execute()) {
+    while($row=$get_feed->fetch()) {
         ?>
     <table>
         <tr>
         <?php
         $editor_id = $row['userid'];
+
+
+
         $display_editor = $pdo->prepare("SELECT * FROM userdata WHERE userid= $editor_id");
         if($display_editor->execute()) {
             while ($row2 = $display_editor->fetch()) {
                 ?>
-                <td><?php echo $row['headline']." by " ?><a href="profile.php?userid=<?php $row['userid'] ?>"><?php echo " ".$row2['username'] ?></td>
+                <td><?php echo $row['headline'] . " by " ?><a
+                            href="profile.php?userid=<?php $row['userid'] ?>"><?php echo " " . $row2['username'] ?></td>
 
-        </tr>
-
-        <tr>
-            <td><?php echo $row['file'] ?></td>
-        <tr>
-            <td><?php echo $row['content']?></td>
-        </tr>
-        <br>
-        </table>
-        <tr>
-            <td><?php echo $row['date']?></td>
-        </tr>
-        <br>
-    </table>
-    <?php
+                </tr>
+                <tr>
+                    <td><img src="pictures/<?php echo $row['filename'] ?>">;</td>
+                </tr>
+                <tr>
+                    <td><?php echo $row['content'] ?></td>
+                </tr>
+                <br>
+                <tr>
+                    <td><?php echo $row['date'] ?></td>
+                </tr>
+                <br>
+                </table>
+                <?php
+            }
                 }
             }
     }

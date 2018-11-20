@@ -6,6 +6,7 @@ include_once "follow.php";
 $profile_id = $_GET['userid'];
 
 
+
 //Daten des jeweiligen Nutzers anzeigen
 
 $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id");

@@ -10,6 +10,7 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
     // check ob wir dem Nutzer schon folgen
     $checkfollow=$pdo->prepare("SELECT followerid FROM followers WHERE userid=$profile_id");
     $checkfollow->execute();
+
     $no=$checkfollow->rowCount();
     if(!$no > 0){
         ?>
@@ -32,6 +33,7 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
             <input type="submit" name="unfollow" value="Unfollow">
         </form>
         <?php
+
         if (isset($_POST['unfollow'])) {
             $unfollow = $pdo->prepare("DELETE FROM followers WHERE userid='$profile_id' AND followerid='$followerid'");
             if ($unfollow->execute()) {

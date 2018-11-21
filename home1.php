@@ -9,21 +9,14 @@ include_once "header.php";
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="https://mars.iuk.hdm-stuttgart.de/~mv065/webprojekt/CSS/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/css/navbar-top-fixed.css" rel="stylesheet">
-
+    <link href="https://mars.iuk.hdm-stuttgart.de/~mv065/webprojekt/CSS/navbar-top-fixed.css" rel="stylesheet">
 </head>
 
 
 <body>
-
-
-
 <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
 <h2>Beitrag schreiben</h2>
 <form action="uploads.php" method="post" enctype="multipart/form-data">

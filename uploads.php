@@ -104,7 +104,6 @@ if (isset($_POST['save'])) {
 
 
 
-
 // Posts bearbeiten
 if (isset($_POST['save_post_edit'])) {
 

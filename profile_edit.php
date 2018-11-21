@@ -144,8 +144,7 @@ if (isset($_POST['save'])) {
                 echo "2";
 
                 //ALTES PROFILBILD LÖSCHEN
-
-                unlink('pictures/' . $ProfilepicOld);
+                unlink(realpath('pictures/' . $ProfilepicOld));
 
                 //NEUES PROFILBILD HOCHLADEN
 

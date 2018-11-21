@@ -124,12 +124,14 @@ if($get_feed->execute()) {
         if($display_editor->execute()) {
             while ($row2 = $display_editor->fetch()) {
                 ?>
-                <td><?php echo $row['headline'] . " by " ?><a
-                            href="profile.php?userid=<?php $row['userid'] ?>"><?php echo " " . $row2['username'] ?></td>
+                <td><?php echo $row['headline'] . " by " ?><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></td>
 
                 </tr>
                 <tr>
-                    <td><img src="pictures/<?php echo $row['filename'] ?>">;</td>
+                    <td><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img src="pictures/<?php echo $row2['profilepic'] ?>"></td>
+                </tr>
+                <tr>
+                    <td><img src="pictures/<?php echo $row['filename'] ?>"></td>
                 </tr>
                 <tr>
                     <td><?php echo $row['content'] ?></td>

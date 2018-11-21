@@ -66,8 +66,5 @@ if($statement->execute()) {
     }
 }
 
-//Daten in der Datenbank ändern --> UNVOLLSTÄNDIG
-
-
 include_once "footer.php";
 ?>

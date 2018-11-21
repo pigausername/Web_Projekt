@@ -35,7 +35,7 @@ if (isset($_POST['post'])) {
                 // wenn upload erfolgreich, schicke zurück zu home1.php
                 header("location: home1.php");
             } else {
-                echo "Your file is to big!";
+                echo "Your file is too big!";
             }
 
         } else {

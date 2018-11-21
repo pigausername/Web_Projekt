@@ -1,10 +1,9 @@
 
 <?php
-session_start();
-
-include_once "userdata.php";
+include_once "header.php";
 
 // variablen festgelegt die für die Verarbeitung gebraucht werden
+// Upload von Post Content
 if (isset($_POST['post'])) {
     $headline = $_POST['headline'];
     $content = $_POST['content'];
@@ -20,6 +19,7 @@ if (isset($_POST['post'])) {
     $fileExt = explode('.', $fileName);
     $fileActualExt = strtolower(end($fileExt));
 
+    // Definiere welche Dateiformate erlaubt sind
     $allowed = array('jpg', 'jpeg', 'png', 'pdf');
 
     if (in_array($fileActualExt, $allowed)) {
@@ -29,12 +29,14 @@ if (isset($_POST['post'])) {
                 $fileDestination = 'pictures/'.$fileNameNew;
                 move_uploaded_file($fileTmpName, $fileDestination);
 
-                $upload = $pdo ->prepare ("INSERT INTO posts (`headline`,`content`,`userid`) VALUES ('$headline', '$content', '$userid')");
+                // vorbereiten und schreiben in die Datenbank
+                $upload = $pdo ->prepare ("INSERT INTO posts (`headline`,`content`,`filename`,`userid`) VALUES ('$headline', '$content', '$fileNameNew', '$userid')");
                 $upload->execute();
 
+                // wenn upload erfolgreich, schicke zurück zu home1.php
                 header("location: home1.php");
             } else {
-                echo "Your file is to big!";
+                echo "Your file is too big!";
             }
 
         } else {
@@ -45,6 +47,31 @@ if (isset($_POST['post'])) {
     }
 
 }
+
+
+// Posts bearbeiten
+            if (isset($_POST['save_post_edit'])) {
+
+                $userid = $_SESSION["angemeldet"];
+                $newheadline = $_POST['headline'];
+                $newcontent = $_POST['content'];
+                $post_id = $_GET["post_id"];
+
+
+                $PostUpdate = $pdo->prepare("UPDATE posts 
+                                          SET headline='$newheadline', content='$newcontent'
+                                          WHERE post_id= $post_id");
+
+
+                if ($PostUpdate->execute()) {
+
+                    echo "You just successfully updated your post!";
+                    echo "<br>";
+                    echo "Head back to your profile " . '<a href="profile.php?userid=' . $userid . '"> here</a>' . ".";
+                } else {
+                    echo "Versuchen Sie es nochmal.";
+                }
+            }
 
 
 ?>

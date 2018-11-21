@@ -6,6 +6,7 @@ include_once "follow.php";
 $profile_id = $_GET['userid'];
 
 
+
 //Daten des jeweiligen Nutzers anzeigen
 
 $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id");
@@ -13,15 +14,15 @@ $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id"
         while ($row2 = $display_user->fetch()) {
             ?>
             <h3><?php $row2['username'] ?></h3>
+            <table>
+            <tr><td>Username:</td><td><?php echo $row2['username'] ?></td></tr>
+            <tr><td><img src="pictures/<?php echo $row2['profilepic'] ?>"></td></tr>
+            <tr><td>E-Mail:</td><td><?php echo $row2['email'] ?></td></tr>
+            <tr><td>Firstname:</td><td><?php echo $row2['firstname'] ?></td></tr>
+            <tr><td>Lastname:</td><td><?php echo $row2['lastname'] ?></td></tr>
+            </table>
+            <hr />
             <?php
-            echo '<table>';
-            echo '<tr><td>Username:</td><td>' . $row2['username'] . '</td></tr>';
-            //echo '<tr><td>Profile picture:</td><td><img src="'.$row["avatar"].'" width="100px" /></td></tr>';
-            echo '<tr><td>E-Mail:</td><td>' . $row2['email'] . '</td></tr>';
-            echo '<tr><td>Firstname:</td><td>' . $row2['firstname'] . '</td></tr>';
-            echo '<tr><td>Lastname:</td><td>' . $row2['lastname'] . '</td></tr>';
-            echo '</table>';
-            echo '<hr />';
 
         }
     } else {
@@ -46,12 +47,13 @@ $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id"
                         <td><?php echo $row['headline'] ?></td>
                     </tr>
                     <tr>
-                        <td><?php echo $row['file'] ?></td>
+                        <td><img src="pictures/<?php echo $row['filename'] ?>"></td>
                     <tr>
                         <td><?php echo $row['content'] ?></td>
                     </tr>
                     <tr>
                         <?php
+                        // Verweis auf Editseite
                         $post_id = $row['post_id'];
                         echo
                             '<td><a href="post_edit.php?post_id=' . $post_id . ' "> Edit </a></td>'

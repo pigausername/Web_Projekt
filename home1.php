@@ -24,8 +24,7 @@ include_once "header.php";
 
 
 
-<!-- Post schreiben -->
-
+<!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
 <h2>Beitrag schreiben</h2>
 <form action="uploads.php" method="post" enctype="multipart/form-data">
     <table>
@@ -47,43 +46,61 @@ include_once "header.php";
 
 
 <h2>Feed</h2>
+
 <!-- hole Content aus Datenbank -->
 <?php
 
 $headline= $_POST ["headline"];
 $file= $_POST ["file"];
 $content= $_POST["content"];
+$filename= $_POST['filename'];
+$myid= $_SESSION["angemeldet"];
 
 
-$statement = $pdo->prepare("SELECT * FROM posts ORDER BY date DESC");
-if($statement->execute()) {
-    while($row=$statement->fetch()) {
+// Hierbei wird kontrolliert wem der angemeldete User folgt
+$display_follower = $pdo->prepare("SELECT * FROM followers WHERE followerid= $myid");
+if ($display_follower->execute()) {
+    while ($row3 = $display_follower->fetch()) {
+        $feedid= $row3['userid'];
+    }
+
+// Zeige den Content der Nutzer denen der angemeldete User folge und meine eigenen Beiträge
+$get_feed = $pdo->prepare("SELECT * FROM posts WHERE userid= $feedid OR userid= $myid ORDER BY date DESC");
+if($get_feed->execute()) {
+    while($row=$get_feed->fetch()) {
         ?>
     <table>
         <tr>
         <?php
         $editor_id = $row['userid'];
+
+
+// Hierbei wird kontrolliert wer den jeweiligen Post geschrieben hat
         $display_editor = $pdo->prepare("SELECT * FROM userdata WHERE userid= $editor_id");
         if($display_editor->execute()) {
             while ($row2 = $display_editor->fetch()) {
                 ?>
-                <td><?php echo $row['headline']." by " ?><a href="profile.php?userid=<?php $row['userid'] ?>"><?php echo " ".$row2['username'] ?></td>
+                <!-- Hierbei wird der Content in Tabellenform angezeigt -->
+                <td><?php echo $row['headline'] . " by " ?><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></td>
 
-        </tr>
-
-        <tr>
-            <td><?php echo $row['file'] ?></td>
-        <tr>
-            <td><?php echo $row['content']?></td>
-        </tr>
-        <br>
-        </table>
-        <tr>
-            <td><?php echo $row['date']?></td>
-        </tr>
-        <br>
-    </table>
-    <?php
+                </tr>
+                <tr>
+                    <td><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img src="pictures/<?php echo $row2['profilepic'] ?>"></td>
+                </tr>
+                <tr>
+                    <td><img src="pictures/<?php echo $row['filename'] ?>"></td>
+                </tr>
+                <tr>
+                    <td><?php echo $row['content'] ?></td>
+                </tr>
+                <br>
+                <tr>
+                    <td><?php echo $row['date'] ?></td>
+                </tr>
+                <br>
+                </table>
+                <?php
+            }
                 }
             }
     }

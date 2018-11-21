@@ -68,8 +68,7 @@ include_once "header.php";
 </nav>
 
 
-<!-- Post schreiben -->
-
+<!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
 <h2>Beitrag schreiben</h2>
 <form action="uploads.php" method="post" enctype="multipart/form-data">
     <table>
@@ -91,6 +90,7 @@ include_once "header.php";
 
 
 <h2>Feed</h2>
+
 <!-- hole Content aus Datenbank -->
 <?php
 
@@ -101,14 +101,14 @@ $filename= $_POST['filename'];
 $myid= $_SESSION["angemeldet"];
 
 
-
+// Hierbei wird kontrolliert wem der angemeldete User folgt
 $display_follower = $pdo->prepare("SELECT * FROM followers WHERE followerid= $myid");
 if ($display_follower->execute()) {
     while ($row3 = $display_follower->fetch()) {
         $feedid= $row3['userid'];
     }
 
-
+// Zeige den Content der Nutzer denen der angemeldete User folge und meine eigenen Beiträge
 $get_feed = $pdo->prepare("SELECT * FROM posts WHERE userid= $feedid OR userid= $myid ORDER BY date DESC");
 if($get_feed->execute()) {
     while($row=$get_feed->fetch()) {
@@ -119,11 +119,12 @@ if($get_feed->execute()) {
         $editor_id = $row['userid'];
 
 
-
+// Hierbei wird kontrolliert wer den jeweiligen Post geschrieben hat
         $display_editor = $pdo->prepare("SELECT * FROM userdata WHERE userid= $editor_id");
         if($display_editor->execute()) {
             while ($row2 = $display_editor->fetch()) {
                 ?>
+                <!-- Hierbei wird der Content in Tabellenform angezeigt -->
                 <td><?php echo $row['headline'] . " by " ?><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></td>
 
                 </tr>

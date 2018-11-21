@@ -29,7 +29,6 @@ if (isset($_SESSION["angemeldet"]))
     ?>
 
 
-
 <div class="container"> <!-- folgender code definiert das die navbar dunkel ist und am oberen Rand fixiert ist und wann sich das Menü zu einem Hamburgermenü umwandelt.-->
     <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark rounded">
         <a class="navbar-brand" href="home1.php">RAM</a>

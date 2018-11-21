@@ -34,6 +34,9 @@ if ($display_oldpost->execute()){
             <td><textarea name="content" placeholder="" rows="10" cols="30"> <?php echo $row['content'] ?> </textarea></td>
         </tr>
         <tr>
+            <td><input type="file" name="file" id="file">
+        </tr>
+        <tr>
             <td><input type="submit" name="save" value="Save"></td>
         </tr>
     </table>

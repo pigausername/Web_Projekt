@@ -41,15 +41,18 @@
 ?>
 
 
-<footer class="container-fluid text-center">
-    <div id="footer">
-        <p><ul>
-            <li><a href="#">Imprint</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Impressum</a></li>
-            <li><a href="#">Datenschutz</a></li>
-        </ul></p>
-    </div>
+<nav class="navbar fixed-bottom navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Fixed bottom</a>
 
-
-</footer>
+<div class="collapse navbar-collapse" id="navbarsExample09">
+    <ul class="navbar-nav mr-auto">
+        <footer class="container-fluid text-center">
+                <ul>
+                    <li><a href="#">Imprint</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Impressum</a></li>
+                    <li><a href="#">Datenschutz</a></li>
+                </ul>
+        </footer>
+            </div>
+</nav>

@@ -53,6 +53,7 @@ $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id"
                     </tr>
                     <tr>
                         <?php
+                        // Verweis auf Editseite
                         $post_id = $row['post_id'];
                         echo
                             '<td><a href="post_edit.php?post_id=' . $post_id . ' "> Edit </a></td>'

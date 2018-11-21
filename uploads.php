@@ -49,7 +49,7 @@ if (isset($_POST['post'])) {
 }
 
 
-
+// Profil bearbeiten
 if (isset($_POST['save'])) {
 
     $newusername = $_POST['username'];
@@ -103,5 +103,30 @@ if (isset($_POST['save'])) {
 }
 
 
+
+// Posts bearbeiten
+if (isset($_POST['save_post_edit'])) {
+
+    $userid = $_SESSION["angemeldet"];
+    $newheadline = $_POST['headline'];
+    $newcontent = $_POST['content'];
+    $post_id = $_GET["post_id"];
+
+
+    $PostUpdate = $pdo->prepare("UPDATE posts 
+                                          SET headline='$newheadline', content='$newcontent'
+                                          WHERE post_id= $post_id");
+
+
+    if ($PostUpdate->execute()) {
+
+        echo "You just successfully updated your post!";
+        echo "<br>";
+        echo "Head back to your profile ".'<a href="profile.php?userid='.$userid.'"> here</a>'. ".";
+    }
+    else {
+        echo "Versuchen Sie es nochmal.";
+    }
+}
 
 ?>

@@ -25,7 +25,7 @@ if ($display_oldpost->execute()){
     while ($row = $display_oldpost->fetch()) {
 
 ?>
-<form action="post_edit.php?post_id=<?php echo $post_id ?>" method="post">
+<form action="uploads.php?post_id=<?php echo $post_id ?>" method="post" enctype="multipart/form-data">
     <table>
         <tr>
             <td><textarea name="headline" placeholder="" rows="2" cols="30" > <?php echo $row['headline'] ?> </textarea></td>
@@ -34,7 +34,7 @@ if ($display_oldpost->execute()){
             <td><textarea name="content" placeholder="" rows="10" cols="30"> <?php echo $row['content'] ?> </textarea></td>
         </tr>
         <tr>
-            <td><input type="submit" name="save" value="Save"></td>
+            <td><input type="submit" name="save_post_edit" value="Save"></td>
         </tr>
     </table>
     <?php
@@ -42,28 +42,6 @@ if ($display_oldpost->execute()){
     }
 
 
-    if (isset($_POST['save'])) {
-
-    $userid = $_SESSION["angemeldet"];
-    $newheadline = $_POST['headline'];
-    $newcontent = $_POST['content'];
-
-
-    $PostUpdate = $pdo->prepare("UPDATE posts 
-                                          SET headline='$newheadline', content='$newcontent'
-                                          WHERE post_id= $post_id");
-
-
-        if ($PostUpdate->execute()) {
-
-            echo "You just successfully updated your post!";
-            echo "<br>";
-            echo "Head back to your profile ".'<a href="profile.php?userid='.$userid.'"> here</a>'. ".";
-        }
-        else {
-            echo "Versuchen Sie es nochmal.";
-        }
-    }
 
 ?>
 

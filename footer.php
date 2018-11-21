@@ -42,17 +42,15 @@
 
 
 <nav class="navbar fixed-bottom navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Fixed bottom</a>
 
 <div class="collapse navbar-collapse" id="navbarsExample09">
     <ul class="navbar-nav mr-auto">
-        <footer class="container-fluid text-center">
-                <ul>
-                    <li><a href="#">Imprint</a></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Impressum</a></li>
-                    <li><a href="#">Datenschutz</a></li>
-                </ul>
-        </footer>
+        <li class="container-fluid text-center">
+                <a class="nav-link" href="#">Imprint</a>
+
+                    <a class="nav-link" href="#">Imprint</a>
+                    <a class="nav-link" href="#">About us</a>
+                    <a class="nav-link" href="#">Impressum</a>
+                    <a class="nav-link" href="#">Datenschutz</a>
             </div>
 </nav>

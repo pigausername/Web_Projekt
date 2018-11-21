@@ -25,7 +25,7 @@ if ($display_oldpost->execute()){
     while ($row = $display_oldpost->fetch()) {
 
 ?>
-<form action="uploads.php?post_id=<?php echo $post_id ?>" method="post" enctype="multipart/form-data">
+<form action="post_edit.php?post_id=<?php echo $post_id ?>" method="post" enctype="multipart/form-data">
     <table>
         <tr>
             <td><textarea name="headline" placeholder="" rows="2" cols="30" > <?php echo $row['headline'] ?> </textarea></td>
@@ -44,9 +44,62 @@ if ($display_oldpost->execute()){
     }
     }
 
+    if (isset($_POST['save_post_edit'])) {
+
+        $userid = $_SESSION["angemeldet"];
+        $newheadline = $_POST['headline'];
+        $newcontent = $_POST['content'];
+        $post_id = $_GET["post_id"];
 
 
-?>
+        $file = $_FILES['file'];
+        $fileName = $_FILES['file']['name'];
+        $fileTmpName = $_FILES['file']['tmp_name'];
+        $fileSize = $_FILES['file']['size'];
+        $fileError = $_FILES['file']['error'];
+        $fileType = $_FILES['file']['type'];
+
+        $fetchpicname = $pdo->prepare("SELECT * FROM posts WHERE post_id=$post_id");
+        if ($fetchpicname->execute()) {
+            $row1 = $fetchpicname->fetch();
+                $Oldpicname = $row1["filename"];
+
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
+
+            // Definiere welche Dateiformate erlaubt sind
+            $allowed = array('jpg', 'jpeg', 'png', 'pdf');
+
+            if (in_array($fileActualExt, $allowed)) {
+                if ($fileError === 0) {
+                    if ($fileSize < 1000000) {
+                        $fileDestination = 'pictures/' . $Oldpicname;
+                        move_uploaded_file($fileTmpName, $fileDestination);
+
+
+                        $PostUpdate = $pdo->prepare("UPDATE posts 
+                                          SET headline='$newheadline', content='$newcontent', filename='$Oldpicname'
+                                          WHERE post_id= $post_id");
+
+
+                        if ($PostUpdate->execute()) {
+
+                            echo "You just successfully updated your post!";
+                            echo "<br>";
+                            echo "Head back to your profile " . '<a href="profile.php?userid=' . $userid . '"> here</a>' . ".";
+                        } else {
+                            echo "Versuchen Sie es nochmal.";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+    ?>
 
 
 </body>

@@ -7,10 +7,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="https://mars.iuk.hdm-stuttgart.de/~mv065/webprojekt/CSS/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/css/navbar-top-fixed.css" rel="stylesheet">
+    <link href="https://mars.iuk.hdm-stuttgart.de/~mv065/webprojekt/CSS/navbar-top-fixed.css" rel="stylesheet">
 
 
 
@@ -26,6 +25,7 @@ require_once "userdata.php";
 
 if (isset($_SESSION["angemeldet"]))
 {
+    $userid = $_SESSION["angemeldet"];
     ?>
 
 
@@ -49,13 +49,17 @@ if (isset($_SESSION["angemeldet"]))
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="profile.php" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown09">
+                        <a class="dropdown-item" href="profile.php?userid=<?php echo $userid ?>">My Profile</a>
                         <a class="dropdown-item" href="profile_edit.php">Edit my Profil</a>
                     </div>
+                </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="search.php">Search</a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="profile.php">Messages</a>
-                </li>
                 </li>
             </ul>
 
@@ -83,7 +87,7 @@ else
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="Documents/Web_Projekt/jquery-migrate-1.4.1.min.js"><\/script>')</script>
 
-    <script src="https://mars.iuk.hdm-stuttgart.de/~ab238/css/bootstrap.min.js"></script>
+    <script src="https://mars.iuk.hdm-stuttgart.de/~rk067/web_projekt/css/bootstrap.min.js"></script>
 
 </body>
 </html>

@@ -7,8 +7,8 @@ $profile_id = $_GET['userid'];
 
 
 
-//Daten des jeweiligen Nutzers anzeigen
 
+//Daten des jeweiligen Nutzers anzeigen
 $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id");
     if($display_user->execute()) {
         while ($row2 = $display_user->fetch()) {
@@ -49,6 +49,7 @@ $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id"
                     <tr>
                         <td><img src="pictures/<?php echo $row['filename'] ?>"></td>
                     <tr>
+
                         <td><?php echo $row['content'] ?></td>
                     </tr>
                     <tr>

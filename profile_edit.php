@@ -69,129 +69,53 @@ if($statement->execute()) {
 
 // Profil bearbeiten
 if (isset($_POST['save'])) {
-
-    echo "11";
-
+    $headline = $_POST['headline'];
+    $content = $_POST['content'];
     $userid = $_SESSION["angemeldet"];
-    $newusername = $_POST['username'];
-    $newpassword = $_POST['password'];
-    $newrepeatpassword = $_POST['repeatpassword'];
-    $newemail = $_POST['email'];
-    $newfirstname = $_POST['firstname'];
-    $newlastname = $_POST['lastname'];
+    $file = $_FILES['profilepic'];
 
-    // CHECKEN OB PROFILBILD VORHANDEN
-    $checkprofilepic = $pdo->prepare("SELECT profilepic FROM userdata WHERE userid=$userid");
-    $checkprofilepic->execute();
+    $fileName = $_FILES['profilepic']['name'];
+    $fileTmpName = $_FILES['profilepic']['tmp_name'];
+    $fileSize = $_FILES['profilepic']['size'];
+    $fileError = $_FILES['profilepic']['error'];
+    $fileType = $_FILES['profilepic']['type'];
 
-    $noo = $checkprofilepic->rowCount();
-    if (!$noo > 0) { // WENN KEIN PROFILBILD VORHANDEN IST
+    $fileExt = explode('.', $fileName);
+    $fileActualExt = strtolower(end($fileExt));
 
-        echo "22";
+    // Definiere welche Dateiformate erlaubt sind
+    $allowed = array('jpg', 'jpeg', 'png', 'pdf');
 
-        $profilepic = $_FILES['profilepic'];
-
-        $ProfilepicName = $_FILES['profilepic']['name'];
-        $ProfilepicTmpName = $_FILES['profilepic']['tmp_name'];
-        $ProfilepicSize = $_FILES['profilepic']['size'];
-        $ProfilepicError = $_FILES['profilepic']['error'];
-        $ProfilepicType = $_FILES['profilepic']['type'];
-
-        $ProfilepicExt = explode('.', $ProfilepicName);
-        $ProfilepicActualExt = strtolower(end($ProfilepicExt));
-
-        // Definiere welche Dateiformate erlaubt sind
-        $allowedfiletypes = array('jpg', 'jpeg', 'png');
+    if (in_array($fileActualExt, $allowed)) {
+        if ($fileError === 0) {
+            if ($fileSize < 1000000) {
+                $fileNameNew = "Profilepic".$userid. "." .$fileActualExt;
+                $fileDestination = 'pictures/'.$fileNameNew;
+                move_uploaded_file($fileTmpName, $fileDestination);
 
 
-        if ($newpassword == $newrepeatpassword) {
-            echo "33";
-            if (in_array($ProfilepicActualExt, $allowedfiletypes)) {
-                echo "44";
-                if ($ProfilepicError === 0) {
-                    echo "55";
-                    if ($ProfilepicSize < 1000000) {
-                        $ProfilepicNameNew = uniqid('', true) . "." . $ProfilepicActualExt;
-                        $ProfilepicDestination = 'pictures/' . $ProfilepicNameNew;
-                        move_uploaded_file($ProfilepicTmpName, $ProfilepicDestination);
+                // vorbereiten und schreiben in die Datenbank
+                $updateprofile = $pdo ->prepare ("UPDATE userdata SET profilepic='$fileNameNew' WHERE userid=$userid");
+                if ($updateprofile->execute()) {
+                    // wenn upload erfolgreich, schicke zurück zu home1.php
 
-                        $UserUpdate = $pdo->prepare("UPDATE userdata
-                                      SET password='$newpassword', email='$newemail',username='$newusername', firstname='$newfirstname', lastname='$newlastname', profilepic='$ProfilepicNameNew' 
-                                      WHERE userid=$userid");
-
-                        echo "66";
-
-                        if ($UserUpdate->execute()) {
-                            echo "You just successfully updated your profile!";
-                            echo "<br>";
-                            echo "Head back to your profile " . '<a href="profile.php?userid=' . $userid . '"> here</a>' . ".";
-                        }
-                    }
+                    echo "You just successfully update your profile!";
+                    echo "<br>";
+                    echo "Head back to your profile ". '<a href="profile.php?userid=' . $userid . '"> here</a>' . ".";
                 }
+            } else {
+                echo "Your file is too big!";
             }
+
         } else {
-            echo "Bestätigen Sie Ihr Passwort.";
+            echo "There was an error uploading your file!";
         }
-    } else // PROFILBILD VORHANDEN
-    {
-        //VORHANDENE DATENBANK CHECKEN
-        $checkprofile = $pdo->prepare("SELECT * FROM userdata WHERE userid= $userid");
-        echo "0";
-        if ($checkprofile->execute()) {
-            echo "1";
-            while ($row = $checkprofile->fetch()) {
-                $ProfilepicOld = $row['profilepic'];
-                echo "2";
-
-                //ALTES PROFILBILD LÖSCHEN
-                unlink(realpath('pictures/' . $ProfilepicOld));
-
-                //NEUES PROFILBILD HOCHLADEN
-
-                $profilepic = $_FILES['profilepic'];
-
-                $ProfilepicName = $_FILES['profilepic']['name'];
-                $ProfilepicTmpName = $_FILES['profilepic']['tmp_name'];
-                $ProfilepicSize = $_FILES['profilepic']['size'];
-                $ProfilepicError = $_FILES['profilepic']['error'];
-                $ProfilepicType = $_FILES['profilepic']['type'];
-
-                $ProfilepicExt = explode('.', $ProfilepicName);
-                $ProfilepicActualExt = strtolower(end($ProfilepicExt));
-
-                // Definiere welche Dateiformate erlaubt sind
-                $allowedfiletypes = array('jpg', 'jpeg', 'png');
-
-                if (in_array($ProfilepicActualExt, $allowedfiletypes)) {
-                    echo "3";
-                    if ($ProfilepicError === 0) {
-                        echo "4";
-                        if ($ProfilepicSize < 1000000) {
-                            $ProfilepicNameNew = uniqid('', true) . "." . $ProfilepicActualExt;
-                            $ProfilepicDestination = 'pictures/' . $ProfilepicNameNew;
-                            move_uploaded_file($ProfilepicTmpName, $ProfilepicDestination);
-                            echo "5";
-
-                            //SQL TABELLE UPDATEN
-
-                            $ProfilepicUpdate = $pdo->prepare("UPDATE userdata
-                                      SET profilepic= '$ProfilepicNameNew' 
-                                      WHERE profilepic= '$ProfilepicOld'");
-
-                            if ($ProfilepicUpdate->execute()) {
-                                echo "You just successfully updated your profile!";
-                                echo "<br>";
-                                echo "Head back to your profile " . '<a href="profile.php?userid=' . $userid . '"> here</a>' . ".";
-                            } else {
-                                echo "you failed";
-                            }
-                        }
-                    }
-                }
-            }
-        }
+    } else {
+        echo "You cannot upload files of this type!";
     }
+
 }
+
 
 include_once "footer.php";
 ?>

@@ -19,7 +19,7 @@ if($statement->execute()) {
         </head>
         <body>
         <h1>Here you can edit your profile.</h1>
-        <form action="profile_edit.php" method="post">
+        <form action="uploads.php" method="post" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td>Username:</td>
@@ -51,7 +51,7 @@ if($statement->execute()) {
                 </tr>
                 <tr>
                     <td>Profile picture:</td>
-                    <td><input type="file" name="pic"</td>
+                    <td><input type="file" name="profilepic" id="profilepic">
                 </tr>
                 <tr>
                     <td>
@@ -68,29 +68,6 @@ if($statement->execute()) {
 
 //Daten in der Datenbank ändern --> UNVOLLSTÄNDIG
 
-if (isset($_POST['save'])) {
 
-    $newusername = $_POST['username'];
-    $newpassword = $_POST['password'];
-    $newrepeatpassword = $_POST['repeatpassword'];
-    $newemail = $_POST['email'];
-    $newfirstname = $_POST['firstname'];
-    $newlastname = $_POST['lastname'];
-
-    if ($newpassword == $newrepeatpassword) {
-        $UserUpdate = $pdo->prepare("UPDATE userdata
-                                      SET password='$newpassword', email='$newemail',username='$newusername', firstname='$newfirstname', lastname='$newlastname'
-                                      WHERE userid=$userid");
-
-        if ($UserUpdate->execute()) {
-            echo "You just successfully updated your profile!";
-            echo "<br>";
-            echo "Head back to your profile ".'<a href="profile.php?userid='.$userid.'"> here</a>'. ".";
-        }
-        else {
-            echo "Bestätigen Sie Ihr Passwort.";
-        }
-    }
-}
 include_once "footer.php";
 ?>

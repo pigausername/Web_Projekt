@@ -49,84 +49,29 @@ if (isset($_POST['post'])) {
 }
 
 
-// Profil bearbeiten
-if (isset($_POST['save'])) {
-
-    $newusername = $_POST['username'];
-    $newpassword = $_POST['password'];
-    $newrepeatpassword = $_POST['repeatpassword'];
-    $newemail = $_POST['email'];
-    $newfirstname = $_POST['firstname'];
-    $newlastname = $_POST['lastname'];
-    $profilepic = $_FILES['profilepic'];
-    $userid = $_SESSION["angemeldet"];
-
-    $ProfilepicName = $_FILES['profilepic']['name'];
-    $ProfilepicTmpName = $_FILES['profilepic']['tmp_name'];
-    $ProfilepicSize = $_FILES['profilepic']['size'];
-    $ProfilepicError = $_FILES['profilepic']['error'];
-    $ProfilepicType = $_FILES['profilepic']['type'];
-
-    $ProfilepicExt = explode('.', $ProfilepicName);
-    $ProfilepicActualExt = strtolower(end($ProfilepicExt));
-
-    // Definiere welche Dateiformate erlaubt sind
-    $allowedfiletypes = array('jpg', 'jpeg', 'png');
-
-
-    if ($newpassword == $newrepeatpassword) {
-        if (in_array($ProfilepicActualExt, $allowedfiletypes)) {
-            if ($ProfilepicError === 0) {
-
-                if ($ProfilepicSize < 1000000) {
-                    $ProfilepicNameNew = uniqid('', true) . "." . $ProfilepicActualExt;
-                    $ProfilepicDestination = 'pictures/' . $ProfilepicNameNew;
-                    move_uploaded_file($ProfilepicTmpName, $ProfilepicDestination);
-
-                    $UserUpdate = $pdo->prepare("UPDATE userdata
-                                      SET password='$newpassword', email='$newemail',username='$newusername', firstname='$newfirstname', lastname='$newlastname', profilepic='$ProfilepicNameNew' 
-                                      WHERE userid=$userid");
-
-
-                    if ($UserUpdate->execute()) {
-                        echo "You just successfully updated your profile!";
-                        echo "<br>";
-                        echo "Head back to your profile " . '<a href="profile.php?userid=' . $userid . '"> here</a>' . ".";
-                    }
-                }
-            }
-        }
-    } else {
-        echo "Bestätigen Sie Ihr Passwort.";
-
-    }
-}
-
-
-
 // Posts bearbeiten
-if (isset($_POST['save_post_edit'])) {
+            if (isset($_POST['save_post_edit'])) {
 
-    $userid = $_SESSION["angemeldet"];
-    $newheadline = $_POST['headline'];
-    $newcontent = $_POST['content'];
-    $post_id = $_GET["post_id"];
+                $userid = $_SESSION["angemeldet"];
+                $newheadline = $_POST['headline'];
+                $newcontent = $_POST['content'];
+                $post_id = $_GET["post_id"];
 
 
-    $PostUpdate = $pdo->prepare("UPDATE posts 
+                $PostUpdate = $pdo->prepare("UPDATE posts 
                                           SET headline='$newheadline', content='$newcontent'
                                           WHERE post_id= $post_id");
 
 
-    if ($PostUpdate->execute()) {
+                if ($PostUpdate->execute()) {
 
-        echo "You just successfully updated your post!";
-        echo "<br>";
-        echo "Head back to your profile ".'<a href="profile.php?userid='.$userid.'"> here</a>'. ".";
-    }
-    else {
-        echo "Versuchen Sie es nochmal.";
-    }
-}
+                    echo "You just successfully updated your post!";
+                    echo "<br>";
+                    echo "Head back to your profile " . '<a href="profile.php?userid=' . $userid . '"> here</a>' . ".";
+                } else {
+                    echo "Versuchen Sie es nochmal.";
+                }
+            }
+
 
 ?>

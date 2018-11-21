@@ -30,62 +30,48 @@ if (isset($_SESSION["angemeldet"]))
 
 
 
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+<div class="container"> <!-- folgender code definiert das die navbar dunkel ist und am oberen Rand fixiert ist und wann sich das Menü zu einem Hamburgermenü umwandelt.-->
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark rounded">
         <a class="navbar-brand" href="home1.php">RAM</a>
+
+        <!-- folgender code lässt das responsive Menü erscheinen (Hamburgermenü)-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
 
         <div class="collapse navbar-collapse" id="navbarsExample09">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="home1.php">Feed <span class="sr-only">(current)</span></a>
                 </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="profile.php" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown09">
                         <a class="dropdown-item" href="profile_edit.php">Edit my Profil</a>
-
                     </div>
+
+
                 <li class="nav-item">
                     <a class="nav-link" href="profile.php">Messages</a>
                 </li>
                 </li>
             </ul>
+
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <!--
             <form class="form-inline my-2 my-md-0">
                 <input class="form-control" type="text" placeholder="Search" aria-label="Search">
             </form>
+            -->
+
         </div>
     </nav>
 
-<!--
-    <ul>
-        <li><a class="active" href="home1.php">Feed</a></li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Profile</a>
-            <div class="dropdown-content">
-                <a href="profile.php">My Profile</a>
-                <a href="profile_edit.php">Edit my Profile</a>
-            </div>
-        </li>
-        <!--
-        Suchleiste<li><a href="profil.php">Profile</a></li>
-        Messages<li><a href="messages.php">Messages</a></li>
-        Notifications<li><a href="notifications.php">Notifications</a></li>
-
-        <li><a href="#">Settings</a></li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">More</a>
-            <div class="dropdown-content">
-                <a href="#">Imprint</a>
-                <a href="#">Finde more users</a>
-            </div>
-        </li>
-        <li class="right"><a href="logout.php">Log Out</a></li>
-    </ul>
-
--->
     <?php
 }
 else

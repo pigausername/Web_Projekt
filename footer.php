@@ -9,30 +9,12 @@
     <link href="https://mars.iuk.hdm-stuttgart.de/~mv065/webprojekt/CSS/bootstrap.min.css" rel="stylesheet">
 
     <link href="https://mars.iuk.hdm-stuttgart.de/~rk067/web_projekt/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-
 
     <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/web_projekt/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
 
 </head>
 
 <style>
-
-    footer {
-        background-color: #555;
-        color: white;
-        padding: 1em 1em 1em 1em;
-        margin-top: 60%;
-        float: right;
-    }
-
-    #footer {
-        text-align-last: center;
-        text-decoration: none;
-
-    }
-
 
     body {
         grid-auto-columns: 1fr 2fr 1fr;

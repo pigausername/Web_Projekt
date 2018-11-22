@@ -11,6 +11,14 @@
     <!-- Custom styles for this template -->
     <link href="https://mars.iuk.hdm-stuttgart.de/~mv065/webprojekt/CSS/navbar-top-fixed.css" rel="stylesheet">
 
+    <link href="https://mars.iuk.hdm-stuttgart.de/~rk067/web_projekt/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="https://mars.iuk.hdm-stuttgart.de/~rk067/web_projekt/css/navbar-top-fixed.css" rel="stylesheet">
+
+
+    <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/web_projekt/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/web_projekt/css/navbar-top-fixed.css" rel="stylesheet">
 
 
 <!-- hier ist der Link aus deinem Webspace https://mars.iuk.hdm-stuttgart.de/~ab238/css/stylesheet.css -->
@@ -27,7 +35,6 @@ if (isset($_SESSION["angemeldet"]))
 {
     $userid = $_SESSION["angemeldet"];
     ?>
-
 
 
 <div class="container"> <!-- folgender code definiert das die navbar dunkel ist und am oberen Rand fixiert ist und wann sich das Menü zu einem Hamburgermenü umwandelt.-->

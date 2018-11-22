@@ -4,9 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Footer</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="https://mars.iuk.hdm-stuttgart.de/~mv065/webprojekt/CSS/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://mars.iuk.hdm-stuttgart.de/~rk067/web_projekt/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+
+
+    <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/web_projekt/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
 
 </head>
 
@@ -41,15 +48,16 @@
 ?>
 
 
-<footer class="container-fluid text-center">
-    <div id="footer">
-        <p><ul>
-            <li><a href="#">Imprint</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Impressum</a></li>
-            <li><a href="#">Datenschutz</a></li>
-        </ul></p>
-    </div>
+<nav class="navbar fixed-bottom navbar-expand-md navbar-dark bg-dark">
 
+<div class="collapse navbar-collapse" id="navbarsExample09">
+    <ul class="navbar-nav mr-auto">
+        <li class="container-fluid text-center">
+                <a class="nav-link" href="#">Imprint</a>
 
-</footer>
+                    <a class="nav-link" href="#">Imprint</a>
+                    <a class="nav-link" href="#">About us</a>
+                    <a class="nav-link" href="#">Impressum</a>
+                    <a class="nav-link" href="#">Datenschutz</a>
+            </div>
+</nav>

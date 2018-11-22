@@ -15,7 +15,6 @@ include_once "header.php";
     <link href="https://mars.iuk.hdm-stuttgart.de/~mv065/webprojekt/CSS/navbar-top-fixed.css" rel="stylesheet">
 </head>
 
-
 <body>
 <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
 <h2>Beitrag schreiben</h2>
@@ -34,7 +33,6 @@ include_once "header.php";
         <td><button type="submit" value="post" name="post">Post</button></td>
     </tr>
     </table>
-
 </form>
 
 

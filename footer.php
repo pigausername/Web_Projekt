@@ -22,8 +22,6 @@
     }
 
 
-
-
 </style>
 
 <?php
@@ -35,11 +33,8 @@
 <div class="collapse navbar-collapse" id="navbarsExample09">
     <ul class="navbar-nav mr-auto">
         <li class="container-fluid text-center">
-                <a class="nav-link" href="#">Imprint</a>
-
                     <a class="nav-link" href="#">Imprint</a>
                     <a class="nav-link" href="#">About us</a>
-                    <a class="nav-link" href="#">Impressum</a>
                     <a class="nav-link" href="#">Datenschutz</a>
             </div>
 </nav>

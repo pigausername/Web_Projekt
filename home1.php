@@ -14,7 +14,6 @@ include_once "header.php";
 
 </head>
 
-
 <body>
 <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
 <h2>Beitrag schreiben</h2>
@@ -33,7 +32,6 @@ include_once "header.php";
         <td><button type="submit" value="post" name="post">Post</button></td>
     </tr>
     </table>
-
 </form>
 
 

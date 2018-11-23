@@ -22,6 +22,7 @@
     <!-- Custom styles for this template -->
     <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/web_projekt/css/navbar-top-fixed.css" rel="stylesheet">
 
+
 </head>
 
 <body>

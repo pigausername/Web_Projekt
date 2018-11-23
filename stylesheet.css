@@ -1,3 +1,5 @@
+/*
+
 #kopfleiste {
     position: fixed;
     top: 0px;
@@ -23,10 +25,18 @@
     width: 100%;
     padding: 10px;
     min-height: 800px;
-    overflow: hidden; /*Dasmit das Layout mit float funktionierr */
+    overflow: hidden; /*Damit das Layout mit float funktioniert
 }
-#body {
-    margin: 0px;
-    padding: 0px;
+*/
+
+body {
+    margin-bottom: 5%;
+    padding: 10%;
+    background-color: gainsboro;
 }
 
+footer {
+    background-color:
+            rgb(180, 180, 180, 0.5)
+
+}

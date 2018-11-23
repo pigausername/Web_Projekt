@@ -20,8 +20,10 @@
     <!-- Custom styles for this template -->
     <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/web_projekt/css/navbar-top-fixed.css" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
 
-<!-- hier ist der Link aus deinem Webspace https://mars.iuk.hdm-stuttgart.de/~ab238/css/stylesheet.css -->
+
+    <!-- hier ist der Link aus deinem Webspace https://mars.iuk.hdm-stuttgart.de/~ab238/css/stylesheet.css -->
 
 </head>
 

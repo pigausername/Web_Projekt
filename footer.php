@@ -12,17 +12,11 @@
 
     <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/web_projekt/css/bootstrap.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+
 </head>
 
-<style>
-
-    body {
-        grid-auto-columns: 1fr 2fr 1fr;
-        background-color: gainsboro;
-    }
-
-
-</style>
 
 <?php
 ?>

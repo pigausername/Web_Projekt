@@ -94,6 +94,7 @@ if (isset($_POST['save'])) {
                 move_uploaded_file($fileTmpName, $fileDestination);
 
 
+
                 // vorbereiten und schreiben in die Datenbank
                 $updateprofile = $pdo ->prepare ("UPDATE userdata SET profilepic='$fileNameNew' WHERE userid=$userid");
                 if ($updateprofile->execute()) {

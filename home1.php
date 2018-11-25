@@ -82,11 +82,33 @@ if($get_feed->execute()) {
                 <tr>
                     <td><?php echo $row['content'] ?></td>
                 </tr>
-                <br>
                 <tr>
                     <td><?php echo $row['date'] ?></td>
                 </tr>
-                <br>
+                <tr>
+                    <td><button id="show">Comment</button></td>
+                </tr>
+                <script>
+                    /*$(document).ready(function(){
+                        $("#show").click(function(){
+                            $("#comment_form").toggle();
+                            $("#comment").toggle();
+                        });
+                    });
+                    */
+                </script>
+                <tr>
+                    <td><?php include "comment.php" ?></td>
+                </tr>
+
+                <?php
+                // CHECKEN OB POST KOMMENTARE HAT
+                //WENN JA --> comment.$php
+                //Wenn nicht dann egal
+
+                ?>
+
+                <hr />
                 </table>
                 <?php
             }

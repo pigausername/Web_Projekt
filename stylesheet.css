@@ -1,33 +1,3 @@
-/*
-
-#kopfleiste {
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0;
-    background-color: purple;
-    width: 100%;
-    height: 200px;
-    border: solid;
-    border-color: black;
-    margin: 0px;
-}
-#menu {
-    background-color: black;
-    flaot: left;
-    width: 100%;
-    height: 200px;
-    margin: 0px;
-}
-#inhalt {
-    background-color: darkgray;
-    width: 100%;
-    padding: 10px;
-    min-height: 800px;
-    overflow: hidden; /*Damit das Layout mit float funktioniert
-}
-*/
 
 body {
     margin-bottom: 5%;
@@ -35,43 +5,3 @@ body {
     background-color: snow;
 }
 
-footer{
-    background-color: darkgrey;
-    text-decoration-color: #1e7e34;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 10%;
-    text-align: center;
-    color: #CCC;
-}
-
-
-footer {
-    color: white;
-    -webkit-column-count: 3; /* Chrome, Safari, Opera */
-    -moz-column-count: 3; /* Firefox */
-    column-count: 3;
-
-    -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
-    -moz-column-gap: 40px; /* Firefox */
-    column-gap: 40px;
-
-    -webkit-column-rule: 4px double #ff00ff; /* Chrome, Safari, Opera */
-    -moz-column-rule: 4px double #ff00ff; /* Firefox */
-    column-rule: 4px double #ff00ff;
-}
-
-footer a {
-    padding: 10.5px;
-    margin: 0px;
-    line-height: 100%;
-}
-
-#footer
-{
-    position:center;
-    color: white;
-
-}

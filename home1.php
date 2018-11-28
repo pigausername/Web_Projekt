@@ -96,8 +96,9 @@ if($get_feed->execute()) {
                     <td><?php echo $row['content'] ?></td>
                 </tr>
                 <tr>
-                    <td><?php echo $row['date'] ?></td>
+                    <td><?php echo $row['date']?></td>
                 </tr>
+
                 <!--<tr>
                     <td><button id="show">Comment</button></td>
                 </tr>

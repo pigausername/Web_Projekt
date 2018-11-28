@@ -25,7 +25,7 @@ include_once "header.php";
         <td><textarea name="content" placeholder="Type your text here" rows="10" cols="30"></textarea></td>
     </tr>
     <tr>
-        <td><input type="file" name="file" id="file">
+        <td><input type="file" name="file" id="file"></td>
     </tr>
     <tr>
         <td><button type="submit" value="post" name="post">Post</button></td>
@@ -46,7 +46,7 @@ $filename= $_POST['filename'];
 $myid= $_SESSION["angemeldet"];
 
 
-// Hierbei wird kontrolliert wem der angemeldete User folgt
+// Hierbei wird kontrolliert, wem der angemeldete User folgt
 $display_follower = $pdo->prepare("SELECT * FROM followers WHERE followerid= $myid");
 if ($display_follower->execute()) {
     while ($row3 = $display_follower->fetch()) {
@@ -77,7 +77,20 @@ if($get_feed->execute()) {
                     <td><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img src="pictures/<?php echo $row2['profilepic'] ?>"></td>
                 </tr>
                 <tr>
-                    <td><img src="pictures/<?php echo $row['filename'] ?>"></td>
+                    <td>
+                        <?php
+                        // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält
+
+                        $checkpic=$pdo->prepare("SELECT filename FROM posts WHERE userid= $feedid OR userid= $myid");
+                        $checkpic->execute();
+
+                        $no=$checkpic->rowCount();
+                        if($no > 0){
+                        ?>
+                        <img src="pictures/<?php echo $row['filename'] ?>"></td>
+                    <?php
+                    }
+                    ?>
                 </tr>
                 <tr>
                     <td><?php echo $row['content'] ?></td>
@@ -85,7 +98,7 @@ if($get_feed->execute()) {
                 <tr>
                     <td><?php echo $row['date'] ?></td>
                 </tr>
-                <tr>
+                <!--<tr>
                     <td><button id="show">Comment</button></td>
                 </tr>
                 <script>
@@ -98,9 +111,9 @@ if($get_feed->execute()) {
                     */
                 </script>
                 <tr>
-                    <td><?php include "comment.php" ?></td>
+                    <td><?php // include "comment.php" ?></td>
                 </tr>
-
+                -->
                 <?php
                 // CHECKEN OB POST KOMMENTARE HAT
                 //WENN JA --> comment.$php

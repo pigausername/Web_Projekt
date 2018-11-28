@@ -1,3 +1,35 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- hier ist der Link aus deinem Webspace https://mars.iuk.hdm-stuttgart.de/~ab238/css/stylesheet.css -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link href="https://mars.iuk.hdm-stuttgart.de/~mv065/webprojekt/CSS/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="https://mars.iuk.hdm-stuttgart.de/~mv065/webprojekt/CSS/navbar-top-fixed.css" rel="stylesheet">
+
+    <link href="https://mars.iuk.hdm-stuttgart.de/~rk067/web_projekt/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="https://mars.iuk.hdm-stuttgart.de/~rk067/web_projekt/css/navbar-top-fixed.css" rel="stylesheet">
+
+
+    <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/css/navbar-top-fixed.css" rel="stylesheet">
+
+    <!--    <link rel="stylesheet" type="text/css" href="stylesheet.css"> -->
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+    <title>Login</title>
+
+</head>
+<body>
+<h1>Welcome to RAM!</h1>
+
 <?php
 session_start();
 
@@ -23,35 +55,7 @@ if (isset($_POST['login'])) {
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <script src="jquery-migrate-1.4.1.min.js"></script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <style>
-        /* Set black background color, white text and some padding
-        footer {
-            background-color: #555;
-            color: white;
-            padding: 15px;
-        }
-        */
-    </style>
-
-</head>
-
-<body>
-
-
-<h1>Welcome to RAM!</h1>
 
 <h2>Log in to your profile:</h2>
 

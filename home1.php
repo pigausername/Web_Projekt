@@ -79,7 +79,7 @@ if($get_feed->execute()) {
                     <td>
 
                         <?php
-                        // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält
+                        // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält --> Unovllständig
 
                         $checkpic=$pdo->prepare("SELECT filename FROM posts WHERE userid= $feedid OR userid= $myid");
                         $checkpic->execute();
@@ -98,30 +98,9 @@ if($get_feed->execute()) {
                 <tr>
                     <td><?php echo $row['date']?></td>
                 </tr>
-
-                <!--<tr>
-                    <td><button id="show">Comment</button></td>
-                </tr>
-                <script>
-                    /*$(document).ready(function(){
-                        $("#show").click(function(){
-                            $("#comment_form").toggle();
-                            $("#comment").toggle();
-                        });
-                    });
-                    */
-                </script>
                 <tr>
-                    <td><?php // include "comment.php" ?></td>
+                    <td><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a></td>
                 </tr>
-                -->
-                <?php
-                // CHECKEN OB POST KOMMENTARE HAT
-                //WENN JA --> comment.$php
-                //Wenn nicht dann egal
-
-                ?>
-
                 <hr />
                 </table>
                 <?php

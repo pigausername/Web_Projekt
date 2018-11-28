@@ -1,10 +1,10 @@
 <?php
 session_start();
-    if (isset($_SESSION["angemeldet"])) {
-        $userid = $_SESSION["angemeldet"];
-    }
+if (isset($_SESSION["angemeldet"])) {
+    $userid = $_SESSION["angemeldet"];
+}
 
-    include_once "userdata.php";
+include_once "userdata.php";
 
 // POST_ID herausfinden
 
@@ -23,7 +23,7 @@ $add_comment = $pdo->prepare("INSERT INTO comment (`parentcomment_id`, `comment`
 
 
 if($add_comment->execute()){
-$error = '<label class="text-success">Comment Added</label>';
+    $error = '<label class="text-success">Comment Added</label>';
 }
 
 $data = array(
@@ -32,4 +32,3 @@ $data = array(
 
 echo json_encode($data);
 ?>
-

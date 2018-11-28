@@ -1,5 +1,7 @@
-<!DOCTYPE html>
-<html>
+<?php
+session_start();
+include_once "header.php";
+?>
 <body>
 <div class="container">
     <form method="POST" id="comment_form">
@@ -8,9 +10,7 @@
         </div>
         <div class="form-group">
             <input type="hidden" name="comment_id" id="comment_id" value="0" />
-            <input type="hidden" name="post_id" id="post_id" value=<?php
-            $post_id = $row["post_id"];
-            echo $post_id?>>
+            <input type="hidden" name="post_id" id="post_id" value=<?php echo $post_id?>>
             <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
         </div>
     </form>

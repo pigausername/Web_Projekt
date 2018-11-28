@@ -13,6 +13,7 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
     if (file_exists($_FILES['file']['tmp_name']) || is_uploaded_file($_FILES['file']['tmp_name'])) {
         $file = $_FILES['file'];
 
+
         $fileName = $_FILES['file']['name'];
         $fileTmpName = $_FILES['file']['tmp_name'];
         $fileSize = $_FILES['file']['size'];
@@ -38,11 +39,10 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
                     // vorbereiten und schreiben in die Datenbank
                     $uploadwithpic = $pdo->prepare("INSERT INTO posts (`headline`,`content`,`filename`,`userid`) VALUES ('$headline', '$content', '$fileNameNew', '$userid')");
                     if ($uploadwithpic->execute()){
-                    header("location: home1.php");
+
+                        echo '<script>window.location.href="home1.php"</script>';
                     }
 
-                    // wenn upload erfolgreich, schicke zurück zu home1.php
-                    //header("location: home1.php");
                 } else {
                     echo "Your file is too big!";
                 }
@@ -56,7 +56,7 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
     } else {
         $upload = $pdo->prepare("INSERT INTO posts (`headline`,`content`,`userid`) VALUES ('$headline', '$content', '$userid')");
         if ($upload->execute()) {
-            header("location: home1.php");
+            echo '<script>window.location.href="home1.php"</script>';
         }
     }
 }

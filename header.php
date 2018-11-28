@@ -21,7 +21,7 @@
     <!-- Custom styles for this template -->
     <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/css/navbar-top-fixed.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+<!--    <link rel="stylesheet" type="text/css" href="stylesheet.css"> -->
 
 
     <!-- hier ist der Link aus deinem Webspace https://mars.iuk.hdm-stuttgart.de/~ab238/css/stylesheet.css -->
@@ -106,6 +106,5 @@ else
     <script src="https://mars.iuk.hdm-stuttgart.de/~rk067/web_projekt/css/bootstrap.min.js"></script>
 
 
-</body>
-</html>
+
 

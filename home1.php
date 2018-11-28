@@ -77,6 +77,7 @@ if($get_feed->execute()) {
                 </tr>
                 <tr>
                     <td>
+
                         <?php
                         // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält
 

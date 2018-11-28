@@ -13,6 +13,8 @@ $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id"
     if($display_user->execute()) {
         while ($row2 = $display_user->fetch()) {
             ?>
+            
+            <title><?php echo $row2['username'] ?></title>
             <h3><?php $row2['username'] ?></h3>
             <table>
             <tr><td>Username:</td><td><?php echo $row2['username'] ?></td></tr>

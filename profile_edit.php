@@ -11,10 +11,8 @@ if($statement->execute()) {
     while ($row = $statement->fetch()) {
         ?>
 
-        <!DOCTYPE html>
-        <html lang="en">
+
         <head>
-            <meta charset="UTF-8">
             <title>Edit your profile</title>
         </head>
         <body>
@@ -61,7 +59,6 @@ if($statement->execute()) {
             </table>
         </form>
         </body>
-        </html>
         <?php
     }
 }

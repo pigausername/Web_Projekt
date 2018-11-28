@@ -1,5 +1,38 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- hier ist der Link aus deinem Webspace https://mars.iuk.hdm-stuttgart.de/~ab238/css/stylesheet.css -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link href="https://mars.iuk.hdm-stuttgart.de/~mv065/webprojekt/CSS/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="https://mars.iuk.hdm-stuttgart.de/~mv065/webprojekt/CSS/navbar-top-fixed.css" rel="stylesheet">
+
+    <link href="https://mars.iuk.hdm-stuttgart.de/~rk067/web_projekt/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="https://mars.iuk.hdm-stuttgart.de/~rk067/web_projekt/css/navbar-top-fixed.css" rel="stylesheet">
+
+
+    <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/css/navbar-top-fixed.css" rel="stylesheet">
+
+    <!--    <link rel="stylesheet" type="text/css" href="stylesheet.css"> -->
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+    <title>Registrierung</title>
+
+</head>
+<body>
+<h1>Welcome to RAM!</h1>
+
 <?php
 session_start();
+
 include_once "userdata.php";
 
 if (!isset($_SESSION["angemeldet"])) {
@@ -33,15 +66,10 @@ if (!isset($_SESSION["angemeldet"])) {
         }
     }
     ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <script src="jquery-migrate-1.4.1.min.js"></script>
-        <meta charset="UTF-8">
-        <title>RAM| Registrierung</title>
-    </head>
-    <body>
-    <h1>Welcome to RAM!</h1>
+
+
+
+
 
     <h2>Create your own profile.</h2>
 
@@ -79,8 +107,7 @@ if (!isset($_SESSION["angemeldet"])) {
         </table>
         <p>Already have an account? <a href="index.php">Sign in</a>.</p>
     </form>
-    </body>
-    </html>
+
     <?php
 }
     else

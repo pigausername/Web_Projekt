@@ -32,11 +32,46 @@
 body {
     margin-bottom: 5%;
     padding: 10%;
-    background-color: gainsboro;
+    background-color: snow;
 }
 
+footer{
+    background-color: darkgrey;
+    text-decoration-color: #1e7e34;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10%;
+    text-align: center;
+    color: #CCC;
+}
+
+
 footer {
-    background-color:
-            rgb(180, 180, 180, 0.5)
+    color: white;
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+
+    -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 40px; /* Firefox */
+    column-gap: 40px;
+
+    -webkit-column-rule: 4px double #ff00ff; /* Chrome, Safari, Opera */
+    -moz-column-rule: 4px double #ff00ff; /* Firefox */
+    column-rule: 4px double #ff00ff;
+}
+
+footer a {
+    padding: 10.5px;
+    margin: 0px;
+    line-height: 100%;
+}
+
+#footer
+{
+    position:center;
+    color: white;
 
 }

@@ -14,12 +14,11 @@ $comment = $_POST["comment"];
 
 $parent_comment_id = $_POST["comment_id"];
 
-$post_id = $_POST["post_id"];
 
 
 // Kommentar hinzufügen
-$add_comment = $pdo->prepare("INSERT INTO comment (`parentcomment_id`, `comment`, `comment_userid`, `post_id`) 
-                                        VALUES ('$parent_comment_id', '$comment', '$commenter_id', '$post_id')");
+$add_comment = $pdo->prepare("INSERT INTO comment (`parentcomment_id`, `comment`, `comment_userid`) 
+                                        VALUES ('$parent_comment_id', '$comment', '$commenter_id')");
 
 
 if($add_comment->execute()){

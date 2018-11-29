@@ -10,7 +10,6 @@ include_once "header.php";
         </div>
         <div class="form-group">
             <input type="hidden" name="comment_id" id="comment_id" value="0" />
-            <input type="hidden" name="post_id" id="post_id" value=<?php echo $post_id?>>
             <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
         </div>
     </form>

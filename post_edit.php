@@ -64,6 +64,7 @@ if ($display_oldpost->execute()){
             $row1 = $fetchpicname->fetch();
                 $Oldpicname = $row1["filename"];
 
+
             $fileExt = explode('.', $fileName);
             $fileActualExt = strtolower(end($fileExt));
 

@@ -69,4 +69,6 @@ $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id"
             <?php
         }}
 include_once "footer.php";
+
+
 ?>

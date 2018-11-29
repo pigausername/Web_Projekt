@@ -2,7 +2,6 @@
 session_start();
 include_once "header.php";
 ?>
-<body>
 <div class="container">
     <form method="POST" id="comment_form">
         <div class="form-group">
@@ -17,8 +16,6 @@ include_once "header.php";
     <br />
     <div id="display_comment"></div>
 </div>
-</body>
-</html>
 
 <script>
 
@@ -31,7 +28,7 @@ include_once "header.php";
                 url:"add_comment.php",
                 method:"POST",
                 data:form_data,
-                dataType:"JSON",
+                dataType:"json",
                 success:function(data)
                 {
                     if(data.error !== '')
@@ -42,7 +39,7 @@ include_once "header.php";
                         load_comment();
                     }
                 }
-            })
+            });
         });
 
         load_comment();
@@ -50,13 +47,12 @@ include_once "header.php";
         function load_comment()
         {
             $.ajax({
-                url:"fetch_comment.php?post_id=<?php echo $post_id?>",
-                method:"POST",
-                success:function(data)
-                {
+                url: "fetch_comment.php?post_id=<?php echo $post_id?>",
+                method: "POST",
+                success: function (data) {
                     $('#display_comment').html(data);
                 }
-            })
+            });
         }
 
         $(document).on('click', '.reply', function(){

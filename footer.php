@@ -24,6 +24,7 @@
             </div>
             <!-- Grid column -->
 
+
             <!-- Grid column -->
             <div class="col-md-2 mb-3">
                 <h6 class="text-uppercase font-weight-bold">

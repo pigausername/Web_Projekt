@@ -1,4 +1,3 @@
-
 <?php
 include_once "header.php";
 
@@ -8,7 +7,6 @@ include_once "header.php";
 if (isset($_POST['headline']) AND isset($_POST['content'])) {
     $headline = $_POST['headline'];
     $content = $_POST['content'];
-    $userid = $_SESSION["angemeldet"];
 
     if (file_exists($_FILES['file']['tmp_name']) || is_uploaded_file($_FILES['file']['tmp_name'])) {
         $file = $_FILES['file'];
@@ -60,8 +58,8 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
         }
     }
 }
-    else {
-        echo "There was a problem concerning your upload. Please try again!";
-    }
+else {
+    echo "There was a problem concerning your upload. Please try again!";
+}
 
-?>
+?>?>

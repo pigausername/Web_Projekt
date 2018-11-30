@@ -53,6 +53,7 @@ if ($display_follower->execute()) {
     }
 
 // Zeige den Content der Nutzer denen der angemeldete User folge und meine eigenen Beiträge
+
     $get_feed = $pdo->prepare("SELECT * FROM posts WHERE userid= $feedid OR userid= $myid ORDER BY date DESC");
     if($get_feed->execute()) {
         while($row=$get_feed->fetch()) {

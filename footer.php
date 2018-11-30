@@ -1,31 +1,66 @@
-<!doctype html>
-<html lang="de">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Footer -->
+<footer class="page-footer font-small indigo">
 
-    <link href="https://mars.iuk.hdm-stuttgart.de/~mv065/CSS/bootstrap.min.css" rel="stylesheet">
+    <!-- Footer Links -->
+    <div class="container">
 
-    <link href="https://mars.iuk.hdm-stuttgart.de/~rk067/web_projekt/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Grid row-->
+        <div class="row text-center d-flex justify-content-center pt-5 mb-3">
 
-    <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/web_projekt/css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-
-
-</head>
-
-
-
-<nav class="navbar fixed-bottom navbar-expand-md navbar-dark bg-dark">
-
-<div class="collapse navbar-collapse" id="navbarsExample09">
-    <ul class="navbar-nav mr-auto">
-        <li class="container-fluid text-center">
-                    <a class="nav-link" href="#">Imprint</a>
-                    <a class="nav-link" href="#">About us</a>
-                    <a class="nav-link" href="#">Datenschutz</a>
+            <!-- Grid column -->
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="about.php">About us</a>
+                </h6>
             </div>
-</nav>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="impressum.php">Imprint</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+
+            <!-- Grid column -->
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="datenschutz.php">Datenschutz</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="#!">Help</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="#!">Contact</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row-->
+        <hr class="rgba-white-light" style="margin: 0 15%;">
+
+        <!-- Grid row-->
+        <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright: RAM</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->

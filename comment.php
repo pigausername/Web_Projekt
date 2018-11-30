@@ -1,6 +1,7 @@
-<!DOCTYPE html>
-<html>
-<body>
+<?php
+session_start();
+include_once "header.php";
+?>
 <div class="container">
     <form method="POST" id="comment_form">
         <div class="form-group">
@@ -8,9 +9,6 @@
         </div>
         <div class="form-group">
             <input type="hidden" name="comment_id" id="comment_id" value="0" />
-            <input type="hidden" name="post_id" id="post_id" value=<?php
-            $post_id = $row["post_id"];
-            echo $post_id?>>
             <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
         </div>
     </form>
@@ -18,8 +16,6 @@
     <br />
     <div id="display_comment"></div>
 </div>
-</body>
-</html>
 
 <script>
 
@@ -32,7 +28,7 @@
                 url:"add_comment.php",
                 method:"POST",
                 data:form_data,
-                dataType:"JSON",
+                dataType:"json",
                 success:function(data)
                 {
                     if(data.error !== '')
@@ -43,7 +39,7 @@
                         load_comment();
                     }
                 }
-            })
+            });
         });
 
         load_comment();
@@ -51,13 +47,12 @@
         function load_comment()
         {
             $.ajax({
-                url:"fetch_comment.php?post_id=<?php echo $post_id?>",
-                method:"POST",
-                success:function(data)
-                {
+                url: "fetch_comment.php?post_id=<?php echo $post_id?>",
+                method: "POST",
+                success: function (data) {
                     $('#display_comment').html(data);
                 }
-            })
+            });
         }
 
         $(document).on('click', '.reply', function(){

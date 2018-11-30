@@ -3,9 +3,8 @@ include_once "header.php";
 
 include_once "follow.php";
 
+$myprofile_id = $_SESSION["angemeldet"];
 $profile_id = $_GET['userid'];
-
-
 
 
 //Daten des jeweiligen Nutzers anzeigen
@@ -13,7 +12,7 @@ $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id"
     if($display_user->execute()) {
         while ($row2 = $display_user->fetch()) {
             ?>
-            
+
             <title><?php echo $row2['username'] ?></title>
             <h3><?php $row2['username'] ?></h3>
             <table>
@@ -57,14 +56,19 @@ $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id"
                     <tr>
                         <?php
                         // Verweis auf Editseite
-                        $post_id = $row['post_id'];
-                        echo
-                            '<td><a href="post_edit.php?post_id=' . $post_id . ' "> Edit </a></td>'
+                        if ($profile_id!=$_SESSION["angemeldet"]) {
+
+                            $post_id = $row['post_id'];
+                            echo '<td><a href="post_edit.php?post_id=' . $post_id . ' "> Edit </a></td>';
+                            }
                         ?>
                     </tr>
+                    <br>
                 </table>
             </form>
             <?php
         }}
 include_once "footer.php";
+
+
 ?>

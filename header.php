@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="de">
 <head>
     <meta charset="utf-8">
@@ -25,6 +25,8 @@
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
 
 
+
+
     <!-- hier ist der Link aus deinem Webspace https://mars.iuk.hdm-stuttgart.de/~ab238/css/stylesheet.css -->
 
 </head>
@@ -35,10 +37,11 @@
 session_start();
 require_once "userdata.php";
 
+
 if (isset($_SESSION["angemeldet"]))
 {
     $userid = $_SESSION["angemeldet"];
-    ?>
+?>
 
 
 <div class="container"> <!-- folgender code definiert das die navbar dunkel ist und am oberen Rand fixiert ist und wann sich das Menü zu einem Hamburgermenü umwandelt.-->
@@ -60,7 +63,7 @@ if (isset($_SESSION["angemeldet"]))
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="profile.php" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown09">
-                        <a class="dropdown-item" href="profile.php?userid=<?php echo $userid ?>">My Profile</a>
+                        <a class="dropdown-item" href="profile.php?userid=<?php echo $userid?>">My Profile</a>
                         <a class="dropdown-item" href="profile_edit.php">Edit my Profil</a>
                     </div>
                 </li>
@@ -86,21 +89,17 @@ if (isset($_SESSION["angemeldet"]))
 
         </div>
     </nav>
-
-    <?php
+<?php
 }
 else
 {
    header("Location: index.php");}
-
 ?>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="Documents/Web_Projekt/jquery-migrate-1.4.1.min.js"><\/script>')</script>
-
-    <script src="https://mars.iuk.hdm-stuttgart.de/~mv065/webprojekt/CSS/bootstrap.min.js"></script>
-    <script src="https://mars.iuk.hdm-stuttgart.de/~ab238/css/bootstrap.min.js"></script>
-    <script src="https://mars.iuk.hdm-stuttgart.de/~rk067/web_projekt/css/bootstrap.min.js"></script>
+<!--script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script-->
+<script>window.jQuery || document.write('<script src="Documents/Web_Projekt/jquery-migrate-1.4.1.min.js"><\/script>')</script>
+<script src="https://mars.iuk.hdm-stuttgart.de/~mv065/webprojekt/CSS/bootstrap.min.js"></script>
+<script src="https://mars.iuk.hdm-stuttgart.de/~ab238/css/bootstrap.min.js"></script>
+<script src="https://mars.iuk.hdm-stuttgart.de/~rk067/web_projekt/css/bootstrap.min.js"></script>
 
 
 

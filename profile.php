@@ -64,12 +64,16 @@ if($sql->execute()) {
                 <tr>
                     <td><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a></td>
                 </tr>
+                <tr>
+                    <td><a href="delete_post.php?post_id=<?php echo $row["post_id"] ?>">Delete</a></td>
+                </tr>
                 <br>
             </table>
         </form>
         <?php
     }}
 include_once "footer.php";
+
 
 
 ?>

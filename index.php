@@ -28,6 +28,7 @@
 
 </head>
 <body>
+
 <h1>Welcome to RAM!</h1>
 
 <?php
@@ -56,7 +57,7 @@ if (isset($_POST['login'])) {
 
 ?>
 
-
+<div id="Login">
 <h2>Log in to your profile:</h2>
 
 <form action="index.php" method="post">
@@ -78,12 +79,15 @@ if (isset($_POST['login'])) {
     </table>
 </form>
 
+</div>
 
 <?php
 }
 else {
     echo "You are already logged in! Head back to ".'<a href=home1.php>home</a>'."!";
 }
+
+
 include_once "footer.php";
 ?>
 

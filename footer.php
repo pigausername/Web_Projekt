@@ -56,7 +56,6 @@
         <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
 
 
-
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2018 Copyright: RAM</a>
     </div>

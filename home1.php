@@ -56,10 +56,7 @@ if ($display_follower->execute()) {
 $get_feed = $pdo->prepare("SELECT * FROM posts WHERE userid= $feedid OR userid= $myid ORDER BY date DESC");
 if($get_feed->execute()) {
     while($row=$get_feed->fetch()) {
-        ?>
-    <table>
-        <tr>
-        <?php
+
         $editor_id = $row['userid'];
 
 
@@ -69,11 +66,16 @@ if($get_feed->execute()) {
             while ($row2 = $display_editor->fetch()) {
                 ?>
                 <!-- Hierbei wird der Content in Tabellenform angezeigt -->
-                <td><?php echo $row['headline'] . " by " ?><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></td>
+                <table>
+                <tr>
+                    <h4><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img src="pictures/<?php echo $row2['profilepic'] ?>"></a>
+                        <?php echo $row['headline'] . " by " ?>
+                        <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a>
+                    </h4>
 
                 </tr>
                 <tr>
-                    <td><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img src="pictures/<?php echo $row2['profilepic'] ?>"></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>
@@ -101,8 +103,8 @@ if($get_feed->execute()) {
                 <tr>
                     <td><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a></td>
                 </tr>
-                <hr />
                 </table>
+                <hr />
                 <?php
             }
                 }

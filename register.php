@@ -68,9 +68,6 @@ if (!isset($_SESSION["angemeldet"])) {
     ?>
 
 
-
-
-
     <h2>Create your own profile.</h2>
 
     <form action="register.php" method="post">

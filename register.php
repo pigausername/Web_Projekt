@@ -47,28 +47,40 @@ if (!isset($_SESSION["angemeldet"])) {
 
         if ($_POST['password'] == $_POST['repeatpassword']) {
             //$password = md5($password);
-            $register = $pdo->prepare("INSERT INTO userdata (`password`, `email`, `username`, `firstname`, `lastname`)
+
+            // check ob es den User schon gibt
+            $checkregister=$pdo->prepare("SELECT * FROM userdata WHERE username='$username' OR email='$email'");
+            $checkregister->execute();
+
+            $no=$checkregister->rowCount();
+            if(!$no > 0) {
+
+                $register = $pdo->prepare("INSERT INTO userdata (`password`, `email`, `username`, `firstname`, `lastname`)
                 VALUES ('$password', '$email', '$username', '$firstname', '$lastname')");
 
-            if ($register->execute()) {
-                $login = $pdo->prepare("SELECT * FROM userdata WHERE email='$email' AND password='$password'");
+                if ($register->execute()) {
+                    $login = $pdo->prepare("SELECT * FROM userdata WHERE email='$email' AND password='$password'");
 
-                if ($login->execute()) {
-                    while ($row = $login->fetch()) {
-                        $_SESSION["angemeldet"] = $row["userid"];
-                        header("Location: profile_edit.php");
+                    if ($login->execute()) {
+                        while ($row = $login->fetch()) {
+                            $_SESSION["angemeldet"] = $row["userid"];
+                            echo '<script>window.location.href="profile_edit.php"</script>';
 
+                        }
                     }
                 }
+            }
+            else {
+                echo "Username oder E-Mail schon vergeben.";
+            }
+
             } else {
                 echo "Bestätigen Sie Ihr Passwort.";
             }
+
         }
-    }
+
     ?>
-
-
-
 
 
     <h2>Create your own profile.</h2>

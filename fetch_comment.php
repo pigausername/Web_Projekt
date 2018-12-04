@@ -1,4 +1,3 @@
-@@ -0,0 +1,46 @@
 <?php
 session_start();
 
@@ -11,7 +10,7 @@ include_once "userdata.php";
 $post_id = $_GET["post_id"];
 
 //Kommentar auswählen und anzeigen
-$fetch_comment = $pdo->prepare("SELECT * FROM comment WHERE parentcomment_id = '0' ORDER BY comment_id DESC");
+$fetch_comment = $pdo->prepare("SELECT * FROM comment WHERE parentcomment_id = '0' AND post_id = $post_id ORDER BY comment_id DESC");
 
 if ($fetch_comment->execute()) {
     while ($row = $fetch_comment->fetch()) {

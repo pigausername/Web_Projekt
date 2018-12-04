@@ -15,6 +15,7 @@ $fetch_comment = $pdo->prepare("SELECT * FROM comment WHERE parentcomment_id = '
 if ($fetch_comment->execute()) {
     while ($row = $fetch_comment->fetch()) {
         ?>
+        <div class="content">
         <div class="panel panel-default">
         <div class="panel-heading">By <b>
         <?php
@@ -35,7 +36,7 @@ if ($fetch_comment->execute()) {
                 <button type="button" class="btn btn-default reply" id="<?php $row["comment_id"] ?>">Reply</button>
             </div>
             </div>
-
+            </div>
             <?php
 
         }

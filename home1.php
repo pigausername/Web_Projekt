@@ -14,6 +14,7 @@ include_once "header.php";
 
 <body>
     <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
+   <div class="content">
     <h2>Beitrag schreiben</h2>
     <form action="uploads.php" method="post" enctype="multipart/form-data">
         <table>
@@ -108,6 +109,7 @@ if ($display_follower->execute()) {
                         </tr>
                     </table>
                     <hr />
+                    </div>
                     <?php
                 }
             }

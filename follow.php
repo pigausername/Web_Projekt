@@ -13,6 +13,7 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
     $no=$checkfollow->rowCount();
     if(!$no > 0){
         ?>
+        <div class="content">
         <form action="profile.php?userid=<?php echo $profile_id?>" method="post">
             <input type="submit" name="follow" value="Follow">
         </form>
@@ -33,6 +34,7 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
         <form action="profile.php?userid=<?php echo $profile_id?>" method="post">
             <input type="submit" name="unfollow" value="Unfollow">
         </form>
+        </div>
         <?php
 
         if (isset($_POST['unfollow'])) {

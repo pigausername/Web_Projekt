@@ -3,6 +3,7 @@ include_once "header.php";
 ?>
 
 <html>
+<div class="content">
 <!-- Frage ob der Post wirklich gelöscht werden soll-->
     <form action="delete_post.php" method="post">
         <table>
@@ -17,6 +18,7 @@ include_once "header.php";
             </tr>
         </table>
     </form>
+</div>
 </html>
 <?php
 // Post aus Datenbank löschen

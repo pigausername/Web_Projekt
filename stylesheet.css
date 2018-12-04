@@ -1,4 +1,30 @@
 
+body {
+    display: grid;
+    grid-columns: 200px 10px 1fr 10px 200px;
+    grid-rows: 100px 10px 1fr 10px 100px;
+    margin-bottom: 5%;
+    padding: 10%;
+    background-color: white;
+}
+
+body > * { background: #CCC; font-size: 23px;}
+nav {grid-column: 1; grid-row:3; }
+#content { grid-column: 3; grid-row: 3;}
+footer { grid-row: 5; grid-column: 5; }
+
+#welcome{
+
+}
+
+
+
+
+
+
+
+
+
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) { ... }
 
@@ -10,11 +36,3 @@
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
-
-
-body {
-    margin-bottom: 5%;
-    padding: 10%;
-    background-color: white;
-}
-

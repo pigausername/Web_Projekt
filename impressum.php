@@ -3,7 +3,7 @@
 include_once "header.php";
 ?>
 
-<div class='impressum'>
+<div class="content">
 
 <h1>Impressum</h1><br>
 
@@ -29,7 +29,8 @@ Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Komm
 Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.<br>
 <br><br>
 Impressum vom <a href="https://www.impressum-generator.de">Impressum Generator</a> der <a href="https://www.kanzlei-hasselbach.de/">Kanzlei Hasselbach, Rechtsanwälte für Arbeitsrecht und Familienrecht</a>
- </div>
+
+</div>
 
 <?php
 

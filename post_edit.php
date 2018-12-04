@@ -11,6 +11,7 @@ include_once "header.php";
     <title>Edit your post</title>
 </head>
 <body>
+<div class="content">
 <h1>Here you can edit your post.</h1>
 
 <?php
@@ -107,6 +108,6 @@ if ($display_oldpost->execute()){
 
     ?>
 
-
+</div>
 </body>
 </html>

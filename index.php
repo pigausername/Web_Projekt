@@ -31,7 +31,8 @@
 </head>
 <body>
 
-<h1>Welcome to RAM!</h1>
+<div class="content">
+    <h1>Welcome to RAM!</h1>
 
 <?php
 session_start();
@@ -59,7 +60,7 @@ if (isset($_POST['login'])) {
 
 ?>
 
-<div id="Login">
+<div id="login">
 <h2>Log in to your profile:</h2>
 
 <form action="index.php" method="post">
@@ -83,6 +84,7 @@ if (isset($_POST['login'])) {
 
 </div>
 
+
 <?php
 }
 else {
@@ -92,6 +94,6 @@ else {
 
 include_once "footer.php";
 ?>
-
+</div>
 </body>
 </html>

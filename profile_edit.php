@@ -16,6 +16,7 @@ if($statement->execute()) {
             <title>Edit your profile</title>
         </head>
         <body>
+        <div class="content">
         <h1>Here you can edit your profile.</h1>
         <form action="profile_edit.php" method="post" enctype="multipart/form-data">
             <table>
@@ -124,3 +125,4 @@ if (isset($_POST['save'])) {
 
 include_once "footer.php";
 ?>
+</div>

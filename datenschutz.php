@@ -2,7 +2,7 @@
 
 include_once "header.php";
 ?>
-
+<div class="content">
 <h1>Datenschutzerklärung</h1>
 
 <p><strong>Allgemeines</strong></p>
@@ -69,7 +69,7 @@ Ihnen steht ein Auskunftsrecht bezüglich der über Sie gespeicherten personenbe
 Sollten Sie eine Korrektur oder Löschung von Daten wünschen oder weitergehende Fragen zur Verwendung der Daten haben, kontaktieren Sie bitte die im Impressum der genutzten Internetpräsenz genannten Betreiber (Redaktion).
 </p>
 <br>
-
+</div>
 
 <?php
 

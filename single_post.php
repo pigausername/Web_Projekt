@@ -10,6 +10,7 @@ $row = $display_post->fetch();
 ?>
 
 <body>
+<div class="content">
 <table>
     <tr>
         <td>Headline:</td><td><?php echo $row["headline"] ?></td>
@@ -21,7 +22,7 @@ $row = $display_post->fetch();
         <td><?php include "comment.php" ?></td>
     </tr>
 </table>
-
+</div>
 
 
 </body>

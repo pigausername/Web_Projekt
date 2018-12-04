@@ -1,7 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: anni
- * Date: 28.11.18
- * Time: 15:06
- */
+
+include_once "header.php";
+?>
+    <div class="content">
+        <h1>RAM</h1>
+
+        <p><strong>Das Team</strong></p>
+        <p>René - Minh - Annika </p>
+
+        <br>
+    </div>
+
+<?php
+
+include_once "footer.php";
+?>

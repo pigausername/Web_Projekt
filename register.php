@@ -28,6 +28,7 @@
 
 </head>
 <body>
+<div class="content">
 <h1>Welcome to RAM!</h1>
 
 <?php
@@ -125,7 +126,7 @@ if (!isset($_SESSION["angemeldet"])) {
         </table>
         <p>Already have an account? <a href="index.php">Sign in</a>.</p>
     </form>
-
+</div>
     <?php
 }
     else

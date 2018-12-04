@@ -2,6 +2,7 @@
 session_start();
 include_once "header.php";
 ?>
+<div class="content">
 <div class="container">
     <form method="POST" id="comment_form">
         <div class="form-group">
@@ -15,6 +16,7 @@ include_once "header.php";
     <span id="comment_message"></span>
     <br />
     <div id="display_comment"></div>
+</div>
 </div>
 
 <script>

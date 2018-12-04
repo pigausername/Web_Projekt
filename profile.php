@@ -10,7 +10,7 @@ $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id"
 if($display_user->execute()) {
     while ($row2 = $display_user->fetch()) {
         ?>
-
+<div class="content">
         <title><?php echo $row2['username'] ?></title>
         <h1><?php echo $row2['username'] ?></h1>
         <table>
@@ -70,6 +70,7 @@ if($sql->execute()) {
                 <br>
             </table>
         </form>
+</div>
         <?php
     }}
 include_once "footer.php";

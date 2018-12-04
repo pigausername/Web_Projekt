@@ -1,6 +1,7 @@
 <?php
 include_once ("header.php");
 ?>
+<div class="content">
     <h1>Search by Username or Posts</h1>
     <form action="search.php" method="post">
         <table>
@@ -116,3 +117,4 @@ if (isset($_POST['search'])) {
 include_once("footer.php");
 
 ?>
+</div>

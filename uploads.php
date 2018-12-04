@@ -35,10 +35,16 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
                     echo $fileNameNew;
 
                     // vorbereiten und schreiben in die Datenbank
-                    $uploadwithpic = $pdo->prepare("INSERT INTO posts (`headline`,`content`,`filename`,`userid`) VALUES ('$headline', '$content', '$fileNameNew', '$userid')");
+                  /*  $uploadwithpic = $pdo->prepare("INSERT INTO posts (`headline`,`content`,`filename`,`userid`) VALUES ('$headline', '$content', '$fileNameNew', '$userid')");
                     if ($uploadwithpic->execute()){
+                  */
 
-                        echo '<script>window.location.href="home1.php"</script>';
+                        $uploadwithpic = $pdo->prepare("INSERT INTO posts (`headline`,`content`,`filename`,`userid`) VALUES (?,?,?,?)");
+                        $newuploadwithpic=array($_POST["headline"],$_POST["content"],$_POST["fileNameNew"],$_POST["userid"]);
+                        if ($uploadwithpic->execute($newuploadwithpic)) {
+
+
+                            echo '<script>window.location.href="home1.php"</script>';
                     }
 
                 } else {
@@ -52,8 +58,14 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
             echo "You cannot upload files of this type!";
         }
     } else {
-        $upload = $pdo->prepare("INSERT INTO posts (`headline`,`content`,`userid`) VALUES ('$headline', '$content', '$userid')");
-        if ($upload->execute()) {
+
+       /* $upload = $pdo->prepare("INSERT INTO posts (`headline`,`content`,`userid`) VALUES ('$headline', '$content', '$userid')");
+        if ($upload->execute()) { */
+
+        $upload = $pdo->prepare("INSERT INTO posts (`headline`,`content`,`userid`) VALUES (?,?,?)");
+        $newupload=array($_POST["headline"],$_POST["content"],$_POST["userid"]);
+        if ($upload->execute($newupload)) {
+
             echo '<script>window.location.href="home1.php"</script>';
         }
     }

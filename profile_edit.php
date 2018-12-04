@@ -93,9 +93,16 @@ if (isset($_POST['save'])) {
 
 
                 // vorbereiten und schreiben in die Datenbank
-                $updateprofile = $pdo ->prepare ("UPDATE userdata SET profilepic='$fileNameNew' WHERE userid=$userid");
+             /*   $updateprofile = $pdo ->prepare ("UPDATE userdata SET profilepic='$fileNameNew' WHERE userid=$userid");
                 if ($updateprofile->execute()) {
                     // wenn upload erfolgreich, schicke zurück zu home1.php
+             */
+
+                    $updateprofil = $pdo->prepare("UPDATE userdata SET profilpic VALUES (?)) WHERE userid= $userid");
+                    $update=array($_POST['fileNameNew']);
+
+                if ($updateprofile->execute(update)) {
+
 
                     echo "You just successfully update your profile!";
                     echo "<br>";

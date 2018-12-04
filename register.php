@@ -55,10 +55,16 @@ if (!isset($_SESSION["angemeldet"])) {
             $no=$checkregister->rowCount();
             if(!$no > 0) {
 
-                $register = $pdo->prepare("INSERT INTO userdata (`password`, `email`, `username`, `firstname`, `lastname`)
+               /* $register = $pdo->prepare("INSERT INTO userdata (`password`, `email`, `username`, `firstname`, `lastname`)
                 VALUES ('$password', '$email', '$username', '$firstname', '$lastname')");
+               */
 
-                if ($register->execute()) {
+                $register = $pdo->prepare("INSERT INTO userdata (`password`, `email`, `username`, `firstname`, `lastname`)
+                VALUES (?,?,?,?,?)");
+                $newregister=array($_POST["password"],$_POST["email"],$_POST["username"],$_POST["firstname"],$_POST["lastname"]);
+
+
+                if ($register->execute($newregister)) {
                     $login = $pdo->prepare("SELECT * FROM userdata WHERE email='$email' AND password='$password'");
 
                     if ($login->execute()) {

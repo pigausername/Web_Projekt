@@ -78,12 +78,17 @@ if ($display_oldpost->execute()){
                         move_uploaded_file($fileTmpName, $fileDestination);
 
 
-                        $PostUpdate = $pdo->prepare("UPDATE posts 
+                       /* $PostUpdate = $pdo->prepare("UPDATE posts
                                           SET headline='$newheadline', content='$newcontent', filename='$Oldpicname'
                                           WHERE post_id= $post_id");
+                       */
+
+                        $PostUpdate = $pdo->prepare("UPDATE posts SET headline, content, filename VALUES (?,?,?)) WHERE post_id= $post_id");
+                        $postedit=array($_POST['newheadline'],$_POST['newcontent'],$_POST['oldpicname']);
 
 
-                        if ($PostUpdate->execute()) {
+
+                        if ($PostUpdate->execute($postedit)) {
 
                             echo "You just successfully updated your post!";
                             echo "<br>";

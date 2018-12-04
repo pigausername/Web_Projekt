@@ -73,7 +73,7 @@ if (isset($_SESSION["angemeldet"]))
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="profile.php">Messages</a>
+                    <a class="nav-link" href="profile.php">Notifications</a>
                 </li>
 
                 <li class="nav-item">

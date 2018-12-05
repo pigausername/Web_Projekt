@@ -16,6 +16,7 @@ $row2 = $display_editor->fetch();
 
 ?>
 
+
 <body>
 <div class="content">
 <table>

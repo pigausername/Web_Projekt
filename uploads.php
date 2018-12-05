@@ -61,13 +61,25 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
 
        /* $upload = $pdo->prepare("INSERT INTO posts (`headline`,`content`,`userid`) VALUES ('$headline', '$content', '$userid')");
         if ($upload->execute()) { */
+        $myid = $_SESSION["angemeldet"];
+
+
 
         $upload = $pdo->prepare("INSERT INTO posts (`headline`,`content`,`userid`) VALUES (?,?,?)");
         $newupload=array($_POST["headline"],$_POST["content"],$_POST["userid"]);
         if ($upload->execute($newupload)) {
 
-            echo '<script>window.location.href="home1.php"</script>';
+            echo '<script>window.location.href="do_notification.php"</script>';
         }
+        $getpostid=$pdo->prepare("SELECT post_id FROM posts WHERE ")
+        $display_follower = $pdo->prepare("SELECT * FROM followers WHERE userid= $myid");
+                if ($display_follower->execute()) {
+                    while ($row3 = $display_follower->fetch()) {
+                        $followerid= $row3['followerid'];
+
+
+                        $set_notification = $pdo->prepare("INSERT INTO notification (`notificationerid`, `post_id`, `receiverid`) VALUES (?,?,?,?)");
+                        $newset_notification=array($_POST["followerid"]);
     }
 }
 else {

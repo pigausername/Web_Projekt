@@ -5,8 +5,6 @@ include_once "userdata.php";
 $profile_id=$_GET['userid'];
 $followerid=$_SESSION["angemeldet"];
 
-
-
 // Check ob es ein fremdes Profil ist
 if ($profile_id!=$_SESSION["angemeldet"]) {
 
@@ -48,27 +46,7 @@ $checkpost->execute();
 
             load_unseen_notification();
 
-            $('#comment_form').on('submit', function(event){
-                event.preventDefault();
-                if($('#subject').val() != '' && $('#comment').val() != '')
-                {
-                    var form_data = $(this).serialize();
-                    $.ajax({
-                    url:"insert.php",
-                    method:"POST",
-                    data:form_data,
-                    success:function(data)
-                    {
-                        $('#comment_form')[0].reset();
-                        load_unseen_notification();
-                    }
-                });
-            }
-                else
-                {
-                    alert("Both Fields are Required");
-                }
-            });
+
 
             $(document).on('click', '.dropdown-toggle', function(){
                 $('.count').html('');
@@ -81,3 +59,5 @@ $checkpost->execute();
 
         });
         </script>
+<?php
+}

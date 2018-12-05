@@ -1,21 +1,18 @@
 
 body {
     display: grid;
-    grid-columns: 200px 10px 1fr 10px 200px;
-    grid-rows: 100px 10px 1fr 10px 100px;
-    margin-bottom: 5%;
-    padding: 10%;
+   /* grid-template-columns: 200px 10px 1fr;
+    grid-template-rows: 100px 10px 1fr 10px 100px; /*zeile*/
+    margin-bottom: 0%;
+    padding: 0%;
     background-color: white;
 }
 
 body > * { background: #CCC; font-size: 23px;}
-nav {grid-column: 1; grid-row:3; }
-#content { grid-column: 3; grid-row: 3;}
-footer { grid-row: 5; grid-column: 5; }
+.content { padding: 5%; margin: 5%; grid-column: 2; grid-row: 2;}
+footer { grid-row: ; grid-column: 5; }
 
-#welcome{
 
-}
 
 
 
@@ -35,4 +32,4 @@ footer { grid-row: 5; grid-column: 5; }
 @media (min-width: 992px) { ... }
 
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { ... }
+@media (min-width: 1200px) {  ... }

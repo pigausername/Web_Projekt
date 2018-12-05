@@ -14,7 +14,7 @@ include_once "header.php";
 
 <body>
     <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
-   <div class="content">
+   <div class="content col-lg-10">
     <h2>Beitrag schreiben</h2>
     <form action="uploads.php" method="post" enctype="multipart/form-data">
         <table>

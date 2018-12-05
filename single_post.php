@@ -9,6 +9,7 @@ $display_post->execute();
 $row = $display_post->fetch();
 ?>
 
+
 <body>
 <div class="content">
 <table>

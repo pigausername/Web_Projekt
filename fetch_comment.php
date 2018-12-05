@@ -5,6 +5,7 @@ if (isset($_SESSION["angemeldet"])) {
     $userid = $_SESSION["angemeldet"];
 }
 
+
 include_once "userdata.php";
 
 $post_id = $_GET["post_id"];

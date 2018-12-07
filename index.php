@@ -48,15 +48,15 @@ if (isset($_POST['login'])) {
     $statement = $pdo->prepare("SELECT * FROM userdata WHERE email=:email AND password=:password");
     if ($statement->execute(array(':email' => $email, ':password' => $password))) {
         if ($row = $statement->fetch()) {
+            //if(password_verify($password, $hash))
             $_SESSION["angemeldet"] = $row["userid"];
-            header("Location: home1.php");
-        } else {
+            header("Location: home1.php");}
+        else {
             echo "No authorization.";
         }
-    } else {
-        echo "blabla";
     }
-}
+    }
+
 
 ?>
 

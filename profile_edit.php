@@ -6,7 +6,7 @@ $userid = $_SESSION["angemeldet"];
 
 //Bestehende Daten des Nutzers anzeigen
 
-$statement = $pdo->prepare("SELECT `username`, `email`, `firstname`, `lastname` FROM userdata WHERE userid=$userid");
+$statement = $pdo->prepare("SELECT `username`, `email`, `firstname`, `lastname`, `subject`, `semester` FROM userdata WHERE userid=$userid");
 if($statement->execute()) {
     while ($row = $statement->fetch()) {
         ?>
@@ -18,7 +18,7 @@ if($statement->execute()) {
         <body>
         <div class="content">
         <h1>Here you can edit your profile.</h1>
-        <form action="profile_edit.php" method="post" enctype="multipart/form-data">
+        <form action="profile_edit.php" method="post">
             <table>
                 <tr>
                     <td>Username:</td>
@@ -48,13 +48,23 @@ if($statement->execute()) {
                     <td><input type="text" name="lastname" placeholder="Last name" required
                                value="<?php echo $row['lastname'] ?>""></td>
                 </tr>
-                <tr>
+                <!--<tr>
                     <td>Profile picture:</td>
-                    <td><input type="file" name="profilepic" id="profilepic">
+                    <td><input type="file" name="profilepic" id="profilepic"></td>
+                </tr>
+                -->
+                <tr>
+                    <td>Subject:</td>
+                    <td><input type="text" name="subject" id="subject" placeholder="Subject" value="<?php //echo $row['subject'] ?>"</td>
+                </tr>
+
+                <tr>
+                    <td>Semester:</td>
+                    <td><input type="number" name="semester" id="semester" min="1" max="10" placeholder="Semester" value="<?php echo $row['semester'] ?>"></td>
                 </tr>
                 <tr>
                     <td>
-                        <button type="submit" name="save" class="btn">Save changes</button>
+                        <button type="submit" name="save_changes" class="btn">Save changes</button>
                     </td>
                 </tr>
             </table>
@@ -66,63 +76,34 @@ if($statement->execute()) {
 
 
 // Profil bearbeiten
-if (isset($_POST['save'])) {
-    $headline = $_POST['headline'];
-    $content = $_POST['content'];
+if (isset($_POST['username']))  {
     $userid = $_SESSION["angemeldet"];
-    $file = $_FILES['profilepic'];
 
-    $fileName = $_FILES['profilepic']['name'];
-    $fileTmpName = $_FILES['profilepic']['tmp_name'];
-    $fileSize = $_FILES['profilepic']['size'];
-    $fileError = $_FILES['profilepic']['error'];
-    $fileType = $_FILES['profilepic']['type'];
 
-    $fileExt = explode('.', $fileName);
-    $fileActualExt = strtolower(end($fileExt));
-
-    // Definiere welche Dateiformate erlaubt sind
-    $allowed = array('jpg', 'jpeg', 'png', 'pdf');
-
-    if (in_array($fileActualExt, $allowed)) {
-        if ($fileError === 0) {
-            if ($fileSize < 1000000) {
-                $fileNameNew = "Profilepic".$userid. "." .$fileActualExt;
-                $fileDestination = 'pictures/'.$fileNameNew;
-                move_uploaded_file($fileTmpName, $fileDestination);
+    $updateprofile = $pdo->prepare("UPDATE userdata SET username 
+                                              VALUE ('$username')
+                                              WHERE userid='$userid'");
 
 
 
-                // vorbereiten und schreiben in die Datenbank
-             /*   $updateprofile = $pdo ->prepare ("UPDATE userdata SET profilepic='$fileNameNew' WHERE userid=$userid");
-                if ($updateprofile->execute()) {
-                    // wenn upload erfolgreich, schicke zurück zu home1.php
-             */
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $subject = $_POST['subject'];
+    $semester = $_POST['semester'];
 
-                    $updateprofil = $pdo->prepare("UPDATE userdata SET profilpic VALUES (?)) WHERE userid= $userid");
-                    $update=array($_POST['fileNameNew']);
-
-                if ($updateprofile->execute(update)) {
-
-
-                    echo "You just successfully update your profile!";
-                    echo "<br>";
-                    echo "Head back to your profile ". '<a href="profile.php?userid=' . $userid . '"> here</a>' . ".";
-                }
-            } else {
-                echo "Your file is too big!";
-            }
-
-        } else {
-            echo "There was an error uploading your file!";
-        }
-    } else {
-        echo "You cannot upload files of this type!";
+    if ($updateprofile->execute()){
+        echo "bla";
     }
+    else {
+        echo "blaaaa";
+    }
+
 
 }
 
 
 include_once "footer.php";
 ?>
-</div>

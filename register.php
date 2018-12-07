@@ -26,9 +26,18 @@
 
     <title>Registrierung</title>
 
+    <style>
+        body {
+            background-image: url("treppe_hdm.JPG");
+            background-size: 100%;
+        }
+
+    </style>
+
+
 </head>
 <body>
-<div class="content">
+<div class="content_register">
 <h1>Welcome to RAM!</h1>
 
 <?php
@@ -89,7 +98,7 @@ if (!isset($_SESSION["angemeldet"])) {
 
     ?>
 
-
+<br>
     <h2>Create your own profile.</h2>
 
     <form action="register.php" method="post">
@@ -103,7 +112,7 @@ if (!isset($_SESSION["angemeldet"])) {
                 <td><input type="password" name="password" placeholder="Password" required></td>
             </tr>
             <tr>
-                <td>Please repeat your password:</td>
+                <td>Password repeat:</td>
                 <td><input type="password" name="repeatpassword" placeholder="Repeat your password" required></td>
             </tr>
             <tr>

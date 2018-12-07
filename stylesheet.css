@@ -1,25 +1,47 @@
+/* row = Zeile, column = Spalte */
+
 
 body {
     display: grid;
-   /* grid-template-columns: 200px 10px 1fr;
-    grid-template-rows: 100px 10px 1fr 10px 100px; /*zeile*/
+   grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto;
     margin-bottom: 0%;
     padding: 0%;
-    background-color: white;
+    /*background-color: white;*/
 }
 
-body > * { background: #CCC; font-size: 23px;}
-.content { padding: 5%; margin: 5%; grid-column: 2; grid-row: 2;}
-footer { grid-row: ; grid-column: 5; }
+body > * {
+    background: white;
+    font-size: 85%;
+
+}
+
+.content { padding: 5%; margin: 5%; grid-column: 4; grid-row: 3;}
+
+
+.content_register {
+    border-radius: 8%;
+    grid-row-start: 3;
+    grid-row-end: 5;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    padding: 5%;
+    margin: 3%;
+    justify-content: center;
+}
 
 
 
-
-
-
-
-
-
+footer {
+    position:;
+    height: 100%;
+    width: 100%;
+    background: white;
+    grid-row-start: 10;
+    grid-row-end: 24;
+   grid-column-start: 3;
+    grid-column-end: 12;
+}
 
 
 /*Small devices (landscape phones, 576px and up)*/

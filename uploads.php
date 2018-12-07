@@ -71,7 +71,7 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
 
             echo '<script>window.location.href="do_notification.php"</script>';
         }
-        $getpostid=$pdo->prepare("SELECT post_id FROM posts WHERE ")
+        $getpostid=$pdo->prepare("SELECT post_id FROM posts WHERE ");
         $display_follower = $pdo->prepare("SELECT * FROM followers WHERE userid= $myid");
                 if ($display_follower->execute()) {
                     while ($row3 = $display_follower->fetch()) {

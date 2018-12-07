@@ -28,17 +28,18 @@
 
     <style>
         body {
-            background-image: url("treppe_hdm.JPG");
+            background-image: url("pictures/treppe_hdm.jpg");
             background-size: 100%;
-        }
+
+
+
+
 
     </style>
 
 
 </head>
 <body>
-<div class="content_register">
-<h1>Welcome to RAM!</h1>
 
 <?php
 session_start();
@@ -99,43 +100,27 @@ if (!isset($_SESSION["angemeldet"])) {
 
     ?>
 
-<br>
-    <h2>Create your own profile.</h2>
+    <div class="register_page">
+        <h1>Welcome to RAM!</h1>
+        <hr />
+
+        <br>
+    <h2>Create your own profile</h2>
+        <br>
+
 
     <form action="register.php" method="post">
-        <table>
-            <tr>
-                <td>Username:</td>
-                <td><input type="text" name="username" placeholder="Username" required></td>
-            </tr>
-            <tr>
-                <td>Password:</td>
-                <td><input type="password" name="password" placeholder="Password" required></td>
-            </tr>
-            <tr>
-                <td>Password repeat:</td>
-                <td><input type="password" name="repeatpassword" placeholder="Repeat your password" required></td>
-            </tr>
-            <tr>
-                <td>E-Mail:</td>
-                <td><input type="email" name="email" placeholder="E-mail" required></td>
-            </tr>
-            <tr>
-                <td>First name:</td>
-                <td><input type="text" name="firstname" placeholder="First name" required></td>
-            </tr>
-            <tr>
-                <td>Last name:</td>
-                <td><input type="text" name="lastname" placeholder="Last name" required></td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="submit" name="register" class="btn">Register</button>
-                </td>
-            </tr>
-        </table>
-        <p>Already have an account? <a href="index.php">Sign in</a>.</p>
+            <input type="text" name="username" placeholder="Username" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <input type="password" name="repeatpassword" placeholder="Repeat your password" required><br>
+            <input type="email" name="email" placeholder="E-mail" required><br>
+            <input type="text" name="firstname" placeholder="First name" required><br>
+            <input type="text" name="lastname" placeholder="Last name" required><br><br>
+            <button type="submit" name="register" class="btn">Register</button><br>
+        <br>
     </form>
+    <hr />
+    <p>Already have an account? <a href="index.php">Sign in</a>.</p>
 </div>
     <?php
 }

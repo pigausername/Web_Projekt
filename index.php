@@ -28,11 +28,18 @@
 
     <title>Login</title>
 
+    <style>
+        body {
+            background-image: url("pictures/treppe_hdm.jpg");
+            background-size: 100%;
+
+
+
+
+
+    </style>
 </head>
 <body>
-
-<div class="content">
-    <h1>Welcome to RAM!</h1>
 
 <?php
 session_start();
@@ -60,30 +67,29 @@ if (isset($_POST['login'])) {
 
 ?>
 
-<div id="login">
-<h2>Log in to your profile:</h2>
+<div class="login_page">
+    <h1>Welcome to RAM!</h1>
+    <hr />
+<div>
+    <br>
+<h2>Sign in</h2>
+    <br>
 
 <form action="index.php" method="post">
-    <table>
-        <tr>
-            <td>Email:</td>
-            <td><input type="text" name="email" placeholder="Email"/></td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type="password" name="password" placeholder="Password"/></td>
-        </tr>
-        <tr>
-            <td><input type="submit" name="login" value="Log In"></td>
-        </tr>
-        <tr>
-            <td>Not have an account yet? Create your own profile <a href="register.php">here</a>!</td>
-        </tr>
-    </table>
+
+    <input type="text" name="email" placeholder="Email"/><br>
+    <input type="password" name="password" placeholder="Password"/><br><br>
+    <input type="submit" name="login" class=btn value="Log In"><br>
+    <br>
+    <hr />
+    Not have an account yet? Create your own profile <a href="register.php">here</a>!
 </form>
 
 </div>
+</div>
 
+</body>
+</html>
 
 <?php
 }
@@ -94,6 +100,4 @@ else {
 
 include_once "footer.php";
 ?>
-</div>
-</body>
-</html>
+

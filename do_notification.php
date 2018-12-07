@@ -28,13 +28,3 @@ if ($display_follower->execute()) {
     }
 
 }
-
-
-
-
-
-
-
-
-
-//echo '<script>window.location.href="home1.php"</script>';

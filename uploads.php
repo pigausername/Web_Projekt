@@ -59,15 +59,15 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
         }
     } else {
 
-        /* $upload = $pdo->prepare("INSERT INTO posts (`headline`,`content`,`userid`) VALUES ('$headline', '$content', '$userid')");
-         if ($upload->execute()) { */
+        $upload = $pdo->prepare("INSERT INTO posts (`headline`,`content`,`userid`) VALUES ('$headline', '$content', '$userid')");
+         if ($upload->execute()) {
         $myid = $_SESSION["angemeldet"];
 
 
 
-        $upload = $pdo->prepare("INSERT INTO posts (`headline`,`content`,`userid`) VALUES (?,?,?)");
+      /*  $upload = $pdo->prepare("INSERT INTO posts (`headline`,`content`,`userid`) VALUES (?,?,?)");
         $newupload=array($_POST["headline"],$_POST["content"],$_POST["userid"]);
-        if ($upload->execute($newupload)) {
+        if ($upload->execute($newupload)) {*/
 
             echo '<script>window.location.href="do_notification.php"</script>';
         }

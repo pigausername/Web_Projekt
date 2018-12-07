@@ -19,6 +19,8 @@ if($display_user->execute()) {
             <tr><td>E-Mail:</td><td><?php echo $row2['email'] ?></td></tr>
             <tr><td>Firstname:</td><td><?php echo $row2['firstname'] ?></td></tr>
             <tr><td>Lastname:</td><td><?php echo $row2['lastname'] ?></td></tr>
+            <tr><td>Subject:</td><td><?php echo $row2['subject'] ?></td></tr>
+            <tr><td>Semester:</td><td><?php echo $row2['semester'] ?></td></tr>
         </table>
         <hr />
         <?php

@@ -33,9 +33,7 @@ if ($fetch_comment->execute()) {
             ?>
             </b> on <i><?php echo $row["date"] ?></i></div>
             <div class="panel-body"><?php echo $row["comment"] ?></div>
-            <div class="panel-footer" align="right">
-                <button type="button" class="btn btn-default reply" id="<?php $row["comment_id"] ?>">Reply</button>
-            </div>
+            <hr />
             </div>
             </div>
             <?php

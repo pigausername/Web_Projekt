@@ -47,32 +47,33 @@ if (!isset($_SESSION["angemeldet"])) {
         $lastname = $_POST['lastname'];
 
         if ($_POST['password'] == $_POST['repeatpassword']) {
-            //$password = md5($password);
+
+            $options = ['cost' => 5];
+
+            $hash = password_hash($password, PASSWORD_DEFAULT, $options);
 
             // check ob es den User schon gibt
             $checkregister=$pdo->prepare("SELECT * FROM userdata WHERE username='$username' OR email='$email'");
             $checkregister->execute();
-
             $no=$checkregister->rowCount();
             if(!$no > 0) {
 
                /* $register = $pdo->prepare("INSERT INTO userdata (`password`, `email`, `username`, `firstname`, `lastname`)
                 VALUES ('$password', '$email', '$username', '$firstname', '$lastname')");
                */
-
                 $register = $pdo->prepare("INSERT INTO userdata (`password`, `email`, `username`, `firstname`, `lastname`)
                 VALUES (?,?,?,?,?)");
-                $newregister=array($_POST["password"],$_POST["email"],$_POST["username"],$_POST["firstname"],$_POST["lastname"]);
-
+                $newregister=array($hash,$_POST["email"],$_POST["username"],$_POST["firstname"],$_POST["lastname"]);
 
                 if ($register->execute($newregister)) {
                     $login = $pdo->prepare("SELECT * FROM userdata WHERE email='$email' AND password='$password'");
-
                     if ($login->execute()) {
-                        while ($row = $login->fetch()) {
-                            $_SESSION["angemeldet"] = $row["userid"];
-                            echo '<script>window.location.href="profile_edit.php"</script>';
+                        if(password_verify($password, $hash)) {
+                            while ($row = $login->fetch()) {
+                                $_SESSION["angemeldet"] = $row["userid"];
+                                echo '<script>window.location.href="profile_edit.php"</script>';
 
+                            }
                         }
                     }
                 }
@@ -108,7 +109,7 @@ if (!isset($_SESSION["angemeldet"])) {
             </tr>
             <tr>
                 <td>E-Mail:</td>
-                <td><input type="text" name="email" placeholder="E-mail" required></td>
+                <td><input type="email" name="email" placeholder="E-mail" required></td>
             </tr>
             <tr>
                 <td>First name:</td>

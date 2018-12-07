@@ -64,7 +64,7 @@ if (isset($_SESSION["angemeldet"]))
                     <a class="nav-link dropdown-toggle" href="profile.php" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown09">
                         <a class="dropdown-item" href="profile.php?userid=<?php echo $userid?>">My Profile</a>
-                        <a class="dropdown-item" href="profile_edit.php">Edit my Profil</a>
+                        <a class="dropdown-item" href="profile_edit.php">Edit my Profile</a>
                     </div>
                 </li>
 
@@ -93,6 +93,8 @@ if (isset($_SESSION["angemeldet"]))
 
 <?php
 }
+
+
 else
 {
    header("Location: index.php");}

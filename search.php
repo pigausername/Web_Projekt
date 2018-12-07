@@ -53,6 +53,12 @@ if (isset($_POST['search'])) {
                 <tr>
                     <td>Last Name:</td><td> <?php echo $row['lastname']?> </td>
                 </tr>
+                <tr>
+                    <td>Subject:</td><td> <?php echo $row['subject']?> </td>
+                </tr>
+                <tr>
+                    <td>Semester:</td><td> <?php echo $row['semester']?> </td>
+                </tr>
             </table>
             <?php
         }

@@ -102,6 +102,7 @@ if (isset($_SESSION["angemeldet"]))
     include_once "notification.php";
 }
 else
+
 {
    header("Location: index.php");}
 ?>

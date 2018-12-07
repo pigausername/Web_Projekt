@@ -23,6 +23,8 @@ if ($display_follower->execute()) {
 
         $set_notification = $pdo->prepare("INSERT INTO notification (`notificationerid`, `post_id`, `receiverid`) VALUES ($myid, $post_id, $followerid)");
         $set_notification->execute();
+
+        echo '<script>window.location.href="home1.php"</script>';
     }
 
 }

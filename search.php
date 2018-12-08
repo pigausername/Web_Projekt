@@ -2,33 +2,15 @@
 include_once ("header.php");
 ?>
 <div class="content">
-    <h1>Search by Username or Posts</h1>
-    <form action="search.php" method="post">
-        <table>
-            <tr>
-                <td>Username:  </td>
-                <td><input type="text" name="search_username" placeholder=""></td>
-            </tr>
-            <tr>
-                <td>Posts: </td>
-                <td><input type="text" name="search_post" placeholder=""></td>
-            </tr>
-            <tr>
-                <td><button type="submit" name="search">Search</button></td>
-            </tr>
-        </table>
-    </form>
+    <h1>Search results:</h1>
 
 
 <?php
-if (isset($_POST['search'])) {
 
-    echo "<h2>Your results:</h2>";
+if (isset($_POST['result'])){
+    $username = $_POST['result'];
 
-    $username = $_POST['search_username'];
-
-    $headline = $_POST['search_post'];
-
+    $headline = $_POST['result'];
     //Nutzer suchen
 
     $searchuser = $pdo->prepare("SELECT * FROM userdata WHERE username='$username'");
@@ -39,11 +21,9 @@ if (isset($_POST['search'])) {
             $userid = $row['userid'];
             ?>
 
-            <h3><a href="profile.php?userid=<?php echo $row['userid'] ?>"><img src="pictures<?php echo $row['profilepic'] ?>"></a><?php echo $row['username'] ?></h3>
+            <h3><a href="profile.php?userid=<?php echo $row['userid'] ?>"><img src="pictures<?php echo $row['profilepic'] ?>"></a>
+                <a href="profile.php?userid=<?php echo $row['userid'] ?>"><?php echo $row['username'] ?></a></h3>
             <table>
-                <tr>
-                    <td>Username:</td><td><a href="profile.php?userid=<?php echo $userid?>"><?php echo $row['username']?></a></td>
-                </tr>
                 <tr>
                     <td>E-Mail:</td><td> <?php echo $row['email']?> </td>
                 </tr>
@@ -60,6 +40,7 @@ if (isset($_POST['search'])) {
                     <td>Semester:</td><td> <?php echo $row['semester']?> </td>
                 </tr>
             </table>
+            <hr />
             <?php
         }
     } else {
@@ -112,14 +93,15 @@ if (isset($_POST['search'])) {
                 <tr>
                     <td><a href="single_post.php?post_id=<?php echo $row2["post_id"] ?>">Comment</a></td>
                 </tr>
-                <hr />
             </table>
+            <hr />
             <?php
         }
     } else {
         echo "No post found";
     }
 }
+
 include_once("footer.php");
 
 ?>

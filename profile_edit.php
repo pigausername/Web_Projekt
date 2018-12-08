@@ -76,17 +76,17 @@ if($statement->execute()) {
 
 
 // Profil bearbeiten
-if (isset($_POST['username']))  {
+if (isset($_POST['save_changes']))  {
     $userid = $_SESSION["angemeldet"];
 
+    $username = $_POST['username'];
 
     $updateprofile = $pdo->prepare("UPDATE userdata SET username 
-                                              VALUE ('$username')
-                                              WHERE userid='$userid'");
+                                              VALUE ($username)
+                                              WHERE userid=$userid");
 
 
 
-    $username = $_POST['username'];
     $password = $_POST['password'];
     $email = $_POST['email'];
     $firstname = $_POST['firstname'];

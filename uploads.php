@@ -62,8 +62,12 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
         }
     } else {
 
-        $upload = $pdo->prepare("INSERT INTO posts (`headline`,`content`,`userid`) VALUES ('$headline', '$content', '$userid')");
-         if ($upload->execute()) {
+        $upload = $pdo->prepare("INSERT INTO posts (headline, content, userid) VALUES (:headline, :content, :userid)");
+        $upload->bindParam('headline', $headline);
+        $upload->bindParam('content', $content);
+        $upload->bindParam('userid', $userid);
+        if ($upload->execute()) {
+
         $myid = $_SESSION["angemeldet"];
 
 

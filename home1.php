@@ -17,24 +17,22 @@ include_once "header.php";
     <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
    <div class="content col-lg-10">
     <h2>Create a post</h2>
+<br>
     <form action="uploads.php" method="post" enctype="multipart/form-data">
-        <table>
-            <tr>
-                <td><textarea name="headline" placeholder="Titel" rows="2" cols="30"></textarea></td>
-            </tr>
-            <tr>
-                <td><textarea name="content" placeholder="Type your text here" rows="10" cols="30"></textarea></td>
-            </tr>
-            <tr>
-                <td>Select a file: <input type="file" name="file" id="file" value="File"></td>
-            </tr>
-            <tr>
-                <td><button type="submit" value="post" name="post">Post</button></td>
-            </tr>
-        </table>
+        <br>
+                <textarea name="headline" placeholder="Titel" rows="2" cols="30"></textarea>
+            <br>
+                <textarea name="content" placeholder="Type your text here" rows="10" cols="30"></textarea>
+           <br>
+        <br>
+                Select a file: <input type="file" name="file" id="file" value="File">
+           <br>
+        <br>
+                <button type="submit" value="post" name="post">Post</button>
+
     </form>
 
-
+<br>
 
     <h2>Feed</h2>
 

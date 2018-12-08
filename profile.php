@@ -24,14 +24,14 @@ if($display_user->execute()) {
 <div class="content">
         <title><?php echo $row2['username'] ?></title>
         <h1><?php echo $row2['username'] ?></h1>
-        <table>
-            <tr><td><img src="pictures/<?php echo $row2['profilepic'] ?>"></td></tr>
-            <tr><td>E-Mail:</td><td><?php echo $row2['email'] ?></td></tr>
-            <tr><td>First name:</td><td><?php echo $row2['firstname'] ?></td></tr>
-            <tr><td>Last name:</td><td><?php echo $row2['lastname'] ?></td></tr>
-            <tr><td>Subject:</td><td><?php echo $row2['subject'] ?></td></tr>
-            <tr><td>Semester:</td><td><?php echo $row2['semester'] ?></td></tr>
-        </table>
+    <br>
+    <img src="pictures/<?php echo $row2['profilepic'] ?>"> <br>
+            E-Mail: <?php echo $row2['email'] ?> <br>
+            First name: <?php echo $row2['firstname'] ?> <br>
+            Last name: <?php echo $row2['lastname'] ?> <br>
+            Subject: <?php echo $row2['subject'] ?> <br>
+            Semester: <?php echo $row2['semester'] ?> <br>
+
         <hr />
         <?php
 

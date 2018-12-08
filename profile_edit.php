@@ -81,8 +81,8 @@ if (isset($_POST['username']))  {
 
 
     $updateprofile = $pdo->prepare("UPDATE userdata SET username 
-                                              VALUE ('$username')
-                                              WHERE userid='$userid'");
+                                              VALUE ($username)
+                                              WHERE userid= $userid");
 
 
 

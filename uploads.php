@@ -39,9 +39,12 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
                     if ($uploadwithpic->execute()){
                   */
 
-                        $uploadwithpic = $pdo->prepare("INSERT INTO posts (`headline`,`content`,`filename`,`userid`) VALUES (?,?,?,?)");
-                        $newuploadwithpic=array($_POST["headline"],$_POST["content"],$_POST["fileNameNew"],$_POST["userid"]);
-                        if ($uploadwithpic->execute($newuploadwithpic)) {
+                        $uploadwithpic = $pdo->prepare("INSERT INTO posts (headline, content, filename, userid) VALUES (:headline, :content, :fileNameNew, :userid)");
+                        $uploadwithpic->bindParam(':headline', $headline);
+                        $uploadwithpic->bindParam(':content', $content);
+                        $uploadwithpic->bindParam(':fileNameNew', $fileNameNew);
+                        $uploadwithpic->bindParam(':userid', $userid);
+                    if ($uploadwithpic->execute()) {
 
 
                             echo '<script>window.location.href="home1.php"</script>';

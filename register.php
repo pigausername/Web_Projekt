@@ -71,11 +71,14 @@ if (!isset($_SESSION["angemeldet"])) {
                /* $register = $pdo->prepare("INSERT INTO userdata (`password`, `email`, `username`, `firstname`, `lastname`)
                 VALUES ('$password', '$email', '$username', '$firstname', '$lastname')");
                */
-                $register = $pdo->prepare("INSERT INTO userdata (`password`, `email`, `username`, `firstname`, `lastname`)
-                VALUES (?,?,?,?,?)");
-                $newregister=array($hash,$_POST["email"],$_POST["username"],$_POST["firstname"],$_POST["lastname"]);
+                $register = $pdo->prepare("INSERT INTO userdata (password, email, username, firstname, lastname)
+                VALUES (:password, :email, :username, :firstname, :lastname)");
+                $register->bindParam(':password',$hash);
+                $register->bindParam(':email',$email);
+                $register->bindParam(':username',$username);
+                $register->bindParam(':firstname',$firstname);
+                if ($register->execute()) {
 
-                if ($register->execute($newregister)) {
                     $login = $pdo->prepare("SELECT * FROM userdata WHERE email=:email");
                     if ($login->execute(array(':email' => $email))) {
                         if ($row = $login->fetch()) {

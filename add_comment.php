@@ -19,10 +19,12 @@ $post_id = $_POST["post_id"];
 
 
 // Kommentar hinzufügen
-$add_comment = $pdo->prepare("INSERT INTO comment (`parentcomment_id`, `comment`, `comment_userid`, `post_id`) 
-                                        VALUES ('$parent_comment_id', '$comment', '$commenter_id', '$post_id')");
-
-
+$add_comment = $pdo->prepare("INSERT INTO comment (parentcomment_id, comment, comment_userid, post_id) 
+                                        VALUES (:parent_comment_id, :comment, :commenter_id, :post_id')");
+$add_comment->bindParam(':parent_comment_id',$parent_comment_id);
+$add_comment->bindParam(':comment',$comment);
+$add_comment->bindParam(':commenter_id',$commenter_id);
+$add_comment->bindParam(':post_id',$post_id);
 if($add_comment->execute()){
     $error = '<label class="text-success">Comment Added</label>';
 }

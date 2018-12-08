@@ -9,7 +9,6 @@ include_once "header.php";
             <textarea name="comment" id="comment" class="form-control" placeholder="Enter Comment" rows="5" required></textarea>
         </div>
         <div class="form-group">
-            <input type="hidden" name="comment_id" id="comment_id" value="0" />
             <input type="hidden" name="post_id" id="post_id" value="<?php echo $post_id ?>" />
             <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
         </div>
@@ -59,12 +58,6 @@ include_once "header.php";
             });
         }
 
-        $(document).on('click', '.reply', function(){
-            var comment_id = $(this).attr("id");
-            $('#comment_id').val(comment_id);
-            $('#comment').focus();
-
-        });
 
     });
 </script>

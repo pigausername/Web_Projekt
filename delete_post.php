@@ -36,7 +36,7 @@ if (isset($_POST['yes'])){
     $delete_post = $pdo->prepare("DELETE FROM posts WHERE post_id=$post_id");
     $delete_post->execute();
 
-        echo '<script>window.location.href="profile.php?user_id='.$myprofile_id.'"</script>';
+        echo '<script>window.location.href="profile.php?userid='.$myprofile_id.'"</script>';
 
 
 }

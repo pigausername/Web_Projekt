@@ -73,17 +73,15 @@ if (isset($_SESSION["angemeldet"]))
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="profile.php">Notifications</a>
-                </li>
-
-                <li class="nav-item">
                     <a class="nav-link" href="logout.php">Log Out</a>
                 </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
+
                     <a href="#" class="dropdown-toggle notification" data-toggle="dropdown"><span class="label label-pill label-danger count" style="border-radius:10px;"></span> <span class="glyphicon glyphicon-envelope" style="font-size:18px;"></span></a>
+
                     <ul class="dropdown-menu notification"></ul>
                 </li>
             </ul>

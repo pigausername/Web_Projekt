@@ -8,6 +8,7 @@ $followerid=$_SESSION["angemeldet"];
 
 
 
+
 //if(isset($_POST["view"])) {
 
 

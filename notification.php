@@ -15,7 +15,7 @@ session_start();
                 dataType:"json",
                 success:function(data)
                 {
-                    $('.dropdown-menu').html(data.notification);
+                    $('.dropdown-menu.notification').html(data.notification);
                     if(data.unseen_notification > 0)
                     {
                         $('.count').html(data.unseen_notification);
@@ -28,7 +28,7 @@ session_start();
 
 
 
-            $(document).on('click', '.dropdown-toggle', function(){
+            $(document).on('click', '.dropdown-toggle.notification', function(){
                 $('.count').html('');
                 load_unseen_notification('yes');
             });

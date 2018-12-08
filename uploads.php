@@ -68,8 +68,9 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
       /*  $upload = $pdo->prepare("INSERT INTO posts (`headline`,`content`,`userid`) VALUES (?,?,?)");
         $newupload=array($_POST["headline"],$_POST["content"],$_POST["userid"]);
         if ($upload->execute($newupload)) {*/
+             //echo '<script>window.location.href="home1.php"</script>';
 
-            echo '<script>window.location.href="do_notification.php"</script>';
+             echo '<script>window.location.href="do_notification.php"</script>';
         }
             }
         } else {

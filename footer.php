@@ -48,14 +48,6 @@
             <!-- Grid column -->
 
         </div>
-        <!-- Grid row-->
-        <hr />
-
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2018 Copyright: RAM</a>
-    </div>
-    <!-- Copyright -->
     </div>
 </footer>
 <!-- Footer -->

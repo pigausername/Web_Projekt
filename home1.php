@@ -13,6 +13,7 @@ include_once "header.php";
     </head>
 
 <body>
+    <div>
     <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
    <div class="content col-lg-10">
     <h2>Create a post</h2>
@@ -112,6 +113,7 @@ if ($display_follower->execute()) {
                         </tr>
                     </table>
                     <hr />
+                    </div>
                     </div>
                     <?php
                 }

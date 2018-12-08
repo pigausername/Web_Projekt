@@ -54,44 +54,23 @@ if($sql->execute()) {
     while ($row = $sql->fetch()) {
         ?>
         <form>
-            <table>
-                <tr>
-                    <td>
-                        <strong>
-                            <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img src="pictures/<?php echo $row2['profilepic'] ?>"></a>
-                            <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a>
-                        </strong>
-                    </td>
-                </tr>
 
-                <tr>
-                    <td><small><?php echo $row['date']?></small></td>
-                </tr>
-
-                <tr>
-                    <td><strong><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline']?></a></strong></td>
-                </tr>
-
-                <tr>
-                    <td><?php echo $row['content'] ?></td>
-                </tr>
-
-                <tr>
-                    <?php
+                <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img src="pictures/<?php echo $row2['profilepic'] ?>"></a>
+                <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a><br>
+                <small><?php echo $row['date']?></small><br>
+                <strong><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline']?></a></strong><br>
+                <?php echo $row['content'] ?><br>
+                <?php
                     // Verweis auf Editseite
                     if ($profile_id==$myprofile_id) {
 
                         $post_id = $row['post_id'];
-                        echo '<td><a href="post_edit.php?post_id=' . $post_id . ' "> Edit </a></td>';
-                        echo '<td><a href="delete_post.php?post_id='. $post_id.'"> Delete </a></td>';
+                        echo '<td><a href="post_edit.php?post_id=' . $post_id . ' "> Edit </a><br>';
+                        echo '<td><a href="delete_post.php?post_id='. $post_id.'"> Delete </a><br>';
                     }
                     ?>
-                </tr>
-                <tr>
-                    <td><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a></td>
-                </tr>
-                <br>
-            </table>
+                <a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a>
+
         </form>
 </div>
 </div>

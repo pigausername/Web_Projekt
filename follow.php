@@ -13,7 +13,7 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
     $no=$checkfollow->rowCount();
     if(!$no > 0){
         ?>
-        <div class="content">
+        <div class="place_content">
         <form action="profile.php?userid=<?php echo $profile_id?>" method="post">
             <input type="submit" name="follow" value="Follow">
         </form>

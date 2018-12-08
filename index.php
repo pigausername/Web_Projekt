@@ -25,12 +25,13 @@
     <style>
         body {
             background-image: url("pictures/treppe_hdm.jpg");
-            background-size: 100%;
             background-position: center;
             background-repeat: no-repeat;
     </style>
 </head>
 <body>
+
+<div class="place_content">
 
 <?php
 session_start();
@@ -80,14 +81,15 @@ if (isset($_POST['login'])) {
 
 <form action="index.php" method="post">
 
-    <input type="text" name="email" placeholder="E-mail"/><br>
-    <input type="password" name="password" placeholder="Password"/><br><br>
-    <input type="submit" name="login" class=btn value="Log In"><br>
+    <input class="form_space_around_boxes" type="text" name="email" placeholder="E-mail"/><br>
+    <input class="form_space_around_boxes" type="password" name="password" placeholder="Password"/><br><br>
+    <input class="form_space_around_boxes" type="submit" name="login" class=btn value="Log In"><br>
     <br>
     <hr />
     Not have an account yet? Create your own profile <a href="register.php">here</a>!
 </form>
 
+</div>
 </div>
 </div>
 

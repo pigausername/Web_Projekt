@@ -10,21 +10,11 @@ body {
 .login_page {
     background-color: white;
     padding: 5%;
-    grid-column-start: 4;
-    grid-column-end: 6;
-    grid-row-start: 1;
-    grid-row-end: 3;
     text-align: center;
 }
 
 .register_page {
     background-color: white;
-
-    grid-row-start: 3;
-    grid-row-end: 5;
-    grid-column-start: 4;
-    grid-column-end: 6;
-
     padding: 5%;
 
     justify-content: center;
@@ -48,10 +38,10 @@ form {
 }
 
 .place_content {
-    margin-top: 6%;
+    margin-top: 2cm;
     margin-left: 5%;
     margin-right: 5%;
-    margin-bottom: 8%;
+    margin-bottom: 3cm;
 }
 
 /*Small devices (landscape phones, 576px and up)*/

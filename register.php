@@ -133,13 +133,13 @@ if (!isset($_SESSION["angemeldet"])) {
 
 
     <form action="register.php" method="post">
-            <input type="text" name="username" placeholder="Username" ><br>
-            <input type="password" name="password" placeholder="Password" ><br>
-            <input type="password" name="repeatpassword" placeholder="Repeat your password" ><br>
-            <input type="email" name="email" placeholder="E-mail"><br>
-            <input type="text" name="firstname" placeholder="First name"><br>
-            <input type="text" name="lastname" placeholder="Last name"><br><br>
-            <button type="submit" name="register" class="btn" id="register" >Register</button><br>
+            <input class="form_space_around_boxes" type="text" name="username" placeholder="Username" ><br>
+            <input class="form_space_around_boxes" type="password" name="password" placeholder="Password" ><br>
+            <input class="form_space_around_boxes" type="password" name="repeatpassword" placeholder="Repeat your password" ><br>
+            <input class="form_space_around_boxes" type="email" name="email" placeholder="E-mail"><br>
+            <input class="form_space_around_boxes" type="text" name="firstname" placeholder="First name"><br>
+            <input class="form_space_around_boxes" type="text" name="lastname" placeholder="Last name"><br><br>
+            <button type="submit" name="register" id="register" >Register</button><br>
         <br>
     </form>
     <hr />

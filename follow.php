@@ -7,7 +7,7 @@ $followerid=$_SESSION["angemeldet"];
 if ($profile_id!=$_SESSION["angemeldet"]) {
 
     // check ob wir dem Nutzer schon folgen
-    $checkfollow=$pdo->prepare("SELECT followerid FROM followers WHERE userid=$profile_id");
+    $checkfollow=$pdo->prepare("SELECT followerid FROM followers WHERE userid=$profile_id AND followerid=$followerid");
     $checkfollow->execute();
 
     $no=$checkfollow->rowCount();

@@ -1,5 +1,22 @@
 <?php
-include_once "header.php";
+include_once "userdata.php";
+
+?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link href="https://mars.iuk.hdm-stuttgart.de/~mv065/webprojekt/CSS/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://mars.iuk.hdm-stuttgart.de/~rk067/web_projekt/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--    <link rel="stylesheet" type="text/css" href="stylesheet.css"> -->
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+<?php
 
 // variablen festgelegt die für die Verarbeitung gebraucht werden
 // Upload von Post Content ohne Bild
@@ -7,6 +24,17 @@ include_once "header.php";
 if (isset($_POST['headline']) AND isset($_POST['content'])) {
     $headline = $_POST['headline'];
     $content = $_POST['content'];
+
+    if ((stripos($headline, "<") !== false) OR (stripos($content, "<") !== false)) {
+        ?>
+        <div class="alert alert-danger alert-dismissible fade show">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Info!</strong> Don't mess with us! Head back to <a href="home1.php">your feed</a>.
+        </div>
+        <?php
+        die();
+    }
+
 
     if (file_exists($_FILES['file']['tmp_name']) || is_uploaded_file($_FILES['file']['tmp_name'])) {
         $file = $_FILES['file'];

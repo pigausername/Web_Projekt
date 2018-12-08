@@ -50,7 +50,7 @@ if (isset($_POST['login'])) {
             <strong>Info!</strong> Please fill in all fields!
         </div>
         <?php
-    };
+    }
 
 
     $email = $_POST["email"];

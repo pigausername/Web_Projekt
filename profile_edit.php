@@ -80,19 +80,24 @@ if (isset($_POST['save_changes']))  {
     $userid = $_SESSION["angemeldet"];
 
     $username = $_POST['username'];
-
-    $updateprofile = $pdo->prepare("UPDATE userdata SET username 
-                                              VALUE ($username)
-                                              WHERE userid=$userid");
-
-
-
     $password = $_POST['password'];
     $email = $_POST['email'];
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $subject = $_POST['subject'];
     $semester = $_POST['semester'];
+
+    $options=['cost'=>5];
+    $hash=password_hash($password, PASSWORD_DEFAULT, $options);
+
+    $updateprofile = $pdo->prepare("UPDATE userdata SET username, password, email, firstname, lastname, subject, semester VALUES (:username, :password, :email; :firstname, :lastname, :subject, :semester) WHERE userid=$userid");
+    $updateprofile->bindParam(':username', $username);
+    $updateprofile->bindParam(':password', $hash);
+    $updateprofile->bindParam(':email', $email);
+    $updateprofile->bindParam(':firstname', $firstname);
+    $updateprofile->bindParam(':lastname', $lastname);
+    $updateprofile->bindParam(':subject', $subject);
+    $updateprofile->bindParam(':semester', $semester);
 
     if ($updateprofile->execute()){
         echo "bla";

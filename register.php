@@ -74,6 +74,8 @@ if (!isset($_SESSION["angemeldet"])) {
                 $register->bindParam(':email',$email);
                 $register->bindParam(':username',$username);
                 $register->bindParam(':firstname',$firstname);
+                $register->bindParam(':lastname',$lastname);
+
                 if ($register->execute()) {
 
                     $login = $pdo->prepare("SELECT * FROM userdata WHERE email=:email");

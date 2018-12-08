@@ -50,16 +50,17 @@ $myid= $_SESSION["angemeldet"];
 // Hierbei wird kontrolliert, wem der angemeldete User folgt
 $display_follower = $pdo->prepare("SELECT * FROM followers WHERE followerid= $myid");
 if ($display_follower->execute()) {
-    while ($row3 = $display_follower->fetch()) {
-        $feedid= $row3['userid'];
-    }
 
+    while ($row3 = $display_follower->fetch()) {
+        $feedid = $row3['userid'];
+    }
+}
 // Zeige den Content der Nutzer denen der angemeldete User folge und meine eigenen Beiträge
 
     $get_feed = $pdo->prepare("SELECT * FROM posts WHERE userid= $feedid OR userid= $myid ORDER BY date DESC");
+
     if($get_feed->execute()) {
         while($row=$get_feed->fetch()) {
-
             $editor_id = $row['userid'];
 
 
@@ -78,9 +79,6 @@ if ($display_follower->execute()) {
                                 </h4>
                             </td>
 
-                        </tr>
-                        <tr>
-                            <td></td>
                         </tr>
                         <tr>
                             <td>
@@ -116,11 +114,7 @@ if ($display_follower->execute()) {
             }
         }
     }
-} else {
-    echo "Datenbank-Fehler:";
-    echo $statement->errorInfo()[2];
-    echo $statement->queryString;
-    die();
-}
+
+
 include_once "footer.php";
 ?>

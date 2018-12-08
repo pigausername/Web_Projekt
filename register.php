@@ -10,31 +10,22 @@
 
     <link href="https://mars.iuk.hdm-stuttgart.de/~mv065/webprojekt/CSS/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="https://mars.iuk.hdm-stuttgart.de/~mv065/webprojekt/CSS/navbar-top-fixed.css" rel="stylesheet">
 
     <link href="https://mars.iuk.hdm-stuttgart.de/~rk067/web_projekt/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="https://mars.iuk.hdm-stuttgart.de/~rk067/web_projekt/css/navbar-top-fixed.css" rel="stylesheet">
 
 
     <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/css/navbar-top-fixed.css" rel="stylesheet">
 
     <!--    <link rel="stylesheet" type="text/css" href="stylesheet.css"> -->
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+
     <title>Registrierung</title>
-
-    <style>
-        body {
-            background-image: url("pictures/treppe_hdm.jpg");
-        }
-
-
-    </style>
-
-
 </head>
 <body>
 
@@ -46,58 +37,83 @@ include_once "userdata.php";
 if (!isset($_SESSION["angemeldet"])) {
 
     if (isset($_POST['register'])) {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $repeatpassword = $_POST['repeatpassword'];
-        $email = $_POST['email'];
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
 
-        if ($_POST['password'] == $_POST['repeatpassword']) {
+        if(empty($username) OR empty($password) OR empty($repeatpassword) OR empty($email) OR empty($firstname) OR empty($lastname)){
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Info!</strong> Please fill in all fields!
+            </div>
+            <?php
+        }
+        else {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $repeatpassword = $_POST['repeatpassword'];
+            $email = $_POST['email'];
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
 
-            $options = ['cost' => 5];
 
-            $hash = password_hash($password, PASSWORD_DEFAULT, $options);
+            if ($_POST['password'] == $_POST['repeatpassword']) {
 
-            // check ob es den User schon gibt
-            $checkregister=$pdo->prepare("SELECT * FROM userdata WHERE username='$username' OR email='$email'");
-            $checkregister->execute();
-            $no=$checkregister->rowCount();
-            if(!$no > 0) {
+                $options = ['cost' => 5];
 
-               /* $register = $pdo->prepare("INSERT INTO userdata (`password`, `email`, `username`, `firstname`, `lastname`)
-                VALUES ('$password', '$email', '$username', '$firstname', '$lastname')");
-               */
-                $register = $pdo->prepare("INSERT INTO userdata (password, email, username, firstname, lastname)
+                $hash = password_hash($password, PASSWORD_DEFAULT, $options);
+
+                // check ob es den User schon gibt
+                $checkregister = $pdo->prepare("SELECT * FROM userdata WHERE username='$username' OR email='$email'");
+                $checkregister->execute();
+                $no = $checkregister->rowCount();
+                if (!$no > 0) {
+
+                    /* $register = $pdo->prepare("INSERT INTO userdata (`password`, `email`, `username`, `firstname`, `lastname`)
+                     VALUES ('$password', '$email', '$username', '$firstname', '$lastname')");
+                    */
+                    $register = $pdo->prepare("INSERT INTO userdata (password, email, username, firstname, lastname)
                 VALUES (:password, :email, :username, :firstname, :lastname)");
-                $register->bindParam(':password',$hash);
-                $register->bindParam(':email',$email);
-                $register->bindParam(':username',$username);
-                $register->bindParam(':firstname',$firstname);
-                $register->bindParam(':lastname',$lastname);
+                    $register->bindParam(':password', $hash);
+                    $register->bindParam(':email', $email);
+                    $register->bindParam(':username', $username);
+                    $register->bindParam(':firstname', $firstname);
+                    $register->bindParam(':lastname', $lastname);
 
-                if ($register->execute()) {
+                    if ($register->execute()) {
 
-                    $login = $pdo->prepare("SELECT * FROM userdata WHERE email=:email");
-                    if ($login->execute(array(':email' => $email))) {
-                        if ($row = $login->fetch()) {
-                            if (password_verify($password, $row["password"])) {
-                                $_SESSION["angemeldet"] = $row["userid"];
-                                echo '<script>window.location.href="profile_edit.php"</script>';
+                        $login = $pdo->prepare("SELECT * FROM userdata WHERE email=:email");
+                        if ($login->execute(array(':email' => $email))) {
+                            if ($row = $login->fetch()) {
+                                if (password_verify($password, $row["password"])) {
+                                    $_SESSION["angemeldet"] = $row["userid"];
+                                    echo '<script>window.location.href="profile_edit.php"</script>';
 
+                                }
                             }
                         }
                     }
+                } else {
+
+                    ?>
+
+                    <div class="alert alert-danger alert-dismissible fade show">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Info!</strong> User name or email already taken!
+                    </div>
+
+                    <?php
                 }
-            }
-            else {
-                echo "Username oder E-Mail schon vergeben.";
-            }
 
             } else {
-                echo "Bestätigen Sie Ihr Passwort.";
-            }
 
+                ?>
+
+                <div class="alert alert-danger alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Info!</strong> Please confirm your password!
+                </div>
+                <?php
+            }
+        }
         }
 
     ?>
@@ -112,13 +128,13 @@ if (!isset($_SESSION["angemeldet"])) {
 
 
     <form action="register.php" method="post">
-            <input type="text" name="username" placeholder="Username" required><br>
-            <input type="password" name="password" placeholder="Password" required><br>
-            <input type="password" name="repeatpassword" placeholder="Repeat your password" required><br>
-            <input type="email" name="email" placeholder="E-mail" required><br>
-            <input type="text" name="firstname" placeholder="First name" required><br>
-            <input type="text" name="lastname" placeholder="Last name" required><br><br>
-            <button type="submit" name="register" class="btn">Register</button><br>
+            <input type="text" name="username" placeholder="Username" ><br>
+            <input type="password" name="password" placeholder="Password" ><br>
+            <input type="password" name="repeatpassword" placeholder="Repeat your password" ><br>
+            <input type="email" name="email" placeholder="E-mail"><br>
+            <input type="text" name="firstname" placeholder="First name"><br>
+            <input type="text" name="lastname" placeholder="Last name"><br><br>
+            <button type="submit" name="register" class="btn" id="register" >Register</button><br>
         <br>
     </form>
     <hr />

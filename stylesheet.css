@@ -2,33 +2,25 @@
 
 
 body {
-    display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto auto;
-    grid-template-rows: auto auto auto auto auto auto auto auto;
-    margin-bottom: 0%;
-    padding: 0%;
-    background-color: #CCC;
+        background-color: #CCC;
 }
 
 body > * {
     background: white;
     font-size: 85%;
-
-
 }
 
 .login_page {
 
     padding: 5%;
     margin: 3%;
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 3;
-    grid-row-end: 5;
+    grid-column-start: 4;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: 3;
     border-radius: 8%;
     text-align: center;
 }
-
 
 .register_page {
     background: white;
@@ -36,8 +28,8 @@ body > * {
     border-radius: 8%;
     grid-row-start: 3;
     grid-row-end: 5;
-    grid-column-start: 3;
-    grid-column-end: 4;
+    grid-column-start: 4;
+    grid-column-end: 6;
     padding: 5%;
     margin: 3%;
     justify-content: center;
@@ -48,19 +40,15 @@ form {
     justify-content: center;
 
 }
-
-
-
-.container {
-    position: fixed;
-    right: 0;
+.footer {
+    grid-column-start: 1;
+    grid-column-end: 8;
     bottom: 0;
+    right:0;
     left: 0;
     width: 100%;
     background: white;
 }
-
-
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) { ... }

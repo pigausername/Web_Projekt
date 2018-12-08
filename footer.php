@@ -1,15 +1,11 @@
-
-
-
-
 <!-- Footer -->
-<footer class="page-footer font-small indigo">
+<footer>
 
     <!-- Footer Links -->
-    <div class="container">
+    <div class="footer">
 
         <!-- Grid row-->
-        <div class="row text-center d-flex justify-content-center pt-sm-1 mb-sm-1">
+        <div class="text-center d-flex justify-content-center pt-sm-1 mb-sm-1">
             <!-- Grid column -->
             <div class="col-md-2 mb-3">
                 <h9 class="text-uppercase font-weight-light">
@@ -53,10 +49,7 @@
 
         </div>
         <!-- Grid row-->
-        <hr class="rgba-white-light" style="margin: 0 15%;">
-
-        <!-- Grid row-->
-        <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+        <hr />
 
 
     <!-- Copyright -->

@@ -29,10 +29,7 @@
     <style>
         body {
             background-image: url("pictures/treppe_hdm.jpg");
-            background-size: 100%;
-
-
-
+        }
 
 
     </style>
@@ -123,7 +120,7 @@ if (!isset($_SESSION["angemeldet"])) {
         <br>
     </form>
     <hr />
-    <p>Already have an account? <a href="index.php">Sign in</a>.</p>
+    Already have an account? <a href="index.php">Sign in</a>.
 </div>
     <?php
 }

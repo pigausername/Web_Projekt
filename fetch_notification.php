@@ -61,7 +61,7 @@ $followerid=$_SESSION["angemeldet"];
             );
             echo json_encode($data);
 
-    }
+
 
 ?>
 <script>

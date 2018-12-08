@@ -76,10 +76,10 @@ if (!isset($_SESSION["angemeldet"])) {
                 $newregister=array($hash,$_POST["email"],$_POST["username"],$_POST["firstname"],$_POST["lastname"]);
 
                 if ($register->execute($newregister)) {
-                    $login = $pdo->prepare("SELECT * FROM userdata WHERE email='$email' AND password='$password'");
-                    if ($login->execute()) {
-                        if(password_verify($password, $hash)) {
-                            while ($row = $login->fetch()) {
+                    $login = $pdo->prepare("SELECT * FROM userdata WHERE email=:email");
+                    if ($login->execute(array(':email' => $email))) {
+                        if ($row = $login->fetch()) {
+                            if (password_verify($password, $row["password"])) {
                                 $_SESSION["angemeldet"] = $row["userid"];
                                 echo '<script>window.location.href="profile_edit.php"</script>';
 

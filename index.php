@@ -52,18 +52,18 @@ if (isset($_POST['login'])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    $statement = $pdo->prepare("SELECT * FROM userdata WHERE email=:email AND password=:password");
-    if ($statement->execute(array(':email' => $email, ':password' => $password))) {
+    $statement = $pdo->prepare("SELECT * FROM userdata WHERE email=:email");
+    if ($statement->execute(array(':email' => $email))) {
         if ($row = $statement->fetch()) {
-            //if(password_verify($password, $hash))
-            $_SESSION["angemeldet"] = $row["userid"];
-            header("Location: home1.php");}
-        else {
-            echo "No authorization.";
+            if (password_verify($password, $row["password"])) {
+                $_SESSION["angemeldet"] = $row["userid"];
+                header("Location: home1.php");
+            } else {
+                echo "No authorization.";
+            }
         }
     }
-    }
-
+}
 
 ?>
 

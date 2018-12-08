@@ -94,12 +94,10 @@ if (!isset($_SESSION["angemeldet"])) {
                 } else {
 
                     ?>
-
                     <div class="alert alert-danger alert-dismissible fade show">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         <strong>Info!</strong> User name or email already taken!
                     </div>
-
                     <?php
                 }
 

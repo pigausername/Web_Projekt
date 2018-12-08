@@ -27,10 +27,6 @@
             background-image: url("pictures/treppe_hdm.jpg");
             background-size: 100%;
 
-
-
-
-
     </style>
 </head>
 <body>

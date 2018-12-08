@@ -19,7 +19,9 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
         </form>
         <?php
         if (isset($_POST['follow'])) {
-            $follow = $pdo->prepare("INSERT INTO followers (userid, followerid) VALUES ($profile_id, $followerid)");
+            $follow = $pdo->prepare("INSERT INTO followers (userid, followerid) VALUES (:profile_id, :followerid)");
+            $follow->bindParam(':profile_id',$profile_id);
+            $follow->bindParam(':followerid',$followerid);
             if ($follow->execute()) {
 
                 echo '<script>window.location.href="profile.php?userid='.$profile_id.'"</script>';

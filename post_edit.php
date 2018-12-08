@@ -84,12 +84,11 @@ if ($display_oldpost->execute()){
                                           WHERE post_id= $post_id");
                        */
 
-                        $PostUpdate = $pdo->prepare("UPDATE posts SET headline, content, filename VALUES (?,?,?)) WHERE post_id= $post_id");
-                        $postedit=array($_POST['newheadline'],$_POST['newcontent'],$_POST['oldpicname']);
-
-
-
-                        if ($PostUpdate->execute($postedit)) {
+                        $PostUpdate = $pdo->prepare("UPDATE posts SET headline, content, filename VALUES (:newheadline, :newcontent, :oldpicname) WHERE post_id= $post_id");
+                        $PostUpdate->bindParam(':newheadline', $newheadline);
+                        $PostUpdate->bindParam(':newcontent', $newcontent);
+                        $PostUpdate->bindParam(':oldpicname', $oldpicname);
+                        if ($PostUpdate->execute()) {
 
                             echo "You just successfully updated your post!";
                             echo "<br>";

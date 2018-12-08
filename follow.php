@@ -7,13 +7,12 @@ $followerid=$_SESSION["angemeldet"];
 if ($profile_id!=$_SESSION["angemeldet"]) {
 
     // check ob wir dem Nutzer schon folgen
-    $checkfollow=$pdo->prepare("SELECT followerid FROM followers WHERE userid=$profile_id");
+    $checkfollow=$pdo->prepare("SELECT followerid FROM followers WHERE userid=$profile_id AND followerid=$followerid");
     $checkfollow->execute();
 
     $no=$checkfollow->rowCount();
     if(!$no > 0){
         ?>
-        <div class="content">
         <form action="profile.php?userid=<?php echo $profile_id?>" method="post">
             <input type="submit" name="follow" value="Follow">
         </form>
@@ -35,7 +34,6 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
         <form action="profile.php?userid=<?php echo $profile_id?>" method="post">
             <input type="submit" name="unfollow" value="Unfollow">
         </form>
-        </div>
         <?php
 
         if (isset($_POST['unfollow'])) {

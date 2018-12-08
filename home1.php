@@ -48,69 +48,76 @@ $myid= $_SESSION["angemeldet"];
 
 // Hierbei wird kontrolliert, wem der angemeldete User folgt
 $display_follower = $pdo->prepare("SELECT * FROM followers WHERE followerid= $myid");
-if ($display_follower->execute()) {
+$display_follower->execute();
 
-    while ($row3 = $display_follower->fetch()) {
-        $feedid = $row3['userid'];
-    }
-}
+while ($row3 = $display_follower->fetch(PDO::FETCH_ASSOC)) {
+    $feedid = $row3['userid'];
+
+
 // Zeige den Content der Nutzer denen der angemeldete User folge und meine eigenen Beiträge
 
     $get_feed = $pdo->prepare("SELECT * FROM posts WHERE userid= $feedid OR userid= $myid ORDER BY date DESC");
 
-    if($get_feed->execute()) {
+    $get_feed->execute();
         while($row=$get_feed->fetch()) {
             $editor_id = $row['userid'];
 
 
 // Hierbei wird kontrolliert wer den jeweiligen Post geschrieben hat
             $display_editor = $pdo->prepare("SELECT * FROM userdata WHERE userid= $editor_id");
-            if($display_editor->execute()) {
+            if ($display_editor->execute()) {
                 while ($row2 = $display_editor->fetch()) {
                     ?>
                     <!-- Hierbei wird der Content in Tabellenform angezeigt -->
-                    <table>
-                        <tr>
-                            <td>
-                                <strong>
-                                    <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img src="pictures/<?php echo $row2['profilepic'] ?>"></a>
-                                    <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a>
-                                </strong>
-                            </td>
-                        </tr>
+                    <div id="post">
+                        <table>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img
+                                                    src="pictures/<?php echo $row2['profilepic'] ?>"></a>
+                                        <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a>
+                                    </strong>
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td><small><?php echo $row['date']?></small></td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <small><?php echo $row['date'] ?></small>
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td><strong><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline']?></a></strong></td>
-                        </tr>
-                        <tr>
-                            <td>
+                            <tr>
+                                <td>
+                                    <strong><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline'] ?></a></strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
 
+                                    <?php
+                                    // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält --> Unovllständig
+
+                                    $checkpic = $pdo->prepare("SELECT filename FROM posts WHERE userid= $feedid OR userid= $myid");
+                                    $checkpic->execute();
+
+                                    $no = $checkpic->rowCount();
+                                    if ($no > 0){
+                                    ?>
+                                    <img src="pictures/<?php echo $row['filename'] ?>"></td>
                                 <?php
-                                // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält --> Unovllständig
-
-                                $checkpic=$pdo->prepare("SELECT filename FROM posts WHERE userid= $feedid OR userid= $myid");
-                                $checkpic->execute();
-
-                                $no=$checkpic->rowCount();
-                                if($no > 0){
+                                }
                                 ?>
-                                <img src="pictures/<?php echo $row['filename'] ?>"></td>
-                            <?php
-                            }
-                            ?>
-                        </tr>
-                        <tr>
-                            <td><?php echo $row['content'] ?></td>
-                        </tr>
-                        <tr>
-                            <td><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a></td>
-                        </tr>
-                    </table>
-                    <hr />
+                            </tr>
+                            <tr>
+                                <td><?php echo $row['content'] ?></td>
+                            </tr>
+                            <tr>
+                                <td><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <hr/>
                     </div>
                     </div>
                     <?php

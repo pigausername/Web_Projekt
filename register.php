@@ -149,6 +149,7 @@ if (!isset($_SESSION["angemeldet"])) {
 </div>
     <?php
 }
+
     else
     {
         echo "You already have an account! Head back to ".'<a href=home1.php>'."here".'</a>'."!";

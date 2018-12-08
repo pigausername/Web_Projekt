@@ -15,7 +15,7 @@ include_once "header.php";
 <body>
     <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
    <div class="content col-lg-10">
-    <h2>Beitrag schreiben</h2>
+    <h2>Beitrag erstellen</h2>
     <form action="uploads.php" method="post" enctype="multipart/form-data">
         <table>
             <tr>
@@ -73,12 +73,19 @@ if ($display_follower->execute()) {
                     <table>
                         <tr>
                             <td>
-                                <h4><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img src="pictures/<?php echo $row2['profilepic'] ?>"></a>
-                                    <a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline']?></a> by
+                                <strong>
+                                    <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img src="pictures/<?php echo $row2['profilepic'] ?>"></a>
                                     <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a>
-                                </h4>
+                                </strong>
                             </td>
+                        </tr>
 
+                        <tr>
+                            <td><small><?php echo $row['date']?></small></td>
+                        </tr>
+
+                        <tr>
+                            <td><strong><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline']?></a></strong></td>
                         </tr>
                         <tr>
                             <td>
@@ -99,9 +106,6 @@ if ($display_follower->execute()) {
                         </tr>
                         <tr>
                             <td><?php echo $row['content'] ?></td>
-                        </tr>
-                        <tr>
-                            <td><?php echo $row['date']?></td>
                         </tr>
                         <tr>
                             <td><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a></td>

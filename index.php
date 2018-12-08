@@ -77,7 +77,7 @@ if (isset($_POST['login'])) {
 
 <form action="index.php" method="post">
 
-    <input type="text" name="email" placeholder="Email"/><br>
+    <input type="text" name="email" placeholder="E-mail"/><br>
     <input type="password" name="password" placeholder="Password"/><br><br>
     <input type="submit" name="login" class=btn value="Log In"><br>
     <br>

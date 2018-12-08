@@ -15,10 +15,9 @@ if($display_user->execute()) {
         <h1><?php echo $row2['username'] ?></h1>
         <table>
             <tr><td><img src="pictures/<?php echo $row2['profilepic'] ?>"></td></tr>
-            <tr><td>Username:</td><td><?php echo $row2['username'] ?></td></tr>
             <tr><td>E-Mail:</td><td><?php echo $row2['email'] ?></td></tr>
-            <tr><td>Firstname:</td><td><?php echo $row2['firstname'] ?></td></tr>
-            <tr><td>Lastname:</td><td><?php echo $row2['lastname'] ?></td></tr>
+            <tr><td>First name:</td><td><?php echo $row2['firstname'] ?></td></tr>
+            <tr><td>Last name:</td><td><?php echo $row2['lastname'] ?></td></tr>
             <tr><td>Subject:</td><td><?php echo $row2['subject'] ?></td></tr>
             <tr><td>Semester:</td><td><?php echo $row2['semester'] ?></td></tr>
         </table>
@@ -45,13 +44,20 @@ if($sql->execute()) {
         <form>
             <table>
                 <tr>
-                    <td><?php echo $row['headline'] ?></td>
+                    <td>
+                        <strong>
+                            <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img src="pictures/<?php echo $row2['profilepic'] ?>"></a>
+                            <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a>
+                        </strong>
+                    </td>
                 </tr>
-                <tr>
-                    <td><img src="pictures/<?php echo $row['filename'] ?>"></td>
-                <tr>
 
-                    <td><?php echo $row['content'] ?></td>
+                <tr>
+                    <td><small><?php echo $row['date']?></small></td>
+                </tr>
+
+                <tr>
+                    <td><strong><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline']?></a></strong></td>
                 </tr>
                 <tr>
                     <?php

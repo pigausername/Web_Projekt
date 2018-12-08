@@ -95,7 +95,7 @@ if (isset($_SESSION["angemeldet"]))
 
 <?php
 
-    include_once "notification.php";
+    //include_once "notification.php";
 
 }
 

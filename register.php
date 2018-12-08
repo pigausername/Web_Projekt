@@ -26,8 +26,16 @@
 
 
     <title>Registrierung</title>
+
+    <style>
+        body {
+            background-image: url("pictures/treppe_hdm.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+    </style>
 </head>
 <body>
+
 
 <?php
 session_start();

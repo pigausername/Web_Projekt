@@ -17,7 +17,7 @@
             <!-- Grid column -->
             <div class="col-md-2 mb-3">
                 <h9 class="text-uppercase font-weight-light">
-                    <a href="impressum.php">Imprint</a>
+                    <a href="impressum.php">Legal notice</a>
                 </h9>
             </div>
             <!-- Grid column -->
@@ -26,7 +26,7 @@
             <!-- Grid column -->
             <div class="col-md-2 mb-3">
                 <h9 class="text-uppercase font-weight-light">
-                    <a href="datenschutz.php">Datenschutz</a>
+                    <a href="datenschutz.php">Privacy policy</a>
                 </h9>
             </div>
             <!-- Grid column -->

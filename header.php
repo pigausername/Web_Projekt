@@ -84,7 +84,7 @@ if (isset($_SESSION["angemeldet"]))
 
 
             <form action="search.php" class="form-inline" method="POST">
-                <input class="form-control mr-sm-2" name="result" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control mr-sm-2" name="result" type="search" placeholder="Search..." aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
 

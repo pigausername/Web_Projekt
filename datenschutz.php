@@ -2,74 +2,33 @@
 
 include_once "header.php";
 ?>
+<title>Privacy Policy</title>
 <div class="content">
-<h1>Datenschutzerklärung</h1>
-
-<p><strong>Allgemeines</strong></p>
-<p>Der Schutz personenbezogener Daten ist uns ein wichtiges Anliegen.
-Die Hochschule der Medien erhebt und verarbeitet personenbezogene Daten von Besucherinnen und Besuchern ihrer Internetseiten unter Beachtung der geltenden datenschutzrechtlichen Bestimmungen der EU-Datenschutzgrundverordnung (EU-DSGVO) sowie des Landesdatenschutzgesetzes (LDSG).
-Die genannten Vorschriften betreffen personenbezogene Daten.
-Personenbezogene Daten sind Einzelangaben über persönliche und sachliche Verhältnisse einer bestimmten oder bestimmbaren natürlichen Person.
-Dies können bei einer Kontaktaufnahme per Post, E-Mail, oder Web-Formular beispielsweise der Name, die Anschrift oder die E-Mail-Adresse sein.
-Hiermit unterrichten wir Sie über Art, Umfang und Zwecke der Erhebung und Verwendung derjenigen Daten,
-die während Ihres Besuchs auf unserer Homepage erfasst und wie sie genutzt werden. Sie können diese Unterrichtung jederzeit auf unserer Webseite abrufen. </p>
-<br>
-<p><strong>Datenerhebung und -verarbeitung bei Zugriffen aus dem Internet</strong></p>
-<p>Während des Aufenthalts auf den Internetseiten der Hochschule werden nach einem Einloggen dem System personenbezogene Daten bereitgestellt.
-Jeder Zugriff auf unsere Homepage und jeder Abruf einer auf der Homepage hinterlegten Datei wird protokolliert. Diese Daten werden nicht öffentlich auf unseren Internetseiten dargestellt, sondern können in verschiedenen Erweiterungen verarbeitet werden.
-Die Speicherung dient internen systembezogenen und statistischen Zwecken. Protokolliert werden: Name der abgerufenen Datei, Datum und Uhrzeit des Abrufs, übertragene Datenmenge, Meldung über erfolgreichen Abruf, Browser Version des zugreifenden Hostsystems; Betriebssystem Version des zugreifenden Hostsystems. Die Verarbeitung dieser Daten erfolgt zu dem Zweck, die Nutzung unserer Internetseiten zu ermöglichen (Verbindungsaufbau) sowie zu Zwecken der Systemsicherheit, der technischen Administration der Netzinfrastruktur und zur Optimierung des Internetangebots.
-Zusätzlich werden die IP Adressen der anfragenden Rechner protokolliert.
-Weitergehende personenbezogene Daten werden nur erfasst, wenn Sie diese Angaben freiwillig, etwa im Rahmen einer Anfrage über das Webformular, machen.
-Das Vorhalten der Daten erlischt mit dem Abmelden oder dem Schließen des Webbrowsers.
-Über die vorstehend genannten Fälle hinaus werden personenbezogene Daten nicht verarbeitet, es sei denn, Sie willigen ausdrücklich in eine weitergehende Verarbeitung ein. Sie haben jederzeit die Möglichkeit, eine erteilte Einwilligung für die Zukunft zu widerrufen.
-</p>
-<br>
-
-<p><strong>Kontaktaufnahme per Web-Formular</strong></p>
-<p>Bei der Kontaktaufnahme per E-Mail oder Web-Formular gilt: diese Daten werden von uns unter Beachtung der Vorschriften der EU-DSGVO durch technische und organisatorische Maßnahmen geschützt. Mit der Übermittlung stimmen Sie der zweckgebundenen Speicherung, Verarbeitung und Benutzung Ihrer personenbezogenen Daten zu. Wir verwenden die Daten nur zur Beantwortung Ihrer Anfragen und für die technische Administration. Gemäß Artikel 15 EU-DSGVO haben Sie das Recht auf Auskunft hinsichtlich Ihrer bei uns gespeicherten Daten sowie gemäß Artikel 16, 17 und 18 EU-DSGVO haben Sie jederzeit das Recht auf Berichtigung, Löschung und Sperrung dieser personenbezogenen Daten. Im Rahmen des gesetzlichen Auskunftsanspruchs erhalten Sie daher jederzeit ohne Angaben von Gründen kostenfrei Auskunft über Ihre bei uns gespeicherten personenbezogenen Daten. Sie können jederzeit die uns erteilten Einwilligung zur Datenerhebung und Verwendung ohne Angaben von Gründen widerrufen.
-</p>
-<p><strong>In diesem Fall wenden Sie sich bitte an: </strong><br>
-Kontakt<br>
-Prof. Dr. Franco Rota<br>
-Prorektor <br>
-E-Mail: <a href="mailto:datenauskunft@hdm-stuttgart.de"alt="datenauskunft@hdm-stuttgart.de" title="datenauskunft@hdm-stuttgart.de">datenauskunft@hdm-stuttgart.de</a>
-</p>
-<br>
-
-<p><strong>Nutzung und Weitergabe personenbezogener Daten</strong></p>
-<p>In bestimmten Fällen ist für die Nutzung unseres Internetangebots die Angabe personenbezogener Daten wie Name, Anschrift oder E-Mail-Adresse erforderlich. Falls dies der Fall ist, werden jeweils direkt an der gleichen Stelle Art, Umfang und Zweck der Datenerhebung und -verarbeitung genannt.
-Übermittlungen personenbezogener Daten an staatliche Einrichtungen und Behörden erfolgen nur im Rahmen zwingender nationaler Rechtsvorschriften oder wenn die Weitergabe im Fall von Angriffen auf unsere Netzinfrastruktur zur Rechts- oder Strafverfolgung erforderlich ist. Eine Weitergabe zu anderen Zwecken an Dritte findet nicht statt.
-</p>
-<br>
-
-<p><strong>Einwilligung in weitergehende Datennutzung</strong></p>
-<p>Die Nutzung bestimmter Angebote auf unseren Webseiten wie etwa von Newsletter-Abonnements erfordert die Angabe und weitergehende Verarbeitung personenbezogener Daten, beispielsweise eine längerfristige Speicherung von E-Mail-Adressen oder postalischen Anschriften. Mit Angabe der erfragten Daten und Übersendung willigen Sie in deren Verarbeitung ein. Sie können diese Einwilligung gegenüber dem im Impressum genannten Betreiber der Webseite mit Wirkung für die Zukunft widerrufen.
-</p>
-<br>
-
-<p><strong>Sicherheit</strong></p>
-<p>Die Hochschule der Medien setzt technische und organisatorische Sicherheitsmaßnahmen ein, um Ihre durch uns verwalteten personenbezogenen Daten gegen zufällige oder vorsätzliche Manipulationen, Verlust, Zerstörung oder gegen den Zugriff unberechtigter Personen zu schützen. Unsere Sicherheitsmaßnahmen werden entsprechend der technologischen Entwicklung fortlaufend verbessert.
-</p>
-<br>
-
-<p><strong>Einsatz von Cookies</strong></p>
-<p>Beim Aufruf einzelner Internetseiten werden sogenannte temporäre Cookies verwendet. Diese Session-Cookies beinhalten keine personenbezogenen Daten und werden nach Ablauf der Sitzung mit dem Schließen Ihres Browsers automatisch gelöscht.
-Die meisten Browser akzeptieren Cookies jedoch automatisch. Sie können das Speichern von Cookies verhindern, indem Sie dies in Ihren Browser-Einstellungen festlegen. Wenn Sie keine Cookies akzeptieren, kann dies zu Funktionseinschränkungen unserer Angebote führen.
-</p>
-<br>
-
-<p><strong>Links zu Webseiten anderer Anbieter</strong></p>
-<p>Die vorliegende Datenschutzerklärung gilt für die Internetseiten der Domäne www.hdm-stuttgart.de. Soweit über Querverweise (Links) auf Inhalte anderer Anbieter verwiesen wird, kann deren Datenerhebung und Datennutzung nach anderen als den oben dargestellten Grundsätzen erfolgen.
-Hinweise zur Verantwortung für die bereitgestellten Inhalte einer Internetseite finden Sie im jeweiligen Impressum.
-</p>
-<br>
-
-<p><strong>Auskunftsrecht und Kontaktdaten</strong></p>
-Ihnen steht ein Auskunftsrecht bezüglich der über Sie gespeicherten personenbezogenen Daten und ferner ein Recht auf Berichtigung unrichtiger Daten, Sperrung und Löschung zu.
-Sollten Sie eine Korrektur oder Löschung von Daten wünschen oder weitergehende Fragen zur Verwendung der Daten haben, kontaktieren Sie bitte die im Impressum der genutzten Internetpräsenz genannten Betreiber (Redaktion).
-</p>
-<br>
-</div>
+    <h2>Privacy Policy</h2>
+    <p>Personal data (usually referred to just as "data" below) will only be processed by us to the extent necessary and for the purpose of providing a functional and user-friendly website, including its contents, and the services offered there.</p>
+    <p>Per Art. 4 No. 1 of Regulation (EU) 2016/679, i.e. the General Data Protection Regulation (hereinafter referred to as the "GDPR"), "processing" refers to any operation or set of operations such as collection, recording, organization, structuring, storage, adaptation, alteration, retrieval, consultation, use, disclosure by transmission, dissemination, or otherwise making available, alignment, or combination, restriction, erasure, or destruction performed on personal data, whether by automated means or not.</p>
+    <p>The following privacy policy is intended to inform you in particular about the type, scope, purpose, duration, and legal basis for the processing of such data either under our own control or in conjunction with others. We also inform you below about the third-party components we use to optimize our website and improve the user experience which may result in said third parties also processing data they collect and control.</p>
+    <p>Our privacy policy is structured as follows:</p>
+    <p>I. Information about us as controllers of your data<br>II. The rights of users and data subjects<br>III. Information about the data processing</p>
+    <h3>I. Information about us as controllers of your data</h3>
+    <p>The party responsible for this website (the "controller") for purposes of data protection law is:</p>
+    <p><span style="color: #ff0000;">RAM</span><br><span style="color: #ff0000;">Nobelstraße 10</span><br><span style="color: #ff0000;">70569 Stuttgart</span><br><span style="color: #ff0000;">Germany</span></p>
+    <p><span style="color: #ff0000;">Email: ram@hdm-stuttgart.de</span></p>
+    <p>The controller's data protection officer is:</p>
+    <p><span style="color: #ff0000;">Annika Bergfelder&nbsp;</span></p>
+    <h3>II. The rights of users and data subjects</h3>
+    <p>With regard to the data processing to be described in more detail below, users and data subjects have the right</p>
+    <ul type="disc">
+        <li>to confirmation of whether data concerning them is being processed, information about the data being processed, further information about the nature of the data processing, and copies of the data (cf. also Art. 15 GDPR);</li>
+        <li>to correct or complete incorrect or incomplete data (cf. also Art. 16 GDPR);</li>
+        <li>to the immediate deletion of data concerning them (cf. also Art. 17 DSGVO), or, alternatively, if further processing is necessary as stipulated in Art. 17 Para. 3 GDPR, to restrict said processing per Art. 18 GDPR;</li>
+        <li>to receive copies of the data concerning them and/or provided by them and to have the same transmitted to other providers/controllers (cf. also Art. 20 GDPR);</li>
+        <li>to file complaints with the supervisory authority if they believe that data concerning them is being processed by the controller in breach of data protection provisions (see also Art. 77 GDPR).</li>
+    </ul>
+    <p>In addition, the controller is obliged to inform all recipients to whom it discloses data of any such corrections, deletions, or restrictions placed on processing the same per Art. 16, 17 Para. 1, 18 GDPR. However, this obligation does not apply if such notification is impossible or involves a disproportionate effort. Nevertheless, users have a right to information about these recipients.</p>
+    <p><strong>Likewise, under Art. 21 GDPR, users and data subjects have the right to object to the controller's future processing of their data pursuant to Art. 6 Para. 1 lit. f) GDPR. In particular, an objection to data processing for the purpose of direct advertising is permissible.</strong></p>
+    <h3>III. Information about the data processing</h3>
+    <p>Your data processed when using our website will be deleted or blocked as soon as the purpose for its storage ceases to apply, provided the deletion of the same is not in breach of any statutory storage obligations or unless otherwise stipulated below.</p>
 
 <?php
 

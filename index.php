@@ -21,6 +21,17 @@
 
 
     <title>Login</title>
+
+    <style>
+        body {
+            background-image: url("pictures/treppe_hdm.jpg");
+            background-size: 100%;
+
+
+
+
+
+    </style>
 </head>
 <body>
 
@@ -72,7 +83,7 @@ if (isset($_POST['login'])) {
 
 <form action="index.php" method="post">
 
-    <input type="email" name="email" id="email" placeholder="Email"/><br>
+    <input type="text" name="email" placeholder="Email"/><br>
     <input type="password" name="password" placeholder="Password"/><br><br>
     <input type="submit" name="login" class=btn value="Log In"><br>
     <br>

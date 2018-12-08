@@ -22,7 +22,7 @@
     </style>
 </head>
 <body>
-
+<div class="place_content">
 
 <?php
 session_start();
@@ -110,6 +110,8 @@ if (!isset($_SESSION["angemeldet"])) {
     <hr />
     Already have an account? <a href="index.php">Sign in</a>.
 </div>
+
+</div>
     <?php
 }
     else
@@ -120,3 +122,4 @@ if (!isset($_SESSION["angemeldet"])) {
 
 include_once "footer.php";
 ?>
+</body>

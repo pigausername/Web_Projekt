@@ -1,7 +1,19 @@
 <?php
 include_once "header.php";
+?>
+
+<!doctype html>
+    <html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Home</title>
 
 
+    </head>
+<body>
+<div class="place_content">
+<?php
 $myprofile_id = $_SESSION["angemeldet"];
 $profile_id = $_GET['userid'];
 //Daten des jeweiligen Nutzers anzeigen
@@ -82,6 +94,7 @@ if($sql->execute()) {
             </table>
         </form>
 </div>
+</div>
         <?php
     }}
 include_once "footer.php";
@@ -89,3 +102,4 @@ include_once "footer.php";
 
 
 ?>
+</body>

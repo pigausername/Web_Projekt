@@ -4,7 +4,6 @@
 body {
         background-color: rgb(225, 225, 225);
         font-size: 85%;
-        margin-top: 5%;
 }
 .form_space_around_boxes {
     margin: 0.1cm;
@@ -41,16 +40,20 @@ form {
 .footer {
     background-color: white;
     color: #5eb6a1;
-    position: absolute;
-    grid-column-start: 1;
-    grid-column-end: 8;
+    position: fixed;
     bottom: 0;
     right:0;
     left: 0;
     width: 100%;
     padding-top: 0.3cm;
-    margin-top: 3%;
 
+}
+
+.place_content {
+    margin-top: 6%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 8%;
 }
 
 /*Small devices (landscape phones, 576px and up)*/

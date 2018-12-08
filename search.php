@@ -1,7 +1,7 @@
 <?php
 include_once ("header.php");
 ?>
-<div class="content">
+<div class="place_content">
     <h1>Search results:</h1>
 
 

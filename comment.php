@@ -2,8 +2,19 @@
 session_start();
 include_once "header.php";
 ?>
-<div class="content">
-<div class="container">
+
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+
+
+</head>
+<body>
+
+<div class="place_content">
     <form method="POST" id="comment_form">
         <div class="form-group">
             <textarea name="comment" id="comment" class="form-control" placeholder="Enter Comment" rows="5" required></textarea>
@@ -17,7 +28,7 @@ include_once "header.php";
     <br />
     <div id="display_comment"></div>
 </div>
-</div>
+
 
 
 <script>
@@ -61,3 +72,6 @@ include_once "header.php";
 
     });
 </script>
+
+</div>
+</body>

@@ -18,7 +18,7 @@ $row2 = $display_editor->fetch();
 
 
 <body>
-<div class="content">
+<div class="place_content">
 <table>
     <tr>
         <td><h1><?php echo $row["headline"] ?></h1></td>

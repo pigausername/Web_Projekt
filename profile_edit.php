@@ -16,7 +16,8 @@ if($statement->execute()) {
             <title>Edit your profile</title>
         </head>
         <body>
-        <div class="content">
+        <div class="place_content">
+
         <h1>Here you can edit your profile.</h1>
         <form action="profile_edit.php" method="post">
             <table>

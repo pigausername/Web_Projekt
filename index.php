@@ -9,28 +9,23 @@
 
     <link href="https://mars.iuk.hdm-stuttgart.de/~mv065/webprojekt/CSS/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="https://mars.iuk.hdm-stuttgart.de/~mv065/webprojekt/CSS/navbar-top-fixed.css" rel="stylesheet">
-
     <link href="https://mars.iuk.hdm-stuttgart.de/~rk067/web_projekt/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="https://mars.iuk.hdm-stuttgart.de/~rk067/web_projekt/css/navbar-top-fixed.css" rel="stylesheet">
-
 
     <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="https://mars.iuk.hdm-stuttgart.de/~ab238/css/navbar-top-fixed.css" rel="stylesheet">
-
     <!--    <link rel="stylesheet" type="text/css" href="stylesheet.css"> -->
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
 
     <title>Login</title>
 
     <style>
         body {
             background-image: url("pictures/treppe_hdm.jpg");
+            background-size: 100%;
             background-position: center;
             background-repeat: no-repeat;
     </style>
@@ -45,6 +40,18 @@ require_once "userdata.php";
 if (!isset($_SESSION["angemeldet"])){
 
 if (isset($_POST['login'])) {
+
+
+    if(empty($email) OR empty($password)){
+        ?>
+        <div class="alert alert-danger alert-dismissible fade show">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Info!</strong> Please fill in all fields!
+        </div>
+        <?php
+    };
+
+
     $email = $_POST["email"];
     $password = $_POST["password"];
 
@@ -73,8 +80,8 @@ if (isset($_POST['login'])) {
 
 <form action="index.php" method="post">
 
-    <input class="form_space_around_boxes" type="text" name="email" placeholder="Email"/><br>
-    <input class="form_space_around_boxes" type="password" name="password" placeholder="Password"/><br><br>
+    <input type="text" name="email" placeholder="E-mail"/><br>
+    <input type="password" name="password" placeholder="Password"/><br><br>
     <input type="submit" name="login" class=btn value="Log In"><br>
     <br>
     <hr />

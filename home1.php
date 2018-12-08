@@ -15,7 +15,7 @@ include_once "header.php";
 <body>
     <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
    <div class="content col-lg-10">
-    <h2>Beitrag erstellen</h2>
+    <h2>Create a post</h2>
     <form action="uploads.php" method="post" enctype="multipart/form-data">
         <table>
             <tr>
@@ -25,7 +25,7 @@ include_once "header.php";
                 <td><textarea name="content" placeholder="Type your text here" rows="10" cols="30"></textarea></td>
             </tr>
             <tr>
-                <td><input type="file" name="file" id="file"></td>
+                <td>Select a file: <input type="file" name="file" id="file" value="File"></td>
             </tr>
             <tr>
                 <td><button type="submit" value="post" name="post">Post</button></td>

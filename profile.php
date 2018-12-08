@@ -1,14 +1,13 @@
 <?php
 include_once "header.php";
 
-include_once "follow.php";
 
 $myprofile_id = $_SESSION["angemeldet"];
 $profile_id = $_GET['userid'];
 //Daten des jeweiligen Nutzers anzeigen
 $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id");
 if($display_user->execute()) {
-    while ($row2 = $display_user->fetch()) {
+    $row2 = $display_user->fetch();
         ?>
 <div class="content">
         <title><?php echo $row2['username'] ?></title>
@@ -24,11 +23,12 @@ if($display_user->execute()) {
         <hr />
         <?php
 
-    }
+
 } else {
     echo "No user found";
 }
 
+        include_once "follow.php";
 
 //Posts des jeweiligen Nutzers anzeigen
 
@@ -59,21 +59,24 @@ if($sql->execute()) {
                 <tr>
                     <td><strong><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline']?></a></strong></td>
                 </tr>
+
+                <tr>
+                    <td><?php echo $row['content'] ?></td>
+                </tr>
+
                 <tr>
                     <?php
                     // Verweis auf Editseite
-                    if ($profile_id==$_SESSION["angemeldet"]) {
+                    if ($profile_id==$myprofile_id) {
 
                         $post_id = $row['post_id'];
                         echo '<td><a href="post_edit.php?post_id=' . $post_id . ' "> Edit </a></td>';
+                        echo '<td><a href="delete_post.php?post_id='. $post_id.'"> Delete </a></td>';
                     }
                     ?>
                 </tr>
                 <tr>
                     <td><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a></td>
-                </tr>
-                <tr>
-                    <td><a href="delete_post.php?post_id=<?php echo $row["post_id"] ?>">Delete</a></td>
                 </tr>
                 <br>
             </table>

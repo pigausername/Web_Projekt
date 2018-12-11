@@ -40,15 +40,13 @@ if($display_user->execute()) {
     echo "No user found";
 }
 
-        include_once "follow.php";
+include_once "show_followers.php";
+include_once "show_subs.php";
+
+//Follow Button
+include_once "follow.php";
 
 //Posts des jeweiligen Nutzers anzeigen
-
-$headline= $_POST ["headline"];
-$file= $_POST ["file"];
-$content= $_POST["content"];
-
-
 $sql = $pdo->prepare("SELECT * FROM posts WHERE userid= $profile_id ORDER BY date DESC");
 if($sql->execute()) {
     while ($row = $sql->fetch()) {
@@ -59,6 +57,20 @@ if($sql->execute()) {
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a><br>
                 <small><?php echo $row['date']?></small><br>
                 <strong><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline']?></a></strong><br>
+                <?php
+                // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält --> Unovllständig
+
+                $checkpic = $pdo->prepare("SELECT filename FROM posts WHERE userid= $myid");
+                $checkpic->execute();
+
+                $no = $checkpic->rowCount();
+                if ($no > 0) {
+                    ?>
+                    <img src="pictures/<?php echo $row3['filename'] ?>">
+                    <br>
+                    <?php
+                }
+                ?>
                 <?php echo $row['content'] ?><br>
                 <?php
                     // Verweis auf Editseite

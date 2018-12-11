@@ -63,7 +63,12 @@ if (isset($_POST['login'])) {
                 $_SESSION["angemeldet"] = $row["userid"];
                 header("Location: home1.php");
             } else {
-                echo "No authorization.";
+                ?>
+                <div class="alert alert-danger alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Info!</strong> Wrong password!
+                </div>
+                <?php
             }
         }
     }

@@ -33,10 +33,9 @@ include_once "header.php";
             <button class="button button1" type="submit" value="post" name="post">Post</button>
 
     </form>
-
 <br>
 
-    <div class="content-middle">   <h2>Feed</h2> </div>
+      <h2 style="text-align: center">Feed</h2>
 <hr>
 
     <!-- hole Content aus Datenbank -->
@@ -71,7 +70,9 @@ if(!$no > 0) {
                     <br>
                     <strong><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline'] ?></a></strong><br>
                     <?php echo $row['content'] ?><br>
-                    <a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a>
+
+                <p href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><p style="text-align: right">Comment</p></a>
+
                 <hr />
 
                 </div>
@@ -121,7 +122,11 @@ else {
                 ?>
                 <p><?php echo $row3['content'] ?></p>
                 <br>
-                <a href="single_post.php?post_id=<?php echo $row3["post_id"] ?>">Comment</a>
+                    <div class="content-right">
+                    <div class="btn btn-info">
+                <a style="color: white" href="single_post.php?post_id=<?php echo $row3["post_id"] ?>">Comment</a>
+                    </div>
+                    </div>
                 <hr/>
                 <?php
             }

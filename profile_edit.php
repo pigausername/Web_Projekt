@@ -16,9 +16,11 @@ if($statement->execute()) {
             <title>Edit your profile</title>
         </head>
         <body>
-        <div class="place_content">
+        <div id="place_content">
+            <div class="place_content_inside">
 
-        <h1>Here you can edit your profile.</h1>
+
+            <h1>Here you can edit your profile.</h1>
         <form action="profile_edit.php" method="post">
             <table>
                 <tr>
@@ -70,6 +72,8 @@ if($statement->execute()) {
                 </tr>
             </table>
         </form>
+            </div>
+        </div>
         </body>
         <?php
     }

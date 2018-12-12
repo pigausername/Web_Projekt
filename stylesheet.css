@@ -8,6 +8,12 @@ body {
     margin: 0.1cm;
 }
 
+#notification_dropdown {
+    color: white;
+    margin-right: 20px;
+
+}
+
 .login_page {
     background-color: white;
     padding: 5%;

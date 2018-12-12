@@ -9,7 +9,3 @@ $showfollowers->execute();
 $no_followers = $showfollowers->rowCount();
 echo '<h3>Followers:</h3>';
 echo '<h4>'.$no_followers.'</h4>';
-
-
-
-

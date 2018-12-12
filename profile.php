@@ -12,7 +12,9 @@ include_once "header.php";
 
     </head>
 <body>
-<div class="place_content">
+<div id="place_content">
+    <div class="place_content_inside">
+
 <?php
 $myprofile_id = $_SESSION["angemeldet"];
 $profile_id = $_GET['userid'];
@@ -21,7 +23,6 @@ $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id"
 $display_user->execute();
 $row2 = $display_user->fetch();
         ?>
-<div class="content">
         <title><?php echo $row2['username'] ?></title>
         <h1><?php echo $row2['username'] ?></h1>
     <br>
@@ -83,6 +84,7 @@ if($sql->execute()) {
                 <a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a>
 
         </form>
+
 </div>
 </div>
         <?php

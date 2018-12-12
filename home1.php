@@ -12,28 +12,34 @@ include_once "header.php";
 
     </head>
 
-    <div class="place_content">
+<body>
+    <div id="place_content">
+    <div class="place_content_inside">
+
     <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
-   <div class="content col-lg-10">
-    <h2>Create a post</h2>
+
+    <div class="content-middle">  <h2>Create a post</h2></div>
 <br>
     <form action="uploads.php" method="post" enctype="multipart/form-data">
         <br>
-                <textarea name="headline" placeholder="Titel" rows="2" cols="30"></textarea>
+                <textarea name="headline" placeholder="Titel" rows="2" cols="80"></textarea>
             <br>
-                <textarea name="content" placeholder="Type your text here" rows="10" cols="30"></textarea>
+                <textarea name="content" placeholder="Type your text here" rows="10" cols="80"></textarea>
+           <br>
+        <br> <div class="content-right">
+            Select a file: <input type="file" name="file" id="file" value="File">
            <br>
         <br>
-                Select a file: <input type="file" name="file" id="file" value="File">
-           <br>
-        <br>
-                <button type="submit" value="post" name="post">Post</button>
+
+            <button class="button button1" type="submit" value="post" name="post">Post</button>
+
 
     </form>
 
 <br>
 
-    <h2>Feed</h2>
+    <div class="content-middle">   <h2>Feed</h2> </div>
+<hr>
 
     <!-- hole Content aus Datenbank -->
 <?php
@@ -60,14 +66,19 @@ if(!$no > 0) {
         if ($sql->execute()) {
             while ($row = $sql->fetch()) {
                 ?>
-                    <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img
-                                src="pictures/<?php echo $row2['profilepic'] ?>"></a>
+                <div class="rounded-circle"
+                    <a href="profile.php?userid=<?php echo $row2['userid'] ?>">
+                        <img src="pictures/<?php echo $row2['profilepic'] ?>"></a>
+                </div>
+
                     <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a><br>
                     <small><?php echo $row['date'] ?></small>
                     <br>
                     <strong><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline'] ?></a></strong><br>
                     <?php echo $row['content'] ?><br>
-                    <a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a>
+
+                   <a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"> <button class="button button1">Comment</button></a>
+
                 <hr />
 
                 </div>
@@ -122,7 +133,9 @@ else {
                 <?php
             }
         }
+    }
 
-}
+
+
 include_once "footer.php";
 ?>

@@ -60,9 +60,10 @@ if(!$no > 0) {
         if ($sql->execute()) {
             while ($row = $sql->fetch()) {
                 ?>
-                    <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img
+                    <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"
                                 src="pictures/<?php echo $row2['profilepic'] ?>"></a>
-                    <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a><br>
+
+                    <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a><br>
                     <small><?php echo $row['date'] ?></small>
                     <br>
                     <strong><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline'] ?></a></strong><br>
@@ -94,7 +95,7 @@ else {
                     $row2 = $display_editor->fetch();
                 ?>
                 <div class="profilepic rounded-circle">
-                <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img
+                <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"
                             src="pictures/<?php echo $row2['profilepic'] ?>"></a>
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a><br>
                 <small><?php echo $row3['date'] ?></small>

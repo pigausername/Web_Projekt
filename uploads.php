@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once "userdata.php";
 
 ?>
@@ -58,14 +59,10 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
                     $fileNameNew = uniqid('', true) . "." . $fileActualExt;
                     $fileDestination = 'pictures/' . $fileNameNew;
                     move_uploaded_file($fileTmpName, $fileDestination);
+                    echo $fileDestination;
                     echo $headline;
                     echo $content;
                     echo $fileNameNew;
-
-                    // vorbereiten und schreiben in die Datenbank
-                  /*  $uploadwithpic = $pdo->prepare("INSERT INTO posts (`headline`,`content`,`filename`,`userid`) VALUES ('$headline', '$content', '$fileNameNew', '$userid')");
-                    if ($uploadwithpic->execute()){
-                  */
 
                         $uploadwithpic = $pdo->prepare("INSERT INTO posts (headline, content, filename, userid) VALUES (:headline, :content, :fileNameNew, :userid)");
                         $uploadwithpic->bindParam(':headline', $headline);

@@ -25,9 +25,9 @@ $row2 = $display_user->fetch();
         <title><?php echo $row2['username'] ?></title>
         <h1><?php echo $row2['username'] ?></h1>
     <br>
-    <div class="profilepic rounded-circle">
-        <img src="pictures/<?php echo $row2['profilepic'] ?>">
-    </div>
+
+        <img class="profilepic" src="pictures/<?php echo $row2['profilepic'] ?>">
+
     <br>
             E-Mail: <?php echo $row2['email'] ?> <br>
             First name: <?php echo $row2['firstname'] ?> <br>
@@ -52,14 +52,14 @@ if($sql->execute()) {
         ?>
         <form>
 
-                <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img src="pictures/<?php echo $row2['profilepic'] ?>"></a>
-                <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a><br>
+                <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post" src="pictures/<?php echo $row2['profilepic'] ?>"></a>
+                <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a><br>
                 <small><?php echo $row['date']?></small><br>
                 <strong><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline']?></a></strong><br>
                 <?php
-                // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält --> Unovllständig
+                // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält
 
-                $checkpic = $pdo->prepare("SELECT filename FROM posts WHERE userid= $myid");
+                $checkpic = $pdo->prepare("SELECT filename FROM posts WHERE userid= $myprofile_id");
                 $checkpic->execute();
 
                 $no = $checkpic->rowCount();

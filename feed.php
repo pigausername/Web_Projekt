@@ -31,7 +31,7 @@ include_once "header.php";
         <br>
 
             <button class="button button1" type="submit" value="post" name="post">Post</button>
-
+        </div>
     </form>
 <br>
 
@@ -109,16 +109,22 @@ else {
                 <?php
                 // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält --> Unovllständig
 
-                $checkpic = $pdo->prepare("SELECT filename FROM posts WHERE userid= $myid");
+                $picpost_id = $row3["post_id"];
+                echo $picpost_id;
+                $checkpic = $pdo->prepare("SELECT filename FROM posts WHERE post_id= $picpost_id");
                 $checkpic->execute();
+                $a = $checkpic->fetch();
+                echo $a;
 
-                $no = $checkpic->rowCount();
+                $no = $checkpic->columnCount();
                 if ($no > 0) {
+                    echo $row3['filename'];
                     ?>
                     <img class="postpic" src="pictures/<?php echo $row3['filename'] ?>">
                     <br>
-                    <?php
+                <?php
                 }
+                else {echo $no;}
                 ?>
                 <p><?php echo $row3['content'] ?></p>
                 <br>

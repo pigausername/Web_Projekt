@@ -11,8 +11,8 @@ include_once "header.php";
     </head>
 <body>
 <div class="row">
-    <div class="col-md-4 profile_info">
-        <div class="card" id="place_content">
+    <div class="col-md-4">
+        <div class="profile_info card" id="place_content">
             <div class="place_content_inside">
 
 <?php
@@ -28,7 +28,7 @@ $row2 = $display_user->fetch();
     <br>
 
         <img class="profilepic" src="pictures/<?php echo $row2['profilepic'] ?>">
-
+    <br>
     <br>
             E-Mail: <?php echo $row2['email'] ?> <br>
             First name: <?php echo $row2['firstname'] ?> <br>
@@ -47,8 +47,7 @@ include_once "show_subs.php";
 include_once "follow.php";
 
 ?>
-
-        </div>
+            </div>
     </div>
 </div>
 

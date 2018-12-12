@@ -69,6 +69,8 @@ form {
 }
 
 
+
+
 .place_content_inside {
     padding: 15px;
     border: 4px solid #fff;
@@ -79,6 +81,8 @@ form {
 .profile_info {
     float: left;
     width: 25%;
+    position: sticky;
+
 }
 
 .content-profile{

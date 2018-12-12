@@ -24,7 +24,7 @@ $row2 = $display_editor->fetch();
         <td><h1><?php echo $row["headline"] ?></h1></td>
     </tr>
     <tr>
-        <td><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img src="pictures/<?php echo $row2['profilepic'] ?>"></a>By <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></td>
+        <td><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic" src="pictures/<?php echo $row2['profilepic'] ?>"></a>By <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></td>
     </tr>
     <tr>
         <td>

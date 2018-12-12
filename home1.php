@@ -111,7 +111,7 @@ else {
                 $no = $checkpic->rowCount();
                 if ($no > 0) {
                     ?>
-                    <img src="pictures/<?php echo $row3['filename'] ?>">
+                    <img class="postpic" src="pictures/<?php echo $row3['filename'] ?>">
                     <br>
                     <?php
                 }

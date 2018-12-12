@@ -65,7 +65,7 @@ if($sql->execute()) {
                 $no = $checkpic->rowCount();
                 if ($no > 0) {
                     ?>
-                    <img src="pictures/<?php echo $row['filename'] ?>">
+                    <img class="postpic" src="pictures/<?php echo $row['filename'] ?>">
                     <br>
                     <?php
                 }

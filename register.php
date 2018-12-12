@@ -139,7 +139,7 @@ if (!isset($_SESSION["angemeldet"])) {
             <input class="form_space_around_boxes" type="email" name="email" placeholder="E-mail"><br>
             <input class="form_space_around_boxes" type="text" name="firstname" placeholder="First name"><br>
             <input class="form_space_around_boxes" type="text" name="lastname" placeholder="Last name"><br><br>
-            <button type="submit" name="register" id="register" >Register</button><br>
+            <button type="submit" name="register" class="btn btn-info" id="register" >Register</button><br>
         <br>
     </form>
     <hr />

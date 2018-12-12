@@ -45,8 +45,8 @@ if (isset($_SESSION["angemeldet"]))
 
 
 <div class="container"> <!-- folgender code definiert das die navbar dunkel ist und am oberen Rand fixiert ist und wann sich das Menü zu einem Hamburgermenü umwandelt.-->
-    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark rounded">
-        <a class="navbar-brand" href="feed.php">RAM</a>
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="home1.php">RAM</a>
 
         <!-- folgender code lässt das responsive Menü erscheinen (Hamburgermenü)-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,20 +56,16 @@ if (isset($_SESSION["angemeldet"]))
 
         <div class="collapse navbar-collapse" id="navbarsExample09">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="feed.php">Feed <span class="sr-only">(current)</span></a>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="profile.php" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown09">
-                        <a class="dropdown-item" href="profile.php?userid=<?php echo $userid?>">My Profile</a>
-                        <a class="dropdown-item" href="profile_edit.php">Edit my Profile</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" id="bar-link" href="home1.php">Feed</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="logout.php">Log Out</a>
+                    <a class="nav-link" id="bar-link" href="profile.php?userid=<?php echo $userid?>">Profile</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" id="bar-link" href="logout.php">Log Out</a>
                 </li>
             </ul>
 
@@ -85,7 +81,7 @@ if (isset($_SESSION["angemeldet"]))
 
             <form action="search.php" class="form-inline" method="POST">
                 <input class="form-control mr-sm-2" name="result" type="search" placeholder="Search..." aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
             </form>
 
 

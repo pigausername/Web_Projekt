@@ -78,7 +78,7 @@ if (isset($_POST['login'])) {
 ?>
 
 
-<div class="login_page">
+<div class="login_page rounded">
     <h1>Welcome to RAM!</h1>
     <hr />
 <div>
@@ -90,7 +90,7 @@ if (isset($_POST['login'])) {
 
     <input class="form_space_around_boxes" type="text" name="email" placeholder="E-mail"/><br>
     <input class="form_space_around_boxes" type="password" name="password" placeholder="Password"/><br><br>
-    <input type="submit" name="login" class=btn value="Log In"><br>
+    <input type="submit" name="login" class="btn btn-info" value="Log In"><br>
     <br>
     <hr />
     Not have an account yet? Create your own profile <a href="register.php">here</a>!

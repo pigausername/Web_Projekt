@@ -12,6 +12,7 @@ body {
     background-color: white;
     padding: 5%;
     text-align: center;
+    border-radius: 3rem !important;
 }
 
 .register_page {
@@ -23,17 +24,30 @@ body {
 
 form {
     justify-content: center;
+
 }
 
+
 .footer {
-    background-color: white;
-    color: #5eb6a1;
+    background-color: #353a40;
     position: fixed;
     bottom: 0;
     right:0;
     left: 0;
     width: 100%;
-    padding-top: 0.3cm;
+    font-size: 90%;
+}
+
+#bar-link {
+    display: block;
+    color: #999da0;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#bar-link:hover, #bar-link:active, #bar-link:focus {
+    color: white;
+    text-decoration: none;
 }
 
 #place_content {
@@ -52,6 +66,7 @@ form {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+
 }
 
 .place_content_inside {
@@ -94,14 +109,3 @@ form {
     width: 100%
 }
 
-/*Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) { ... }
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) { ... }
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) { ... }
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {  ... }

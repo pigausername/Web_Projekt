@@ -30,14 +30,12 @@ include_once "header.php";
            <br>
         <br>
 
-            <button class="button button1" type="submit" value="post" name="post">Post</button>
-
-
+            <button class="btn btn-info" type="submit" value="post" name="post">Post</button>
+        </div>
     </form>
-
 <br>
 
-    <div class="content-middle">   <h2>Feed</h2> </div>
+      <h2 style="text-align: center">Feed</h2>
 <hr>
 
     <!-- hole Content aus Datenbank -->
@@ -73,7 +71,9 @@ if(!$no > 0) {
                     <br>
                     <strong><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline'] ?></a></strong><br>
                     <?php echo $row['content'] ?><br>
-                    <a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a>
+
+                <p href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><p style="text-align: right">Comment</p></a>
+
                 <hr />
 
                 </div>
@@ -99,7 +99,7 @@ else {
                     $display_editor->execute();
                     $row2 = $display_editor->fetch();
                 ?>
-                <div class="profilepic rounded-circle">
+
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"
                             src="pictures/<?php echo $row2['profilepic'] ?>"></a>
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a><br>
@@ -123,7 +123,11 @@ else {
                 ?>
                 <p><?php echo $row3['content'] ?></p>
                 <br>
-                <a href="single_post.php?post_id=<?php echo $row3["post_id"] ?>">Comment</a>
+                    <div class="content-right">
+                    <div class="btn btn-info">
+                <a style="color: white" href="single_post.php?post_id=<?php echo $row3["post_id"] ?>">Comment</a>
+                    </div>
+                    </div>
                 <hr/>
                 <?php
             }

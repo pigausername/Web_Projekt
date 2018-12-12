@@ -18,8 +18,10 @@ $row2 = $display_editor->fetch();
 
 
 <body>
-<div class="place_content">
-<table>
+<div id="place_content">
+    <div class="place_content_inside">
+
+    <table>
     <tr>
         <td><h1><?php echo $row["headline"] ?></h1></td>
     </tr>
@@ -50,6 +52,7 @@ $row2 = $display_editor->fetch();
         <td><?php include "comment.php" ?></td>
     </tr>
 </table>
+</div>
 </div>
 
 

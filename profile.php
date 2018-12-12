@@ -24,7 +24,7 @@ $display_user->execute();
 $row2 = $display_user->fetch();
         ?>
         <title><?php echo $row2['username'] ?></title>
-        <h1><?php echo $row2['username'] ?></h1>
+        <h1 style="text-align: center"><?php echo $row2['username'] ?></h1>
     <br>
 
         <img class="profilepic" src="pictures/<?php echo $row2['profilepic'] ?>">

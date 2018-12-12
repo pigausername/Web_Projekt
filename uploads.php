@@ -92,10 +92,10 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
         $upload->bindParam('headline', $headline);
         $upload->bindParam('content', $content);
         $upload->bindParam('userid', $userid);
+        echo $userid;
         if ($upload->execute()) {
 
         $myid = $_SESSION["angemeldet"];
-        echo "3";
 
              echo '<script>window.location.href="do_notification.php"</script>';
         }

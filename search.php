@@ -1,7 +1,9 @@
 <?php
 include_once ("header.php");
 ?>
-<div class="place_content">
+<div id="place_content">
+    <div class="place_content_inside">
+
     <h1>Search results:</h1>
 
 
@@ -105,4 +107,5 @@ if (isset($_POST['result'])){
 include_once("footer.php");
 
 ?>
+</div>
 </div>

@@ -18,14 +18,17 @@ $myprofile_id = $_SESSION["angemeldet"];
 $profile_id = $_GET['userid'];
 //Daten des jeweiligen Nutzers anzeigen
 $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id");
-if($display_user->execute()) {
-    $row2 = $display_user->fetch();
+$display_user->execute();
+$row2 = $display_user->fetch();
         ?>
 <div class="content">
         <title><?php echo $row2['username'] ?></title>
         <h1><?php echo $row2['username'] ?></h1>
     <br>
-    <img src="pictures/<?php echo $row2['profilepic'] ?>"> <br>
+    <div class="profilepic rounded-circle">
+        <img src="pictures/<?php echo $row2['profilepic'] ?>">
+    </div>
+    <br>
             E-Mail: <?php echo $row2['email'] ?> <br>
             First name: <?php echo $row2['firstname'] ?> <br>
             Last name: <?php echo $row2['lastname'] ?> <br>
@@ -35,10 +38,6 @@ if($display_user->execute()) {
         <hr />
         <?php
 
-
-} else {
-    echo "No user found";
-}
 
 include_once "show_followers.php";
 include_once "show_subs.php";
@@ -66,7 +65,7 @@ if($sql->execute()) {
                 $no = $checkpic->rowCount();
                 if ($no > 0) {
                     ?>
-                    <img src="pictures/<?php echo $row3['filename'] ?>">
+                    <img src="pictures/<?php echo $row['filename'] ?>">
                     <br>
                     <?php
                 }

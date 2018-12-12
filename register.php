@@ -46,7 +46,7 @@ if (!isset($_SESSION["angemeldet"])) {
 
     if (isset($_POST['register'])) {
 
-        if(empty($username) OR empty($password) OR empty($repeatpassword) OR empty($email) OR empty($firstname) OR empty($lastname)){
+        if(empty($_POST['username']) OR empty($_POST['password']) OR empty($_POST['repeatpassword']) OR empty($_POST['email']) OR empty($_POST['firstname']) OR empty($_POST['lastname'])){
             ?>
             <div class="alert alert-danger alert-dismissible fade show">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>

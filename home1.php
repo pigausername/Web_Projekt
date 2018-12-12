@@ -93,7 +93,7 @@ else {
                     $display_editor->execute();
                     $row2 = $display_editor->fetch();
                 ?>
-
+                <div class="profilepic rounded-circle">
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img
                             src="pictures/<?php echo $row2['profilepic'] ?>"></a>
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a><br>

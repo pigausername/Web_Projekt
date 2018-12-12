@@ -37,9 +37,10 @@ form {
 
 #place_content {
     margin: 2cm;
-    height: 300px;
+    height: 700px;
     width:90%;
     text-align: center;
+    background-color: white;
 
     /* Inhalt vertikal mittig platzieren */
     display: -webkit-flex;
@@ -53,18 +54,29 @@ form {
 }
 
 .place_content_inside{
-    padding: 15px;
+    padding: 30px;
     border: 4px solid #fff;
     margin: auto;
+    background-color: white;
 }
 
 .profile_info {
-    height: 100%;
+    float: left;
+    width: 25%;
 }
 
 .content-profile{
+    float: right;
+    width: 75%;
     padding: 2cm;
 }
+
+.card {
+    background-color: red;
+    padding: 20px;
+    margin-top: 20px;
+}
+
 
 .content-middle {
     text-align: center;
@@ -87,8 +99,8 @@ form {
 }
 
 .postpic {
-    height: 100%;
-    width: 100%
+    max-height:100%;
+    max-width: 100%;
 }
 
 /*Small devices (landscape phones, 576px and up)*/

@@ -10,6 +10,10 @@ $myprofile_id = $_SESSION["angemeldet"];
 <html>
 <div class="content">
 <!-- Frage ob der Post wirklich gelöscht werden soll-->
+    <br>
+    <br>
+    <br>
+
     <form action="delete_post.php?post_id=<?php echo $post_id ?>" method="post">
         <table>
             <tr>

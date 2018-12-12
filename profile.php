@@ -12,7 +12,7 @@ include_once "header.php";
 <body>
 <div class="row">
     <div class="col-md-4 profile_info">
-        <div id="place_content">
+        <div class="card" id="place_content">
             <div class="place_content_inside">
 
 <?php
@@ -52,7 +52,7 @@ include_once "follow.php";
     </div>
 </div>
 
-
+    <div class="col-md-8">
 <?php
 
 //Posts des jeweiligen Nutzers anzeigen
@@ -61,9 +61,9 @@ if($sql->execute()) {
     while ($row = $sql->fetch()) {
         ?>
 
-        <div class="col-md-8">
-            <div id="place_content">
-                <div class="place_content_inside content-profile">
+
+        <div id="place_content">
+            <div class="place_content_inside content-profile">
 
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post" src="pictures/<?php echo $row2['profilepic'] ?>"></a>
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a><br>
@@ -95,13 +95,18 @@ if($sql->execute()) {
                     }
                     ?>
                 <div class="content-right"><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a></div>
-                </div>
-                </div>
-            </div>
+
+        </div>
+
         </div>
 
         <?php
     }}
+    ?>
+</div>
+
+</div>
+    <?php
 include_once "footer.php";
 
 

@@ -44,7 +44,7 @@ if (!isset($_SESSION["angemeldet"])){
 if (isset($_POST['login'])) {
 
 
-    if(empty($email) OR empty($password)){
+    if(empty($_POST["email"]) OR empty($_POST["password"])){
         ?>
         <div class="alert alert-danger alert-dismissible fade show">
             <button type="button" class="close" data-dismiss="alert">&times;</button>

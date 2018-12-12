@@ -1,8 +1,9 @@
 /* row = Zeile, column = Spalte */
 body {
-        background-color: rgb(225, 225, 225);
-        font-size: 85%;
+        background-color: rgb(225, 225, 225); /*Farbcode für grey*/
+        font-size: 85%; /*allgemeine Schriftgröße von allen Elementen im body*/
 }
+
 .form_space_around_boxes {
     margin: 0.1cm;
 }
@@ -38,8 +39,9 @@ form {
 #place_content {
     margin: 2cm;
     height: 300px;
-    width:90%;
+    width: 90%; /*damit Seite nicht horizontal scrollbar ist*/
     text-align: center;
+    background-color: rgb(225, 225, 225); /*Farbcode für grey*/;
 
     /* Inhalt vertikal mittig platzieren */
     display: -webkit-flex;
@@ -52,10 +54,11 @@ form {
     align-items: center;
 }
 
-.place_content_inside{
+.place_content_inside {
     padding: 15px;
     border: 4px solid #fff;
     margin: auto;
+    background-color: white;
 }
 
 .profile_info {

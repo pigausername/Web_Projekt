@@ -9,31 +9,36 @@ include_once "header.php";
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Home</title>
 
-
     </head>
 
-    <div class="place_content">
+<body>
+    <div id="place_content">
+    <div class="place_content_inside">
+
     <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
-   <div class="content col-lg-10">
-    <h2>Create a post</h2>
+
+    <div class="content-middle">  <h2>Create a post</h2></div>
 <br>
     <form action="uploads.php" method="post" enctype="multipart/form-data">
         <br>
-                <textarea name="headline" placeholder="Titel" rows="2" cols="30"></textarea>
+                <textarea name="headline" placeholder="Titel" rows="2" cols="80"></textarea>
             <br>
-                <textarea name="content" placeholder="Type your text here" rows="10" cols="30"></textarea>
+                <textarea name="content" placeholder="Type your text here" rows="10" cols="80"></textarea>
+           <br>
+        <br> <div class="content-right">
+            Select a file: <input type="file" name="file" id="file" value="File">
            <br>
         <br>
-                Select a file: <input type="file" name="file" id="file" value="File">
-           <br>
-        <br>
-                <button type="submit" value="post" name="post">Post</button>
+
+            <button class="button button1" type="submit" value="post" name="post">Post</button>
+
 
     </form>
 
 <br>
 
-    <h2>Feed</h2>
+    <div class="content-middle">   <h2>Feed</h2> </div>
+<hr>
 
     <!-- hole Content aus Datenbank -->
 <?php
@@ -123,7 +128,9 @@ else {
                 <?php
             }
         }
+    }
 
-}
+
+
 include_once "footer.php";
 ?>

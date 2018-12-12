@@ -21,7 +21,7 @@ if (isset($_POST['result'])){
             $userid = $row['userid'];
             ?>
 
-            <h3><a href="profile.php?userid=<?php echo $row['userid'] ?>"><img src="pictures<?php echo $row['profilepic'] ?>"></a>
+            <h3><a href="profile.php?userid=<?php echo $row['userid'] ?>"><img class="profilepic" src="pictures/<?php echo $row['profilepic'] ?>"></a>
                 <a href="profile.php?userid=<?php echo $row['userid'] ?>"><?php echo $row['username'] ?></a></h3>
             <table>
                 <tr>

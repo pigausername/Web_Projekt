@@ -37,25 +37,11 @@ form {
     padding-top: 0.3cm;
 
 }
-/*
-.place_content {
-    margin-top: 2cm;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 3cm;
-    justify-content: center;
-    text-align: center;
-
-}
-*/
 
 #place_content {
     margin: 2cm;
     height: 300px;
-    width:100%;
-    background:
-    color: #fff;
-    font-family:
+    width:90%;
     text-align: center;
 
     /* Inhalt vertikal mittig platzieren */
@@ -71,11 +57,18 @@ form {
 }
 
 .place_content_inside{
-    padding: 20px;
+    padding: 15px;
     border: 4px solid #fff;
     margin: auto;
 }
 
+.profile_info {
+    height: 100%;
+}
+
+.content-profile{
+    padding: 2cm;
+}
 
 .content-middle {
     text-align: center;

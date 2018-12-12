@@ -46,7 +46,7 @@ if (isset($_SESSION["angemeldet"]))
 
 <div class="container"> <!-- folgender code definiert das die navbar dunkel ist und am oberen Rand fixiert ist und wann sich das Menü zu einem Hamburgermenü umwandelt.-->
     <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark rounded">
-        <a class="navbar-brand" href="home1.php">RAM</a>
+        <a class="navbar-brand" href="feed.php">RAM</a>
 
         <!-- folgender code lässt das responsive Menü erscheinen (Hamburgermenü)-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +57,7 @@ if (isset($_SESSION["angemeldet"]))
         <div class="collapse navbar-collapse" id="navbarsExample09">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="home1.php">Feed <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="feed.php">Feed <span class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item dropdown">

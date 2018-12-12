@@ -32,7 +32,7 @@ $row2 = $display_editor->fetch();
             <?php
             // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält --> Unovllständig
 
-            $checkpic=$pdo->prepare("SELECT filename FROM posts WHERE userid= $feedid OR userid= $myid");
+            $checkpic=$pdo->prepare("SELECT filename FROM posts WHERE post_id= $post_id");
             $checkpic->execute();
 
             $no=$checkpic->rowCount();

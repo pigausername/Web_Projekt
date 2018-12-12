@@ -25,12 +25,13 @@ include_once "userdata.php";
 if (isset($_POST['headline']) AND isset($_POST['content'])) {
     $headline = $_POST['headline'];
     $content = $_POST['content'];
+    $userid = $_SESSION["angemeldet"];
 
     if ((stripos($headline, "<") !== false) OR (stripos($content, "<") !== false)) {
         ?>
         <div class="alert alert-danger alert-dismissible fade show">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Info!</strong> Don't mess with us! Head back to <a href="home1.php">your feed</a>.
+            <strong>Info!</strong> Don't mess with us! Head back to <a href="feed.php">your feed</a>.
         </div>
         <?php
         die();
@@ -72,7 +73,7 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
                     if ($uploadwithpic->execute()) {
 
 
-                            echo '<script>window.location.href="home1.php"</script>';
+                            echo '<script>window.location.href="feed.php"</script>';
                     }
 
                 } else {
@@ -94,13 +95,7 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
         if ($upload->execute()) {
 
         $myid = $_SESSION["angemeldet"];
-
-
-
-      /*  $upload = $pdo->prepare("INSERT INTO posts (`headline`,`content`,`userid`) VALUES (?,?,?)");
-        $newupload=array($_POST["headline"],$_POST["content"],$_POST["userid"]);
-        if ($upload->execute($newupload)) {*/
-             //echo '<script>window.location.href="home1.php"</script>';
+        echo "3";
 
              echo '<script>window.location.href="do_notification.php"</script>';
         }

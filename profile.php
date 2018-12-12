@@ -7,13 +7,13 @@ include_once "header.php";
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Home</title>
-
 
     </head>
 <body>
-<div id="place_content">
-    <div class="place_content_inside">
+<div class="row">
+    <div class="col-md-4 profile_info">
+        <div id="place_content">
+            <div class="place_content_inside">
 
 <?php
 $myprofile_id = $_SESSION["angemeldet"];
@@ -46,12 +46,24 @@ include_once "show_subs.php";
 //Follow Button
 include_once "follow.php";
 
+?>
+
+        </div>
+    </div>
+</div>
+
+
+<?php
+
 //Posts des jeweiligen Nutzers anzeigen
 $sql = $pdo->prepare("SELECT * FROM posts WHERE userid= $profile_id ORDER BY date DESC");
 if($sql->execute()) {
     while ($row = $sql->fetch()) {
         ?>
-        <form>
+
+        <div class="col-md-8">
+            <div id="place_content">
+                <div class="place_content_inside content-profile">
 
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post" src="pictures/<?php echo $row2['profilepic'] ?>"></a>
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a><br>
@@ -70,23 +82,24 @@ if($sql->execute()) {
                     <br>
                     <?php
                 }
-                ?>
-                <?php echo $row['content'] ?><br>
-                <?php
+                echo $row['content'].'<br>';
+
                     // Verweis auf Editseite
                     if ($profile_id==$myprofile_id) {
+                        echo '<div class="content-right">';
 
                         $post_id = $row['post_id'];
                         echo '<td><a href="post_edit.php?post_id=' . $post_id . ' "> Edit </a><br>';
                         echo '<td><a href="delete_post.php?post_id='. $post_id.'"> Delete </a><br>';
+                        echo '</div>';
                     }
                     ?>
-                <a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a>
+                <div class="content-right"><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a></div>
+                </div>
+                </div>
+            </div>
+        </div>
 
-        </form>
-
-</div>
-</div>
         <?php
     }}
 include_once "footer.php";

@@ -152,7 +152,7 @@ if (!isset($_SESSION["angemeldet"])) {
 
     else
     {
-        echo "You already have an account! Head back to ".'<a href=home1.php>'."here".'</a>'."!";
+        echo "You already have an account! Head back to ".'<a href=feed.php>'."here".'</a>'."!";
     }
 
 

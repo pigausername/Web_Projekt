@@ -32,7 +32,6 @@ include_once "header.php";
 
             <button class="button button1" type="submit" value="post" name="post">Post</button>
 
-
     </form>
 
 <br>
@@ -42,7 +41,6 @@ include_once "header.php";
 
     <!-- hole Content aus Datenbank -->
 <?php
-
 $headline= $_POST ["headline"];
 $file= $_POST ["file"];
 $content= $_POST["content"];
@@ -99,7 +97,7 @@ else {
                     $display_editor->execute();
                     $row2 = $display_editor->fetch();
                 ?>
-                <div class="profilepic rounded-circle">
+
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"
                             src="pictures/<?php echo $row2['profilepic'] ?>"></a>
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a><br>

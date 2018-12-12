@@ -27,7 +27,7 @@ if ($display_follower->execute()) {
         $set_notification->bindParam(':followerid', $followerid);
         $set_notification->execute();
 
-        echo '<script>window.location.href="home1.php"</script>';
+        echo '<script>window.location.href="feed.php"</script>';
     }
 
 }

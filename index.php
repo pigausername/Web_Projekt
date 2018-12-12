@@ -62,7 +62,7 @@ if (isset($_POST['login'])) {
         if ($row = $statement->fetch()) {
             if (password_verify($password, $row["password"])) {
                 $_SESSION["angemeldet"] = $row["userid"];
-                header("Location: home1.php");
+                header("Location: feed.php");
             } else {
                 ?>
                 <div class="alert alert-danger alert-dismissible fade show">
@@ -106,7 +106,7 @@ if (isset($_POST['login'])) {
 <?php
 }
 else {
-    echo "You are already logged in! Head back to ".'<a href=home1.php>home</a>'."!";
+    echo "You are already logged in! Head back to ".'<a href=feed.php>home</a>'."!";
 }
 
 

@@ -1,7 +1,7 @@
 /* row = Zeile, column = Spalte */
 body {
-        background-color: rgb(225, 225, 225); /*Farbcode für grey*/
-        font-size: 85%; /*allgemeine Schriftgröße von allen Elementen im body*/
+        background-color: rgb(225, 225, 225); /* Farbcode für grey */
+        font-size: 85%; /* allgemeine Schriftgröße von allen Elementen im body */
 }
 
 .form_space_around_boxes {
@@ -30,7 +30,6 @@ body {
 
 form {
     justify-content: center;
-
 }
 
 
@@ -61,7 +60,7 @@ form {
     height: 700px;
     width:90%;
     text-align: center;
-    background-color: white;
+    background-color: rgb(225, 225, 225); /* Farbcode grey */
     /* Inhalt vertikal mittig platzieren */
     display: -webkit-flex;
     display: -webkit-box;

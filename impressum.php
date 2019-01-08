@@ -3,7 +3,8 @@
 include_once "header.php";
 ?>
 
-<div class="content">
+    <div id="place_content">
+        <div class="place_content_inside">
 
 <h1>Legal notice</h1><br>
 
@@ -31,6 +32,7 @@ E-Mail: <a href='mailto:info@hdm-stuttgart.de'>info@hdm-stuttgart.de</a></br></p
         The use of contact data published in the context of the imprint obligation by third parties for sending unsolicited advertising and information materials is hereby expressly excluded. The operators of the pages expressly reserve the right to take legal action in the event of the unsolicited sending of advertising information, such as spam e-mails.<br><br>
 
 </div>
+    </div>
 
 <?php
 

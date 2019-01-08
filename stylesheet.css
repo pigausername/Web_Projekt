@@ -11,7 +11,6 @@ body {
 #notification_dropdown {
     color: white;
     margin-right: 20px;
-
 }
 
 .login_page {
@@ -70,11 +69,7 @@ form {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-
 }
-
-
-
 
 .place_content_inside {
     padding: 15px;
@@ -87,7 +82,6 @@ form {
     float: left;
     width: 25%;
     position: sticky;
-
 }
 
 .content-profile{

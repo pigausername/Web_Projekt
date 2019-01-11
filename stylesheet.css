@@ -14,14 +14,12 @@ body {
 }
 
 .login_page {
-    background-color: white;
-    padding: 5%;
     text-align: center;
-    border-radius: 3rem !important;
+    justify-content: center;
+    padding: 8%;
 }
 
 .register_page {
-    background-color: white;
     padding: 5%;
     justify-content: center;
     text-align: center;

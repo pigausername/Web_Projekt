@@ -11,31 +11,31 @@ include_once "header.php";
     </head>
 
 <body>
-    <div id="place_content">
+<div id="place_content">
     <div class="place_content_inside">
 
     <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
 
     <div class="content-middle">  <h2>Create a post</h2></div>
-<br>
+    <br>
     <form action="uploads.php" method="post" enctype="multipart/form-data">
         <br>
-                <textarea name="headline" placeholder="Titel" rows="2" cols="80"></textarea>
-            <br>
-                <textarea name="content" placeholder="Type your text here" rows="10" cols="80"></textarea>
-           <br>
+        <textarea name="headline" placeholder="Titel" rows="2" cols="80"></textarea>
+        <br>
+        <textarea name="content" placeholder="Type your text here" rows="10" cols="80"></textarea>
+        <br>
         <br> <div class="content-right">
             Select a file: <input type="file" name="file" id="file" value="File">
-           <br>
-        <br>
+            <br>
+            <br>
 
             <button class="button button1" type="submit" value="post" name="post">Post</button>
         </div>
     </form>
-<br>
+    <br>
 
-      <h2 style="text-align: center">Feed</h2>
-<hr>
+    <h2 style="text-align: center">Feed</h2>
+    <hr>
 
     <!-- hole Content aus Datenbank -->
 <?php
@@ -61,14 +61,14 @@ if(!$no > 0) {
         if ($sql->execute()) {
             while ($row = $sql->fetch()) {
                 ?>
-                    <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"
-                                src="pictures/<?php echo $row2['profilepic'] ?>"></a>
+                <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"
+                                                                                src="pictures/<?php echo $row2['profilepic'] ?>"></a>
 
-                    <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a><br>
-                    <small><?php echo $row['date'] ?></small>
-                    <br>
-                    <strong><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline'] ?></a></strong><br>
-                    <?php echo $row['content'] ?><br>
+                <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a><br>
+                <small><?php echo $row['date'] ?></small>
+                <br>
+                <strong><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline'] ?></a></strong><br>
+                <?php echo $row['content'] ?><br>
 
                 <p href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><p style="text-align: right">Comment</p></a>
 
@@ -89,54 +89,54 @@ else {
 
 
 
-                $display_post = $pdo->prepare("SELECT * FROM posts WHERE userid= $editor_id OR userid= $myid ORDER BY date DESC");
-                $display_post->execute();
-                while ($row3 = $display_post->fetch()){
-                    $editor = $row3['userid'];
-                    $display_editor = $pdo->prepare("SELECT * FROM userdata WHERE userid= $editor");
-                    $display_editor->execute();
-                    $row2 = $display_editor->fetch();
+        $display_post = $pdo->prepare("SELECT * FROM posts WHERE userid= $editor_id OR userid= $myid ORDER BY date DESC");
+        $display_post->execute();
+        while ($row3 = $display_post->fetch()){
+            $editor = $row3['userid'];
+            $display_editor = $pdo->prepare("SELECT * FROM userdata WHERE userid= $editor");
+            $display_editor->execute();
+            $row2 = $display_editor->fetch();
+            ?>
+
+            <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"
+                                                                            src="pictures/<?php echo $row2['profilepic'] ?>"></a>
+            <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a><br>
+            <small><?php echo $row3['date'] ?></small>
+            <br>
+            <strong><a href="single_post.php?post_id=<?php echo $row3["post_id"] ?>"><?php echo $row3['headline'] ?></a></strong>
+            <br>
+            <?php
+            // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält --> Unovllständig
+
+            $picpost_id = $row3["post_id"];
+            echo $picpost_id;
+            $checkpic = $pdo->prepare("SELECT filename FROM posts WHERE post_id= $picpost_id");
+            $checkpic->execute();
+            $a = $checkpic->fetch();
+            echo $a;
+
+            $no = $checkpic->columnCount();
+            if ($no > 0) {
+                echo $row3['filename'];
                 ?>
-
-                <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"
-                            src="pictures/<?php echo $row2['profilepic'] ?>"></a>
-                <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a><br>
-                <small><?php echo $row3['date'] ?></small>
+                <img class="postpic" src="pictures/<?php echo $row3['filename'] ?>">
                 <br>
-                <strong><a href="single_post.php?post_id=<?php echo $row3["post_id"] ?>"><?php echo $row3['headline'] ?></a></strong>
-                <br>
-                <?php
-                // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält --> Unovllständig
-
-                $picpost_id = $row3["post_id"];
-                echo $picpost_id;
-                $checkpic = $pdo->prepare("SELECT filename FROM posts WHERE post_id= $picpost_id");
-                $checkpic->execute();
-                $a = $checkpic->fetch();
-                echo $a;
-
-                $no = $checkpic->columnCount();
-                if ($no > 0) {
-                    echo $row3['filename'];
-                    ?>
-                    <img class="postpic" src="pictures/<?php echo $row3['filename'] ?>">
-                    <br>
-                <?php
-                }
-                else {echo $no;}
-                ?>
-                <p><?php echo $row3['content'] ?></p>
-                <br>
-                    <div class="content-right">
-                    <div class="btn btn-info">
-                <a style="color: white" href="single_post.php?post_id=<?php echo $row3["post_id"] ?>">Comment</a>
-                    </div>
-                    </div>
-                <hr/>
                 <?php
             }
+            else {echo $no;}
+            ?>
+            <p><?php echo $row3['content'] ?></p>
+            <br>
+            <div class="content-right">
+                <div class="btn btn-info">
+                    <a style="color: white" href="single_post.php?post_id=<?php echo $row3["post_id"] ?>">Comment</a>
+                </div>
+            </div>
+            <hr/>
+            <?php
         }
     }
+}
 
 
 

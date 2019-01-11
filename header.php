@@ -70,6 +70,10 @@ if (isset($_SESSION["angemeldet"]))
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+                <div class="notification_image">
+
+                </div>
+
                 <li class="dropdown">
 
                     <a id="notification_dropdown" href="#" class="dropdown-toggle notification" data-toggle="dropdown">

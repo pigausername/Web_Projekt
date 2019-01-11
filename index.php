@@ -22,17 +22,10 @@
 
     <title>Login</title>
 
-    <style>
-        body {
-            background-image: url("pictures/treppe_hdm.jpg");
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-    </style>
 </head>
-<body>
+<body style="background-color: white">
 
-<div class="place_content">
+<div>
 
 <?php
 session_start();
@@ -78,7 +71,7 @@ if (isset($_POST['login'])) {
 ?>
 
 
-<div class="login_page rounded">
+<div class="login_page">
     <h1>Welcome to RAM!</h1>
     <hr />
 <div>

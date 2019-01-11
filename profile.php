@@ -65,7 +65,7 @@ if($sql->execute()) {
             <div class="place_content_inside content-profile">
 
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post" src="pictures/<?php echo $row2['profilepic'] ?>"></a>
-                <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a><br>
+                <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></strong><br>
                 <small><?php echo $row['date']?></small><br>
                 <strong><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline']?></a></strong><br>
                 <?php

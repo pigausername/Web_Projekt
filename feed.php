@@ -64,7 +64,7 @@ if(!$no > 0) {
                     <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"
                                 src="pictures/<?php echo $row2['profilepic'] ?>"></a>
 
-                    <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a><br>
+                    <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></strong><br>
                     <small><?php echo $row['date'] ?></small>
                     <br>
                     <strong><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline'] ?></a></strong><br>
@@ -100,7 +100,7 @@ else {
 
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"
                             src="pictures/<?php echo $row2['profilepic'] ?>"></a>
-                <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a><br>
+                <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a></strong><br>
                 <small><?php echo $row3['date'] ?></small>
                 <br>
                 <strong><a href="single_post.php?post_id=<?php echo $row3["post_id"] ?>"><?php echo $row3['headline'] ?></a></strong>
@@ -109,15 +109,12 @@ else {
                 // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält --> Unovllständig
 
                 $picpost_id = $row3["post_id"];
-                echo $picpost_id;
                 $checkpic = $pdo->prepare("SELECT filename FROM posts WHERE post_id= $picpost_id");
                 $checkpic->execute();
                 $a = $checkpic->fetch();
-                echo $a;
 
                 $no = $checkpic->columnCount();
                 if ($no > 0) {
-                    echo $row3['filename'];
                     ?>
                     <img class="postpic" src="pictures/<?php echo $row3['filename'] ?>">
                     <br>

@@ -10,9 +10,10 @@ include_once "header.php";
 
     </head>
 <body>
-<div class="row">
+<div class="row" id="profile_place_content" style="background-color: rgb(225, 225, 225)">
+
     <div class="col-md-4">
-        <div class="profile_info card" id="place_content">
+        <div class="steckbrief">
             <div class="place_content_inside">
 
 <?php
@@ -52,6 +53,7 @@ include_once "follow.php";
 </div>
 
     <div class="col-md-8">
+        <div class="place_content_inside content-profile" style="border-radius: .25rem;">
 <?php
 
 //Posts des jeweiligen Nutzers anzeigen
@@ -61,8 +63,6 @@ if($sql->execute()) {
         ?>
 
 
-        <div id="place_content">
-            <div class="place_content_inside content-profile">
 
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post" src="pictures/<?php echo $row2['profilepic'] ?>"></a>
                 <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></strong><br>
@@ -94,16 +94,16 @@ if($sql->execute()) {
                     }
                     ?>
                 <div class="content-right"><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a></div>
+        <hr />
 
-        </div>
 
-        </div>
+
 
         <?php
     }}
     ?>
-</div>
-
+        </div>
+    </div>
 </div>
     <?php
 include_once "footer.php";

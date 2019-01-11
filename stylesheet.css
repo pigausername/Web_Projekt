@@ -54,10 +54,10 @@ form {
 
 #place_content {
     margin: 2cm;
-    height: 700px;
+    height: 90%;
     width:90%;
     text-align: center;
-    background-color: rgb(225, 225, 225); /* Farbcode grey */
+    background-color: white; /* Farbcode grey */
     /* Inhalt vertikal mittig platzieren */
     display: -webkit-flex;
     display: -webkit-box;
@@ -68,6 +68,16 @@ form {
     -ms-flex-align: center;
     align-items: center;
 }
+
+#profile_place_content {
+    margin: 2cm;
+    height: 90%;
+    text-align: center;
+    width:90%;
+    background-color: white; /* Farbcode grey */
+    /* Inhalt vertikal mittig platzieren */
+}
+
 
 .place_content_inside {
     padding: 15px;
@@ -84,16 +94,22 @@ form {
 
 .content-profile{
     float: right;
-    width: 75%;
+    width: 100%;
     padding: 2cm;
 }
 
-.card {
-    background-color: red;
-    padding: 20px;
-    margin-top: 20px;
+.steckbrief {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
 }
-
 
 .content-middle {
     text-align: center;

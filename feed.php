@@ -11,8 +11,8 @@ include_once "header.php";
     </head>
 
 <body>
-<div id="place_content">
-    <div class="place_content_inside">
+<div id="place_content" style="border-radius: .25rem;">
+    <div class="place_content_inside" style="border-radius: .25rem;">
 
     <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
 
@@ -73,8 +73,6 @@ if(!$no > 0) {
 
                 <hr />
 
-                </div>
-                </div>
                 <?php
             }
         }
@@ -96,6 +94,7 @@ else {
             $display_editor->execute();
             $row2 = $display_editor->fetch();
             ?>
+
 
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"
                             src="pictures/<?php echo $row2['profilepic'] ?>"></a>
@@ -119,7 +118,6 @@ else {
                     <br>
                 <?php
                 }
-                else {echo $no;}
             ?>
             <p><?php echo $row3['content'] ?></p>
             <br>
@@ -129,12 +127,16 @@ else {
                 </div>
             </div>
             <hr/>
+
             <?php
         }
     }
 }
 
-
+?>
+    </div>
+</div>
+        <?php
 
 include_once "footer.php";
 ?>

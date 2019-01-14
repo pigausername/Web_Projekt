@@ -30,9 +30,6 @@ include_once "header.php";
     <br />
     <div id="display_comment"></div>
 </div>
-
-
-
 <script>
 
     $(document).ready(function(){

@@ -72,7 +72,6 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
                         $uploadwithpic->bindParam(':userid', $userid);
                     if ($uploadwithpic->execute()) {
 
-
                             echo '<script>window.location.href="feed.php"</script>';
                     }
 
@@ -88,16 +87,19 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
         }
     } else {
 
-        $upload = $pdo->prepare("INSERT INTO posts (headline, content, userid) VALUES (:headline, :content, :userid)");
+        $nopic = "NULL";
+
+        $upload = $pdo->prepare("INSERT INTO posts (headline, content, filename, userid) VALUES (:headline, :content, :filename, :userid)");
         $upload->bindParam('headline', $headline);
         $upload->bindParam('content', $content);
+        $upload->bindParam('filename', $nopic);
         $upload->bindParam('userid', $userid);
-        echo $userid;
+
         if ($upload->execute()) {
 
         $myid = $_SESSION["angemeldet"];
 
-             echo '<script>window.location.href="feed.php"</script>';
+            echo '<script>window.location.href="feed.php"</script>';
         }
             }
         } else {

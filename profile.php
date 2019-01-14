@@ -64,18 +64,17 @@ if($sql->execute()) {
 
 
 
-                <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post" src="pictures/<?php echo $row2['profilepic'] ?>"></a>
+                <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post" src="pictures/<?php echo $row2['profilepic'] ?>"></a><br>
                 <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></strong><br>
                 <small><?php echo $row['date']?></small><br>
-                <strong><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline']?></a></strong><br>
+                <h2><?php echo $row['headline']?></h2>
                 <?php
                 // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält
 
-                $checkpic = $pdo->prepare("SELECT filename FROM posts WHERE userid= $myprofile_id");
-                $checkpic->execute();
+                $nopic = "NULL";
 
-                $no = $checkpic->rowCount();
-                if ($no > 0) {
+                if ($row['filename'] !== $nopic)
+                {
                     ?>
                     <img class="postpic" src="pictures/<?php echo $row['filename'] ?>">
                     <br>
@@ -85,12 +84,16 @@ if($sql->execute()) {
 
                     // Verweis auf Editseite
                     if ($profile_id==$myprofile_id) {
-                        echo '<div class="content-right">';
-
                         $post_id = $row['post_id'];
-                        echo '<td><a href="post_edit.php?post_id=' . $post_id . ' "> Edit </a><br>';
-                        echo '<td><a href="delete_post.php?post_id='. $post_id.'"> Delete </a><br>';
-                        echo '</div>';
+                        ?>
+                        <br>
+                        <div class="content-right">
+
+
+                        <a href="post_edit.php?post_id=' . $post_id . ' "> Edit </a><br>
+                        <a href="delete_post.php?post_id='. $post_id.'"> Delete </a><br>
+                        </div>
+                        <?php
                     }
                     ?>
                 <div class="content-right"><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a></div>

@@ -16,7 +16,7 @@ include_once "header.php";
 
     <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
     <div>
-    <h2>Create a post</h2>
+    <h1>Create a post</h1>
     <br>
     <form action="uploads.php" method="post" enctype="multipart/form-data">
         <br>
@@ -26,18 +26,19 @@ include_once "header.php";
         <br>
         <br>
             Select a file: <input type="file" name="file" id="file" value="File">
-            <br>
-            <br>
+        <br>
+        <br>
 
         <button class="button button1" type="submit" value="post" name="post">Post</button>
 
 
     </form>
     </div>
+        <br>
 
 
 
-    <h2 style="text-align: center">Feed</h2>
+    <h1 style="text-align: center">Feed</h1>
     <hr>
 
     <!-- hole Content aus Datenbank -->
@@ -65,14 +66,14 @@ if(!$no > 0) {
             while ($row = $sql->fetch()) {
                 ?>
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"
-                                                                                src="pictures/<?php echo $row2['profilepic'] ?>"></a>
+                                                                                src="pictures/<?php echo $row2['profilepic'] ?>"></a><br>
 
                     <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></strong><br>
                     <small><?php echo $row['date'] ?></small>
                     <br>
-                    <strong><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><?php echo $row['headline'] ?></a></strong><br>
+                    <h2><?php echo $row['headline'] ?></h2><br>
                     <?php echo $row['content'] ?><br>
-                <p href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><p style="text-align: right">Comment</p></a>
+                <p href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><p style="text-align: right">Comment</p>
 
                 <hr />
 
@@ -100,35 +101,27 @@ else {
 
 
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"
-                            src="pictures/<?php echo $row2['profilepic'] ?>"></a>
+                            src="pictures/<?php echo $row2['profilepic'] ?>"></a><br>
                 <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a></strong><br>
                 <small><?php echo $row3['date'] ?></small>
                 <br>
-                <strong><a href="single_post.php?post_id=<?php echo $row3["post_id"] ?>"><?php echo $row3['headline'] ?></a></strong>
-                <br>
+                <h2><?php echo $row3['headline'] ?></a></h2>
                 <?php
-                // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält --> Unovllständig
+                // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält
 
-                $picpost_id = $row3["post_id"];
-                $checkpic = $pdo->prepare("SELECT filename FROM posts WHERE post_id= $picpost_id");
-                $checkpic->execute();
-                $a = $checkpic->fetch();
+                $nopic = "NULL";
 
-                $no = $checkpic->columnCount();
-                if ($no > 0) {
-                    ?>
-                    <img class="postpic" src="pictures/<?php echo $row3['filename'] ?>">
-                    <br>
-                <?php
-                }
+                if ($row3['filename'] !== $nopic)
+                    {
+                        ?>
+                        <img class="postpic" src="pictures/<?php echo $row3['filename'] ?>">
+                        <br>
+                        <?php
+                    }
             ?>
             <p><?php echo $row3['content'] ?></p>
             <br>
-            <div class="content-right">
-                <div class="btn btn-info">
-                    <a style="color: white" href="single_post.php?post_id=<?php echo $row3["post_id"] ?>">Comment</a>
-                </div>
-            </div>
+            <div class="content-right"><a href="single_post.php?post_id=<?php echo $row3["post_id"] ?>">Comment</a></div>
             <hr/>
 
             <?php

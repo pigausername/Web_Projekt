@@ -21,37 +21,32 @@ $row2 = $display_editor->fetch();
 <div id="place_content">
     <div class="place_content_inside">
 
-    <table>
-    <tr>
-        <td><h1><?php echo $row["headline"] ?></h1></td>
-    </tr>
-    <tr>
-        <td><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic" src="pictures/<?php echo $row2['profilepic'] ?>"></a>By <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></td>
-    </tr>
-    <tr>
-        <td>
+        <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic" src="pictures/<?php echo $row2['profilepic'] ?>"></a>
+        <br>
 
-            <?php
+        <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></strong>
+        <br>
+        <?php echo $row["date"]?>
+        <h1><strong><?php echo $row["headline"] ?></strong></h1>
+          <?php
             // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält --> Unovllständig
+          $nopic = "NULL";
 
-            $checkpic=$pdo->prepare("SELECT filename FROM posts WHERE post_id= $post_id");
-            $checkpic->execute();
-
-            $no=$checkpic->rowCount();
-            if($no > 0){
-            ?>
-            <img src="pictures/<?php echo $row['filename'] ?>"></td>
-        <?php
-        }
+          if ($row['filename'] !== $nopic)
+          {
+              ?>
+              <img class="postpic" src="pictures/<?php echo $row['filename'] ?>">
+              <br>
+              <?php
+          }
         ?>
-    </tr>
-    <tr>
-        <td>Content:</td><td><?php echo $row["content"] ?></td>
-    </tr>
-    <tr>
-        <td><?php include "comment.php" ?></td>
-    </tr>
-</table>
+
+        <?php echo $row["content"] ?>
+
+        <br>
+        <br>
+
+        <?php include "comment.php" ?>
 </div>
 </div>
 

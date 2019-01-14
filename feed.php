@@ -15,24 +15,27 @@ include_once "header.php";
     <div class="place_content_inside" style="border-radius: .25rem;">
 
     <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
-
-    <div class="content-middle">  <h2>Create a post</h2></div>
+    <div>
+    <h2>Create a post</h2>
     <br>
     <form action="uploads.php" method="post" enctype="multipart/form-data">
         <br>
-        <textarea name="headline" placeholder="Titel" rows="2" cols="80"></textarea>
+        <textarea name="headline" placeholder="Titel" rows="2" cols="150"></textarea>
         <br>
-        <textarea name="content" placeholder="Type your text here" rows="10" cols="80"></textarea>
+        <textarea name="content" placeholder="Type your text here" rows="10" cols="150"></textarea>
         <br>
-        <br> <div class="content-right">
+        <br>
             Select a file: <input type="file" name="file" id="file" value="File">
             <br>
             <br>
 
-            <button class="button button1" type="submit" value="post" name="post">Post</button>
-        </div>
+        <button class="button button1" type="submit" value="post" name="post">Post</button>
+
+
     </form>
-    <br>
+    </div>
+
+
 
     <h2 style="text-align: center">Feed</h2>
     <hr>

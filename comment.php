@@ -1,6 +1,8 @@
 <?php
 session_start();
 include_once "header.php";
+
+
 ?>
 
 <!doctype html>
@@ -10,11 +12,11 @@ include_once "header.php";
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
 
-
 </head>
 <body>
+<div>
 
-<div class="place_content">
+<div>
     <form method="POST" id="comment_form">
         <div class="form-group">
             <textarea name="comment" id="comment" class="form-control" placeholder="Enter Comment" rows="5" required></textarea>

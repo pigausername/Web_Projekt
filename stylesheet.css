@@ -136,3 +136,15 @@ form {
     max-width: 100%;
 }
 
+.textareastyle {
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+    margin-bottom: 15px;
+    padding: 0.475rem 0.75rem;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.post_formular {
+    margin:
+}

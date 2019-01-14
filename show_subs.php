@@ -7,6 +7,6 @@ $profile_id = $_GET['userid'];
 $showsubs = $pdo->prepare("SELECT * FROM followers WHERE followerid = $profile_id");
 $showsubs->execute();
 $no_subs = $showsubs->rowCount();
-echo '<h3>Subscriptions:</h3>';
-echo '<h4>'.$no_subs.'</h4>';
+echo '<h5>Subscriptions:</h5>';
+echo '<h5>'.$no_subs.'</h5>';
 

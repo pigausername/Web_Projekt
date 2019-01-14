@@ -21,35 +21,31 @@ if($statement->execute()) {
 
 
             <h1>Here you can edit your profile.</h1>
-        <form action="profile_edit.php" method="post">
+        <form action="profile_edit.php" method="POST">
             <table>
                 <tr>
                     <td>Username:</td>
-                    <td><input type="text" name="username" placeholder="Username" required
-                               value="<?php echo $row['username'] ?>"></td>
+                    <td><input type="text" name="username" placeholder="<?php echo $row['username'] ?>"></td>
                 </tr>
                 <tr>
                     <td>Password:</td>
-                    <td><input type="password" name="password" placeholder="Password" required></td>
+                    <td><input type="password" name="password" placeholder="Password"></td>
                 </tr>
                 <tr>
                     <td>Please repeat your new password:</td>
-                    <td><input type="password" name="repeatpassword" placeholder="Repeat your password" required></td>
+                    <td><input type="password" name="repeatpassword" placeholder="Repeat your password"></td>
                 </tr>
                 <tr>
                     <td>E-Mail:</td>
-                    <td><input type="text" name="email" placeholder="E-mail" required
-                               value="<?php echo $row['email'] ?>"></td>
+                    <td><input type="text" name="email" placeholder="<?php echo $row['email'] ?>"</td>
                 </tr>
                 <tr>
                     <td>First name:</td>
-                    <td><input type="text" name="firstname" placeholder="First name" required
-                               value="<?php echo $row['firstname'] ?>"></td>
+                    <td><input type="text" name="firstname" placeholder="<?php echo $row['firstname'] ?>"></td>
                 </tr>
                 <tr>
                     <td>Last name:</td>
-                    <td><input type="text" name="lastname" placeholder="Last name" required
-                               value="<?php echo $row['lastname'] ?>""></td>
+                    <td><input type="text" name="lastname" placeholder="<?php echo $row['lastname'] ?>"></td>
                 </tr>
                 <!--<tr>
                     <td>Profile picture:</td>
@@ -58,12 +54,12 @@ if($statement->execute()) {
                 -->
                 <tr>
                     <td>Subject:</td>
-                    <td><input type="text" name="subject" id="subject" placeholder="Subject" value="<?php //echo $row['subject'] ?>"</td>
+                    <td><input type="text" name="subject" id="subject" placeholder="<?php echo $row['subject'] ?>"</td>
                 </tr>
 
                 <tr>
                     <td>Semester:</td>
-                    <td><input type="number" name="semester" id="semester" min="1" max="10" placeholder="Semester" value="<?php echo $row['semester'] ?>"></td>
+                    <td><input type="number" name="semester" id="semester" min="1" max="10" placeholder="<?php echo $row['semester'] ?>"</td>
                 </tr>
                 <tr>
                     <td>
@@ -86,17 +82,41 @@ if (isset($_POST['save_changes']))  {
 
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $rpassword = $_POST['repeatpassword'];
     $email = $_POST['email'];
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $subject = $_POST['subject'];
     $semester = $_POST['semester'];
 
+    if(empty($_POST["username"]) OR empty($_POST["password"])OR empty($_POST["password"]) OR empty($_POST["repeatpassword"]) OR empty($_POST["email"]) OR empty($_POST["fistname"]) OR empty($_POST["lastname"])OR empty($_POST["subject"])OR empty($_POST["semester"])){
+        ?>
+        <div class="alert alert-danger alert-dismissible fade show">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Info!</strong> Please fill in all fields!
+        </div>
+        <?php
+    }
+
+    if ($_POST["password"] != $_POST["repeatpassword"])
+    {
+        ?>
+        <div class="alert alert-danger alert-dismissible fade show">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Info!</strong> Your passwords don't match!
+        </div>
+        <?php
+    }
+
     $options=['cost'=>5];
     $hash=password_hash($password, PASSWORD_DEFAULT, $options);
 
-    $updateprofile = $pdo->prepare("UPDATE userdata SET username, password, email, firstname, lastname, subject, semester VALUES (:username, :password, :email; :firstname, :lastname, :subject, :semester) WHERE userid=$userid");
+    $updateprofile = $pdo->prepare("UPDATE `userdata` 
+        SET `username` = :username, `password` = :password, `email` = :email, `firstname` = :firstname, `lastname` = :lastname, `subject` = :subject, `semester` = :semester
+        WHERE `userid` = :userid");
+
     $updateprofile->bindParam(':username', $username);
+    $updateprofile->bindParam(':userid', $userid);
     $updateprofile->bindParam(':password', $hash);
     $updateprofile->bindParam(':email', $email);
     $updateprofile->bindParam(':firstname', $firstname);
@@ -105,12 +125,21 @@ if (isset($_POST['save_changes']))  {
     $updateprofile->bindParam(':semester', $semester);
 
     if ($updateprofile->execute()){
-        echo "bla";
+        ?>
+        <div class="alert alert-success alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>You have successfully updated your profile!</strong> Head <a href="feed.php">here</a> back to home!
+        </div>
+        <?php
     }
     else {
-        echo "blaaaa";
+        ?>
+        <div class="alert alert-danger alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Info!</strong> Something went wrong. Try again!
+        </div>
+        <?php
     }
-
 
 }
 

@@ -89,8 +89,8 @@ if($sql->execute()) {
                         <div class="content-right">
 
 
-                        <a href="post_edit.php?post_id=' . $post_id . ' "> Edit </a><br>
-                        <a href="delete_post.php?post_id='. $post_id.'"> Delete </a><br>
+                        <a href="post_edit.php?post_id=<?php echo $post_id ?>"> Edit </a><br>
+                        <a href="delete_post.php?post_id=<?php echo $post_id ?>"> Delete </a><br>
                         </div>
                         <?php
                     }

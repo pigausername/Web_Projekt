@@ -18,23 +18,27 @@ include_once "header.php";
     <div>
     <h2>Create a post</h2>
     <br>
-    <form action="uploads.php" method="post" enctype="multipart/form-data">
+        <div class="row">
+<div class="col-md-2"></div>
+<div class="post_formular col-md-8">
+        <form action="uploads.php" method="post" enctype="multipart/form-data">
         <br>
-        <textarea name="headline" placeholder="Titel" rows="2" cols="150"></textarea>
+            <textarea class="textareastyle" type="text" name="headline" placeholder="Titel"  rows="1" cols=""></textarea>
         <br>
-        <textarea name="content" placeholder="Type your text here" rows="10" cols="150"></textarea>
+            <textarea class="textareastyle" name="content" placeholder="Type your text here" rows="7" cols=""></textarea>
         <br>
-        <br>
-            Select a file: <input type="file" name="file" id="file" value="File">
-        <br>
-        <br>
+        <br> <div class="content-right">
+            Select an image: <input type="file" name="file" id="file" value="File">
+            <br>
+            <br>
 
-        <button class="button button1" type="submit" value="post" name="post">Post</button>
-
-
+            <button class="btn btn-info" type="submit" value="post" name="post">Post</button>
+        </div>
     </form>
-    </div>
-        <br>
+</div>
+        <div class="col-md-2"></div>
+        </div>
+    <br>
 
 
 

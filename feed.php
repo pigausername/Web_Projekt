@@ -23,9 +23,9 @@ include_once "header.php";
 <div class="post_formular col-md-8">
         <form action="uploads.php" method="post" enctype="multipart/form-data">
         <br>
-            <textarea class="textareastyle" type="text" name="headline" placeholder="Titel"  rows="1" cols=""></textarea>
+            <textarea class="textareastyle" type="text" name="headline" placeholder="Titel"  rows="1"></textarea>
         <br>
-            <textarea class="textareastyle" name="content" placeholder="Type your text here" rows="7" cols=""></textarea>
+            <textarea class="textareastyle" name="content" placeholder="Type your text here" rows="7"></textarea>
         <br>
         <br> <div class="content-right">
             Select an image: <input type="file" name="file" id="file" value="File">

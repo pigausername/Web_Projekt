@@ -62,6 +62,8 @@ if (isset($_POST['login'])) {
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                     <strong>Info!</strong> Wrong password!
                 </div>
+
+
                 <?php
             }
         }

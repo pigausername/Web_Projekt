@@ -8,26 +8,25 @@ $myprofile_id = $_SESSION["angemeldet"];
 
 
 <html>
-<div class="content">
+<div id="place_content" style="border-radius: .25rem;">
+    <div class="place_content_inside" style="border-radius: .25rem;">
+
 <!-- Frage ob der Post wirklich gelöscht werden soll-->
-    <br>
-    <br>
-    <br>
+
+
 
     <form action="delete_post.php?post_id=<?php echo $post_id ?>" method="post">
-        <table>
-            <tr>
-                <td>Do you really want to delete this post?</td>
-            </tr>
-            <tr>
-                <td><button type="submit" name="yes">Yes</button></td>
-            </tr>
-            <tr>
-                <td><button type="submit" name="no">No</button></td>
-            </tr>
-        </table>
+
+                Do you really want to delete this post?
+
+                <button class="btn btn-info" type="submit" value="post" name="yes">Yes</button>
+
+                <button class="btn btn-info" type="submit" value="post" name="no">No</button>
+
     </form>
 </div>
+</div>
+
 </html>
 <?php
 
@@ -54,3 +53,6 @@ if (isset($_POST['no'])){
     echo '<script>window.location.href="single_post.php?post_id='.$post_id.'"</script>';
 
 }
+
+include_once "footer.php";
+?>

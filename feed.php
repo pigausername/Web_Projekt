@@ -16,7 +16,7 @@ include_once "header.php";
 
     <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
     <div>
-    <h1>Create a post</h1>
+    <h2>Create a post</h2>
     <br>
     <form action="uploads.php" method="post" enctype="multipart/form-data">
         <br>
@@ -38,8 +38,8 @@ include_once "header.php";
 
 
 
-    <h1 style="text-align: center">Feed</h1>
-    <hr>
+    <h2 style="text-align: center">Feed</h2>
+    <hr><br>
 
     <!-- hole Content aus Datenbank -->
 <?php
@@ -71,8 +71,8 @@ if(!$no > 0) {
                     <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></strong><br>
                     <small><?php echo $row['date'] ?></small>
                     <br>
-                    <h2><?php echo $row['headline'] ?></h2><br>
-                    <?php echo $row['content'] ?><br>
+                    <h4><?php echo $row['headline'] ?></h4><br>
+                    <?php echo nl2br ('<p>'.$row['content'].'</p>'); ?><br>
                 <p href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><p style="text-align: right">Comment</p>
 
                 <hr />
@@ -105,7 +105,8 @@ else {
                 <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a></strong><br>
                 <small><?php echo $row3['date'] ?></small>
                 <br>
-                <h2><?php echo $row3['headline'] ?></a></h2>
+                <br>
+                <h4><small><?php echo $row3['headline'] ?></small></h4>
                 <?php
                 // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält
 
@@ -119,10 +120,10 @@ else {
                         <?php
                     }
             ?>
-            <p><?php echo $row3['content'] ?></p>
-            <br>
+            <p><?php echo nl2br ($row3['content']) ?></p>
             <div class="content-right"><a href="single_post.php?post_id=<?php echo $row3["post_id"] ?>">Comment</a></div>
             <hr/>
+            <br>
 
             <?php
         }

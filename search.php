@@ -52,11 +52,9 @@ if (isset($_POST['result'])){
 
     //Post suchen
 
-    $searchpost = $pdo->prepare("SELECT * FROM posts WHERE headline LIKE '%$headline%'");
+    $searchpost = $pdo->prepare("SELECT * FROM posts WHERE headline LIKE '%$headline%' ORDER BY date DESC");
 
     ?>
-        <hr/>
-
         <h1>Posts</h1>
         <br>
 
@@ -75,18 +73,15 @@ if (isset($_POST['result'])){
 
             $row3 = $display_editor->fetch();
             ?>
-
-            <a href="profile.php?userid=<?php echo $row3['userid'] ?>"><img class="profilepic" src="pictures/<?php echo $row3['profilepic'] ?>"></a>
             <br>
+            <a href="profile.php?userid=<?php echo $row3['userid'] ?>"><img class="profilepic" src="pictures/<?php echo $row3['profilepic'] ?>"></a>
             <br>
             <strong><a href="profile.php?userid=<?php echo $row2['userid']?>"><?php echo $row3['username'] ?></a></strong>
             <br>
-
-            <?php
-                echo $row2['date'];
-                echo '<br>';
-                ?>
-            <h2><?php echo $row2['headline'] ?></a></h2>
+            <small><?php echo $row2['date']?></small>
+            <br>
+            <br>
+            <h4><?php echo $row2['headline'] ?></h4>
 
                 <?php
 
@@ -101,14 +96,15 @@ if (isset($_POST['result'])){
                 <?php
             }
 
-                echo $row2['content'];
+                echo nl2br ('<p>'.$row2['content'].'</p>');
                 echo '<br>';
                 echo '<br>';
                 ?>
             <div class="content-right"><a href="single_post.php?post_id=<?php echo $row2["post_id"] ?>">Comment</a></div>
                     <?php
-                echo '<br>';
                 echo '<hr />';
+                echo '<br>';
+
         }
     } else {
         echo "No post found";

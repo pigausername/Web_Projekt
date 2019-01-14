@@ -54,6 +54,8 @@ include_once "follow.php";
 
     <div class="col-md-8">
         <div class="place_content_inside content-profile" style="border-radius: .25rem;">
+            <h1>Posts</h1>
+            <br>
 <?php
 
 //Posts des jeweiligen Nutzers anzeigen
@@ -61,13 +63,10 @@ $sql = $pdo->prepare("SELECT * FROM posts WHERE userid= $profile_id ORDER BY dat
 if($sql->execute()) {
     while ($row = $sql->fetch()) {
         ?>
-
-
-
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post" src="pictures/<?php echo $row2['profilepic'] ?>"></a><br>
                 <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></strong><br>
-                <small><?php echo $row['date']?></small><br>
-                <h2><?php echo $row['headline']?></h2>
+                <small><?php echo $row['date']?></small><br><br>
+                <h4><?php echo $row['headline']?></h4>
                 <?php
                 // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält
 
@@ -80,7 +79,7 @@ if($sql->execute()) {
                     <br>
                     <?php
                 }
-                echo $row['content'].'<br>';
+                echo nl2br ('<p>'.$row['content'].'</p>'.'<br>');
 
                     // Verweis auf Editseite
                     if ($profile_id==$myprofile_id) {

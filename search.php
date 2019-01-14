@@ -50,7 +50,7 @@ if (isset($_POST['result'])){
 
     //Post suchen
 
-    $searchpost = $pdo->prepare("SELECT * FROM posts WHERE headline='$headline'");
+    $searchpost = $pdo->prepare("SELECT * FROM posts WHERE headline LIKE '%$headline%'");
 
     if ($searchpost->execute()) {
 

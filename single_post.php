@@ -2,6 +2,7 @@
 session_start();
 include_once "header.php";
 
+
 $post_id = $_GET["post_id"];
 
 $display_post = $pdo->prepare("SELECT * FROM posts WHERE post_id='$post_id'");
@@ -46,12 +47,12 @@ $row2 = $display_editor->fetch();
         ?>
     </tr>
     <tr>
-        <td>Content:</td><td><?php echo $row["content"] ?></td>
+        <td><?php echo $row["content"] ?></td>
     </tr>
     <tr>
         <td><?php include "comment.php" ?></td>
     </tr>
-</table>
+</table>z
 </div>
 </div>
 

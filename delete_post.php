@@ -11,19 +11,23 @@ $myprofile_id = $_SESSION["angemeldet"];
 <div id="place_content" style="border-radius: .25rem;">
     <div class="place_content_inside" style="border-radius: .25rem;">
 
+        <strong>Do you really want to delete this post?</strong>
+
+        <div class="row">
+            <div class="col-md-2"></div>
+
+            <div class="post_formular col-md-9">
+
 <!-- Frage ob der Post wirklich gelöscht werden soll-->
-
-
-
     <form action="delete_post.php?post_id=<?php echo $post_id ?>" method="post">
-
-                Do you really want to delete this post?
 
                 <button class="btn btn-info" type="submit" value="post" name="yes">Yes</button>
 
                 <button class="btn btn-info" type="submit" value="post" name="no">No</button>
-
     </form>
+            </div>
+        </div>
+        </div>
 </div>
 </div>
 

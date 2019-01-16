@@ -31,18 +31,11 @@
             </div>
             <!-- Grid column -->
 
-            <!-- Grid column -->
-            <div class="col-md-2">
-                <h9 class="text-uppercase">
-                    <a id="bar-link" href="#!">Help</a>
-                </h9>
-            </div>
-            <!-- Grid column -->
 
             <!-- Grid column -->
             <div class="col-md-2">
                 <h9 class="text-uppercase">
-                    <a id="bar-link" href="#!">Contact</a>
+                    <a id="bar-link" href="mailto:RAM@hdm-stuttgart.de?subject=Email%20Help&body=Hello%20RAM, ">Contact</a>
                 </h9>
             </div>
             <!-- Grid column -->

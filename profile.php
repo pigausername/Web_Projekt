@@ -80,6 +80,7 @@ if($sql->execute()) {
         ?>
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post" src="pictures/<?php echo $row2['profilepic'] ?>"></a><br>
                 <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></strong><br>
+
                 <small><?php echo $row['date']?></small><br><br>
                 <h4><?php echo $row['headline']?></h4>
                 <?php

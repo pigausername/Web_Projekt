@@ -11,7 +11,7 @@ $myprofile_id = $_SESSION["angemeldet"];
 <div id="place_content" style="border-radius: .25rem;">
     <div class="place_content_inside" style="border-radius: .25rem;">
 
-        <h2>Do you really want to delete your post?</h2>
+        <h4>Do you really want to delete your post?</h4>
         <br>
 
 

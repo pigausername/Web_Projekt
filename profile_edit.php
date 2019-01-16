@@ -116,12 +116,16 @@ if($statement->execute()) {
 
         <body>
         <div id="place_content">
-            <div class="place_content_inside">
+            <div class="place_content_inside" style="min-width: 100%">
 
 
-                <h2>Here you can edit your profile.</h2>
+                <h2>Here you can edit your profile</h2><br>
+                        <div class="row">
+                            <div class="col-md-3" style="background-color: red"></div>
+                            <div class="col-md-5" style="margin: auto">
+
                 <form action="profile_edit.php" method="POST">
-                    <table>
+                    <table style="text-align: left">
                         <tr>
                             <td>Username:</td>
                             <td><input type="text" name="username" placeholder="<?php echo $row['username'] ?>"></td>
@@ -161,12 +165,24 @@ if($statement->execute()) {
                             <td><input type="number" name="semester" id="semester" min="1" max="10" placeholder="<?php echo $row['semester'] ?>"</td>
                         </tr>
                         <tr>
+                            <td>Select an image:</td>
+                        </tr>
+                        <tr>
                             <td>
-                                <button type="submit" name="save_changes" class="btn">Save changes</button>
+                                    <input type="file" name="file" id="file" value="File">
                             </td>
                         </tr>
                     </table>
+
+                    <br>
+
+                    <button type="submit" name="save_changes" class="btn btn-info">Save changes</button>
+
                 </form>
+
+                            </div>
+                            <div class="col-md-3" style="background-color: red"></div>
+                        </div>
             </div>
         </div>
         </body>

@@ -15,7 +15,7 @@ include_once "header.php";
     <div class="place_content_inside" style="border-radius: .25rem;">
 
     <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
-    <div>
+
     <h2>Create a post</h2>
     <br>
         <div class="row">
@@ -69,6 +69,7 @@ if(!$no > 0) {
         $sql = $pdo->prepare("SELECT * FROM posts WHERE userid= $myid ORDER BY date DESC");
         if ($sql->execute()) {
             while ($row = $sql->fetch()) {
+
                 ?>
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"
                                                                                 src="pictures/<?php echo $row2['profilepic'] ?>"></a><br>
@@ -111,7 +112,7 @@ else {
                 <small><?php echo $row3['date'] ?></small>
                 <br>
                 <br>
-                <h4><small><?php echo $row3['headline'] ?></small></h4>
+                <h4><?php echo $row3['headline'] ?></h4>
                 <?php
                 // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält
 
@@ -136,7 +137,7 @@ else {
 }
 
 ?>
-    </>
+    </div>
 </div>
         <?php
 

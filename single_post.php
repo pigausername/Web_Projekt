@@ -20,9 +20,13 @@ $row2 = $display_editor->fetch();
 
 <body>
 <div id="place_content" style="border-radius: .25rem;">
-    <div class="place_content_inside">
+    <div class="place_content_inside" style="min-width: 100%">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
 
-        <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic" src="pictures/<?php echo $row2['profilepic'] ?>"></a>
+
+                <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic" src="pictures/<?php echo $row2['profilepic'] ?>"></a>
         <br>
 
         <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></strong>
@@ -54,7 +58,11 @@ $row2 = $display_editor->fetch();
         <hr/>
 
         <?php include "comment.php" ?>
-</div>
+
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
 </div>
 
 <?php

@@ -1,27 +1,4 @@
-<?php
-session_start();
-include_once "header.php";
-
-
-?>
-
-<!doctype html>
-<html lang="de">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
-
-</head>
-<body>
-<div>
-
-<div>
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-
-    <form method="POST" id="comment_form">
+<form method="POST" id="comment_form">
         <div class="form-group">
             <textarea name="comment" id="comment" class="textareastyle" placeholder="Enter Comment" rows="5" required></textarea>
         </div>
@@ -33,12 +10,6 @@ include_once "header.php";
     <span id="comment_message"></span>
     <br />
     <div id="display_comment"></div>
-
-        </div>
-        <div class="col-md-2"></div>
-    </div>
-</div>
-
 
 
 <script>
@@ -83,5 +54,4 @@ include_once "header.php";
     });
 </script>
 
-</div>
 </body>

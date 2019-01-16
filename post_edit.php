@@ -164,14 +164,11 @@ if ($display_oldpost->execute()){
 <body>
 
 <div id="place_content">
-    <div class="place_content_inside">
+    <div class="place_content_inside" style="min-width: 100%">
         <h2>Here you can edit your post</h2>
 
         <div class="row">
-            <br>
-            <br>
-            <br>
-            <div class="col-md-2"</div>
+            <div class="col-md-2"></div>
             <div class="col-md-8">
 
         <form action="post_edit.php?post_id=<?php echo $post_id ?>" method="post" enctype="multipart/form-data">

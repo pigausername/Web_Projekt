@@ -37,72 +37,83 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
         die();
     }
 
+    if (empty($_POST["headline"]) OR empty($_POST["content"])) {
+        ?>
+        <div class="alert alert-danger alert-dismissible fade show">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Info!</strong> A good post requires both a headline and content. Try <a href="feed.php">here</a> again.
+        </div>
+        <?php
+    } else {
 
-    if (file_exists($_FILES['file']['tmp_name']) || is_uploaded_file($_FILES['file']['tmp_name'])) {
-        $file = $_FILES['file'];
+        if (file_exists($_FILES['file']['tmp_name']) || is_uploaded_file($_FILES['file']['tmp_name'])) {
+            $file = $_FILES['file'];
 
 
-        $fileName = $_FILES['file']['name'];
-        $fileTmpName = $_FILES['file']['tmp_name'];
-        $fileSize = $_FILES['file']['size'];
-        $fileError = $_FILES['file']['error'];
-        $fileType = $_FILES['file']['type'];
+            $fileName = $_FILES['file']['name'];
+            $fileTmpName = $_FILES['file']['tmp_name'];
+            $fileSize = $_FILES['file']['size'];
+            $fileError = $_FILES['file']['error'];
+            $fileType = $_FILES['file']['type'];
 
-        $fileExt = explode('.', $fileName);
-        $fileActualExt = strtolower(end($fileExt));
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
 
-        // Definiere welche Dateiformate erlaubt sind
-        $allowed = array('jpg', 'jpeg', 'png', 'pdf');
+            // Definiere welche Dateiformate erlaubt sind
+            $allowed = array('jpg', 'jpeg', 'png', 'pdf');
 
-        if (in_array($fileActualExt, $allowed)) {
-            if ($fileError === 0) {
-                if ($fileSize < 1000000) {
-                    $fileNameNew = uniqid('', true) . "." . $fileActualExt;
-                    $fileDestination = 'pictures/' . $fileNameNew;
-                    move_uploaded_file($fileTmpName, $fileDestination);
-                    echo $fileDestination;
-                    echo $headline;
-                    echo $content;
-                    echo $fileNameNew;
+            if (in_array($fileActualExt, $allowed)) {
+                if ($fileError === 0) {
+                    if ($fileSize < 1000000) {
+                        $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+                        $fileDestination = 'pictures/' . $fileNameNew;
+                        move_uploaded_file($fileTmpName, $fileDestination);
+                        echo $fileDestination;
+                        echo $headline;
+                        echo $content;
+                        echo $fileNameNew;
 
                         $uploadwithpic = $pdo->prepare("INSERT INTO posts (headline, content, filename, userid) VALUES (:headline, :content, :fileNameNew, :userid)");
                         $uploadwithpic->bindParam(':headline', $headline);
                         $uploadwithpic->bindParam(':content', $content);
                         $uploadwithpic->bindParam(':fileNameNew', $fileNameNew);
                         $uploadwithpic->bindParam(':userid', $userid);
-                    if ($uploadwithpic->execute()) {
+                        if ($uploadwithpic->execute()) {
 
                             echo '<script>window.location.href="feed.php"</script>';
+                        }
+
+                    } else {
+                        echo "Your file is too big!";
                     }
 
                 } else {
-                    echo "Your file is too big!";
+                    echo "There was an error uploading your file!";
                 }
-
             } else {
-                echo "There was an error uploading your file!";
+                echo "You cannot upload files of this type!";
             }
         } else {
-            echo "You cannot upload files of this type!";
-        }
-    } else {
 
-        $nopic = "NULL";
+            $nopic = "NULL";
 
-        $upload = $pdo->prepare("INSERT INTO posts (headline, content, filename, userid) VALUES (:headline, :content, :filename, :userid)");
-        $upload->bindParam('headline', $headline);
-        $upload->bindParam('content', $content);
-        $upload->bindParam('filename', $nopic);
-        $upload->bindParam('userid', $userid);
+            $upload = $pdo->prepare("INSERT INTO posts (headline, content, filename, userid) VALUES (:headline, :content, :filename, :userid)");
+            $upload->bindParam('headline', $headline);
+            $upload->bindParam('content', $content);
+            $upload->bindParam('filename', $nopic);
+            $upload->bindParam('userid', $userid);
 
-        if ($upload->execute()) {
+            if ($upload->execute()) {
 
-        $myid = $_SESSION["angemeldet"];
+                $myid = $_SESSION["angemeldet"];
 
-            echo '<script>window.location.href="feed.php"</script>';
-        }
+                echo '<script>window.location.href="feed.php"</script>';
             }
-        } else {
-            echo "There was a problem concerning your upload. Please try again!";
         }
+    }
+}
+else {
+        echo "There was a problem concerning your upload. Please try again!";
+    }
+
 ?>

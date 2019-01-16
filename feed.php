@@ -77,7 +77,7 @@ if(!$no > 0) {
                     <br>
                     <h4><?php echo $row['headline'] ?></h4><br>
                     <?php echo nl2br ('<p>'.$row['content'].'</p>'); ?><br>
-                <p href="single_post.php?post_id=<?php echo $row["post_id"] ?>"><p style="text-align: right">Comment</p>
+                <div class="content-right"><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a></div>
 
                 <hr />
 

@@ -91,19 +91,18 @@ if(!$no > 0) {
 else {
     //Wenn man jemandem folgt
 
-        while($row = $checkfollow->fetch()) {
+    while ($row = $checkfollow->fetch()) {
+        $editor_id = $row['userid'];
 
 
-            $display_post = $pdo->prepare("SELECT * FROM posts WHERE userid= $editor_id ORDER BY date DESC");
-            $display_post->execute();
-
-            while ($row3 = $display_post->fetch()) {
-
-                $editor = $row3['userid'];
-                $display_editor = $pdo->prepare("SELECT * FROM userdata WHERE userid= $editor");
-                $display_editor->execute();
-                $row2 = $display_editor->fetch();
-                ?>
+        $display_post = $pdo->prepare("SELECT * FROM posts WHERE userid= $editor_id OR userid= $myid ORDER BY date DESC");
+        $display_post->execute();
+        while ($row3 = $display_post->fetch()){
+            $editor = $row3['userid'];
+            $display_editor = $pdo->prepare("SELECT * FROM userdata WHERE userid= $editor");
+            $display_editor->execute();
+            $row2 = $display_editor->fetch();
+            ?>
 
 
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"

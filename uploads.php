@@ -37,6 +37,8 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
         die();
     }
 
+// Show alert Button if Headline or Content is empty
+
     if (empty($_POST["headline"]) OR empty($_POST["content"])) {
         ?>
         <div class="alert alert-danger alert-dismissible fade show">
@@ -68,10 +70,6 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
                         $fileNameNew = uniqid('', true) . "." . $fileActualExt;
                         $fileDestination = 'pictures/' . $fileNameNew;
                         move_uploaded_file($fileTmpName, $fileDestination);
-                        echo $fileDestination;
-                        echo $headline;
-                        echo $content;
-                        echo $fileNameNew;
 
                         $uploadwithpic = $pdo->prepare("INSERT INTO posts (headline, content, filename, userid) VALUES (:headline, :content, :fileNameNew, :userid)");
                         $uploadwithpic->bindParam(':headline', $headline);

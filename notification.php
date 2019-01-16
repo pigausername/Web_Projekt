@@ -38,35 +38,6 @@ session_start();
                 load_unseen_notification();
             }, 5000);
 
-/*                ('.clear').on( 'click', function(){
-
-
-                        var pid = $(this).data('pid');
-
-                        $.post( "delete_notification.php", { pid: pid })
-
-                            .done(function( data ) {
-
-                                if(data > 0){
-
-                                    $('.success').show(3000).html("Record deleted successfully.").delay(3200).fadeOut(6000);
-
-                                }else{
-
-                                    $('.error').show(3000).html("Record could not be deleted. Please try again.").delay(3200).fadeOut(6000);;
-
-                                }
-
-                                setTimeout(function(){
-                                    window.location.reload(1);
-                                }, 5000);
-
-                            });
-
-                });
-
-*/
-
         }
         );
 </script>

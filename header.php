@@ -73,10 +73,10 @@ if (isset($_SESSION["angemeldet"]))
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="notify_dd_toggle">
                         <span class="label label-pill label-danger count" style="border-radius:10px;"></span>
-                        <span class="glyphicon glyphicon-envelope" style="font-size:18px;"></span></a>
-                    <ul class="dropdown-menu"></ul>
+                        <span class="glyphicon glyphicon-envelope" style="font-size:18px;"></span> (<span id="notify_count"></span>)</a>
+                    <ul class="dropdown-menu" id="notify_dd"></ul>
                 </li>
             </ul>
 
@@ -89,6 +89,29 @@ if (isset($_SESSION["angemeldet"]))
         </div>
     </nav>
 </div>
+
+    <script>
+
+        $(document).ready(function(){
+
+            $('#notify_dd_toggle').on('click', function(event){
+                event.preventDefault(); // Bedeutet in etwa Absicherung, was passieren würde, wenn der Code nicht funktioniert
+                $.get("fetch_notification.php", function(data, status){
+                    $('#notify_dd').html(data);
+                });
+            });
+        });
+
+        $(document).ready(function(){
+            setInterval(function() {
+                $("#notify_count").load("count_notification.php");
+            }, 50);
+        });
+
+
+    </script>
+
+
 
 <?php
 

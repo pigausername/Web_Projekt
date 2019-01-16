@@ -5,7 +5,6 @@ include_once "userdata.php";
 $myid = $_SESSION["angemeldet"];
 
 if ($getpostid = $pdo->prepare("SELECT * FROM posts WHERE userid = $myid ORDER BY post_id DESC LIMIT 1")) {
-    echo $myid;
     if ($getpostid->execute()) {
 
         if ($row = $getpostid->fetch()) {
@@ -13,7 +12,6 @@ if ($getpostid = $pdo->prepare("SELECT * FROM posts WHERE userid = $myid ORDER B
 
             $post_id = $row['post_id'];
 
-            echo $post_id;
         }
     }
 }
@@ -24,7 +22,6 @@ if ($display_follower->execute()) {
 
         $followerid = $row3['followerid'];
 
-        echo $followerid;
 
         $set_notification = $pdo->prepare("INSERT INTO notification (notificationerid, post_id, receiverid) VALUES (:myid, :post_id, :followerid)");
         $set_notification->bindParam(':myid', $myid);
@@ -32,7 +29,7 @@ if ($display_follower->execute()) {
         $set_notification->bindParam(':followerid', $followerid);
         $set_notification->execute();
 
-        //echo '<script>window.location.href="feed.php"</script>';
+        echo '<script>window.location.href="feed.php"</script>';
     }
 
 }

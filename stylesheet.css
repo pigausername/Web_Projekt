@@ -4,6 +4,14 @@ body {
         font-size: 85%; /* allgemeine Schriftgröße von allen Elementen im body */
 }
 
+a {
+    color: #17a2b8
+}
+
+a:Hover {
+    color: #117a8b
+}
+
 .form_space_around_boxes {
     margin: 0.1cm;
 }
@@ -132,8 +140,8 @@ form {
 }
 
 .postpic {
-    max-height:100%;
-    max-width: 100%;
+    max-height: 100%;
+    width: 70%;
 }
 
 .textareastyle {

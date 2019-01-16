@@ -40,14 +40,18 @@ $row2 = $display_user->fetch();
         <hr />
         <?php
 
-
+//Show Followers and Subs
 include_once "show_followers.php";
 include_once "show_subs.php";
+        ?>
+                <hr />
+<?php
 
 //Follow Button
 include_once "follow.php";
 
 ?>
+
             </div>
     </div>
 </div>

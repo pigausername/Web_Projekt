@@ -19,7 +19,7 @@ $row2 = $display_editor->fetch();
 
 
 <body>
-<div id="place_content">
+<div id="place_content" style="border-radius: .25rem;">
     <div class="place_content_inside">
 
         <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic" src="pictures/<?php echo $row2['profilepic'] ?>"></a>
@@ -30,6 +30,7 @@ $row2 = $display_editor->fetch();
         <?php echo $row["date"]?>
         <h1><strong><?php echo $row["headline"] ?></strong></h1>
           <?php
+
             // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält --> Unovllständig
           $nopic = "NULL";
 

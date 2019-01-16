@@ -1,6 +1,14 @@
 <?php
 
 include_once "header.php";
+?>
+
+
+<head>
+    <title>Edit your profile</title>
+</head>
+
+<?php
 
 $userid = $_SESSION["angemeldet"];
 
@@ -30,7 +38,6 @@ if (isset($_POST['save_changes'])) {
             <strong>Info!</strong> Please fill in all fields!
         </div>
         <?php
-        echo $username.$password.$rpassword.$email.$firstname.$lastname.$subject.$semester;
 
     } elseif ($_POST["password"] != $_POST["repeatpassword"]) {
         ?>
@@ -107,16 +114,12 @@ if($statement->execute()) {
     while ($row = $statement->fetch()) {
         ?>
 
-
-        <head>
-            <title>Edit your profile</title>
-        </head>
         <body>
         <div id="place_content">
             <div class="place_content_inside">
 
 
-                <h1>Here you can edit your profile.</h1>
+                <h2>Here you can edit your profile.</h2>
                 <form action="profile_edit.php" method="POST">
                     <table>
                         <tr>

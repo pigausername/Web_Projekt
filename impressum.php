@@ -6,10 +6,10 @@ include_once "header.php";
     <div id="place_content">
         <div class="place_content_inside">
 
-<h1>Legal notice</h1><br>
+<h2>Legal notice</h2><br>
 
 
-    <h2>Welcome to RAM!</h2>
+    <h3>Welcome to RAM!</h3>
     These Terms of Use govern your use of RAM and provide information about the RAM Service. If you create a RAM account or use RAM, you agree to these Terms of Use.
 <br>
 

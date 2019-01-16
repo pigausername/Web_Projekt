@@ -22,7 +22,7 @@ if (isset($_POST['result'])){
 
     ?>
 
-        <h1>Users</h1>
+        <h2>Users</h2>
         <br>
 
     <?php
@@ -32,7 +32,7 @@ if (isset($_POST['result'])){
             $userid = $row['userid'];
             ?>
 
-            <h2><a href="profile.php?userid=<?php echo $row['userid'] ?>"><?php echo $row['username'] ?></a></h2><br>
+            <h3><a href="profile.php?userid=<?php echo $row['userid'] ?>"><?php echo $row['username'] ?></a></h3><br>
             <a href="profile.php?userid=<?php echo $row['userid'] ?>"><img class="profilepic"
                                                                            src="pictures/<?php echo $row['profilepic'] ?>"></a>
             <br>
@@ -55,7 +55,7 @@ if (isset($_POST['result'])){
     $searchpost = $pdo->prepare("SELECT * FROM posts WHERE headline LIKE '%$headline%' ORDER BY date DESC");
 
     ?>
-        <h1>Posts</h1>
+        <h2>Posts</h2>
         <br>
 
         <?php

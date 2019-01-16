@@ -28,7 +28,11 @@ $row2 = $display_editor->fetch();
         <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></strong>
         <br>
         <?php echo $row["date"]?>
-        <h1><strong><?php echo $row["headline"] ?></strong></h1>
+
+
+
+        <h2><?php echo $row["headline"] ?></h2>
+        <br>
           <?php
 
             // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält --> Unovllständig
@@ -47,6 +51,7 @@ $row2 = $display_editor->fetch();
 
         <br>
         <br>
+        <hr/>
 
         <?php include "comment.php" ?>
 </div>

@@ -15,12 +15,11 @@ include_once "header.php";
     <div class="place_content_inside" style="border-radius: .25rem;">
 
     <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
-    <div>
     <h2>Create a post</h2>
     <br>
         <div class="row">
-<div class="col-md-2"></div>
-<div class="post_formular col-md-8">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
         <form action="uploads.php" method="post" enctype="multipart/form-data">
         <br>
             <textarea class="textareastyle" type="text" name="headline" placeholder="Titel"  rows="1"></textarea>
@@ -35,9 +34,10 @@ include_once "header.php";
             <button class="btn btn-info" type="submit" value="post" name="post">Post</button>
         </div>
     </form>
-</div>
+    </div>
         <div class="col-md-2"></div>
         </div>
+
     <br>
 
 
@@ -135,7 +135,7 @@ else {
 }
 
 ?>
-    </div>
+    </>
 </div>
         <?php
 

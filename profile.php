@@ -25,7 +25,7 @@ $display_user->execute();
 $row2 = $display_user->fetch();
         ?>
         <title><?php echo $row2['username'] ?></title>
-        <h1 style="text-align: center"><?php echo $row2['username'] ?></h1>
+        <h2 style="text-align: center"><?php echo $row2['username'] ?></h2>
     <br>
 
         <img class="profilepic" src="pictures/<?php echo $row2['profilepic'] ?>">
@@ -44,7 +44,7 @@ $row2 = $display_user->fetch();
 include_once "show_followers.php";
 include_once "show_subs.php";
         ?>
-                <hr />
+        <hr />
 <?php
 
 //Follow Button
@@ -58,7 +58,7 @@ include_once "follow.php";
 
     <div class="col-md-8">
         <div class="place_content_inside content-profile" style="border-radius: .25rem;">
-            <h1>Posts</h1>
+            <h2>Posts</h2>
             <br>
 <?php
 

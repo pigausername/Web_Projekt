@@ -17,9 +17,13 @@ include_once "header.php";
 <div>
 
 <div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+
     <form method="POST" id="comment_form">
         <div class="form-group">
-            <textarea name="comment" id="comment" class="form-control" placeholder="Enter Comment" rows="5" required></textarea>
+            <textarea name="comment" id="comment" class="textareastyle" placeholder="Enter Comment" rows="5" required></textarea>
         </div>
         <div class="form-group">
             <input type="hidden" name="post_id" id="post_id" value="<?php echo $post_id ?>" />
@@ -29,6 +33,10 @@ include_once "header.php";
     <span id="comment_message"></span>
     <br />
     <div id="display_comment"></div>
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
 </div>
 
 

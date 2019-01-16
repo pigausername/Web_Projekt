@@ -4,15 +4,10 @@ include_once "header.php";
 
 
 ?>
-<!doctype html>
-<html lang="de">
 <head>
-    <meta charset="UTF-8">
     <title>Edit your post</title>
+
 </head>
-<body>
-<div class="content">
-<h1>Here you can edit your post.</h1>
 
 <?php
 
@@ -30,16 +25,21 @@ if (isset($_POST['save_post_edit'])) {
 
     if ((stripos($newheadline, "<") !== false) OR (stripos($newcontent, "<") !== false)) {
         ?>
+        <br>
+        <br>
+        <br>
         <div class="alert alert-danger alert-dismissible fade show">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong>Info!</strong> Don't mess with us! Head back to <a href="feed.php">your feed</a>.
         </div>
         <?php
-        die();
     }
 
-    if (empty($_POST["headline"]) OR empty($_POST["content"])) {
+    elseif (empty($_POST["headline"]) OR empty($_POST["content"])) {
         ?>
+        <br>
+        <br>
+        <br>
         <div class="alert alert-danger alert-dismissible fade show">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong>Info!</strong> A good post requires both a headline and content. Try <a href="feed.php">here</a>
@@ -89,6 +89,9 @@ if (isset($_POST['save_post_edit'])) {
 
                             if ($PostUpdate->execute()) {
                                 ?>
+                                <br>
+                                <br>
+                                <br>
                                 <div class="alert alert-success alert-dismissible fade show">
                                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                                     <strong>You have successfully updated your post!</strong> Head <a href="feed.php">here</a> back to
@@ -97,6 +100,9 @@ if (isset($_POST['save_post_edit'])) {
                                 <?php
                             } else {
                                 ?>
+                                <br>
+                                <br>
+                                <br>
                                 <div class="alert alert-danger alert-dismissible fade show">
                                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                                     <strong>Info!</strong> Something went wrong. Try again!
@@ -121,6 +127,9 @@ if (isset($_POST['save_post_edit'])) {
 
             if ($PostUpdate->execute()) {
                 ?>
+                <br>
+                <br>
+                <br>
                 <div class="alert alert-success alert-dismissible fade show">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                     <strong>You have successfully updated your post!</strong> Head <a href="feed.php">here</a> back to
@@ -129,6 +138,9 @@ if (isset($_POST['save_post_edit'])) {
                 <?php
             } else {
                 ?>
+                <br>
+                <br>
+                <br>
                 <div class="alert alert-danger alert-dismissible fade show">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                     <strong>Info!</strong> Something went wrong. Try again!
@@ -140,6 +152,7 @@ if (isset($_POST['save_post_edit'])) {
 
 }
 
+
 // Anzeigen des ursprünglichen Posts
 
 $display_oldpost = $pdo->prepare("SELECT * FROM posts WHERE post_id=$post_id");
@@ -148,26 +161,46 @@ if ($display_oldpost->execute()){
     while ($row = $display_oldpost->fetch()) {
 
 ?>
-<form action="post_edit.php?post_id=<?php echo $post_id ?>" method="post" enctype="multipart/form-data">
-    <br>
-    <textarea class="textareastyle" name="headline" placeholder="" rows="1"> <?php echo $row['headline'] ?> </textarea>
-    <br>
-    <textarea class="textareastyle" name="content" placeholder="" rows="7"> <?php echo $row['content'] ?> </textarea>
-    <br>
-    <br> <div class="content-right">
-        Select an image: <input type="file" name="file" id="file" value="File">
-        <br>
-        <br>
+<body>
 
-        <button class="btn btn-info" type="submit" name="save_post_edit" value="Save">Save Changes</button>
-    </div>
-    </form>
+<div id="place_content">
+    <div class="place_content_inside">
+        <h2>Here you can edit your post</h2>
+
+        <div class="row">
+            <br>
+            <br>
+            <br>
+            <div class="col-md-2"</div>
+            <div class="col-md-8">
+
+        <form action="post_edit.php?post_id=<?php echo $post_id ?>" method="post" enctype="multipart/form-data">
+            <br>
+            <textarea class="textareastyle" name="headline" placeholder="" rows="1"><?php echo $row['headline'] ?> </textarea>
+            <br>
+            <textarea class="textareastyle" name="content" placeholder="" rows="7"><?php echo $row['content'] ?> </textarea>
+            <br>
+            <br>
+            <div class="content-right">
+            Select an image: <input type="file" name="file" id="file" value="File">
+            <br>
+            <br>
+
+            <button class="btn btn-info" type="submit" name="save_post_edit" value="Save">Save Changes</button>
+            </div>
+        </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
     <?php
     }
     }
 
     ?>
-
+    </div>
 </div>
+<?php
+
+include_once "footer.php";
+?>
 </body>
-</html>

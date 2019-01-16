@@ -41,6 +41,8 @@ require_once "userdata.php";
 if (isset($_SESSION["angemeldet"]))
 {
     $userid = $_SESSION["angemeldet"];
+
+    include "notification.php";
 ?>
 
 
@@ -70,20 +72,13 @@ if (isset($_SESSION["angemeldet"]))
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <div class="notification_image">
-
-                </div>
-
                 <li class="dropdown">
-
-                    <a id="notification_dropdown" href="#" class="dropdown-toggle notification" data-toggle="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="label label-pill label-danger count" style="border-radius:10px;"></span>
                         <span class="glyphicon glyphicon-envelope" style="font-size:18px;"></span></a>
-
-                    <ul class="dropdown-menu notification"></ul>
+                    <ul class="dropdown-menu"></ul>
                 </li>
             </ul>
-
 
             <form action="search.php" class="form-inline" method="POST">
                 <input class="form-control mr-sm-2" name="result" type="search" placeholder="Search..." aria-label="Search">
@@ -97,7 +92,7 @@ if (isset($_SESSION["angemeldet"]))
 
 <?php
 
-    //include_once "notification.php";
+    include_once "notification.php";
 
 }
 
@@ -107,7 +102,6 @@ else
 {
    header("Location: index.php");}
 ?>
-
 
 
 <!--script-- src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script-->

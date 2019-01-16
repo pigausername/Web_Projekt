@@ -9,7 +9,7 @@ $followerid=$_SESSION["angemeldet"];
 
 
 
-//if(isset($_POST["view"])) {
+if(isset($_POST["view"])) {
 
     // Finde heraus ob Benachichtigungen vorhanden sind
     $fetch_notification = $pdo->prepare("SELECT * FROM notification WHERE receiverid = $followerid ORDER BY notid DESC LIMIT 5");
@@ -17,8 +17,10 @@ $followerid=$_SESSION["angemeldet"];
     $output = '';
     $count_notification = $fetch_notification->rowCount();
 
+    echo $followerid;
 
     if ($count_notification > 0) {
+        echo "FETCH";
         while ($row = $fetch_notification->fetch()) {
             $post_id = $row["post_id"];
 
@@ -29,20 +31,30 @@ $followerid=$_SESSION["angemeldet"];
 
             $editor_id = $row2["userid"];
 
+            echo $editor_id . "BLA";
+
+            echo $post_id . "BLA";
+
             $display_editor = $pdo->prepare("SELECT * FROM userdata WHERE userid='$editor_id'");
             $display_editor->execute();
             while ($row3 = $display_editor->fetch()) {
+                echo $row2["headline"];
+                echo "  ";
+                echo $row3["username"];
 
                 $output .= '
    <li id="notification">
     <a href="single_post.php?post_id=' . $row2['post_id'] . ';">
      <strong>' . $row2["headline"] . '</strong><br />
     </a>
-     <small>By <a href="profile.php?userid='.$editor_id.'">' . $row3["username"] . '</a> on ' . $row2["date"] . '</small>
+    
+     <small>By <a href="profile.php?userid=' . $editor_id . '">' . $row3["username"] . '</a> on ' . $row2["date"] . '</small>
+     
      <a href="#">Clear</a> 
      <br />
      <input type="hidden" name="post_id" id="post_id" value="<?php echo $post_id ?>" />
-    <a class="clear" data-pid='.$row['notid'].' href="javascript:void(0)">Delete</a>
+     
+    <a class="clear" data-pid=' . $row['notid'] . ' href="javascript:void(0)">Delete</a>
     <hr />
    </li>
    <li class="divider"></li>
@@ -50,22 +62,20 @@ $followerid=$_SESSION["angemeldet"];
    ';
             }
         }
+    } else {
+        $output .= '<li><a href="#" class="text-bold text-italic">No Notification Found</a></li>';
     }
 
-            else {
-                $output .= '<li><a href="#" class="text-bold text-italic">No Notification Found</a></li>';
-            }
+    $data = array(
+        'notification' => $output,
+    );
+    echo json_encode($data);
 
-            $data = array(
-                'notification' => $output,
-            );
-            echo json_encode($data);
-
-
+}
 
 ?>
 <script>
-  /*  $(document).ready(function() {
+  $(document).ready(function() {
         $('.clear').on('click', function () {
 
 
@@ -92,5 +102,5 @@ $followerid=$_SESSION["angemeldet"];
                 });
 
         });
-    });*/
+    });
 </script>

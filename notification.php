@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 
 
@@ -34,10 +35,10 @@ session_start();
             });
 
             setInterval(function(){
-                load_unseen_notification();;
+                load_unseen_notification();
             }, 5000);
 
-                /*$('.clear').on( 'click', function(){
+/*                ('.clear').on( 'click', function(){
 
 
                         var pid = $(this).data('pid');
@@ -62,9 +63,9 @@ session_start();
 
                             });
 
-                });*/
+                });
 
-
+*/
 
         }
         );

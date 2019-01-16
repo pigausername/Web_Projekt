@@ -80,7 +80,7 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
                         $uploadwithpic->bindParam(':userid', $userid);
                         if ($uploadwithpic->execute()) {
 
-                            echo '<script>window.location.href="feed.php"</script>';
+                            echo '<script>window.location.href="do_notification.php"</script>';
                         }
 
                     } else {
@@ -107,7 +107,7 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
 
                 $myid = $_SESSION["angemeldet"];
 
-                echo '<script>window.location.href="feed.php"</script>';
+                echo '<script>window.location.href="do_notification.php"</script>';
             }
         }
     }

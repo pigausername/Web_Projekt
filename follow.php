@@ -47,4 +47,12 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
         }
         }
 }
+else {
+    ?>
+    <form action="profile_edit.php" method="post">
+            <input class="btn btn-info" type="submit" name="follow" value="Edit profile">
+        </form>
+<?php
+
+}
 ?>

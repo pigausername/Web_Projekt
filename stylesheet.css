@@ -152,3 +152,7 @@ form {
     font-size: 1rem;
     width: 100%;
 }
+
+td {
+    padding-right: 15px;
+}

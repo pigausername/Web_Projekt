@@ -1,4 +1,5 @@
 <?php
+//testen ob User angemeldet ist
 session_start();
 if (isset($_SESSION["angemeldet"])) {
     $userid = $_SESSION["angemeldet"];

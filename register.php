@@ -36,6 +36,7 @@ session_start();
 
 include_once "userdata.php";
 
+//Prüfung ob User schon angemeldet ist
 if (!isset($_SESSION["angemeldet"])) {
 
     if (isset($_POST['register'])) {

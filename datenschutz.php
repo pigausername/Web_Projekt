@@ -1,5 +1,5 @@
 <?php
-
+//Header wird eingefügt
 include_once "header.php";
 ?>
 <title>Privacy Policy</title>
@@ -15,7 +15,8 @@ include_once "header.php";
     <h3>I. Information about us as controllers of your data</h3>
     <p>The party responsible for this website (the "controller") for purposes of data protection law is:</p>
     <p><span style="color: #ff0000;">RAM</span><br><span style="color: #ff0000;">Nobelstraße 10</span><br><span style="color: #ff0000;">70569 Stuttgart</span><br><span style="color: #ff0000;">Germany</span></p>
-    <p><span style="color: #ff0000;">Email: ram@hdm-stuttgart.de</span></p>
+    <p><span style="color: #ff0000;">
+            <a href="mailto:RAM@hdm-stuttgart.de?subject=Email%20Help&body=Hello%20RAM, ">Email: RAM@hdm-stuttgart.de</a></span></p>
     <p>The controller's data protection officer is:</p>
     <p><span style="color: #ff0000;">Annika Bergfelder&nbsp;</span></p>
     <h3>II. The rights of users and data subjects</h3>
@@ -34,6 +35,6 @@ include_once "header.php";
         </div>
     </div>
 <?php
-
+//Header wird eingefügt
 include_once "footer.php";
 ?>

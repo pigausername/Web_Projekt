@@ -1,5 +1,5 @@
 <?php
-
+//Header wird eingefügt
 include_once "header.php";
 
 $notid = intval($_POST['pid']);

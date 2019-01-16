@@ -15,6 +15,7 @@ include_once "header.php";
     <div class="place_content_inside" style="border-radius: .25rem;">
 
     <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
+    <div>
     <h2>Create a post</h2>
     <br>
         <div class="row">

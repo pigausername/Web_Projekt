@@ -31,13 +31,24 @@ $row2 = $display_user->fetch();
         <img class="profilepic" src="pictures/<?php echo $row2['profilepic'] ?>">
     <br>
     <br>
-            E-Mail: <?php echo $row2['email'] ?> <br>
-            First name: <?php echo $row2['firstname'] ?> <br>
-            Last name: <?php echo $row2['lastname'] ?> <br>
-            Subject: <?php echo $row2['subject'] ?> <br>
-            Semester: <?php echo $row2['semester'] ?> <br>
-
-        <hr />
+    <table style="text-align: left">
+        <tr>
+            <td>E-Mail:</td><td><?php echo $row2['email'] ?></td>
+        </tr>
+        <tr>
+            <td>First name:</td><td><?php echo $row2['firstname'] ?></td>
+        </tr>
+        <tr>
+            <td>Last name:</td><td><?php echo $row2['lastname'] ?></td>
+        </tr>
+        <tr>
+            <td>Subject:</td><td><?php echo $row2['subject'] ?></td>
+        </tr>
+        <tr>
+            <td>Semester:</td><td><?php echo $row2['semester'] ?></td>
+        </tr>
+    </table>
+                <hr />
         <?php
 
 //Show Followers and Subs

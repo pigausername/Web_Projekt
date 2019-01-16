@@ -50,7 +50,6 @@ if (isset($_POST['save_changes'])) {
         </div>
         <?php
     } else {
-        echo "3";
         $options = ['cost' => 5];
         $hash = password_hash($password, PASSWORD_DEFAULT, $options);
 
@@ -121,7 +120,7 @@ if($statement->execute()) {
 
                 <h2>Here you can edit your profile</h2><br>
                         <div class="row">
-                            <div class="col-md-3" style="background-color: red"></div>
+                            <div class="col-md-3"></div>
                             <div class="col-md-5" style="margin: auto">
 
                 <form action="profile_edit.php" method="POST">
@@ -135,7 +134,7 @@ if($statement->execute()) {
                             <td><input type="password" name="password" placeholder="Password"></td>
                         </tr>
                         <tr>
-                            <td>Please repeat your new password:</td>
+                            <td>Repeat your password:</td>
                             <td><input type="password" name="repeatpassword" placeholder="Repeat your password"></td>
                         </tr>
                         <tr>
@@ -150,11 +149,11 @@ if($statement->execute()) {
                             <td>Last name:</td>
                             <td><input type="text" name="lastname" placeholder="<?php echo $row['lastname'] ?>"></td>
                         </tr>
-                        <!--<tr>
+                        <tr>
                             <td>Profile picture:</td>
                             <td><input type="file" name="profilepic" id="profilepic"></td>
                         </tr>
-                        -->
+
                         <tr>
                             <td>Subject:</td>
                             <td><input type="text" name="subject" id="subject" placeholder="<?php echo $row['subject'] ?>"</td>
@@ -163,14 +162,6 @@ if($statement->execute()) {
                         <tr>
                             <td>Semester:</td>
                             <td><input type="number" name="semester" id="semester" min="1" max="10" placeholder="<?php echo $row['semester'] ?>"</td>
-                        </tr>
-                        <tr>
-                            <td>Select an image:</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                    <input type="file" name="file" id="file" value="File">
-                            </td>
                         </tr>
                     </table>
 
@@ -181,7 +172,7 @@ if($statement->execute()) {
                 </form>
 
                             </div>
-                            <div class="col-md-3" style="background-color: red"></div>
+                            <div class="col-md-3"></div>
                         </div>
             </div>
         </div>

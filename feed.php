@@ -12,7 +12,7 @@ include_once "header.php";
 
 <body>
 <div id="place_content" style="border-radius: .25rem;">
-    <div class="place_content_inside" style="border-radius: .25rem;">
+    <div class="place_content_inside" style="border-radius: .25rem; min-width: 100%">
 
     <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
 
@@ -91,24 +91,26 @@ if(!$no > 0) {
 else {
     //Wenn man jemandem folgt
 
-    while ($row = $checkfollow->fetch()) {
-        $editor_id = $row['userid'];
+        while($row = $checkfollow->fetch()) {
 
 
+            $display_post = $pdo->prepare("SELECT * FROM posts WHERE userid= $editor_id ORDER BY date DESC");
+            $display_post->execute();
 
-        $display_post = $pdo->prepare("SELECT * FROM posts WHERE userid= $editor_id OR userid= $myid ORDER BY date DESC");
-        $display_post->execute();
-        while ($row3 = $display_post->fetch()){
-            $editor = $row3['userid'];
-            $display_editor = $pdo->prepare("SELECT * FROM userdata WHERE userid= $editor");
-            $display_editor->execute();
-            $row2 = $display_editor->fetch();
-            ?>
+            while ($row3 = $display_post->fetch()) {
+
+                $editor = $row3['userid'];
+                $display_editor = $pdo->prepare("SELECT * FROM userdata WHERE userid= $editor");
+                $display_editor->execute();
+                $row2 = $display_editor->fetch();
+                ?>
 
 
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"
-                            src="pictures/<?php echo $row2['profilepic'] ?>"></a><br>
-                <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a></strong><br>
+                                                                                src="pictures/<?php echo $row2['profilepic'] ?>"></a>
+                <br>
+                <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a></strong>
+                <br>
                 <small><?php echo $row3['date'] ?></small>
                 <br>
                 <br>
@@ -118,22 +120,22 @@ else {
 
                 $nopic = "NULL";
 
-                if ($row3['filename'] !== $nopic)
-                    {
-                        ?>
-                        <img class="postpic" src="pictures/<?php echo $row3['filename'] ?>">
-                        <br>
-                        <?php
-                    }
-            ?>
-            <p><?php echo nl2br ($row3['content']) ?></p>
-            <div class="content-right"><a href="single_post.php?post_id=<?php echo $row3["post_id"] ?>">Comment</a></div>
-            <hr/>
-            <br>
+                if ($row3['filename'] !== $nopic) {
+                    ?>
+                    <img class="postpic" src="pictures/<?php echo $row3['filename'] ?>">
+                    <br>
+                    <?php
+                }
+                ?>
+                <p><?php echo nl2br($row3['content']) ?></p>
+                <div class="content-right"><a href="single_post.php?post_id=<?php echo $row3["post_id"] ?>">Comment</a>
+                </div>
+                <hr/>
+                <br>
 
-            <?php
+                <?php
+            }
         }
-    }
 }
 
 ?>

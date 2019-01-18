@@ -48,6 +48,7 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
         }
 }
 else {
+    //Wenn es sich um das eigene Profil handelt, wird statt dem Follow Button der Edit Profile Button angezeigt
     ?>
     <form action="profile_edit.php" method="post">
             <input class="btn btn-info" type="submit" name="follow" value="Edit profile">

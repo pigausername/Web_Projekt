@@ -101,7 +101,12 @@ if (isset($_POST['login'])) {
 <?php
 }
 else {
-    echo "You are already logged in! Head back to ".'<a href=feed.php>home</a>'."!";
+    ?>
+    <div class="alert alert-danger alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Info!</strong> You are already logged in. Head back to <a href=feed.php>home</a>.
+    </div>
+    <?php
 }
 
 

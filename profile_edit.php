@@ -50,59 +50,110 @@ if (isset($_POST['save_changes'])) {
         </div>
         <?php
     } else {
-        $options = ['cost' => 5];
-        $hash = password_hash($password, PASSWORD_DEFAULT, $options);
+        if (file_exists($_FILES['file']['tmp_name']) || is_uploaded_file($_FILES['file']['tmp_name'])) {
+            $file = $_FILES['file'];
 
-        $updateprofile = $pdo->prepare("UPDATE `userdata` 
+            $fileName = $_FILES['file']['name'];
+            $fileTmpName = $_FILES['file']['tmp_name'];
+            $fileSize = $_FILES['file']['size'];
+            $fileError = $_FILES['file']['error'];
+            $fileType = $_FILES['file']['type'];
+
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
+
+            // Definiere welche Dateiformate erlaubt sind
+            $allowed = array('jpg', 'jpeg', 'png', 'pdf');
+
+            if (in_array($fileActualExt, $allowed)) {
+                if ($fileError === 0) {
+                    echo "BLA BLa BLa";
+                    if ($fileSize < 1000000) {
+                        echo "BLA BLA BLA BLA";
+                        $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+                        $fileDestination = 'pictures/' . $fileNameNew;
+                        move_uploaded_file($fileTmpName, $fileDestination);
+
+                        $options = ['cost' => 5];
+                        $hash = password_hash($password, PASSWORD_DEFAULT, $options);
+
+                        $updateprofile = $pdo->prepare("UPDATE `userdata` 
+        SET `username` = :username, `password` = :password, `email` = :email, `firstname` = :firstname, `lastname` = :lastname, profilepic = :profilepic, `subject` = :subject, `semester` = :semester
+        WHERE `userid` = :userid");
+
+                        $updateprofile->bindParam(':username', $username);
+                        $updateprofile->bindParam(':userid', $userid);
+                        $updateprofile->bindParam(':password', $hash);
+                        $updateprofile->bindParam(':email', $email);
+                        $updateprofile->bindParam(':firstname', $firstname);
+                        $updateprofile->bindParam(':lastname', $lastname);
+                        $updateprofile->bindParam(':profilepic', $fileNameNew);
+                        $updateprofile->bindParam(':subject', $subject);
+                        $updateprofile->bindParam(':semester', $semester);
+                        $updateprofile->execute();
+                        if ($updateprofile->execute()) {
+                            echo "bla";
+                        }
+                    }
+                }
+            }
+        } else {
+
+
+            $options = ['cost' => 5];
+            $hash = password_hash($password, PASSWORD_DEFAULT, $options);
+
+            $updateprofile = $pdo->prepare("UPDATE `userdata` 
         SET `username` = :username, `password` = :password, `email` = :email, `firstname` = :firstname, `lastname` = :lastname, `subject` = :subject, `semester` = :semester
         WHERE `userid` = :userid");
 
-        $updateprofile->bindParam(':username', $username);
-        $updateprofile->bindParam(':userid', $userid);
-        $updateprofile->bindParam(':password', $hash);
-        $updateprofile->bindParam(':email', $email);
-        $updateprofile->bindParam(':firstname', $firstname);
-        $updateprofile->bindParam(':lastname', $lastname);
-        $updateprofile->bindParam(':subject', $subject);
-        $updateprofile->bindParam(':semester', $semester);
-        $updateprofile->execute();
+            $updateprofile->bindParam(':username', $username);
+            $updateprofile->bindParam(':userid', $userid);
+            $updateprofile->bindParam(':password', $hash);
+            $updateprofile->bindParam(':email', $email);
+            $updateprofile->bindParam(':firstname', $firstname);
+            $updateprofile->bindParam(':lastname', $lastname);
+            $updateprofile->bindParam(':subject', $subject);
+            $updateprofile->bindParam(':semester', $semester);
+            $updateprofile->execute();
 
-        $checkprofile = $pdo->prepare("SELECT `username`, `password`, `email`, `firstname`, `lastname`, `subject`, `semester` FROM `userdata` WHERE userid=$userid");
-        $checkprofile->execute();
-        $row2 = $checkprofile->fetch();
-        $newusername = $row2["username"];
-        $newpassword = $row2["password"];
-        $newemail = $row2["email"];
-        $newfirstname = $row2["firstname"];
-        $newlastname = $row2["lastname"];
-        $newsubject = $row2["subject"];
-        $newsemester = $row2["semester"];
+            $checkprofile = $pdo->prepare("SELECT `username`, `password`, `email`, `firstname`, `lastname`, `subject`, `semester` FROM `userdata` WHERE userid=$userid");
+            $checkprofile->execute();
+
+            $row2 = $checkprofile->fetch();
+            $newusername = $row2["username"];
+            $newpassword = $row2["password"];
+            $newemail = $row2["email"];
+            $newfirstname = $row2["firstname"];
+            $newlastname = $row2["lastname"];
+            $newsubject = $row2["subject"];
+            $newsemester = $row2["semester"];
 
 
-        if ($newusername == $_POST['username'] AND $newpassword == $hash AND $newemail == $_POST['email'] AND $newfirstname == $_POST['firstname']
-            AND $newlastname == $_POST['lastname'] AND $newsubject == $_POST['subject'] AND $newsemester == $_POST['semester']) {
-            ?>
-            <br>
-            <br>
-            <br>
-            <div class="alert alert-success alert-dismissible fade show">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>You have successfully updated your profile!</strong> Head <a href="feed.php">here</a> back to
-                home!
-            </div>
-            <?php
-        } else {
-            ?>
-            <br>
-            <br>
-            <br>
-            <div class="alert alert-danger alert-dismissible fade show">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>Info!</strong> Something went wrong. Try again!
-            </div>
-            <?php
+            if ($newusername == $_POST['username'] AND $newpassword == $hash AND $newemail == $_POST['email'] AND $newfirstname == $_POST['firstname']
+                AND $newlastname == $_POST['lastname'] AND $newsubject == $_POST['subject'] AND $newsemester == $_POST['semester']) {
+                ?>
+                <br>
+                <br>
+                <br>
+                <div class="alert alert-success alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>You have successfully updated your profile!</strong> Head <a href="feed.php">here</a> back to home!
+                </div>
+                <?php
+            } else {
+                ?>
+                <br>
+                <br>
+                <br>
+                <div class="alert alert-danger alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Info!</strong> Something went wrong. Try again!
+                </div>
+                <?php
+            }
+
         }
-
     }
 }
 
@@ -151,7 +202,7 @@ if($statement->execute()) {
                         </tr>
                         <tr>
                             <td>Profile picture:</td>
-                            <td><input type="file" name="profilepic" id="profilepic"></td>
+                            <td><input type="file" name="file" id="file" value="File"></td>
                         </tr>
 
                         <tr>

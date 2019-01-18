@@ -36,11 +36,12 @@ session_start();
 
 include_once "userdata.php";
 
-//Prüfung ob User schon angemeldet ist
+//Prüfung, ob User schon angemeldet ist
 if (!isset($_SESSION["angemeldet"])) {
 
     if (isset($_POST['register'])) {
 
+        //Prüfung, ob die Felder ausgefüllt sind
         if(empty($_POST['username']) OR empty($_POST['password']) OR empty($_POST['repeatpassword']) OR empty($_POST['email']) OR empty($_POST['firstname']) OR empty($_POST['lastname'])){
             ?>
             <div class="alert alert-danger alert-dismissible fade show">
@@ -60,6 +61,8 @@ if (!isset($_SESSION["angemeldet"])) {
 
             if ($_POST['password'] == $_POST['repeatpassword']) {
 
+                //Passwort-Hash
+
                 $options = ['cost' => 5];
 
                 $hash = password_hash($password, PASSWORD_DEFAULT, $options);
@@ -70,9 +73,6 @@ if (!isset($_SESSION["angemeldet"])) {
                 $no = $checkregister->rowCount();
                 if (!$no > 0) {
 
-                    /* $register = $pdo->prepare("INSERT INTO userdata (`password`, `email`, `username`, `firstname`, `lastname`)
-                     VALUES ('$password', '$email', '$username', '$firstname', '$lastname')");
-                    */
                     $register = $pdo->prepare("INSERT INTO userdata (password, email, username, firstname, lastname)
                 VALUES (:password, :email, :username, :firstname, :lastname)");
                     $register->bindParam(':password', $hash);

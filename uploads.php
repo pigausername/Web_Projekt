@@ -48,6 +48,8 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
         <?php
     } else {
 
+        //Uploadcode dafür, wenn der Post ein Bild enthält
+
         if (file_exists($_FILES['file']['tmp_name']) || is_uploaded_file($_FILES['file']['tmp_name'])) {
             $file = $_FILES['file'];
 
@@ -92,6 +94,8 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
                 echo "You cannot upload files of this type!";
             }
         } else {
+
+            // Uploadcode dafür, wenn der Post kein Bild beinhält
 
             $nopic = "NULL";
 

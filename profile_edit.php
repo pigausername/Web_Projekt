@@ -174,7 +174,7 @@ if($statement->execute()) {
                             <div class="col-md-3"></div>
                             <div class="col-md-5" style="margin: auto">
 
-                <form action="profile_edit.php" method="POST">
+                <form action="profile_edit.php" method="POST" enctype="multipart/form-data">
                     <table style="text-align: left">
                         <tr>
                             <td>Username:</td>

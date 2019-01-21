@@ -36,7 +36,6 @@ if (isset($_SESSION["angemeldet"]))
 {
     $userid = $_SESSION["angemeldet"];
 
-    include "notification.php";
 ?>
 
 
@@ -108,9 +107,6 @@ if (isset($_SESSION["angemeldet"]))
 
 
 <?php
-
-    include_once "notification.php";
-
 }
 
 

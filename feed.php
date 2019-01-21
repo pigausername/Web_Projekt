@@ -78,7 +78,15 @@ if(!$no > 0) {
                     <small><?php echo $row['date'] ?></small>
                     <br>
                     <h4><?php echo $row['headline'] ?></h4><br>
-                    <?php echo nl2br ('<p>'.$row['content'].'</p>'); ?><br>
+                <?php
+                if ($row['filename'] !== $nopic) {
+                ?>
+                <img class="postpic" src="pictures/<?php echo $row['filename'] ?>">
+                <br>
+                <?php
+                }
+
+                    echo nl2br ('<p>'.$row['content'].'</p>'); ?><br>
                 <div class="content-right"><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a></div>
 
                 <hr />

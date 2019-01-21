@@ -7,7 +7,7 @@ include_once "header.php";
             <h1>RAM</h1>
 
             <p><strong>Das Team</strong></p>
-            <p>Annika - Minh - René</p>
+            <p>Annika Bergfelder - Hoang Minh Vo - René Kahremann</p>
 
             <br>
                 <!-- Bilder der einzelnen Gruppenmitglieder -->

@@ -86,7 +86,7 @@ if(!$no > 0) {
                 if ($row['filename'] !== $nopic) {
                 ?>
                 <img class="postpic" src="pictures/<?php echo $row['filename'] ?>">
-                <br>
+                <br><br>
                 <?php
                 }
 
@@ -138,7 +138,7 @@ else {
                 if ($row3['filename'] !== $nopic) {
                     ?>
                     <img class="postpic" src="pictures/<?php echo $row3['filename'] ?>">
-                    <br>
+                    <br><br>
                     <?php
                 }
                 ?>

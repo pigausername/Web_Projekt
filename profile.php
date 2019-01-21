@@ -94,7 +94,7 @@ if($sql->execute()) {
                 {
                     ?>
                     <img class="postpic" src="pictures/<?php echo $row['filename'] ?>">
-                    <br>
+                    <br><br>
                     <?php
                 }
                 echo nl2br ('<p>'.$row['content'].'</p>'.'<br>');

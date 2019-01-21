@@ -7,61 +7,62 @@ include_once "header.php";
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
     </head>
+
 <body>
 <div class="row" id="profile_place_content" style="background-color: rgb(225, 225, 225)">
-
     <div class="col-md-4">
         <div class="steckbrief">
             <div class="place_content_inside">
 
-<?php
-$myprofile_id = $_SESSION["angemeldet"];
-$profile_id = $_GET['userid'];
-//Daten des jeweiligen Nutzers anzeigen
-$display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id");
-$display_user->execute();
-$row2 = $display_user->fetch();
-        ?>
-        <title><?php echo $row2['username'] ?></title>
-        <h2 style="text-align: center"><?php echo $row2['username'] ?></h2>
-    <br>
+                <?php
+                $myprofile_id = $_SESSION["angemeldet"];
+                $profile_id = $_GET['userid'];
 
-        <img class="profilepic" src="pictures/<?php echo $row2['profilepic'] ?>">
-    <br>
-    <br>
-    <table style="text-align: left">
-        <tr>
-            <td>E-Mail:</td><td><?php echo $row2['email'] ?></td>
-        </tr>
-        <tr>
-            <td>First name:</td><td><?php echo $row2['firstname'] ?></td>
-        </tr>
-        <tr>
-            <td>Last name:</td><td><?php echo $row2['lastname'] ?></td>
-        </tr>
-        <tr>
-            <td>Subject:</td><td><?php echo $row2['subject'] ?></td>
-        </tr>
-        <tr>
-            <td>Semester:</td><td><?php echo $row2['semester'] ?></td>
-        </tr>
-    </table>
-                <hr />
-        <?php
+                //Daten des jeweiligen Nutzers anzeigen
+                $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid= $profile_id");
+                $display_user->execute();
+                $row2 = $display_user->fetch();
+                        ?>
+                        <!-- Steckbrief des jeweiligen Nutzers -->
+                        <title><?php echo $row2['username'] ?></title>
+                        <h2 style="text-align: center"><?php echo $row2['username'] ?></h2>
+                        <br>
 
-//Show Followers and Subs
-include_once "show_followers.php";
-include_once "show_subs.php";
-        ?>
-        <hr />
-<?php
+                        <img class="profilepic" src="pictures/<?php echo $row2['profilepic'] ?>">
+                        <br>
+                        <br>
+                    <table style="text-align: left">
+                        <tr>
+                            <td>E-Mail:</td><td><?php echo $row2['email'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>First name:</td><td><?php echo $row2['firstname'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>Last name:</td><td><?php echo $row2['lastname'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>Subject:</td><td><?php echo $row2['subject'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>Semester:</td><td><?php echo $row2['semester'] ?></td>
+                        </tr>
+                    </table>
+                        <hr />
+                        <?php
 
-//Follow Button
-include_once "follow.php";
+                //Show Followers and Subs
+                include_once "show_followers.php";
+                include_once "show_subs.php";
+                        ?>
+                        <hr />
+                <?php
 
-?>
+                //Follow Button
+                include_once "follow.php";
+
+                ?>
 
             </div>
     </div>
@@ -78,6 +79,7 @@ $sql = $pdo->prepare("SELECT * FROM posts WHERE userid= $profile_id ORDER BY dat
 if($sql->execute()) {
     while ($row = $sql->fetch()) {
         ?>
+                <!-- Posts des eingeloggten Users -->
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post" src="pictures/<?php echo $row2['profilepic'] ?>"></a><br>
                 <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></strong><br>
 

@@ -8,9 +8,7 @@ if (isset($_SESSION["angemeldet"])) {
 include_once "userdata.php";
 
 $commenter_id = $_SESSION["angemeldet"];
-
 $comment = $_POST["comment"];
-
 $post_id = $_POST["post_id"];
 
 

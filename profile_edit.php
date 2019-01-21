@@ -33,6 +33,7 @@ if (isset($_POST['save_changes'])) {
         <br>
         <br>
         <br>
+        <!-- Fehlermeldung - wenn ein Feld nicht ausgefüllt ist -->
         <div class="alert alert-danger alert-dismissible fade show">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong>Info!</strong> Please fill in all fields!
@@ -44,6 +45,7 @@ if (isset($_POST['save_changes'])) {
         <br>
         <br>
         <br>
+        <!-- Fehlermeldung - wenn die Passwörter nicht übereinstimmen -->
         <div class="alert alert-danger alert-dismissible fade show">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong>Info!</strong> Your passwords don't match!
@@ -77,6 +79,7 @@ if (isset($_POST['save_changes'])) {
                         $options = ['cost' => 5];
                         $hash = password_hash($password, PASSWORD_DEFAULT, $options);
 
+                        // Update Profilinformationen wenn Bild vorhanden
                         $updateprofile = $pdo->prepare("UPDATE `userdata` 
         SET `username` = :username, `password` = :password, `email` = :email, `firstname` = :firstname, `lastname` = :lastname, profilepic = :profilepic, `subject` = :subject, `semester` = :semester
         WHERE `userid` = :userid");
@@ -103,6 +106,7 @@ if (isset($_POST['save_changes'])) {
             $options = ['cost' => 5];
             $hash = password_hash($password, PASSWORD_DEFAULT, $options);
 
+            // Update Profilinformationen
             $updateprofile = $pdo->prepare("UPDATE `userdata` 
         SET `username` = :username, `password` = :password, `email` = :email, `firstname` = :firstname, `lastname` = :lastname, `subject` = :subject, `semester` = :semester
         WHERE `userid` = :userid");
@@ -136,6 +140,7 @@ if (isset($_POST['save_changes'])) {
                 <br>
                 <br>
                 <br>
+                <!-- Meldung - wenn das Profil erfolgreich geupdated wurde -->
                 <div class="alert alert-success alert-dismissible fade show">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                     <strong>You have successfully updated your profile!</strong> Head <a href="feed.php">here</a> back to home!
@@ -146,6 +151,7 @@ if (isset($_POST['save_changes'])) {
                 <br>
                 <br>
                 <br>
+                <!-- Fehlermeldung - wenn das Profil nicht erfolgreich geupdated wurde -->
                 <div class="alert alert-danger alert-dismissible fade show">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                     <strong>Info!</strong> Something went wrong. Try again!
@@ -158,7 +164,6 @@ if (isset($_POST['save_changes'])) {
 }
 
 //Bestehende Daten des Nutzers anzeigen
-
 $statement = $pdo->prepare("SELECT `username`, `email`, `firstname`, `lastname`, `subject`, `semester` FROM userdata WHERE userid=$userid");
 if($statement->execute()) {
     while ($row = $statement->fetch()) {

@@ -1,3 +1,5 @@
+
+<!-- Kommentar Formular -->
 <form method="POST" id="comment_form">
         <div class="form-group">
             <textarea name="comment" id="comment" class="textareastyle" placeholder="Enter Comment" rows="5" required></textarea>
@@ -14,6 +16,7 @@
 
 <script>
 
+    // Dieser Code sendet die Daten an add_comment.php
     $(document).ready(function(){
 
         $('#comment_form').on('submit', function(event){
@@ -37,6 +40,7 @@
             });
         });
 
+        // Dieser Code läd die Kommentare die er aus der Datei fetch_comment.php bekommt
         load_comment();
 
         function load_comment()

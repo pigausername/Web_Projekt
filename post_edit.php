@@ -28,6 +28,7 @@ if (isset($_POST['save_post_edit'])) {
         <br>
         <br>
         <br>
+        <!-- Meldung - bei Versuch Java in das Formular zu schreiben -->
         <div class="alert alert-danger alert-dismissible fade show">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong>Info!</strong> Don't mess with us! Head back to <a href="feed.php">your feed</a>.
@@ -40,6 +41,7 @@ if (isset($_POST['save_post_edit'])) {
         <br>
         <br>
         <br>
+        <!-- Fehlermeldung - wenn ein Feld leer ist -->
         <div class="alert alert-danger alert-dismissible fade show">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong>Info!</strong> A good post requires both a headline and content. Try <a href="feed.php">here</a>
@@ -57,6 +59,7 @@ if (isset($_POST['save_post_edit'])) {
             $fileError = $_FILES['file']['error'];
             $fileType = $_FILES['file']['type'];
 
+            // Post id aus Datenbank holen
             $fetchpicname = $pdo->prepare("SELECT * FROM posts WHERE post_id=$post_id");
             echo "3".$fileName;
             if ($fetchpicname->execute()) {
@@ -80,6 +83,7 @@ if (isset($_POST['save_post_edit'])) {
 
                             echo $fileDestination;
 
+                            // Update die Inhalte in der Datenbank
                             $PostUpdate = $pdo->prepare("UPDATE `posts` SET `headline` = :newheadline, `content` = :newcontent, `filename` = :oldpicname WHERE `post_id` = :post_id");
 
                             $PostUpdate->bindParam(':newheadline', $newheadline);
@@ -92,6 +96,7 @@ if (isset($_POST['save_post_edit'])) {
                                 <br>
                                 <br>
                                 <br>
+                                <!-- Meldung - wenn Post efolgreich geupdated wurde -->
                                 <div class="alert alert-success alert-dismissible fade show">
                                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                                     <strong>You have successfully updated your post!</strong> Head <a href="feed.php">here</a> back to
@@ -103,6 +108,7 @@ if (isset($_POST['save_post_edit'])) {
                                 <br>
                                 <br>
                                 <br>
+                                <!-- Meldung - wenn beim Post update etwas schief gelaufen ist -->
                                 <div class="alert alert-danger alert-dismissible fade show">
                                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                                     <strong>Info!</strong> Something went wrong. Try again!
@@ -130,6 +136,7 @@ if (isset($_POST['save_post_edit'])) {
                 <br>
                 <br>
                 <br>
+                <!-- Meldung - wenn Post efolgreich geupdated wurde -->
                 <div class="alert alert-success alert-dismissible fade show">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                     <strong>You have successfully updated your post!</strong> Head <a href="feed.php">here</a> back to
@@ -141,6 +148,7 @@ if (isset($_POST['save_post_edit'])) {
                 <br>
                 <br>
                 <br>
+                <!-- Meldung - wenn beim Post update etwas schief gelaufen ist -->
                 <div class="alert alert-danger alert-dismissible fade show">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                     <strong>Info!</strong> Something went wrong. Try again!
@@ -152,9 +160,7 @@ if (isset($_POST['save_post_edit'])) {
 
 }
 
-
 // Anzeigen des ursprünglichen Posts
-
 $display_oldpost = $pdo->prepare("SELECT * FROM posts WHERE post_id=$post_id");
 
 if ($display_oldpost->execute()){
@@ -171,6 +177,7 @@ if ($display_oldpost->execute()){
             <div class="col-md-2"></div>
             <div class="col-md-8">
 
+        <!-- Formular - Post Edit -->
         <form action="post_edit.php?post_id=<?php echo $post_id ?>" method="post" enctype="multipart/form-data">
             <br>
             <textarea class="textareastyle" name="headline" placeholder="" rows="1"><?php echo $row['headline'] ?> </textarea>

@@ -33,39 +33,39 @@ $row2 = $display_editor->fetch();
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
 
+                    <!--Zeige Profilbild der Person die den Post geschrieben hat-->
+                    <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic" src="pictures/<?php echo $row2['profilepic'] ?>"></a>
+                    <br>
+                    <!--Zeige Profilbild der Person die den Post geschrieben hat-->
+                    <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></strong>
+                    <br>
+                    <?php echo $row["date"]?>
 
-                <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic" src="pictures/<?php echo $row2['profilepic'] ?>"></a>
-        <br>
-
-        <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></strong>
-        <br>
-        <?php echo $row["date"]?>
 
 
+                    <h2><?php echo $row["headline"] ?></h2>
+                    <br>
+                      <?php
 
-        <h2><?php echo $row["headline"] ?></h2>
-        <br>
-          <?php
+                      // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält --> Unovllständig
+                      $nopic = "NULL";
 
-            // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält --> Unovllständig
-          $nopic = "NULL";
+                      if ($row['filename'] !== $nopic)
+                      {
+                          ?>
+                          <img class="postpic" src="pictures/<?php echo $row['filename'] ?>">
+                          <br>
+                          <?php
+                      }
+                    ?>
 
-          if ($row['filename'] !== $nopic)
-          {
-              ?>
-              <img class="postpic" src="pictures/<?php echo $row['filename'] ?>">
-              <br>
-              <?php
-          }
-        ?>
+                    <?php echo $row["content"] ?>
 
-        <?php echo $row["content"] ?>
+                    <br>
+                    <br>
+                    <hr/>
 
-        <br>
-        <br>
-        <hr/>
-
-        <?php include "comment.php" ?>
+                    <?php include "comment.php" ?>
 
                 </div>
                 <div class="col-md-2"></div>

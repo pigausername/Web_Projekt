@@ -77,10 +77,12 @@ if(!$no > 0) {
                     <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></strong><br>
                     <!-- Zeige Datum -->
                     <small><?php echo $row['date'] ?></small>
-                    <br>
+                    <br><br>
                     <!-- Zeige Headline und Content -->
-                    <h4><?php echo $row['headline'] ?></h4><br>
+                    <h4><?php echo $row['headline'] ?></h4>
                 <?php
+                $nopic = "NULL";
+
                 if ($row['filename'] !== $nopic) {
                 ?>
                 <img class="postpic" src="pictures/<?php echo $row['filename'] ?>">

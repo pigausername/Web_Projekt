@@ -11,7 +11,7 @@ include_once "userdata.php";
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <?php
-
+$myid = $_SESSION["angemeldet"];
 // variablen festgelegt die für die Verarbeitung gebraucht werden
 // Upload von Post Content ohne Bild
 if (isset($_POST['headline']) AND isset($_POST['content'])) {
@@ -71,9 +71,22 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
                         $uploadwithpic->bindParam(':content', $content);
                         $uploadwithpic->bindParam(':fileNameNew', $fileNameNew);
                         $uploadwithpic->bindParam(':userid', $userid);
+
+
                         if ($uploadwithpic->execute()) {
 
-                            echo '<script>window.location.href="do_notification.php"</script>';
+                            $checkfollow=$pdo->prepare("SELECT * FROM followers WHERE userid=$myid");
+                            $checkfollow->execute();
+
+                            $no=$checkfollow->rowCount();
+                            if(!$no > 0) {
+                                echo '<script>window.location.href="feed.php"</script>';
+                            }
+                            else
+                                {
+
+                                echo '<script>window.location.href="do_notification.php"</script>';
+                            }
                         }
 
                     } else {
@@ -99,9 +112,18 @@ if (isset($_POST['headline']) AND isset($_POST['content'])) {
 
             if ($upload->execute()) {
 
-                $myid = $_SESSION["angemeldet"];
+                $checkfollow=$pdo->prepare("SELECT * FROM followers WHERE userid=$myid");
+                $checkfollow->execute();
 
-                echo '<script>window.location.href="do_notification.php"</script>';
+                $no=$checkfollow->rowCount();
+                if(!$no > 0) {
+                    echo '<script>window.location.href="feed.php"</script>';
+                }
+                else
+                {
+
+                    echo '<script>window.location.href="do_notification.php"</script>';
+                }
             }
         }
     }

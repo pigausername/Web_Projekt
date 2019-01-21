@@ -48,7 +48,7 @@ if (isset($_SESSION["angemeldet"]))
                     <a class="nav-link" id="bar-link" href="students.php">Students</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="bar-link" href="feed.php">Feed</a>
+                    <a class="nav-link" id="bar-link" href="feed.php">Home</a>
                 </li>
 
                 <li class="nav-item">

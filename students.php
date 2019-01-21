@@ -40,3 +40,10 @@ include_once "header.php";
                     <?php
                 }
             }
+?>
+    </div>
+</div>
+<?php
+
+include_once "footer.php";
+?>

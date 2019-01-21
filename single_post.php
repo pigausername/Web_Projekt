@@ -58,8 +58,7 @@ $row2 = $display_editor->fetch();
                           <?php
                       }
                     ?>
-
-                    <?php echo $row["content"] ?>
+                    <?php echo nl2br ('<p>'.$row['content'].'</p>'); ?><br>
 
                     <br>
                     <br>

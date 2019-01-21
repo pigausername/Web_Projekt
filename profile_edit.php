@@ -94,9 +94,49 @@ if (isset($_POST['save_changes'])) {
                         $updateprofile->bindParam(':subject', $subject);
                         $updateprofile->bindParam(':semester', $semester);
                         $updateprofile->execute();
-                        if ($updateprofile->execute()) {
-                            echo "bla";
+                        $updateprofile->execute();
+
+
+                        $checkprofile = $pdo->prepare("SELECT `username`, `password`, `email`, `firstname`, `lastname`, `subject`, `semester` FROM `userdata` WHERE userid=$userid");
+                        $checkprofile->execute();
+
+                        $row2 = $checkprofile->fetch();
+                        $newusername = $row2["username"];
+                        $newpassword = $row2["password"];
+                        $newemail = $row2["email"];
+                        $newfirstname = $row2["firstname"];
+                        $newlastname = $row2["lastname"];
+                        $newsubject = $row2["subject"];
+                        $newsemester = $row2["semester"];
+                        $newpic = $row2["profilepic"];
+
+
+                        if ($newusername == $_POST['username'] AND $newpassword == $hash AND $newemail == $_POST['email'] AND $newfirstname == $_POST['firstname']
+                            AND $newlastname == $_POST['lastname'] AND $newsubject == $_POST['subject'] AND $newsemester == $_POST['semester']) {
+                            ?>
+                            <br>
+                            <br>
+                            <br>
+                            <!-- Meldung - wenn das Profil erfolgreich geupdated wurde -->
+                            <div class="alert alert-success alert-dismissible fade show">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>You have successfully updated your profile!</strong> Head <a href="feed.php">here</a> back to home!
+                            </div>
+                            <?php
+                        } else {
+                            ?>
+                            <br>
+                            <br>
+                            <br>
+                            <!-- Fehlermeldung - wenn das Profil nicht erfolgreich geupdated wurde -->
+                            <div class="alert alert-danger alert-dismissible fade show">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Info!</strong> Something went wrong. Try again!
+                            </div>
+                            <?php
                         }
+
+
                     }
                 }
             }

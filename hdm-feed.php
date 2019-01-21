@@ -17,45 +17,51 @@ include_once "header.php";
         <hr><br>
 
 <?php
-    $display_user = $pdo->prepare("SELECT * FROM userdata");
-    if ($display_user->execute()) {
-        $row2 = $display_user->fetch();
-        //Posts des angemeldeten Nutzers anzeigen
-        $sql = $pdo->prepare("SELECT * FROM posts ORDER BY date DESC");
-            if ($sql->execute()) {
-                while ($row = $sql->fetch()) {
-
-                        ?>
-                        <!-- Zeige Profilbild über dem Post -->
-                        <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"
-                                                                                        src="pictures/<?php echo $row2['profilepic'] ?>"></a><br>
-                        <!-- Zeige Username -->
-                        <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></strong><br>
-                        <!-- Zeige Datum -->
-                        <small><?php echo $row['date'] ?></small>
-                        <br><br>
-                        <!-- Zeige Headline und Content -->
-                        <h4><?php echo $row['headline'] ?></h4>
-                        <?php
-                        $nopic = "NULL";
-
-                        if ($row['filename'] !== $nopic) {
+                //Posts der Nutzers anzeigen
+                $sql = $pdo->prepare("SELECT * FROM posts ORDER BY date DESC");
+                $sql->execute();
+                    while ($row = $sql->fetch()) {
+                        $editor_id = $row["userid"];
+                        $display_user = $pdo->prepare("SELECT * FROM userdata WHERE userid=$editor_id");
+                        $display_user->execute();
+                        $row2 = $display_user->fetch();
                             ?>
-                            <img class="postpic" src="pictures/<?php echo $row['filename'] ?>">
+                            <!-- Zeige Profilbild über dem Post -->
+                            <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"
+                                                                                            src="pictures/<?php echo $row2['profilepic'] ?>"></a>
+                            <br>
+                            <!-- Zeige Username -->
+                            <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></strong>
+                            <br>
+                            <!-- Zeige Datum -->
+                            <small><?php echo $row['date'] ?></small>
                             <br><br>
+                            <!-- Zeige Headline und Content -->
+                            <h4><?php echo $row['headline'] ?></h4>
+                            <?php
+                            $nopic = "NULL";
+
+                            if ($row['filename'] !== $nopic) {
+                                ?>
+                                <img class="postpic" src="pictures/<?php echo $row['filename'] ?>">
+                                <br><br>
+                                <?php
+                            }
+
+                            echo nl2br('<p>' . $row['content'] . '</p>'); ?><br>
+                            <!-- Verlinkung zu Single Post -->
+                            <div class="content-right"><a
+                                        href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a></div>
+
+                            <hr/>
+
                             <?php
                         }
 
-                        echo nl2br ('<p>'.$row['content'].'</p>'); ?><br>
-                        <!-- Verlinkung zu Single Post -->
-                        <div class="content-right"><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a></div>
 
-                        <hr />
 
-<?php
-                }
-            }
-        }
+
+
 ?>
     </div>
 </div>

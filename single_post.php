@@ -24,7 +24,7 @@ $display_editor->execute();
 $row2 = $display_editor->fetch();
 
 ?>
-
+<title><?php echo $row["headline"] ?></title>
 
 <body>
 <div id="place_content" style="border-radius: .25rem;">

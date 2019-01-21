@@ -14,11 +14,12 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
     $no=$checkfollow->rowCount();
     if(!$no > 0){
         ?>
-
+        <!-- Zeige Folgen Button -->
         <form action="profile.php?userid=<?php echo $profile_id?>" method="post">
             <input class="btn btn-info" type="submit" name="follow" value="Follow">
         </form>
         <?php
+        // Schreibe Follow in die Datenbank
         if (isset($_POST['follow'])) {
             $follow = $pdo->prepare("INSERT INTO followers (userid, followerid) VALUES (:profile_id, :followerid)");
             $follow->bindParam(':profile_id',$profile_id);
@@ -32,13 +33,13 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
     }
     else {
         ?>
-        <!-- Folgen schon gegenseitig, unfollow -->
+        <!-- Zeige Unfollow Button -->
         <form action="profile.php?userid=<?php echo $profile_id?>" method="post">
             <input class="btn btn-info" type="submit" name="unfollow" value="Unfollow">
         </form>
 
         <?php
-
+        // Lösche Follow aus der Datenbank
         if (isset($_POST['unfollow'])) {
             $unfollow = $pdo->prepare("DELETE FROM followers WHERE userid='$profile_id' AND followerid='$followerid'");
             if ($unfollow->execute()) {
@@ -48,7 +49,7 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
         }
 }
 else {
-    //Wenn es sich um das eigene Profil handelt, wird statt dem Follow Button der Edit Profile Button angezeigt
+    //Zeige Profile Edit wenn es das eigene Profil ist
     ?>
     <form action="profile_edit.php" method="post">
             <input class="btn btn-info" type="submit" name="follow" value="Edit profile">

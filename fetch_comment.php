@@ -4,13 +4,11 @@ session_start();
 if (isset($_SESSION["angemeldet"])) {
     $userid = $_SESSION["angemeldet"];
 }
-
-
 include_once "userdata.php";
 
 $post_id = $_GET["post_id"];
 
-//Kommentar auswählen und anzeigen
+//Kommentar aus der Datenbank holen
 $fetch_comment = $pdo->prepare("SELECT * FROM comment WHERE post_id = $post_id ORDER BY comment_id DESC");
 
 if ($fetch_comment->execute()) {

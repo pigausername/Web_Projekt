@@ -11,6 +11,7 @@ $myprofile_id = $_SESSION["angemeldet"];
 <div id="place_content" style="border-radius: .25rem;">
     <div class="place_content_inside" style="border-radius: .25rem;">
 
+        <!-- Headline -->
         <h4>Do you really want to delete your post?</h4>
         <br>
 
@@ -20,7 +21,7 @@ $myprofile_id = $_SESSION["angemeldet"];
 
             <div class="post_formular col-md-9">
 
-<!-- Frage ob der Post wirklich gelöscht werden soll-->
+    <!-- Formular das fragt ob der Post wirklich gelöscht werden soll-->
     <form action="delete_post.php?post_id=<?php echo $post_id ?>" method="post">
 
                 <button class="btn btn-info" type="submit" value="post" name="yes">Yes</button>

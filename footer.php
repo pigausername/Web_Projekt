@@ -40,9 +40,9 @@
                     <a id="bar-link" href="mailto:RAM@hdm-stuttgart.de?subject=Email%20Help&body=Hello%20RAM, ">Contact</a>
                 </h9>
             </div>
-            <!-- Grid column -->
+
 
         </div>
     </div>
 </footer>
-<!-- Footer -->
+

@@ -14,8 +14,7 @@ include_once "header.php";
 <div id="place_content" style="border-radius: .25rem;">
     <div class="place_content_inside" style="border-radius: .25rem; min-width: 100%">
 
-    <!-- Hierbei hat der eingeloggte User die Möglichkeit einen Post zu schreiben -->
-
+    <!-- Post schreiben - Formular-->
     <h2>Create a post</h2>
     <br>
         <div class="row">
@@ -55,7 +54,7 @@ $filename= $_POST['filename'];
 $myid= $_SESSION["angemeldet"];
 $feedid = '';
 
-
+// Schaue nach wem ich folge
 $checkfollow=$pdo->prepare("SELECT * FROM followers WHERE followerid=$myid");
 $checkfollow->execute();
 
@@ -71,12 +70,15 @@ if(!$no > 0) {
             while ($row = $sql->fetch()) {
 
                 ?>
+                <!-- Zeige Profilbild über dem Post -->
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"
                                                                                 src="pictures/<?php echo $row2['profilepic'] ?>"></a><br>
-
+                    <!-- Zeige Username -->
                     <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo $row2['username'] ?></a></strong><br>
+                    <!-- Zeige Datum -->
                     <small><?php echo $row['date'] ?></small>
                     <br>
+                    <!-- Zeige Headline und Content -->
                     <h4><?php echo $row['headline'] ?></h4><br>
                 <?php
                 if ($row['filename'] !== $nopic) {
@@ -87,6 +89,7 @@ if(!$no > 0) {
                 }
 
                     echo nl2br ('<p>'.$row['content'].'</p>'); ?><br>
+                <!-- Verlinkung zu Single Post -->
                 <div class="content-right"><a href="single_post.php?post_id=<?php echo $row["post_id"] ?>">Comment</a></div>
 
                 <hr />
@@ -102,7 +105,7 @@ else {
     while ($row = $checkfollow->fetch()) {
         $editor_id = $row['userid'];
 
-
+        // Hole meine Posts und die Posts von den Leuten denen ich folge
         $display_post = $pdo->prepare("SELECT * FROM posts WHERE userid= $editor_id OR userid= $myid ORDER BY date DESC");
         $display_post->execute();
         while ($row3 = $display_post->fetch()){
@@ -112,19 +115,22 @@ else {
             $row2 = $display_editor->fetch();
             ?>
 
-
+                <!-- Zeige Profilbild über dem Post -->
                 <a href="profile.php?userid=<?php echo $row2['userid'] ?>"><img class="profilepic post"
                                                                                 src="pictures/<?php echo $row2['profilepic'] ?>"></a>
                 <br>
+                <!-- Zeige Username -->
                 <strong><a href="profile.php?userid=<?php echo $row2['userid'] ?>"><?php echo " " . $row2['username'] ?></a></strong>
                 <br>
+                <!-- Zeige Datum -->
                 <small><?php echo $row3['date'] ?></small>
                 <br>
                 <br>
+                <!-- Zeige Headline und Content -->
                 <h4><?php echo $row3['headline'] ?></h4>
                 <?php
-                // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhält
 
+                // Hierbei wird überprüft, ob der jeweilige Post ein Bild beinhaltet
                 $nopic = "NULL";
 
                 if ($row3['filename'] !== $nopic) {

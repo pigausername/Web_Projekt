@@ -42,7 +42,7 @@ if (isset($_SESSION["angemeldet"]))
         <div class="collapse navbar-collapse" id="navbarsExample09">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" id="bar-link" href="hdm-feed.php">HDM</a>
+                    <a class="nav-link" id="bar-link" href="hdm-feed.php">HdM</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="bar-link" href="students.php">Students</a>

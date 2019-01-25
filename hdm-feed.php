@@ -7,13 +7,13 @@ include_once "header.php";
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HDM-Feed</title>
+    <title>HdM-Feed</title>
 </head>
 
 <body>
 <div id="place_content" style="border-radius: .25rem;">
     <div class="place_content_inside" style="border-radius: .25rem; min-width: 100%">
-        <h2>HDM-Feed</h2>
+        <h2>HdM-Feed</h2>
         <hr><br>
 
 <?php

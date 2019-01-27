@@ -25,6 +25,21 @@ if (isset($_POST['save_changes'])) {
     $subject = $_POST['subject'];
     $semester = $_POST['semester'];
 
+
+    if ((stripos($username, "<") !== false) OR (stripos($password, "<") !== false)
+        OR (stripos($rpassword, "<") !== false)  OR (stripos($email, "<") !== false)
+        OR (stripos($firstname, "<") !== false)  OR (stripos($lastname, "<") !== false)
+        OR (stripos($subject, "<") !== false)  OR (stripos($semester, "<") !== false)) {
+        ?>
+        <!-- Meldung - wenn Java in das Feld geschrieben wird -->
+        <div class="alert alert-danger alert-dismissible fade show">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Info!</strong> Don't mess with us! Head back to <a href="feed.php">your feed</a>.
+        </div>
+        <?php
+        die();
+    }
+
     if (empty($_POST["username"]) OR empty($_POST["password"])
         OR empty($_POST["repeatpassword"]) OR empty($_POST["email"])
         OR empty($_POST["firstname"]) OR empty($_POST["lastname"]) OR empty($_POST["subject"]) OR empty($_POST["semester"])) {
@@ -52,6 +67,8 @@ if (isset($_POST['save_changes'])) {
         </div>
         <?php
     } else {
+
+
         if (file_exists($_FILES['file']['tmp_name']) || is_uploaded_file($_FILES['file']['tmp_name'])) {
             $file = $_FILES['file'];
 
@@ -143,6 +160,7 @@ if (isset($_POST['save_changes'])) {
         } else {
 
 
+
             $options = ['cost' => 5];
             $hash = password_hash($password, PASSWORD_DEFAULT, $options);
 
@@ -223,7 +241,7 @@ if($statement->execute()) {
                     <table style="text-align: left">
                         <tr>
                             <td>Username:</td>
-                            <td><input type="text" name="username" placeholder="<?php echo $row['username'] ?>"></td>
+                            <td><input type="text" name="username" value="<?php echo $row['username'] ?>"></td>
                         </tr>
                         <tr>
                             <td>Password:</td>
@@ -235,15 +253,15 @@ if($statement->execute()) {
                         </tr>
                         <tr>
                             <td>E-Mail:</td>
-                            <td><input type="text" name="email" placeholder="<?php echo $row['email'] ?>"</td>
+                            <td><input type="text" name="email" value="<?php echo $row['email'] ?>"</td>
                         </tr>
                         <tr>
                             <td>First name:</td>
-                            <td><input type="text" name="firstname" placeholder="<?php echo $row['firstname'] ?>"></td>
+                            <td><input type="text" name="firstname" value="<?php echo $row['firstname'] ?>"></td>
                         </tr>
                         <tr>
                             <td>Last name:</td>
-                            <td><input type="text" name="lastname" placeholder="<?php echo $row['lastname'] ?>"></td>
+                            <td><input type="text" name="lastname" value="<?php echo $row['lastname'] ?>"></td>
                         </tr>
                         <tr>
                             <td>Profile picture:</td>
@@ -252,12 +270,12 @@ if($statement->execute()) {
 
                         <tr>
                             <td>Subject:</td>
-                            <td><input type="text" name="subject" id="subject" placeholder="<?php echo $row['subject'] ?>"</td>
+                            <td><input type="text" name="subject" id="subject" value="<?php echo $row['subject'] ?>"</td>
                         </tr>
 
                         <tr>
                             <td>Semester:</td>
-                            <td><input type="number" name="semester" id="semester" min="1" max="10" placeholder="<?php echo $row['semester'] ?>"</td>
+                            <td><input type="number" name="semester" id="semester" min="1" max="10" value="<?php echo $row['semester'] ?>"</td>
                         </tr>
                     </table>
 

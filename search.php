@@ -51,7 +51,7 @@ include_once ("header.php");
             //Post-Datenbank durchsuchen
             $searchpost = $pdo->prepare("SELECT * FROM posts WHERE headline LIKE '%$headline%' ORDER BY date DESC");
 
-            ?>
+        ?>
                 <h2>Posts</h2>
                 <br>
 
